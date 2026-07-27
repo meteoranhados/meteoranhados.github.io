@@ -1,0 +1,125 @@
+<!--
+	trends.htm		v:0.0.1		d:Feb 2021	Neil Thomas
+	Last modified: 2025/09/18 15:21:32
+	Page: 1 main panel plus a sidebar
+	NOTE: Once uploaded this page does not need to be uploaded again unless edited.
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="weather data">
+		<meta name="keywords" content="Cumulus, weather, data, weather station">
+		<title>Cumulus MX</title>
+		<link rel="icon" type="image/png" href="images/favicon.png">
+
+		<!--	jQuery Local	-->
+		<script src="lib/jquery/jquery-latest.min.js"></script>
+
+		<!--	Fonts	System will default to a sans-serif font if no Internet connection -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+		<!--	All Styles	-->
+		<link href="css/w3Pro.css" rel="stylesheet">			<!--	Basic w3schools responsive styles	-->
+		<link href="css/colours.css" rel="stylesheet">		<!--	Slightly enhanced w3schools colours	-->
+		<link href="css/mx-templates.css" rel="stylesheet">	<!--	Specific styles for these templates.	-->
+
+		<!--	Scripts	-->
+		<script src="js/setpagedata.js"></script>	<!--	Utility javascripts for all pages.	-->
+		<script src="https://code.highcharts.com/stock/12.3.0/highstock.js"></script>
+		<script src="https://code.highcharts.com/stock/12.3.0/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/12.3.0/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/12.3.0/modules/accessibility.js"></script>
+		<script src="https://code.highcharts.com/12.3.0/modules/boost.js"></script>
+		<script src="https://code.highcharts.com/12.3.0/themes/grid.js"></script>
+		<script src="js/cumuluscharts.js"></script>	<!--	Script needed to run charts	-->
+
+		<style>
+			#chartcontainer  {
+				min-height: 550px;
+				margin-top:16px;
+				margin-bottom: 16px;
+			}
+			.mx-button {
+				margin-bottom: 5px;
+				border-radius: 4px;
+			}
+			.graphs-width {
+				max-width:1250px;
+				margin: auto
+			}
+		</style>
+	</head>
+	<body>
+		<div id="Header" class="w3-row w3-top w3-theme-dark w3-theme-bdr">
+			<div class="w3-row-padding site-width">
+				<div class="at-flex-between" style="align-items:center; flex-wrap:wrap;">
+					<img src="images/CumulusMX-Logo.png" class="w3-image logo" alt="Header logo"/>
+					<div class="w3-right-align" style="max-width:600px;">
+						<h5>Lat<span class="w3-hide-small">itude</span>:&nbsp;<span data-cmxdata="latitude"></span><span class="at-divider">|<wbr></span>Long<span class="w3-hide-small">itude</span>:&nbsp;<span data-cmxdata="longitude"></span><span class="at-divider">|<wbr></span>Alt<span class="w3-hide-small">itude</span>:&nbsp;<span data-cmxdata="altitude"></span></h5>
+					</div>
+				</div>
+				<!--	Start of Menu	-->
+				<div id="Main_Menu" class="w3-bar w3-theme-d4 w3-theme-bdr">
+				</div>
+				<!--	Mobile menu	-->
+				<div id="Main_Menu_Mobile" class="w3-bar-block w3-hide w3-hide-large">
+				</div>	<!-- End of Mobile menu -->
+			</div>
+		</div>
+		<div id="Content">	<!--	Start of main content	-->
+			<div class="w3-row-padding w3-theme-light graphs-width">	<!--	Page Title	-->
+				<div class="w3-col l12">
+					<h1>Trends</h1>
+				</div>
+			</div>	<!--	End of title row	-->
+			<div class="w3-row-padding w3-theme-light graphs-width">	<!--	First Row	-->
+				<div class="w3-col s12">	<!--	First column of first row	-->
+					<div class="w3-panel w3-card w3-theme-white">
+						<figure>
+							<div id="chartcontainer"></div>
+						</figure>
+					</div>
+				</div>	<!--	End of first column of first row	-->
+			</div>
+			<div class="w3-row-padding w3-theme-light graphs-width">	<!--	Second row	-->
+				<div class="w3-col s12">
+					<div class="w3-cardX w3-panelX w3-center">
+						<div class="w3-bar w3-center">
+							<select id="mySelect" aria-label="select data type for graph" class="w3-bar-item w3-select w3-theme-l2  at-slim">
+								<option value="temp" selected>Temperature</option>
+								<option value="dailytemp">Daily Temperature</option>
+								<option value="press">Pressure</option>
+								<option value="wind">Wind Speed</option>
+								<option value="windDir">Wind Direction</option>
+								<option value="humidity">Humidity</option>
+								<option value="rain">Rainfall</option>
+								<option value="dailyrain">Daily Rain</option>
+								<option value="solar">Solar</option>
+								<option value="sunhours">Sunshine Hours</option>
+								<option value="airquality">Air Quality</option>
+								<option value="extratemp">Extra Temperature</option>
+								<option value="extrahum">Extra Humidity</option>
+								<option value="extradew">Extra Dew Point</option>
+								<option value="soiltemp">Soil Temperature</option>
+								<option value="soilmoist">Soil Moisture</option>
+								<option value="leafwet">Leaf Wetness</option>
+								<option value="usertemp">User Temperature</option>
+								<option value="co2">CO&#8322; Sensor</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>	<!--	End of row	-->
+		</div>	<!--	End of Content	-->
+		<div class="w3-row-padding"></div>
+			<div id="Footer" class="w3-row w3-bottom w3-theme-dark w3-theme-bdr">
+			<div class="w3-row-padding site-width">
+				<p><em>Cumulus MX Template by Neil Thomas <script>document.write(new Date().getFullYear());</script>
+				<span class="w3-right">Powered by <span class="w3-theme-txt">Cumulus MX</span> v:<span data-cmxdata="version"></span>, b:<span data-cmxdata="build"></span></span></em></p>
+			</div>
+		</div>
+	</body>
+</html>
