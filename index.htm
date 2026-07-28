@@ -71,27 +71,27 @@
 										<tbody>
 											<tr>
 												<td class="">Dawn:</td>
-												<td class=""><span data-cmxdata="pôr do sol"></span></td>
+												<td class=""><span data-cmxdata="sunset"></span></td>
 												<td class="">Sun Rise:</td>
-												<td class=""><span data-cmxdata="nascer do sol"></span></td>
+												<td class=""><span data-cmxdata="sunrise"></span></td>
 												<td class="">Moon Rise:</td>
-												<td class=""><span data-cmxdata="nascer da lua"></span></td>
+												<td class=""><span data-cmxdata="moonset"></span></td>
 												<td rowspan="3" style="width:75px; height: 75px; padding:0"><img id="moonImg" src="images/moon.png" alt="Moon" width="75" height="75" class="w3-image" />Visible <span data-cmxdata="MoonPercentAbs"></span>%</td>
 											</tr>
 											<tr>
 												<td class="">Dusk:</td>
 												<td class=""><span data-cmxdata="dusk"></span></td>
-												<td class="">Sun Set:</td>
+												<td class="">Pôr do sol:</td>
 												<td class=""><span data-cmxdata="sunset"></span></td>
-												<td class="">Moon Set:</td>
+												<td class="">Pôr da lua:</td>
 												<td class=""><span data-cmxdata="moonset"></span></td>
 											</tr>
 											<tr>
 												<td class="">Daylight:</td>
 												<td class=""><span data-cmxdata="daylightlength"></span></td>
-												<td class="">Day Length:</td>
+												<td class="">Duração do dia:</td>
 												<td class=""><span data-cmxdata="daylength"></span></td>
-												<td class="">Moon Phase:</td>
+												<td class="">Fase da lua:</td>
 												<td class=""><span id="moonPhase" data-cmxdata="moonphase"></span></td>
 											</tr>
 											<tr id="currCond" class="w3-hide">
@@ -113,15 +113,15 @@
 											<td colspan="4" class="w3-theme-d5">Temperature and Humidity</td>
 										</tr>
 										<tr class="w3-theme-l2">
-											<td>Temperature</td>
+											<td>Temperatura</td>
 											<td><span data-cmxdata="temp"></span>&nbsp;<span data-cmxdata="tempunit"></span></td>
-											<td>Dew Point</td>
+											<td>Ponto de orvalho</td>
 											<td><span data-cmxdata="dew"></span>&nbsp;<span data-cmxdata="tempunit"></span></td>
 										</tr>
 										<tr class="w3-theme-l2">
 											<td>Windchill</td>
 											<td><span data-cmxdata="wchill"></span>&nbsp;<span data-cmxdata="tempunit"></span></td>
-											<td>Humidity</td>
+											<td>Humidade</td>
 											<td><span data-cmxdata="hum"></span>&nbsp;%</td>
 										</tr>
 										<tr class="w3-theme-l2">
@@ -131,7 +131,7 @@
 											<td><span data-cmx-apparent data-cmxdata="apptemp" class="w3-hide"></span><span data-cmx-feels data-cmxdata="feelslike"></span>&nbsp;<span data-cmxdata="tempunit"></span></td>
 										</tr>
 										<tr class="w3-theme-l2">
-											<td>Temp change last hour</td>
+											<td>Variação da temperatura na última hora</td>
 											<td><span data-cmxdata="TempChangeLastHour"></span>&nbsp;<span data-cmxdata="tempunit"></span></td>
 											<td></td>
 											<td></td>
@@ -140,7 +140,7 @@
 											<td colspan="4" class="w3-theme-d4">Rainfall</td>
 										</tr>
 										<tr class="w3-theme-l3">
-											<td>Rainfall Today</td>
+											<td>Precipitação Hoje</td>
 											<td><span data-cmxdata="rfall"></span>&nbsp;<span data-cmxdata="rainunit"></span></td>
 											<td>Rainfall Rate</td>
 											<td><span data-cmxdata="rrate"></span>&nbsp;<span data-cmxdata="rainunit"></span>/hr</td>
@@ -158,13 +158,13 @@
 											<td><span data-cmxdata="snow24h">--</span> <span data-cmxdata="snowunit">--</span></td>
 										</tr>
 										<tr class="w3-theme-l3">
-											<td>Rainfall Last Hour</td>
+											<td>Precipitação última hora</td>
 											<td><span data-cmxdata="rhour"></span>&nbsp;<span data-cmxdata="rainunit"></span></td>
 											<td>Last rainfall</td>
 											<td><span data-cmxdata="LastRainTip"></span></td>
 										</tr>
 										<tr class="w3-theme-l3">
-											<td>Rainfall Since Midnight</td>
+											<td>Precipitação desde a meia noite</td>
 											<td><span data-cmxdata="rmidnight"></span>&nbsp;<span data-cmxdata="rainunit"></span></td>
 											<td>Rainfall Last 24 Hours</td>
 											<td><span data-cmxdata="r24hour"></span>&nbsp;<span data-cmxdata="rainunit"></span></td>
@@ -192,7 +192,7 @@
 											<td colspan="4" class="w3-theme-d2">Pressure <span class="subText">(sea level)</span></td>
 										</tr>
 										<tr class="w3-theme-l5">
-											<td>Barometer</td>
+											<td>Barómeto</td>
 											<td><span data-cmxdata="press"></span>&nbsp;<span data-cmxdata="pressunit"></span></td>
 											<td><span data-cmxdata="presstrend"></span></td>
 											<td><span data-cmxdata="presstrendval"></span>&nbsp;<span data-cmxdata="pressunit"></span>/hr</td>
@@ -223,11 +223,11 @@
 					<div class="w3-row-padding">
 						<div class="w3-col l12">
 							<div class="w3-panel w3-container w3-theme-light">
-								<h3 class="w3-center">Bem-vindo à <br/><span class="subText"><span data-cmxdata="longlocation"></span></span></h3>
+								<h3 class="w3-center">Bem-vindo a <br/><span class="subText"><span data-cmxdata="longlocation"></span></span></h3>
 								<p>The weather station in use is the <span data-cmxdata="stationtype"></span><br>
-									Esta página é atualizada a cada <span data-cmxdata="interval"></span> minutes. O dia meteorológico utilizado nesta estação acaba às <span data-cmxdata="rollovertime"></span>.
+									Esta página é atualizada a cada <span data-cmxdata="interval"></span> minutos. O dia meteorológico utilizado nesta estação acaba às <span data-cmxdata="rollovertime"></span>.
 								</p>
-								<p><strong>Forecast:</strong> <span data-cmxdata="forecast"></span></p>
+								<p><strong>Previsão:</strong> <span data-cmxdata="forecast"></span></p>
 							</div>
 						</div>
 					</div>
