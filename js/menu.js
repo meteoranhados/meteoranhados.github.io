@@ -14,23 +14,23 @@
 */
 
 menuSrc = [
-	{title: "Now",          menu: "b",    url: "index.htm"},
-	{title: "Today",        menu: "b",    url: "today.htm"},
-	{title: "Yesterday",    menu: "b",    url: "yesterday.htm"},
-	{title: "Today-Yest",   menu: "b",    url: "todayyest.htm"},
+	{title: "Agora",          menu: "b",    url: "index.htm"},
+	{title: "Hoje",        menu: "b",    url: "today.htm"},
+	{title: "Ontem",    menu: "b",    url: "yesterday.htm"},
+	{title: "Hoje-Ontem",   menu: "b",    url: "todayyest.htm"},
 	{title: "Gauges",       menu: "b",    url: "gauges.htm"},
-	{title: "Records",      menu: "b",    submenu: true,       items: [
-		{title: "This Month",        menu: "b",    url: "thismonth.htm"},
-		{title: "This Year",         menu: "b",    url: "thisyear.htm"},
-		{title: "All Time",          menu: "b",    url: "record.htm"},
-		{title: "Monthly",           menu: "b",    url: "monthlyrecord.htm"}
+	{title: "Recordes",      menu: "b",    submenu: true,       items: [
+		{title: "Este Mês",        menu: "b",    url: "thismonth.htm"},
+		{title: "Este Ano",         menu: "b",    url: "thisyear.htm"},
+		{title: "Desde Sempre",          menu: "b",    url: "record.htm"},
+		{title: "Mensal",           menu: "b",    url: "monthlyrecord.htm"}
 	]},
 	{title: "Charts",    menu: "b",    submenu: true,    items: [
-		{title: "Trends",            menu: "b",    url: "trends.htm"},
-		{title: "Select-a-graph",    menu: "b",    url: "selectachart.htm"},
-		{title: "Historic",          menu: "b",    url: "historic.htm"}
+		{title: "Tendências",            menu: "b",    url: "trends.htm"},
+		{title: "Escolhe-um-Gráfico",    menu: "b",    url: "selectachart.htm"},
+		{title: "Historico",          menu: "b",    url: "historic.htm"}
 	]},
-	{title: "Reports",   menu: "b",    url: "noaareport.htm"},
-	{title: "Forum",     menu: "b",    url: "#",    forum: true,    new_window: true},
+	{title: "Reletórios",   menu: "b",    url: "noaareport.htm"},
+	{title: "Fórum",     menu: "b",    url: "#",    forum: true,    new_window: true},
 	{title: "Webcam",    menu: "b",    url: "#",    webcam: true}
 ];
