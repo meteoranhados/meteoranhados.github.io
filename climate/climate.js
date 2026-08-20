@@ -179,13 +179,45 @@ function annualComparison(r,stationRef,stationDiff){
     ['Dias ≥1 mm',n(o.rain_days,0),n(nn.rain_days,1),`${sign(o.rain_days-nn.rain_days)}${n(o.rain_days-nn.rain_days,1)}`,n(sr.rain_days,1),`${sign(sd.rain_days)}${n(sd.rain_days,1)}`],
     ['Dias >35 °C',n(o.tmax_gt_35,0),n(nn.tmax_gt_35,1),`${sign(o.tmax_gt_35-nn.tmax_gt_35)}${n(o.tmax_gt_35-nn.tmax_gt_35,1)}`,n(sr.tmax_gt_35,1),`${sign(sd.tmax_gt_35)}${n(sd.tmax_gt_35,1)}`],
     ['Noites tropicais',n(o.tropical_nights,0),n(nn.tropical_nights,1),`${sign(o.tropical_nights-nn.tropical_nights)}${n(o.tropical_nights-nn.tropical_nights,1)}`,n(sr.tropical_nights,1),`${sign(sd.tropical_nights)}${n(sd.tropical_nights,1)}`],
-    ['Dias de geada',n(o.frost_days,0),n(nn.frost_days,1),`${sign(o.frost_days-nn.frost_days)}${n(o.frost_days-nn.frost_days,1)}`,n(sr.frost_days,1),`${sign(sd.frost_days)}${n(sd.frost_days,1)}`]
+    ['Dias com Tmin ≤ 0 °C',n(o.frost_days,0),n(nn.frost_days,1),`${sign(o.frost_days-nn.frost_days)}${n(o.frost_days-nn.frost_days,1)}`,n(sr.frost_days,1),`${sign(sd.frost_days)}${n(sd.frost_days,1)}`]
   ];
-  return `<div class="panel"><h2>Ano civil ${r.year} — até ${dpt(r.end)}</h2><p class="method">O valor observado é comparado separadamente com a normal 1991–2020 e com a referência dinâmica da própria estação para a mesma data.</p><div class="annual-compare">
+  return `<div class="panel"><h2>${r.year} — até ${dpt(r.end)}</h2><p class="method">O valor observado é comparado separadamente com a normal 1991–2020 e com a referência dinâmica da própria estação para a mesma data.</p><div class="annual-compare">
     <div class="annual-row annual-head"><div>Indicador</div><div class="ref-cell">Observado</div><div class="ref-cell">Normal 1991–2020</div><div class="ref-cell station-col">Referência estação</div></div>
     ${rows.map(x=>`<div class="annual-row"><b>${x[0]}</b><div class="ref-cell"><strong>${x[1]}</strong></div><div class="ref-cell"><strong>${x[2]}</strong><small>${x[3]}</small></div><div class="ref-cell station-col"><strong>${x[4]}</strong><small>${x[5]}</small></div></div>`).join('')}
   </div><div class="station-ref-note">Referência da estação: ${stationRef?.sample_year_count??0} anos (${(stationRef?.sample_years||[]).join(', ')||'—'}); ${n(stationRef?.reference_coverage_pct,1)}% dos dias do período têm referência histórica.</div></div>`;
 }
+
+
+function heatClass(kind,value,valid=true){
+  if(!valid || value===null || value===undefined || !Number.isFinite(Number(value)))return 'hm-missing';
+  const v=Number(value);
+  if(kind==='temp'){
+    if(v<=-2)return 'hm-cold3'; if(v<=-1)return 'hm-cold2'; if(v<-0.3)return 'hm-cold1';
+    if(v<0.3)return 'hm-neutral'; if(v<1)return 'hm-hot1'; if(v<2)return 'hm-hot2'; return 'hm-hot3';
+  }
+  if(v<50)return 'hm-dry3'; if(v<80)return 'hm-dry2'; if(v<=120)return 'hm-rain-normal'; if(v<=160)return 'hm-wet2'; return 'hm-wet3';
+}
+function renderHeatmap(host,monthly,kind){
+  const years=[...new Set(monthly.map(r=>r.year))].sort((a,b)=>a-b);
+  let h='<div class="hm-grid"><div></div>'+ms.slice(1).map(x=>`<div class="hm-head">${x}</div>`).join('');
+  years.forEach(y=>{
+    h+=`<div class="hm-year">${y}</div>`;
+    for(let m=1;m<=12;m++){
+      const r=monthly.find(x=>x.year===y&&x.month===m);
+      if(!r){h+='<div class="hm-cell hm-missing">—</div>';continue}
+      const val=kind==='temp'?r.anomaly?.tmean_c:r.anomaly?.precip_pct_normal;
+      const valid=kind==='temp'?r.temperature_month_valid:r.precipitation_month_valid;
+      const cls=heatClass(kind,val,valid);
+      const label=valid?(kind==='temp'?`${sign(val)}${n(val,1)}°`:`${n(val,0)}%`):'!';
+      const title=kind==='temp'
+        ? `${r.month_name} ${y} · T média ${n(r.observed?.tmean_c,2)} °C · anomalia ${sign(val)}${n(val,2)} °C · falhas ${r.missing_day_count}`
+        : `${r.month_name} ${y} · precipitação ${n(r.observed?.precip_mm,1)} mm · ${n(val,0)}% da normal · falhas ${r.missing_day_count}${valid?'':' · total mensal excluído da climatologia da estação'}`;
+      h+=`<div class="hm-cell ${cls}" title="${title.replaceAll('"','&quot;')}">${label}</div>`;
+    }
+  });
+  h+='</div>';host.innerHTML=h;
+}
+
 
 async function init(){
   tabs();
@@ -224,9 +256,10 @@ async function init(){
   ],{unit:' mm',decimals:0,zeroMin:true});
 
   const stationRows=Object.values(st.months).sort((a,b)=>a.month-b.month);
-  $('#station-temperature-table').innerHTML=table(['Mês','N','Tmax','T média','Tmin','Dif. T média vs normal'],stationRows.map(x=>[x.month_name,x.sample_count,`${n(x.station?.tmax_mean_c,2)} °C`,`${n(x.station?.tmean_c,2)} °C`,`${n(x.station?.tmin_mean_c,2)} °C`,`${sign(x.difference_station_vs_1991_2020?.tmean_c)}${n(x.difference_station_vs_1991_2020?.tmean_c,2)} °C`]));
-  $('#station-rain-table').innerHTML=table(['Mês','N','Chuva média estação','Normal 1991–2020','% da normal','Anos usados'],stationRows.map(x=>[x.month_name,x.sample_count,`${n(x.station?.precip_mm,1)} mm`,`${n(x.official_normal_1991_2020?.precip_mm,1)} mm`,`${n(x.difference_station_vs_1991_2020?.precip_pct_normal,0)}%`,x.years_used.join(', ')||'—']));
-  $('#station-climate-table').innerHTML=table(['Mês','N','Anos','T média estação','Normal 1991–2020','Dif. térmica','Chuva estação','Chuva normal','%'],stationRows.map(x=>[x.month_name,x.sample_count,x.years_used.join(', ')||'—',`${n(x.station?.tmean_c,2)} °C`,`${n(x.official_normal_1991_2020?.tmean_c,2)} °C`,`${sign(x.difference_station_vs_1991_2020?.tmean_c)}${n(x.difference_station_vs_1991_2020?.tmean_c,2)} °C`,`${n(x.station?.precip_mm,1)} mm`,`${n(x.official_normal_1991_2020?.precip_mm,1)} mm`,`${n(x.difference_station_vs_1991_2020?.precip_pct_normal,0)}%`]));
+  const qdot=c=>`<span class="sample-dot ${c>=4?'sample-good':c>=2?'sample-medium':'sample-low'}"></span>${c}`;
+  $('#station-temperature-table').innerHTML=table(['Mês','N temp.','Tmax','T média','Tmin','Dif. T média vs normal'],stationRows.map(x=>[x.month_name,qdot(x.temperature_sample_count),`${n(x.station?.tmax_mean_c,2)} °C`,`${n(x.station?.tmean_c,2)} °C`,`${n(x.station?.tmin_mean_c,2)} °C`,`${sign(x.difference_station_vs_1991_2020?.tmean_c)}${n(x.difference_station_vs_1991_2020?.tmean_c,2)} °C`]));
+  $('#station-rain-table').innerHTML=table(['Mês','N precip.','Chuva média estação','Normal 1991–2020','% da normal','Anos usados'],stationRows.map(x=>[x.month_name,qdot(x.precipitation_sample_count),`${n(x.station?.precip_mm,1)} mm`,`${n(x.official_normal_1991_2020?.precip_mm,1)} mm`,x.difference_station_vs_1991_2020?.precip_pct_normal===null?'—':`${n(x.difference_station_vs_1991_2020?.precip_pct_normal,0)}%`,x.precipitation_years_used.join(', ')||'—']));
+  $('#station-climate-table').innerHTML=table(['Mês','N temp.','T média','Δ normal','N precip.','Chuva estação','Chuva normal','%'],stationRows.map(x=>[x.month_name,qdot(x.temperature_sample_count),`${n(x.station?.tmean_c,2)} °C`,`${sign(x.difference_station_vs_1991_2020?.tmean_c)}${n(x.difference_station_vs_1991_2020?.tmean_c,2)} °C`,qdot(x.precipitation_sample_count),`${n(x.station?.precip_mm,1)} mm`,`${n(x.official_normal_1991_2020?.precip_mm,1)} mm`,x.difference_station_vs_1991_2020?.precip_pct_normal===null?'—':`${n(x.difference_station_vs_1991_2020?.precip_pct_normal,0)}%`]));
 
   // Interactive temperature controls.
   const years=[...new Set(d.days.map(x=>Number(x.date.slice(0,4))))].sort((a,b)=>a-b);
@@ -287,16 +320,25 @@ async function init(){
   ry.addEventListener('change',renderRain);renderRain();
 
   $('#heatwaves').innerHTML=waveTable(w.heatwaves,true);$('#coldwaves').innerHTML=waveTable(w.coldwaves,true);
-  $('#near-heat').innerHTML=waveTable(w.subcritical_heat,false);$('#near-cold').innerHTML=waveTable(w.subcritical_cold,false);
+  $('#wave-summary').innerHTML=`<div class="card"><span>Ondas de calor</span><b>${w.heatwaves.length}</b><small>confirmadas</small></div><div class="card"><span>Ondas de frio</span><b>${w.coldwaves.length}</b><small>confirmadas</small></div><div class="card"><span>Quentes subcríticos</span><b>${w.subcritical_heat.length}</b><small>3–5 dias</small></div><div class="card"><span>Frios subcríticos</span><b>${w.subcritical_cold.length}</b><small>3–5 dias</small></div>`;
+  const subState={heat:{all:false},cold:{all:false}};
+  function sortedSub(arr,mode,kind){const a=[...arr];if(mode==='recent')return a.sort((x,y)=>y.start.localeCompare(x.start));if(mode==='long')return a.sort((x,y)=>(y.days-x.days)||(y.start.localeCompare(x.start)));return a.sort((x,y)=>kind==='heat'?(y.mean_departure_c-x.mean_departure_c):(x.mean_departure_c-y.mean_departure_c))}
+  function renderSub(kind){
+    const arr=kind==='heat'?w.subcritical_heat:w.subcritical_cold,sel=$(`#near-${kind}-sort`),host=$(`#near-${kind}`),btn=$(`#near-${kind}-toggle`);
+    const srt=sortedSub(arr,sel.value,kind),show=subState[kind].all?srt:srt.slice(0,6);
+    host.innerHTML=waveTable(show,false);btn.style.display=arr.length>6?'inline-block':'none';btn.textContent=subState[kind].all?'Mostrar apenas 6':'Ver todos';
+  }
+  ['heat','cold'].forEach(kind=>{$(`#near-${kind}-sort`).addEventListener('change',()=>renderSub(kind));$(`#near-${kind}-toggle`).addEventListener('click',()=>{subState[kind].all=!subState[kind].all;renderSub(kind)});renderSub(kind)});
 
-  const ci=ind.current_year?.observed||{};
-  $('#index-cards').innerHTML=`<div class="card"><span>Dias ≥25 °C</span><b>${n(ci.tmax_ge_25,0)}</b></div><div class="card"><span>Dias ≥30 °C</span><b>${n(ci.tmax_ge_30,0)}</b></div><div class="card"><span>Dias >35 °C</span><b>${n(ci.tmax_gt_35,0)}</b></div><div class="card"><span>Dias ≥40 °C</span><b>${n(ci.tmax_ge_40,0)}</b></div>`;
-  $('#indices-table').innerHTML=table(['Ano','Cobertura','≥25 °C','≥30 °C','>35 °C','≥40 °C','Noites tropicais','Geadas','Dias ≥1 mm'],ind.annual.map(r=>[r.label,`${n(r.coverage_pct,1)}%`,n(r.observed.tmax_ge_25,0),n(r.observed.tmax_ge_30,0),n(r.observed.tmax_gt_35,0),n(r.observed.tmax_ge_40,0),n(r.observed.tropical_nights,0),n(r.observed.frost_days,0),n(r.observed.rain_days,0)]));
+  const ci=(ind.annual.find(r=>r.label===String(y.year))||{}).observed||{};
+  $('#index-cards').innerHTML=`<div class="card"><span>Dias ≥30 °C</span><b>${n(ci.tmax_ge_30,0)}</b><small>até ${dpt(y.end)}</small></div><div class="card"><span>Dias >35 °C</span><b>${n(ci.tmax_gt_35,0)}</b><small>normal comparável ${n(y.normal_1991_2020_same_period?.tmax_gt_35,1)}</small></div><div class="card"><span>Noites tropicais</span><b>${n(ci.tropical_nights,0)}</b><small>Tmin ≥20 °C</small></div><div class="card"><span>Dias com Tmin ≤0 °C</span><b>${n(ci.frost_days,0)}</b><small>normal comparável ${n(y.normal_1991_2020_same_period?.frost_days,1)}</small></div>`;
+  $('#indices-table').innerHTML=table(['Ano','Cobertura','≥25 °C','≥30 °C','>35 °C','≥40 °C','Noites tropicais','Tmin ≤ 0 °C','Dias ≥1 mm'],ind.annual.map(r=>[r.label,`${n(r.coverage_pct,1)}%`,n(r.observed.tmax_ge_25,0),n(r.observed.tmax_ge_30,0),n(r.observed.tmax_gt_35,0),n(r.observed.tmax_ge_40,0),n(r.observed.tropical_nights,0),n(r.observed.frost_days,0),n(r.observed.rain_days,0)]));
 
   const qt=$('#q-type'),qd=$('#q-detail'),qdl=$('#q-detail-label');
   function populateQuadrantDetail(){const previous=qd.value;qd.innerHTML='';if(qt.value==='annual'){qdl.classList.add('hidden');return}qdl.classList.remove('hidden');if(qt.value==='seasonal')Object.entries({winter:'Inverno',spring:'Primavera',summer:'Verão',autumn:'Outono'}).forEach(([v,l])=>qd.add(new Option(l,v)));else for(let i=1;i<=12;i++)qd.add(new Option(ml[i],String(i)));if([...qd.options].some(o=>o.value===previous))qd.value=previous}
   function renderQuadrant(){if(qt.value==='annual')scatter($('#quadrant-chart'),q.annual);else if(qt.value==='seasonal')scatter($('#quadrant-chart'),q.seasonal[qd.value]||[]);else scatter($('#quadrant-chart'),q.monthly[qd.value]||[])}
   qt.addEventListener('change',()=>{populateQuadrantDetail();renderQuadrant()});qd.addEventListener('change',renderQuadrant);populateQuadrantDetail();renderQuadrant();
+  renderHeatmap($('#temperature-heatmap'),m.months,'temp');renderHeatmap($('#rain-heatmap'),m.months,'rain');
 
   $('#record-cards').innerHTML=`<div class="card"><span>Tmax absoluta</span><b>${n(rec.series?.tmax_absolute?.value_c,1)} °C</b><small>${dpt(rec.series?.tmax_absolute?.date)}</small></div><div class="card"><span>Tmin absoluta</span><b>${n(rec.series?.tmin_absolute?.value_c,1)} °C</b><small>${dpt(rec.series?.tmin_absolute?.date)}</small></div><div class="card"><span>Chuva diária máxima</span><b>${n(rec.series?.max_daily_precip?.value_mm,1)} mm</b><small>${dpt(rec.series?.max_daily_precip?.date)}</small></div><div class="card"><span>Onda de calor mais longa</span><b>${n(rec.waves?.longest_heatwave?.days,0)} dias</b><small>${dpt(rec.waves?.longest_heatwave?.start)} → ${dpt(rec.waves?.longest_heatwave?.end)}</small></div>`;
   const rm=$('#record-month');for(let i=1;i<=12;i++)rm.add(new Option(ml[i],String(i)));rm.value=String(cm.month);

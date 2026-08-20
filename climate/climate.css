@@ -28,3 +28,26 @@
   .annual-row .station-col{display:none}
   .interactive-chart{min-height:290px}
 }
+
+/* v0.5 — visual hierarchy, matrices and compact thermal episodes */
+.wave-summary{margin:15px 0}
+.wave-summary .card:nth-child(1),.wave-summary .card:nth-child(3){border-top:3px solid var(--warm)}
+.wave-summary .card:nth-child(2),.wave-summary .card:nth-child(4){border-top:3px solid var(--cold)}
+.more-btn{margin-top:12px;border:1px solid var(--line);background:#fff;color:var(--accent2);border-radius:999px;padding:7px 12px;font-weight:750;cursor:pointer}
+.more-btn:hover{background:#f3f8fa}
+.sample-dot{display:inline-block;width:8px;height:8px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.sample-good{background:#2d7b8a}.sample-medium{background:#b98233}.sample-low{background:#a4adb4}
+.heatmap-wrap{overflow:auto;padding-bottom:4px}
+.hm-grid{display:grid;grid-template-columns:58px repeat(12,minmax(28px,1fr));gap:4px;min-width:650px;align-items:center}
+.hm-head{font-size:10px;color:var(--muted);text-align:center;font-weight:750}
+.hm-year{font-size:12px;font-weight:800;color:var(--ink)}
+.hm-cell{height:30px;border-radius:6px;border:1px solid rgba(70,90,105,.09);display:grid;place-items:center;font-size:9px;font-weight:800;cursor:default}
+.hm-missing{background:repeating-linear-gradient(135deg,#eef2f4,#eef2f4 5px,#e0e6ea 5px,#e0e6ea 10px);color:#78848d}
+.hm-neutral{background:#edf2f3;color:#50616c}
+.hm-cold3{background:#4777a8;color:white}.hm-cold2{background:#779bc0;color:white}.hm-cold1{background:#b8cce0;color:#263845}
+.hm-hot1{background:#edc7ae;color:#57331f}.hm-hot2{background:#d9865d;color:white}.hm-hot3{background:#c85b32;color:white}
+.hm-dry3{background:#d5b06e;color:#4d3815}.hm-dry2{background:#e7d5ad;color:#55482c}.hm-rain-normal{background:#e8eef0;color:#4c5d67}
+.hm-wet2{background:#9bc3ca;color:#183c43}.hm-wet3{background:#2d7b8a;color:white}
+.quality-note{display:inline-flex;gap:6px;align-items:center;font-size:11px;color:var(--muted)}
+.annual-compare .delta-hot{color:var(--warm)}.annual-compare .delta-cold{color:var(--cold)}
+@media(max-width:760px){.hm-grid{min-width:620px}}

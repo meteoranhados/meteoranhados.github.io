@@ -1,7 +1,8 @@
 {
-  "generated_utc": "2026-08-20T15:16:42+00:00",
+  "generated_utc": "2026-08-20T15:41:03+00:00",
   "method": {
-    "monthly_rankings": "Apenas meses completos sem falhas.",
+    "temperature_month_rankings": "Meses termicamente válidos: <=5 falhas no total e <=3 consecutivas.",
+    "precipitation_month_rankings": "Apenas meses com 0 dias em falta.",
     "annual_rankings": "Períodos com cobertura >=95%; a cobertura é sempre exposta."
   },
   "monthly_global": {
@@ -47,6 +48,14 @@
         "end": "2022-08-31"
       },
       {
+        "label": "Jul 2025",
+        "value": 22.62,
+        "coverage_pct": 96.8,
+        "complete": false,
+        "start": "2025-07-01",
+        "end": "2025-07-31"
+      },
+      {
         "label": "Jul 2024",
         "value": 22.52,
         "coverage_pct": 100.0,
@@ -71,6 +80,14 @@
         "end": "2026-06-30"
       },
       {
+        "label": "Jun 2025",
+        "value": 21.21,
+        "coverage_pct": 93.3,
+        "complete": false,
+        "start": "2025-06-01",
+        "end": "2025-06-30"
+      },
+      {
         "label": "Jul 2023",
         "value": 20.86,
         "coverage_pct": 100.0,
@@ -93,6 +110,22 @@
         "complete": true,
         "start": "2024-06-01",
         "end": "2024-06-30"
+      },
+      {
+        "label": "Set 2025",
+        "value": 17.74,
+        "coverage_pct": 96.7,
+        "complete": false,
+        "start": "2025-09-01",
+        "end": "2025-09-30"
+      },
+      {
+        "label": "Set 2022",
+        "value": 17.45,
+        "coverage_pct": 96.7,
+        "complete": false,
+        "start": "2022-09-01",
+        "end": "2022-09-30"
       },
       {
         "label": "Set 2023",
@@ -133,38 +166,6 @@
         "complete": true,
         "start": "2023-10-01",
         "end": "2023-10-31"
-      },
-      {
-        "label": "Out 2022",
-        "value": 14.98,
-        "coverage_pct": 100.0,
-        "complete": true,
-        "start": "2022-10-01",
-        "end": "2022-10-31"
-      },
-      {
-        "label": "Mai 2025",
-        "value": 14.75,
-        "coverage_pct": 100.0,
-        "complete": true,
-        "start": "2025-05-01",
-        "end": "2025-05-31"
-      },
-      {
-        "label": "Abr 2026",
-        "value": 14.46,
-        "coverage_pct": 100.0,
-        "complete": true,
-        "start": "2026-04-01",
-        "end": "2026-04-30"
-      },
-      {
-        "label": "Abr 2023",
-        "value": 13.42,
-        "coverage_pct": 100.0,
-        "complete": true,
-        "start": "2023-04-01",
-        "end": "2023-04-30"
       }
     ],
     "coldest_tmean": [
@@ -281,6 +282,14 @@
         "end": "2022-12-31"
       },
       {
+        "label": "Mar 2022",
+        "value": 8.58,
+        "coverage_pct": 90.3,
+        "complete": false,
+        "start": "2022-03-01",
+        "end": "2022-03-31"
+      },
+      {
         "label": "Mar 2024",
         "value": 8.73,
         "coverage_pct": 100.0,
@@ -319,14 +328,6 @@
         "complete": true,
         "start": "2023-03-01",
         "end": "2023-03-31"
-      },
-      {
-        "label": "Mar 2026",
-        "value": 9.76,
-        "coverage_pct": 100.0,
-        "complete": true,
-        "start": "2026-03-01",
-        "end": "2026-03-31"
       }
     ],
     "wettest": [
@@ -1196,6 +1197,14 @@
           "end": "2024-03-31"
         },
         {
+          "label": "2022",
+          "value": 8.58,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2022-03-01",
+          "end": "2022-03-31"
+        },
+        {
           "label": "2025",
           "value": 7.59,
           "coverage_pct": 100.0,
@@ -1212,6 +1221,14 @@
           "complete": true,
           "start": "2025-03-01",
           "end": "2025-03-31"
+        },
+        {
+          "label": "2022",
+          "value": 8.58,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2022-03-01",
+          "end": "2022-03-31"
         },
         {
           "label": "2024",
@@ -1264,6 +1281,14 @@
           "end": "2024-03-31"
         },
         {
+          "label": "2022",
+          "value": 12.94,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2022-03-01",
+          "end": "2022-03-31"
+        },
+        {
           "label": "2025",
           "value": 11.85,
           "coverage_pct": 100.0,
@@ -1296,6 +1321,14 @@
           "complete": true,
           "start": "2024-03-01",
           "end": "2024-03-31"
+        },
+        {
+          "label": "2022",
+          "value": 4.82,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2022-03-01",
+          "end": "2022-03-31"
         },
         {
           "label": "2026",
@@ -1652,15 +1685,13 @@
           "end": "2026-05-31"
         },
         {
-          "label": "2025",
-          "value": 14.75,
-          "coverage_pct": 100.0,
-          "complete": true,
-          "start": "2025-05-01",
-          "end": "2025-05-31"
-        }
-      ],
-      "coldest_tmean": [
+          "label": "2023",
+          "value": 14.98,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2023-05-01",
+          "end": "2023-05-31"
+        },
         {
           "label": "2025",
           "value": 14.75,
@@ -1668,6 +1699,40 @@
           "complete": true,
           "start": "2025-05-01",
           "end": "2025-05-31"
+        },
+        {
+          "label": "2024",
+          "value": 13.75,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2024-05-01",
+          "end": "2024-05-31"
+        }
+      ],
+      "coldest_tmean": [
+        {
+          "label": "2024",
+          "value": 13.75,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2024-05-01",
+          "end": "2024-05-31"
+        },
+        {
+          "label": "2025",
+          "value": 14.75,
+          "coverage_pct": 100.0,
+          "complete": true,
+          "start": "2025-05-01",
+          "end": "2025-05-31"
+        },
+        {
+          "label": "2023",
+          "value": 14.98,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2023-05-01",
+          "end": "2023-05-31"
         },
         {
           "label": "2026",
@@ -1696,6 +1761,14 @@
           "end": "2022-05-31"
         },
         {
+          "label": "2023",
+          "value": 22.71,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2023-05-01",
+          "end": "2023-05-31"
+        },
+        {
           "label": "2026",
           "value": 22.01,
           "coverage_pct": 100.0,
@@ -1710,9 +1783,33 @@
           "complete": true,
           "start": "2025-05-01",
           "end": "2025-05-31"
+        },
+        {
+          "label": "2024",
+          "value": 20.54,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2024-05-01",
+          "end": "2024-05-31"
         }
       ],
       "lowest_tmin_mean": [
+        {
+          "label": "2024",
+          "value": 8.03,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2024-05-01",
+          "end": "2024-05-31"
+        },
+        {
+          "label": "2023",
+          "value": 8.41,
+          "coverage_pct": 90.3,
+          "complete": false,
+          "start": "2023-05-01",
+          "end": "2023-05-31"
+        },
         {
           "label": "2025",
           "value": 8.92,
@@ -1804,6 +1901,14 @@
           "end": "2026-06-30"
         },
         {
+          "label": "2025",
+          "value": 21.21,
+          "coverage_pct": 93.3,
+          "complete": false,
+          "start": "2025-06-01",
+          "end": "2025-06-30"
+        },
+        {
           "label": "2022",
           "value": 18.44,
           "coverage_pct": 100.0,
@@ -1838,6 +1943,14 @@
           "end": "2022-06-30"
         },
         {
+          "label": "2025",
+          "value": 21.21,
+          "coverage_pct": 93.3,
+          "complete": false,
+          "start": "2025-06-01",
+          "end": "2025-06-30"
+        },
+        {
           "label": "2026",
           "value": 21.49,
           "coverage_pct": 100.0,
@@ -1847,6 +1960,14 @@
         }
       ],
       "highest_tmax_mean": [
+        {
+          "label": "2025",
+          "value": 28.69,
+          "coverage_pct": 93.3,
+          "complete": false,
+          "start": "2025-06-01",
+          "end": "2025-06-30"
+        },
         {
           "label": "2026",
           "value": 28.68,
@@ -1888,6 +2009,14 @@
           "complete": true,
           "start": "2022-06-01",
           "end": "2022-06-30"
+        },
+        {
+          "label": "2025",
+          "value": 14.4,
+          "coverage_pct": 93.3,
+          "complete": false,
+          "start": "2025-06-01",
+          "end": "2025-06-30"
         },
         {
           "label": "2026",
@@ -1972,6 +2101,14 @@
           "end": "2026-07-31"
         },
         {
+          "label": "2025",
+          "value": 22.62,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2025-07-01",
+          "end": "2025-07-31"
+        },
+        {
           "label": "2024",
           "value": 22.52,
           "coverage_pct": 100.0,
@@ -2004,6 +2141,14 @@
           "complete": true,
           "start": "2024-07-01",
           "end": "2024-07-31"
+        },
+        {
+          "label": "2025",
+          "value": 22.62,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2025-07-01",
+          "end": "2025-07-31"
         },
         {
           "label": "2026",
@@ -2048,6 +2193,14 @@
           "end": "2024-07-31"
         },
         {
+          "label": "2025",
+          "value": 30.63,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2025-07-01",
+          "end": "2025-07-31"
+        },
+        {
           "label": "2023",
           "value": 29.72,
           "coverage_pct": 100.0,
@@ -2072,6 +2225,14 @@
           "complete": true,
           "start": "2024-07-01",
           "end": "2024-07-31"
+        },
+        {
+          "label": "2025",
+          "value": 15.12,
+          "coverage_pct": 96.8,
+          "complete": false,
+          "start": "2025-07-01",
+          "end": "2025-07-31"
         },
         {
           "label": "2022",
@@ -2372,6 +2533,22 @@
       "month_name": "Setembro",
       "warmest_tmean": [
         {
+          "label": "2025",
+          "value": 17.74,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2025-09-01",
+          "end": "2025-09-30"
+        },
+        {
+          "label": "2022",
+          "value": 17.45,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2022-09-01",
+          "end": "2022-09-30"
+        },
+        {
           "label": "2023",
           "value": 17.07,
           "coverage_pct": 100.0,
@@ -2388,9 +2565,41 @@
           "complete": true,
           "start": "2023-09-01",
           "end": "2023-09-30"
+        },
+        {
+          "label": "2022",
+          "value": 17.45,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2022-09-01",
+          "end": "2022-09-30"
+        },
+        {
+          "label": "2025",
+          "value": 17.74,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2025-09-01",
+          "end": "2025-09-30"
         }
       ],
       "highest_tmax_mean": [
+        {
+          "label": "2025",
+          "value": 25.04,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2025-09-01",
+          "end": "2025-09-30"
+        },
+        {
+          "label": "2022",
+          "value": 24.71,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2022-09-01",
+          "end": "2022-09-30"
+        },
         {
           "label": "2023",
           "value": 24.5,
@@ -2408,6 +2617,22 @@
           "complete": true,
           "start": "2023-09-01",
           "end": "2023-09-30"
+        },
+        {
+          "label": "2022",
+          "value": 11.43,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2022-09-01",
+          "end": "2022-09-30"
+        },
+        {
+          "label": "2025",
+          "value": 11.68,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2025-09-01",
+          "end": "2025-09-30"
         }
       ],
       "wettest": [
@@ -2458,9 +2683,25 @@
           "complete": true,
           "start": "2022-10-01",
           "end": "2022-10-31"
+        },
+        {
+          "label": "2024",
+          "value": 13.67,
+          "coverage_pct": 93.5,
+          "complete": false,
+          "start": "2024-10-01",
+          "end": "2024-10-31"
         }
       ],
       "coldest_tmean": [
+        {
+          "label": "2024",
+          "value": 13.67,
+          "coverage_pct": 93.5,
+          "complete": false,
+          "start": "2024-10-01",
+          "end": "2024-10-31"
+        },
         {
           "label": "2022",
           "value": 14.98,
@@ -2510,6 +2751,14 @@
           "complete": true,
           "start": "2023-10-01",
           "end": "2023-10-31"
+        },
+        {
+          "label": "2024",
+          "value": 17.87,
+          "coverage_pct": 93.5,
+          "complete": false,
+          "start": "2024-10-01",
+          "end": "2024-10-31"
         }
       ],
       "lowest_tmin_mean": [
@@ -2520,6 +2769,14 @@
           "complete": true,
           "start": "2022-10-01",
           "end": "2022-10-31"
+        },
+        {
+          "label": "2024",
+          "value": 10.54,
+          "coverage_pct": 93.5,
+          "complete": false,
+          "start": "2024-10-01",
+          "end": "2024-10-31"
         },
         {
           "label": "2023",
@@ -2596,6 +2853,14 @@
       "month_name": "Novembro",
       "warmest_tmean": [
         {
+          "label": "2024",
+          "value": 11.18,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2024-11-01",
+          "end": "2024-11-30"
+        },
+        {
           "label": "2023",
           "value": 10.26,
           "coverage_pct": 100.0,
@@ -2644,9 +2909,25 @@
           "complete": true,
           "start": "2023-11-01",
           "end": "2023-11-30"
+        },
+        {
+          "label": "2024",
+          "value": 11.18,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2024-11-01",
+          "end": "2024-11-30"
         }
       ],
       "highest_tmax_mean": [
+        {
+          "label": "2024",
+          "value": 14.99,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2024-11-01",
+          "end": "2024-11-30"
+        },
         {
           "label": "2023",
           "value": 14.31,
@@ -2696,6 +2977,14 @@
           "complete": true,
           "start": "2023-11-01",
           "end": "2023-11-30"
+        },
+        {
+          "label": "2024",
+          "value": 8.2,
+          "coverage_pct": 96.7,
+          "complete": false,
+          "start": "2024-11-01",
+          "end": "2024-11-30"
         }
       ],
       "wettest": [

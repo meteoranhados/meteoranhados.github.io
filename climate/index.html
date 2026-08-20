@@ -122,9 +122,18 @@
       <div class="panel"><h2>Ondas de calor confirmadas</h2><div id="heatwaves"></div></div>
       <div class="panel"><h2>Ondas de frio confirmadas</h2><div id="coldwaves"></div></div>
     </div>
+    <div id="wave-summary" class="cards compact wave-summary"></div>
     <div class="grid2">
-      <div class="panel"><h2>Períodos quentes subcríticos</h2><p class="method">3–5 dias consecutivos acima do mesmo limiar, mas sem atingir os 6 dias exigidos.</p><div id="near-heat"></div></div>
-      <div class="panel"><h2>Períodos frios subcríticos</h2><p class="method">3–5 dias consecutivos abaixo do mesmo limiar, mas sem atingir os 6 dias exigidos.</p><div id="near-cold"></div></div>
+      <div class="panel">
+        <div class="chart-title"><div><h2>Períodos quentes subcríticos</h2><p class="method">3–5 dias consecutivos acima do limiar, sem atingir os 6 dias exigidos.</p></div>
+        <div class="controls"><label>Ordenar<select id="near-heat-sort"><option value="recent">Mais recentes</option><option value="long">Mais longos</option><option value="intense">Mais intensos</option></select></label></div></div>
+        <div id="near-heat"></div><button id="near-heat-toggle" class="more-btn" type="button">Ver todos</button>
+      </div>
+      <div class="panel">
+        <div class="chart-title"><div><h2>Períodos frios subcríticos</h2><p class="method">3–5 dias consecutivos abaixo do limiar, sem atingir os 6 dias exigidos.</p></div>
+        <div class="controls"><label>Ordenar<select id="near-cold-sort"><option value="recent">Mais recentes</option><option value="long">Mais longos</option><option value="intense">Mais intensos</option></select></label></div></div>
+        <div id="near-cold"></div><button id="near-cold-toggle" class="more-btn" type="button">Ver todos</button>
+      </div>
     </div>
     <div class="panel"><p class="method">Critério configurado: ≥6 dias consecutivos com Tmax &gt; normal mensal Tmax +5 °C; para frio, Tmin &lt; normal mensal Tmin −5 °C. Uma falha de dados quebra a sequência.</p></div>
   </section>
@@ -133,7 +142,7 @@
     <div id="index-cards" class="hero-grid"></div>
     <div class="panel">
       <h2>Índices por ano</h2>
-      <p class="method">Os limiares ≥25, ≥30 e ≥40 °C são índices observacionais da estação. A comparação 1991–2020 só é mostrada quando existe uma normal fornecida.</p>
+      <p class="method">Os limiares térmicos são índices observacionais da estação. “Tmin ≤ 0 °C” descreve diretamente o critério, em vez de usar apenas o termo geada.</p>
       <div id="indices-table" class="table-wrap"></div>
     </div>
   </section>
@@ -153,6 +162,19 @@
       <div id="quadrant-chart" class="chart large-chart"></div>
     </div>
 
+    <div class="grid2">
+      <div class="panel">
+        <h2>Matriz de anomalias térmicas</h2>
+        <p class="method">Ano × mês. A cor representa o desvio da T média face a 1991–2020; passe o cursor para o valor.</p>
+        <div id="temperature-heatmap" class="heatmap-wrap"></div>
+      </div>
+      <div class="panel">
+        <h2>Matriz de precipitação</h2>
+        <p class="method">Ano × mês. A cor representa a precipitação em % da normal; meses com total incompleto ficam assinalados.</p>
+        <div id="rain-heatmap" class="heatmap-wrap"></div>
+      </div>
+    </div>
+
     <div class="panel">
       <h2>Climatologia própria da estação — 2022 até ao presente</h2>
       <p class="method">Não é uma “normal climatológica” WMO/IPMA. É uma referência dinâmica da própria estação que se atualiza automaticamente à medida que fecham novos meses válidos.</p>
@@ -164,7 +186,7 @@
     <div id="record-cards" class="cards"></div>
     <div class="panel">
       <div class="chart-title">
-        <div><h2>Recordes por mês do calendário</h2><p class="method">Extremos diários usam os dias disponíveis; recordes de média/total mensal usam apenas meses completos sem falhas.</p></div>
+        <div><h2>Recordes por mês do calendário</h2><p class="method">Extremos diários usam os dias disponíveis; médias térmicas mensais usam a tolerância de falhas adotada; totais de precipitação exigem mês completo.</p></div>
         <div class="controls"><label>Mês<select id="record-month"></select></label></div>
       </div>
       <div id="record-month-detail"></div>

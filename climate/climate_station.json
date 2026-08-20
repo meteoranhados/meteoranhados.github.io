@@ -1,12 +1,14 @@
 {
-  "generated_utc": "2026-08-20T15:16:42+00:00",
+  "generated_utc": "2026-08-20T15:41:03+00:00",
   "metadata": {
-    "label": "Climatologia da estação 2022–presente",
+    "label": "Referência da estação 2022–presente",
     "not_a_climatological_normal": true,
     "available_from": "2022-01-01",
     "latest_closed_day": "2026-08-19",
-    "monthly_method": "Média das ocorrências do mesmo mês já concluídas e sem dias em falta; o mês em curso fica excluído até fechar.",
-    "annual_profile_method": "Perfil sintético construído a partir das 12 climatologias mensais da estação; não representa uma normal WMO/IPMA."
+    "temperature_monthly_method": "Média dos meses fechados que não tenham >3 falhas consecutivas nem >5 falhas no total.",
+    "precipitation_monthly_method": "Total mensal entra apenas com todos os dias presentes; não é feito preenchimento por modelo/reanálise.",
+    "count_index_method": "Nos meses termicamente válidos com falhas toleradas, índices de contagem são ajustados proporcionalmente aos dias disponíveis.",
+    "annual_profile_method": "Perfil sintético construído a partir das climatologias mensais da estação; não representa uma normal WMO/IPMA."
   },
   "months": {
     "1": {
@@ -16,18 +18,34 @@
         "tmax_mean_c": 9.92,
         "tmean_c": 5.65,
         "tmin_mean_c": 1.93,
+        "tropical_nights": 0.0,
+        "frost_days": 11.4,
+        "tmax_ge_25": 0.0,
+        "tmax_ge_30": 0.0,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
         "precip_mm": 133.28,
-        "tropical_nights": 0,
-        "frost_days": 11.2,
-        "tmax_ge_25": 0,
-        "tmax_ge_30": 0,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
         "rain_days": 11.2,
         "rain_gt_10": 4.6,
         "rain_gt_20": 2.6,
         "rain_gt_30": 0.8
       },
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "temperature_sample_count": 5,
+      "precipitation_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "precipitation_sample_count": 5,
       "years_used": [
         2022,
         2023,
@@ -36,7 +54,8 @@
         2026
       ],
       "sample_count": 5,
-      "excluded_years": [],
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [],
       "official_normal_1991_2020": {
         "tmax_mean_c": 8.26,
         "tmean_c": 4.75,
@@ -65,18 +84,34 @@
         "tmax_mean_c": 12.52,
         "tmean_c": 7.34,
         "tmin_mean_c": 2.87,
-        "precip_mm": 85.86,
-        "tropical_nights": 0,
+        "tropical_nights": 0.0,
         "frost_days": 5.6,
-        "tmax_ge_25": 0,
-        "tmax_ge_30": 0,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
+        "tmax_ge_25": 0.0,
+        "tmax_ge_30": 0.0,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
+        "precip_mm": 85.86,
         "rain_days": 7.8,
         "rain_gt_10": 3.4,
         "rain_gt_20": 1.4,
         "rain_gt_30": 0.4
       },
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "temperature_sample_count": 5,
+      "precipitation_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "precipitation_sample_count": 5,
       "years_used": [
         2022,
         2023,
@@ -85,7 +120,8 @@
         2026
       ],
       "sample_count": 5,
-      "excluded_years": [],
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [],
       "official_normal_1991_2020": {
         "tmax_mean_c": 10.5,
         "tmean_c": 6.03,
@@ -111,29 +147,46 @@
       "month": 3,
       "month_name": "Março",
       "station": {
-        "tmax_mean_c": 14.17,
-        "tmean_c": 8.95,
-        "tmin_mean_c": 4.26,
+        "tmax_mean_c": 13.93,
+        "tmean_c": 8.87,
+        "tmin_mean_c": 4.37,
+        "tropical_nights": 0.0,
+        "frost_days": 1.8,
+        "tmax_ge_25": 0.2,
+        "tmax_ge_30": 0.0,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
         "precip_mm": 111.85,
-        "tropical_nights": 0,
-        "frost_days": 2,
-        "tmax_ge_25": 0.25,
-        "tmax_ge_30": 0,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
         "rain_days": 9.25,
         "rain_gt_10": 3.75,
         "rain_gt_20": 1.5,
         "rain_gt_30": 0.75
       },
-      "years_used": [
+      "temperature_years_used": [
+        2022,
         2023,
         2024,
         2025,
         2026
       ],
-      "sample_count": 4,
-      "excluded_years": [
+      "temperature_sample_count": 5,
+      "precipitation_years_used": [
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "precipitation_sample_count": 4,
+      "years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "sample_count": 5,
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [
         {
           "year": 2022,
           "missing_days": 3
@@ -153,9 +206,9 @@
         "rain_gt_30": 0.27
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": -0.15,
-        "tmean_c": 0.08,
-        "tmin_c": 0.83,
+        "tmax_c": -0.39,
+        "tmean_c": 0.0,
+        "tmin_c": 0.94,
         "precip_mm": 53.15,
         "precip_pct_normal": 190.5
       }
@@ -167,18 +220,34 @@
         "tmax_mean_c": 18.98,
         "tmean_c": 12.35,
         "tmin_mean_c": 6.3,
-        "precip_mm": 58.48,
-        "tropical_nights": 0,
-        "frost_days": 1,
+        "tropical_nights": 0.0,
+        "frost_days": 1.0,
         "tmax_ge_25": 3.8,
         "tmax_ge_30": 0.2,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
+        "precip_mm": 58.48,
         "rain_days": 7.6,
         "rain_gt_10": 2,
         "rain_gt_20": 0.6,
         "rain_gt_30": 0.2
       },
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "temperature_sample_count": 5,
+      "precipitation_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "precipitation_sample_count": 5,
       "years_used": [
         2022,
         2023,
@@ -187,7 +256,8 @@
         2026
       ],
       "sample_count": 5,
-      "excluded_years": [],
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [],
       "official_normal_1991_2020": {
         "tmax_mean_c": 16.64,
         "tmean_c": 10.73,
@@ -213,28 +283,45 @@
       "month": 5,
       "month_name": "Maio",
       "station": {
-        "tmax_mean_c": 22.64,
-        "tmean_c": 15.84,
-        "tmin_mean_c": 9.65,
+        "tmax_mean_c": 22.24,
+        "tmean_c": 15.25,
+        "tmin_mean_c": 9.08,
+        "tropical_nights": 0.0,
+        "frost_days": 0.0,
+        "tmax_ge_25": 9.15,
+        "tmax_ge_30": 2.61,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
         "precip_mm": 50.07,
-        "tropical_nights": 0,
-        "frost_days": 0,
-        "tmax_ge_25": 11,
-        "tmax_ge_30": 4,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
         "rain_days": 5.33,
         "rain_gt_10": 2.33,
         "rain_gt_20": 0,
         "rain_gt_30": 0
       },
-      "years_used": [
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "temperature_sample_count": 5,
+      "precipitation_years_used": [
         2022,
         2025,
         2026
       ],
-      "sample_count": 3,
-      "excluded_years": [
+      "precipitation_sample_count": 3,
+      "years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "sample_count": 5,
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [
         {
           "year": 2023,
           "missing_days": 3
@@ -258,9 +345,9 @@
         "rain_gt_30": 0.03
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": 1.98,
-        "tmean_c": 1.63,
-        "tmin_c": 1.88,
+        "tmax_c": 1.58,
+        "tmean_c": 1.04,
+        "tmin_c": 1.31,
         "precip_mm": -3.93,
         "precip_pct_normal": 92.7
       }
@@ -269,28 +356,49 @@
       "month": 6,
       "month_name": "Junho",
       "station": {
-        "tmax_mean_c": 26.48,
-        "tmean_c": 19.28,
-        "tmin_mean_c": 12.81,
+        "tmax_mean_c": 27.03,
+        "tmean_c": 19.77,
+        "tmin_mean_c": 13.21,
+        "tropical_nights": 1.04,
+        "frost_days": 0.0,
+        "tmax_ge_25": 18.09,
+        "tmax_ge_30": 8.96,
+        "tmax_gt_35": 1.82,
+        "tmax_ge_40": 0.0,
         "precip_mm": 45.97,
-        "tropical_nights": 0.67,
-        "frost_days": 0,
-        "tmax_ge_25": 17.33,
-        "tmax_ge_30": 7.67,
-        "tmax_gt_35": 1,
-        "tmax_ge_40": 0,
         "rain_days": 4.33,
         "rain_gt_10": 1,
         "rain_gt_20": 0.67,
         "rain_gt_30": 0.33
       },
-      "years_used": [
+      "temperature_years_used": [
+        2022,
+        2024,
+        2025,
+        2026
+      ],
+      "temperature_sample_count": 4,
+      "precipitation_years_used": [
         2022,
         2024,
         2026
       ],
-      "sample_count": 3,
-      "excluded_years": [
+      "precipitation_sample_count": 3,
+      "years_used": [
+        2022,
+        2024,
+        2025,
+        2026
+      ],
+      "sample_count": 4,
+      "excluded_temperature_years": [
+        {
+          "year": 2023,
+          "missing_days": 5,
+          "max_consecutive_missing_days": 5
+        }
+      ],
+      "excluded_precipitation_years": [
         {
           "year": 2023,
           "missing_days": 5
@@ -314,9 +422,9 @@
         "rain_gt_30": 0.03
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": 0.91,
-        "tmean_c": 0.88,
-        "tmin_c": 1.57,
+        "tmax_c": 1.46,
+        "tmean_c": 1.37,
+        "tmin_c": 1.97,
         "precip_mm": 25.17,
         "precip_pct_normal": 221.0
       }
@@ -325,29 +433,46 @@
       "month": 7,
       "month_name": "Julho",
       "station": {
-        "tmax_mean_c": 31.59,
-        "tmean_c": 22.8,
-        "tmin_mean_c": 14.49,
+        "tmax_mean_c": 31.39,
+        "tmean_c": 22.76,
+        "tmin_mean_c": 14.62,
+        "tropical_nights": 1.61,
+        "frost_days": 0.0,
+        "tmax_ge_25": 29.19,
+        "tmax_ge_30": 19.33,
+        "tmax_gt_35": 4.81,
+        "tmax_ge_40": 0.2,
         "precip_mm": 4.7,
-        "tropical_nights": 1.75,
-        "frost_days": 0,
-        "tmax_ge_25": 29.25,
-        "tmax_ge_30": 19.25,
-        "tmax_gt_35": 5.5,
-        "tmax_ge_40": 0.25,
         "rain_days": 1.5,
         "rain_gt_10": 0,
         "rain_gt_20": 0,
         "rain_gt_30": 0
       },
-      "years_used": [
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "temperature_sample_count": 5,
+      "precipitation_years_used": [
         2022,
         2023,
         2024,
         2026
       ],
-      "sample_count": 4,
-      "excluded_years": [
+      "precipitation_sample_count": 4,
+      "years_used": [
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "sample_count": 5,
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [
         {
           "year": 2025,
           "missing_days": 1
@@ -367,9 +492,9 @@
         "rain_gt_30": 0.0
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": 2.73,
-        "tmean_c": 1.72,
-        "tmin_c": 1.18,
+        "tmax_c": 2.53,
+        "tmean_c": 1.68,
+        "tmin_c": 1.31,
         "precip_mm": -2.0,
         "precip_pct_normal": 70.1
       }
@@ -381,18 +506,32 @@
         "tmax_mean_c": 32.23,
         "tmean_c": 23.28,
         "tmin_mean_c": 15.15,
-        "precip_mm": 3.6,
         "tropical_nights": 2.25,
-        "frost_days": 0,
+        "frost_days": 0.0,
         "tmax_ge_25": 29.75,
         "tmax_ge_30": 22.25,
         "tmax_gt_35": 7.25,
         "tmax_ge_40": 0.25,
+        "precip_mm": 3.6,
         "rain_days": 0.5,
         "rain_gt_10": 0.25,
         "rain_gt_20": 0,
         "rain_gt_30": 0
       },
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "temperature_sample_count": 4,
+      "precipitation_years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "precipitation_sample_count": 4,
       "years_used": [
         2022,
         2023,
@@ -400,7 +539,8 @@
         2025
       ],
       "sample_count": 4,
-      "excluded_years": [],
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [],
       "official_normal_1991_2020": {
         "tmax_mean_c": 28.73,
         "tmean_c": 21.09,
@@ -426,26 +566,45 @@
       "month": 9,
       "month_name": "Setembro",
       "station": {
-        "tmax_mean_c": 24.5,
-        "tmean_c": 17.07,
-        "tmin_mean_c": 11.35,
+        "tmax_mean_c": 24.75,
+        "tmean_c": 17.42,
+        "tmin_mean_c": 11.49,
+        "tropical_nights": 0.34,
+        "frost_days": 0.0,
+        "tmax_ge_25": 13.62,
+        "tmax_ge_30": 3.08,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
         "precip_mm": 104.9,
-        "tropical_nights": 0,
-        "frost_days": 0,
-        "tmax_ge_25": 15,
-        "tmax_ge_30": 2,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
         "rain_days": 9,
         "rain_gt_10": 6,
         "rain_gt_20": 1,
         "rain_gt_30": 0
       },
-      "years_used": [
+      "temperature_years_used": [
+        2022,
+        2023,
+        2025
+      ],
+      "temperature_sample_count": 3,
+      "precipitation_years_used": [
         2023
       ],
-      "sample_count": 1,
-      "excluded_years": [
+      "precipitation_sample_count": 1,
+      "years_used": [
+        2022,
+        2023,
+        2025
+      ],
+      "sample_count": 3,
+      "excluded_temperature_years": [
+        {
+          "year": 2024,
+          "missing_days": 12,
+          "max_consecutive_missing_days": 12
+        }
+      ],
+      "excluded_precipitation_years": [
         {
           "year": 2022,
           "missing_days": 1
@@ -473,9 +632,9 @@
         "rain_gt_30": 0.1
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": 0.35,
-        "tmean_c": -0.56,
-        "tmin_c": 0.25,
+        "tmax_c": 0.6,
+        "tmean_c": -0.21,
+        "tmin_c": 0.39,
         "precip_mm": 73.0,
         "precip_pct_normal": 328.8
       }
@@ -484,28 +643,43 @@
       "month": 10,
       "month_name": "Outubro",
       "station": {
-        "tmax_mean_c": 21.12,
-        "tmean_c": 15.46,
-        "tmin_mean_c": 10.88,
+        "tmax_mean_c": 20.31,
+        "tmean_c": 15.02,
+        "tmin_mean_c": 10.79,
+        "tropical_nights": 0.0,
+        "frost_days": 0.0,
+        "tmax_ge_25": 6.5,
+        "tmax_ge_30": 0.25,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
         "precip_mm": 164.47,
-        "tropical_nights": 0,
-        "frost_days": 0,
-        "tmax_ge_25": 8.67,
-        "tmax_ge_30": 0.33,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
         "rain_days": 10.67,
         "rain_gt_10": 5,
         "rain_gt_20": 3.67,
         "rain_gt_30": 1
       },
-      "years_used": [
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "temperature_sample_count": 4,
+      "precipitation_years_used": [
         2022,
         2023,
         2025
       ],
-      "sample_count": 3,
-      "excluded_years": [
+      "precipitation_sample_count": 3,
+      "years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "sample_count": 4,
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [
         {
           "year": 2024,
           "missing_days": 2
@@ -525,9 +699,9 @@
         "rain_gt_30": 0.2
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": 3.14,
-        "tmean_c": 2.5,
-        "tmin_c": 2.94,
+        "tmax_c": 2.33,
+        "tmean_c": 2.06,
+        "tmin_c": 2.85,
         "precip_mm": 90.37,
         "precip_pct_normal": 222.0
       }
@@ -536,28 +710,43 @@
       "month": 11,
       "month_name": "Novembro",
       "station": {
-        "tmax_mean_c": 13.37,
-        "tmean_c": 9.43,
-        "tmin_mean_c": 6.06,
+        "tmax_mean_c": 13.78,
+        "tmean_c": 9.87,
+        "tmin_mean_c": 6.6,
+        "tropical_nights": 0.0,
+        "frost_days": 0.75,
+        "tmax_ge_25": 0.0,
+        "tmax_ge_30": 0.0,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
         "precip_mm": 164.7,
-        "tropical_nights": 0,
-        "frost_days": 1,
-        "tmax_ge_25": 0,
-        "tmax_ge_30": 0,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
         "rain_days": 12.33,
         "rain_gt_10": 5.33,
         "rain_gt_20": 2.67,
         "rain_gt_30": 1.33
       },
-      "years_used": [
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "temperature_sample_count": 4,
+      "precipitation_years_used": [
         2022,
         2023,
         2025
       ],
-      "sample_count": 3,
-      "excluded_years": [
+      "precipitation_sample_count": 3,
+      "years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "sample_count": 4,
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [
         {
           "year": 2024,
           "missing_days": 1
@@ -577,9 +766,9 @@
         "rain_gt_30": 0.17
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": 1.53,
-        "tmean_c": 1.5,
-        "tmin_c": 2.04,
+        "tmax_c": 1.94,
+        "tmean_c": 1.94,
+        "tmin_c": 2.58,
         "precip_mm": 96.2,
         "precip_pct_normal": 240.4
       }
@@ -591,18 +780,32 @@
         "tmax_mean_c": 9.39,
         "tmean_c": 6.4,
         "tmin_mean_c": 3.74,
+        "tropical_nights": 0.0,
+        "frost_days": 5.5,
+        "tmax_ge_25": 0.0,
+        "tmax_ge_30": 0.0,
+        "tmax_gt_35": 0.0,
+        "tmax_ge_40": 0.0,
         "precip_mm": 108.2,
-        "tropical_nights": 0,
-        "frost_days": 5.25,
-        "tmax_ge_25": 0,
-        "tmax_ge_30": 0,
-        "tmax_gt_35": 0,
-        "tmax_ge_40": 0,
         "rain_days": 10.5,
         "rain_gt_10": 4.25,
         "rain_gt_20": 1.5,
         "rain_gt_30": 0.5
       },
+      "temperature_years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "temperature_sample_count": 4,
+      "precipitation_years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "precipitation_sample_count": 4,
       "years_used": [
         2022,
         2023,
@@ -610,7 +813,8 @@
         2025
       ],
       "sample_count": 4,
-      "excluded_years": [],
+      "excluded_temperature_years": [],
+      "excluded_precipitation_years": [],
       "official_normal_1991_2020": {
         "tmax_mean_c": 8.77,
         "tmean_c": 5.32,
@@ -643,7 +847,7 @@
         "tmin_mean_c": 3.21,
         "precip_mm": 377.23,
         "tropical_nights": 0,
-        "frost_days": 19,
+        "frost_days": 19.5,
         "tmax_ge_25": 0,
         "tmax_ge_30": 0,
         "tmax_gt_35": 0,
@@ -776,19 +980,9 @@
     }
   },
   "annual_profile": {
-    "tmax_mean_c": 19.78,
-    "tmean_c": 13.69,
-    "tmin_mean_c": 8.32,
-    "precip_mm": 1036.08,
-    "tropical_nights": 4.67,
-    "frost_days": 26.05,
-    "tmax_ge_25": 115.05,
-    "tmax_ge_30": 55.7,
-    "tmax_gt_35": 13.75,
-    "tmax_ge_40": 0.5,
-    "rain_days": 90.01,
-    "rain_gt_10": 37.91,
-    "rain_gt_20": 15.61,
-    "rain_gt_30": 5.31
+    "tmax_mean_c": 19.74,
+    "tmean_c": 13.7,
+    "tmin_mean_c": 8.38,
+    "precip_mm": 1036.08
   }
 }
