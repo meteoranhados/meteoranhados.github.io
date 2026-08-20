@@ -1,6 +1,6 @@
 {
-  "engine_version": "0.2.0",
-  "generated_utc": "2026-08-20T15:00:54+00:00",
+  "engine_version": "0.3.0",
+  "generated_utc": "2026-08-20T15:02:37+00:00",
   "station": "Ranhados",
   "reference_period": "1991-2020",
   "source_last_closed_day": "2026-08-19",
@@ -46,7 +46,10 @@
       "precip_mm": 0.0,
       "tropical_nights": 2,
       "frost_days": 0,
+      "tmax_ge_25": 19,
+      "tmax_ge_30": 16,
       "tmax_gt_35": 5,
+      "tmax_ge_40": 0,
       "rain_days": 0,
       "rain_gt_10": 0,
       "rain_gt_20": 0,
@@ -121,6 +124,21 @@
     "month_name": "Agosto",
     "calendar_period_complete": false
   },
+  "current_month_station_reference_prior_years": {
+    "sample_count": 4,
+    "years_used": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "observed_average": {
+      "tmax_mean_c": 33.03,
+      "tmean_c": 24.05,
+      "tmin_mean_c": 15.91,
+      "precip_mm": 2.98
+    }
+  },
   "current_year": {
     "start": "2026-01-01",
     "end": "2026-08-19",
@@ -138,7 +156,10 @@
       "precip_mm": 731.8,
       "tropical_nights": 6,
       "frost_days": 5,
+      "tmax_ge_25": 90,
+      "tmax_ge_30": 54,
       "tmax_gt_35": 11,
+      "tmax_ge_40": 0,
       "rain_days": 56,
       "rain_gt_10": 28,
       "rain_gt_20": 11,
@@ -234,7 +255,10 @@
       "precip_mm": 1206.3,
       "tropical_nights": 6,
       "frost_days": 9,
+      "tmax_ge_25": 95,
+      "tmax_ge_30": 54,
       "tmax_gt_35": 11,
+      "tmax_ge_40": 0,
       "rain_days": 89,
       "rain_gt_10": 45,
       "rain_gt_20": 18,
@@ -421,6 +445,73 @@
         "partial_month": true
       }
     ]
+  },
+  "station_climatology": {
+    "label": "Climatologia da estação 2022–presente",
+    "annual_profile": {
+      "tmax_mean_c": 19.78,
+      "tmean_c": 13.69,
+      "tmin_mean_c": 8.32,
+      "precip_mm": 1036.08,
+      "tropical_nights": 4.67,
+      "frost_days": 26.05,
+      "tmax_ge_25": 115.05,
+      "tmax_ge_30": 55.7,
+      "tmax_gt_35": 13.75,
+      "tmax_ge_40": 0.5,
+      "rain_days": 90.01,
+      "rain_gt_10": 37.91,
+      "rain_gt_20": 15.61,
+      "rain_gt_30": 5.31
+    },
+    "current_calendar_month": {
+      "month": 8,
+      "month_name": "Agosto",
+      "station": {
+        "tmax_mean_c": 32.23,
+        "tmean_c": 23.28,
+        "tmin_mean_c": 15.15,
+        "precip_mm": 3.6,
+        "tropical_nights": 2.25,
+        "frost_days": 0,
+        "tmax_ge_25": 29.75,
+        "tmax_ge_30": 22.25,
+        "tmax_gt_35": 7.25,
+        "tmax_ge_40": 0.25,
+        "rain_days": 0.5,
+        "rain_gt_10": 0.25,
+        "rain_gt_20": 0,
+        "rain_gt_30": 0
+      },
+      "years_used": [
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "sample_count": 4,
+      "excluded_years": [],
+      "official_normal_1991_2020": {
+        "tmax_mean_c": 28.73,
+        "tmean_c": 21.09,
+        "tmin_mean_c": 13.44,
+        "precip_mm": 8.6,
+        "tropical_nights": 1.13,
+        "frost_days": 0.0,
+        "tmax_gt_35": 1.83,
+        "rain_days": 1.67,
+        "rain_gt_10": 0.13,
+        "rain_gt_20": 0.03,
+        "rain_gt_30": 0.0
+      },
+      "difference_station_vs_1991_2020": {
+        "tmax_c": 3.5,
+        "tmean_c": 2.19,
+        "tmin_c": 1.71,
+        "precip_mm": -5.0,
+        "precip_pct_normal": 41.9
+      }
+    }
   },
   "annual_normal_1991_2020": {
     "tmax_mean_c": 18.07,

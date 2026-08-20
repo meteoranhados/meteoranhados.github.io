@@ -1,8 +1,9 @@
 {
-  "generated_utc": "2026-08-20T14:20:53+00:00",
+  "generated_utc": "2026-08-20T15:02:37+00:00",
   "definition": {
     "heatwave": ">=6 dias consecutivos com Tmax > normal mensal Tmax +5 C",
-    "coldwave": ">=6 dias consecutivos com Tmin < normal mensal Tmin -5 C"
+    "coldwave": ">=6 dias consecutivos com Tmin < normal mensal Tmin -5 C",
+    "subcritical": "3 a 5 dias consecutivos a cumprir o mesmo limiar; nao e classificado como onda."
   },
   "annual_reference_days": {
     "heatwave_days": 30.0,
@@ -1386,5 +1387,1609 @@
       ]
     }
   ],
-  "coldwaves": []
+  "coldwaves": [],
+  "subcritical_heat": [
+    {
+      "type": "heat",
+      "start": "2022-01-01",
+      "end": "2022-01-03",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 8.77,
+      "extreme_departure_c": 9.94,
+      "extreme_observed_c": 18.2,
+      "cumulative_margin_beyond_threshold_c": 11.32,
+      "daily": [
+        {
+          "date": "2022-01-01",
+          "observed_c": 18.2,
+          "normal_c": 8.26,
+          "threshold_c": 13.26,
+          "departure_c": 9.94,
+          "margin_beyond_threshold_c": 4.94
+        },
+        {
+          "date": "2022-01-02",
+          "observed_c": 16.8,
+          "normal_c": 8.26,
+          "threshold_c": 13.26,
+          "departure_c": 8.54,
+          "margin_beyond_threshold_c": 3.54
+        },
+        {
+          "date": "2022-01-03",
+          "observed_c": 16.1,
+          "normal_c": 8.26,
+          "threshold_c": 13.26,
+          "departure_c": 7.84,
+          "margin_beyond_threshold_c": 2.84
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2022-02-20",
+      "end": "2022-02-23",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 5.53,
+      "extreme_departure_c": 6.3,
+      "extreme_observed_c": 16.8,
+      "cumulative_margin_beyond_threshold_c": 2.1,
+      "daily": [
+        {
+          "date": "2022-02-20",
+          "observed_c": 15.7,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 5.2,
+          "margin_beyond_threshold_c": 0.2
+        },
+        {
+          "date": "2022-02-21",
+          "observed_c": 15.9,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 5.4,
+          "margin_beyond_threshold_c": 0.4
+        },
+        {
+          "date": "2022-02-22",
+          "observed_c": 16.8,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 6.3,
+          "margin_beyond_threshold_c": 1.3
+        },
+        {
+          "date": "2022-02-23",
+          "observed_c": 15.7,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 5.2,
+          "margin_beyond_threshold_c": 0.2
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2022-04-15",
+      "end": "2022-04-18",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 7.38,
+      "extreme_departure_c": 9.16,
+      "extreme_observed_c": 25.8,
+      "cumulative_margin_beyond_threshold_c": 9.54,
+      "daily": [
+        {
+          "date": "2022-04-15",
+          "observed_c": 24.0,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 7.36,
+          "margin_beyond_threshold_c": 2.36
+        },
+        {
+          "date": "2022-04-16",
+          "observed_c": 25.8,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 9.16,
+          "margin_beyond_threshold_c": 4.16
+        },
+        {
+          "date": "2022-04-17",
+          "observed_c": 24.1,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 7.46,
+          "margin_beyond_threshold_c": 2.46
+        },
+        {
+          "date": "2022-04-18",
+          "observed_c": 22.2,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 5.56,
+          "margin_beyond_threshold_c": 0.56
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2022-05-26",
+      "end": "2022-05-29",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 8.74,
+      "extreme_departure_c": 11.04,
+      "extreme_observed_c": 31.7,
+      "cumulative_margin_beyond_threshold_c": 14.96,
+      "daily": [
+        {
+          "date": "2022-05-26",
+          "observed_c": 27.5,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 6.84,
+          "margin_beyond_threshold_c": 1.84
+        },
+        {
+          "date": "2022-05-27",
+          "observed_c": 30.4,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 9.74,
+          "margin_beyond_threshold_c": 4.74
+        },
+        {
+          "date": "2022-05-28",
+          "observed_c": 31.7,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 11.04,
+          "margin_beyond_threshold_c": 6.04
+        },
+        {
+          "date": "2022-05-29",
+          "observed_c": 28.0,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 7.34,
+          "margin_beyond_threshold_c": 2.34
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2022-07-21",
+      "end": "2022-07-23",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 6.27,
+      "extreme_departure_c": 7.04,
+      "extreme_observed_c": 35.9,
+      "cumulative_margin_beyond_threshold_c": 3.82,
+      "daily": [
+        {
+          "date": "2022-07-21",
+          "observed_c": 35.1,
+          "normal_c": 28.86,
+          "threshold_c": 33.86,
+          "departure_c": 6.24,
+          "margin_beyond_threshold_c": 1.24
+        },
+        {
+          "date": "2022-07-22",
+          "observed_c": 34.4,
+          "normal_c": 28.86,
+          "threshold_c": 33.86,
+          "departure_c": 5.54,
+          "margin_beyond_threshold_c": 0.54
+        },
+        {
+          "date": "2022-07-23",
+          "observed_c": 35.9,
+          "normal_c": 28.86,
+          "threshold_c": 33.86,
+          "departure_c": 7.04,
+          "margin_beyond_threshold_c": 2.04
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2022-09-09",
+      "end": "2022-09-11",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 7.02,
+      "extreme_departure_c": 7.85,
+      "extreme_observed_c": 32.0,
+      "cumulative_margin_beyond_threshold_c": 6.05,
+      "daily": [
+        {
+          "date": "2022-09-09",
+          "observed_c": 29.8,
+          "normal_c": 24.15,
+          "threshold_c": 29.15,
+          "departure_c": 5.65,
+          "margin_beyond_threshold_c": 0.65
+        },
+        {
+          "date": "2022-09-10",
+          "observed_c": 31.7,
+          "normal_c": 24.15,
+          "threshold_c": 29.15,
+          "departure_c": 7.55,
+          "margin_beyond_threshold_c": 2.55
+        },
+        {
+          "date": "2022-09-11",
+          "observed_c": 32.0,
+          "normal_c": 24.15,
+          "threshold_c": 29.15,
+          "departure_c": 7.85,
+          "margin_beyond_threshold_c": 2.85
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2022-10-12",
+      "end": "2022-10-14",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 7.95,
+      "extreme_departure_c": 9.32,
+      "extreme_observed_c": 27.3,
+      "cumulative_margin_beyond_threshold_c": 8.86,
+      "daily": [
+        {
+          "date": "2022-10-12",
+          "observed_c": 24.8,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 6.82,
+          "margin_beyond_threshold_c": 1.82
+        },
+        {
+          "date": "2022-10-13",
+          "observed_c": 25.7,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 7.72,
+          "margin_beyond_threshold_c": 2.72
+        },
+        {
+          "date": "2022-10-14",
+          "observed_c": 27.3,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 9.32,
+          "margin_beyond_threshold_c": 4.32
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2023-03-27",
+      "end": "2023-03-29",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 8.58,
+      "extreme_departure_c": 10.88,
+      "extreme_observed_c": 25.2,
+      "cumulative_margin_beyond_threshold_c": 10.74,
+      "daily": [
+        {
+          "date": "2023-03-27",
+          "observed_c": 20.8,
+          "normal_c": 14.32,
+          "threshold_c": 19.32,
+          "departure_c": 6.48,
+          "margin_beyond_threshold_c": 1.48
+        },
+        {
+          "date": "2023-03-28",
+          "observed_c": 25.2,
+          "normal_c": 14.32,
+          "threshold_c": 19.32,
+          "departure_c": 10.88,
+          "margin_beyond_threshold_c": 5.88
+        },
+        {
+          "date": "2023-03-29",
+          "observed_c": 22.7,
+          "normal_c": 14.32,
+          "threshold_c": 19.32,
+          "departure_c": 8.38,
+          "margin_beyond_threshold_c": 3.38
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2023-04-06",
+      "end": "2023-04-09",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 8.69,
+      "extreme_departure_c": 9.96,
+      "extreme_observed_c": 26.6,
+      "cumulative_margin_beyond_threshold_c": 14.74,
+      "daily": [
+        {
+          "date": "2023-04-06",
+          "observed_c": 23.5,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 6.86,
+          "margin_beyond_threshold_c": 1.86
+        },
+        {
+          "date": "2023-04-07",
+          "observed_c": 25.1,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 8.46,
+          "margin_beyond_threshold_c": 3.46
+        },
+        {
+          "date": "2023-04-08",
+          "observed_c": 26.6,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 9.96,
+          "margin_beyond_threshold_c": 4.96
+        },
+        {
+          "date": "2023-04-09",
+          "observed_c": 26.1,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 9.46,
+          "margin_beyond_threshold_c": 4.46
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2023-08-20",
+      "end": "2023-08-24",
+      "days": 5,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": 9.79,
+      "extreme_departure_c": 11.67,
+      "extreme_observed_c": 40.4,
+      "cumulative_margin_beyond_threshold_c": 23.95,
+      "daily": [
+        {
+          "date": "2023-08-20",
+          "observed_c": 36.9,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 8.17,
+          "margin_beyond_threshold_c": 3.17
+        },
+        {
+          "date": "2023-08-21",
+          "observed_c": 39.0,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 10.27,
+          "margin_beyond_threshold_c": 5.27
+        },
+        {
+          "date": "2023-08-22",
+          "observed_c": 40.4,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 11.67,
+          "margin_beyond_threshold_c": 6.67
+        },
+        {
+          "date": "2023-08-23",
+          "observed_c": 39.4,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 10.67,
+          "margin_beyond_threshold_c": 5.67
+        },
+        {
+          "date": "2023-08-24",
+          "observed_c": 36.9,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 8.17,
+          "margin_beyond_threshold_c": 3.17
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2023-11-11",
+      "end": "2023-11-13",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 5.79,
+      "extreme_departure_c": 6.86,
+      "extreme_observed_c": 18.7,
+      "cumulative_margin_beyond_threshold_c": 2.38,
+      "daily": [
+        {
+          "date": "2023-11-11",
+          "observed_c": 17.2,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 5.36,
+          "margin_beyond_threshold_c": 0.36
+        },
+        {
+          "date": "2023-11-12",
+          "observed_c": 18.7,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 6.86,
+          "margin_beyond_threshold_c": 1.86
+        },
+        {
+          "date": "2023-11-13",
+          "observed_c": 17.0,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 5.16,
+          "margin_beyond_threshold_c": 0.16
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2023-11-15",
+      "end": "2023-11-18",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 7.31,
+      "extreme_departure_c": 7.76,
+      "extreme_observed_c": 19.6,
+      "cumulative_margin_beyond_threshold_c": 9.24,
+      "daily": [
+        {
+          "date": "2023-11-15",
+          "observed_c": 18.8,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 6.96,
+          "margin_beyond_threshold_c": 1.96
+        },
+        {
+          "date": "2023-11-16",
+          "observed_c": 19.6,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 7.76,
+          "margin_beyond_threshold_c": 2.76
+        },
+        {
+          "date": "2023-11-17",
+          "observed_c": 19.3,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 7.46,
+          "margin_beyond_threshold_c": 2.46
+        },
+        {
+          "date": "2023-11-18",
+          "observed_c": 18.9,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 7.06,
+          "margin_beyond_threshold_c": 2.06
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2023-12-09",
+      "end": "2023-12-11",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 6.4,
+      "extreme_departure_c": 7.43,
+      "extreme_observed_c": 16.2,
+      "cumulative_margin_beyond_threshold_c": 4.19,
+      "daily": [
+        {
+          "date": "2023-12-09",
+          "observed_c": 15.4,
+          "normal_c": 8.77,
+          "threshold_c": 13.77,
+          "departure_c": 6.63,
+          "margin_beyond_threshold_c": 1.63
+        },
+        {
+          "date": "2023-12-10",
+          "observed_c": 13.9,
+          "normal_c": 8.77,
+          "threshold_c": 13.77,
+          "departure_c": 5.13,
+          "margin_beyond_threshold_c": 0.13
+        },
+        {
+          "date": "2023-12-11",
+          "observed_c": 16.2,
+          "normal_c": 8.77,
+          "threshold_c": 13.77,
+          "departure_c": 7.43,
+          "margin_beyond_threshold_c": 2.43
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-01-28",
+      "end": "2024-01-31",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 6.52,
+      "extreme_departure_c": 7.64,
+      "extreme_observed_c": 15.9,
+      "cumulative_margin_beyond_threshold_c": 6.06,
+      "daily": [
+        {
+          "date": "2024-01-28",
+          "observed_c": 15.2,
+          "normal_c": 8.26,
+          "threshold_c": 13.26,
+          "departure_c": 6.94,
+          "margin_beyond_threshold_c": 1.94
+        },
+        {
+          "date": "2024-01-29",
+          "observed_c": 15.9,
+          "normal_c": 8.26,
+          "threshold_c": 13.26,
+          "departure_c": 7.64,
+          "margin_beyond_threshold_c": 2.64
+        },
+        {
+          "date": "2024-01-30",
+          "observed_c": 13.8,
+          "normal_c": 8.26,
+          "threshold_c": 13.26,
+          "departure_c": 5.54,
+          "margin_beyond_threshold_c": 0.54
+        },
+        {
+          "date": "2024-01-31",
+          "observed_c": 14.2,
+          "normal_c": 8.26,
+          "threshold_c": 13.26,
+          "departure_c": 5.94,
+          "margin_beyond_threshold_c": 0.94
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-02-18",
+      "end": "2024-02-21",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 6.25,
+      "extreme_departure_c": 6.8,
+      "extreme_observed_c": 17.3,
+      "cumulative_margin_beyond_threshold_c": 5.0,
+      "daily": [
+        {
+          "date": "2024-02-18",
+          "observed_c": 17.3,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 6.8,
+          "margin_beyond_threshold_c": 1.8
+        },
+        {
+          "date": "2024-02-19",
+          "observed_c": 17.0,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 6.5,
+          "margin_beyond_threshold_c": 1.5
+        },
+        {
+          "date": "2024-02-20",
+          "observed_c": 16.1,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 5.6,
+          "margin_beyond_threshold_c": 0.6
+        },
+        {
+          "date": "2024-02-21",
+          "observed_c": 16.6,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 6.1,
+          "margin_beyond_threshold_c": 1.1
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-03-17",
+      "end": "2024-03-19",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 6.98,
+      "extreme_departure_c": 8.98,
+      "extreme_observed_c": 23.3,
+      "cumulative_margin_beyond_threshold_c": 5.94,
+      "daily": [
+        {
+          "date": "2024-03-17",
+          "observed_c": 20.4,
+          "normal_c": 14.32,
+          "threshold_c": 19.32,
+          "departure_c": 6.08,
+          "margin_beyond_threshold_c": 1.08
+        },
+        {
+          "date": "2024-03-18",
+          "observed_c": 23.3,
+          "normal_c": 14.32,
+          "threshold_c": 19.32,
+          "departure_c": 8.98,
+          "margin_beyond_threshold_c": 3.98
+        },
+        {
+          "date": "2024-03-19",
+          "observed_c": 20.2,
+          "normal_c": 14.32,
+          "threshold_c": 19.32,
+          "departure_c": 5.88,
+          "margin_beyond_threshold_c": 0.88
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-05-28",
+      "end": "2024-05-30",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 8.81,
+      "extreme_departure_c": 10.14,
+      "extreme_observed_c": 30.8,
+      "cumulative_margin_beyond_threshold_c": 11.42,
+      "daily": [
+        {
+          "date": "2024-05-28",
+          "observed_c": 27.8,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 7.14,
+          "margin_beyond_threshold_c": 2.14
+        },
+        {
+          "date": "2024-05-29",
+          "observed_c": 29.8,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 9.14,
+          "margin_beyond_threshold_c": 4.14
+        },
+        {
+          "date": "2024-05-30",
+          "observed_c": 30.8,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 10.14,
+          "margin_beyond_threshold_c": 5.14
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-07-23",
+      "end": "2024-07-26",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 7.26,
+      "extreme_departure_c": 8.54,
+      "extreme_observed_c": 37.4,
+      "cumulative_margin_beyond_threshold_c": 9.06,
+      "daily": [
+        {
+          "date": "2024-07-23",
+          "observed_c": 36.9,
+          "normal_c": 28.86,
+          "threshold_c": 33.86,
+          "departure_c": 8.04,
+          "margin_beyond_threshold_c": 3.04
+        },
+        {
+          "date": "2024-07-24",
+          "observed_c": 37.4,
+          "normal_c": 28.86,
+          "threshold_c": 33.86,
+          "departure_c": 8.54,
+          "margin_beyond_threshold_c": 3.54
+        },
+        {
+          "date": "2024-07-25",
+          "observed_c": 35.8,
+          "normal_c": 28.86,
+          "threshold_c": 33.86,
+          "departure_c": 6.94,
+          "margin_beyond_threshold_c": 1.94
+        },
+        {
+          "date": "2024-07-26",
+          "observed_c": 34.4,
+          "normal_c": 28.86,
+          "threshold_c": 33.86,
+          "departure_c": 5.54,
+          "margin_beyond_threshold_c": 0.54
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-08-08",
+      "end": "2024-08-11",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 7.87,
+      "extreme_departure_c": 8.77,
+      "extreme_observed_c": 37.5,
+      "cumulative_margin_beyond_threshold_c": 11.48,
+      "daily": [
+        {
+          "date": "2024-08-08",
+          "observed_c": 35.9,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 7.17,
+          "margin_beyond_threshold_c": 2.17
+        },
+        {
+          "date": "2024-08-09",
+          "observed_c": 37.5,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 8.77,
+          "margin_beyond_threshold_c": 3.77
+        },
+        {
+          "date": "2024-08-10",
+          "observed_c": 37.1,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 8.37,
+          "margin_beyond_threshold_c": 3.37
+        },
+        {
+          "date": "2024-08-11",
+          "observed_c": 35.9,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 7.17,
+          "margin_beyond_threshold_c": 2.17
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-11-06",
+      "end": "2024-11-10",
+      "days": 5,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": 6.52,
+      "extreme_departure_c": 7.66,
+      "extreme_observed_c": 19.5,
+      "cumulative_margin_beyond_threshold_c": 7.6,
+      "daily": [
+        {
+          "date": "2024-11-06",
+          "observed_c": 19.5,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 7.66,
+          "margin_beyond_threshold_c": 2.66
+        },
+        {
+          "date": "2024-11-07",
+          "observed_c": 18.2,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 6.36,
+          "margin_beyond_threshold_c": 1.36
+        },
+        {
+          "date": "2024-11-08",
+          "observed_c": 18.7,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 6.86,
+          "margin_beyond_threshold_c": 1.86
+        },
+        {
+          "date": "2024-11-09",
+          "observed_c": 18.1,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 6.26,
+          "margin_beyond_threshold_c": 1.26
+        },
+        {
+          "date": "2024-11-10",
+          "observed_c": 17.3,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 5.46,
+          "margin_beyond_threshold_c": 0.46
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2024-11-30",
+      "end": "2024-12-02",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 7.31,
+      "extreme_departure_c": 8.33,
+      "extreme_observed_c": 18.7,
+      "cumulative_margin_beyond_threshold_c": 6.92,
+      "daily": [
+        {
+          "date": "2024-11-30",
+          "observed_c": 18.7,
+          "normal_c": 11.84,
+          "threshold_c": 16.84,
+          "departure_c": 6.86,
+          "margin_beyond_threshold_c": 1.86
+        },
+        {
+          "date": "2024-12-01",
+          "observed_c": 17.1,
+          "normal_c": 8.77,
+          "threshold_c": 13.77,
+          "departure_c": 8.33,
+          "margin_beyond_threshold_c": 3.33
+        },
+        {
+          "date": "2024-12-02",
+          "observed_c": 15.5,
+          "normal_c": 8.77,
+          "threshold_c": 13.77,
+          "departure_c": 6.73,
+          "margin_beyond_threshold_c": 1.73
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2025-04-08",
+      "end": "2025-04-10",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 6.06,
+      "extreme_departure_c": 6.86,
+      "extreme_observed_c": 23.5,
+      "cumulative_margin_beyond_threshold_c": 3.18,
+      "daily": [
+        {
+          "date": "2025-04-08",
+          "observed_c": 22.2,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 5.56,
+          "margin_beyond_threshold_c": 0.56
+        },
+        {
+          "date": "2025-04-09",
+          "observed_c": 23.5,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 6.86,
+          "margin_beyond_threshold_c": 1.86
+        },
+        {
+          "date": "2025-04-10",
+          "observed_c": 22.4,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 5.76,
+          "margin_beyond_threshold_c": 0.76
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2025-05-27",
+      "end": "2025-05-31",
+      "days": 5,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": 10.58,
+      "extreme_departure_c": 12.14,
+      "extreme_observed_c": 32.8,
+      "cumulative_margin_beyond_threshold_c": 27.9,
+      "daily": [
+        {
+          "date": "2025-05-27",
+          "observed_c": 27.6,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 6.94,
+          "margin_beyond_threshold_c": 1.94
+        },
+        {
+          "date": "2025-05-28",
+          "observed_c": 31.5,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 10.84,
+          "margin_beyond_threshold_c": 5.84
+        },
+        {
+          "date": "2025-05-29",
+          "observed_c": 32.2,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 11.54,
+          "margin_beyond_threshold_c": 6.54
+        },
+        {
+          "date": "2025-05-30",
+          "observed_c": 32.1,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 11.44,
+          "margin_beyond_threshold_c": 6.44
+        },
+        {
+          "date": "2025-05-31",
+          "observed_c": 32.8,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 12.14,
+          "margin_beyond_threshold_c": 7.14
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2025-06-16",
+      "end": "2025-06-20",
+      "days": 5,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": 8.23,
+      "extreme_departure_c": 10.43,
+      "extreme_observed_c": 36.0,
+      "cumulative_margin_beyond_threshold_c": 16.15,
+      "daily": [
+        {
+          "date": "2025-06-16",
+          "observed_c": 32.0,
+          "normal_c": 25.57,
+          "threshold_c": 30.57,
+          "departure_c": 6.43,
+          "margin_beyond_threshold_c": 1.43
+        },
+        {
+          "date": "2025-06-17",
+          "observed_c": 36.0,
+          "normal_c": 25.57,
+          "threshold_c": 30.57,
+          "departure_c": 10.43,
+          "margin_beyond_threshold_c": 5.43
+        },
+        {
+          "date": "2025-06-18",
+          "observed_c": 33.8,
+          "normal_c": 25.57,
+          "threshold_c": 30.57,
+          "departure_c": 8.23,
+          "margin_beyond_threshold_c": 3.23
+        },
+        {
+          "date": "2025-06-19",
+          "observed_c": 33.2,
+          "normal_c": 25.57,
+          "threshold_c": 30.57,
+          "departure_c": 7.63,
+          "margin_beyond_threshold_c": 2.63
+        },
+        {
+          "date": "2025-06-20",
+          "observed_c": 34.0,
+          "normal_c": 25.57,
+          "threshold_c": 30.57,
+          "departure_c": 8.43,
+          "margin_beyond_threshold_c": 3.43
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2025-09-16",
+      "end": "2025-09-19",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 8.68,
+      "extreme_departure_c": 10.75,
+      "extreme_observed_c": 34.9,
+      "cumulative_margin_beyond_threshold_c": 14.7,
+      "daily": [
+        {
+          "date": "2025-09-16",
+          "observed_c": 29.2,
+          "normal_c": 24.15,
+          "threshold_c": 29.15,
+          "departure_c": 5.05,
+          "margin_beyond_threshold_c": 0.05
+        },
+        {
+          "date": "2025-09-17",
+          "observed_c": 34.5,
+          "normal_c": 24.15,
+          "threshold_c": 29.15,
+          "departure_c": 10.35,
+          "margin_beyond_threshold_c": 5.35
+        },
+        {
+          "date": "2025-09-18",
+          "observed_c": 34.9,
+          "normal_c": 24.15,
+          "threshold_c": 29.15,
+          "departure_c": 10.75,
+          "margin_beyond_threshold_c": 5.75
+        },
+        {
+          "date": "2025-09-19",
+          "observed_c": 32.7,
+          "normal_c": 24.15,
+          "threshold_c": 29.15,
+          "departure_c": 8.55,
+          "margin_beyond_threshold_c": 3.55
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2025-10-01",
+      "end": "2025-10-04",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 7.57,
+      "extreme_departure_c": 8.92,
+      "extreme_observed_c": 26.9,
+      "cumulative_margin_beyond_threshold_c": 10.28,
+      "daily": [
+        {
+          "date": "2025-10-01",
+          "observed_c": 24.5,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 6.52,
+          "margin_beyond_threshold_c": 1.52
+        },
+        {
+          "date": "2025-10-02",
+          "observed_c": 26.0,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 8.02,
+          "margin_beyond_threshold_c": 3.02
+        },
+        {
+          "date": "2025-10-03",
+          "observed_c": 26.9,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 8.92,
+          "margin_beyond_threshold_c": 3.92
+        },
+        {
+          "date": "2025-10-04",
+          "observed_c": 24.8,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 6.82,
+          "margin_beyond_threshold_c": 1.82
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2025-10-06",
+      "end": "2025-10-09",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 6.29,
+      "extreme_departure_c": 8.82,
+      "extreme_observed_c": 26.8,
+      "cumulative_margin_beyond_threshold_c": 5.18,
+      "daily": [
+        {
+          "date": "2025-10-06",
+          "observed_c": 23.0,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 5.02,
+          "margin_beyond_threshold_c": 0.02
+        },
+        {
+          "date": "2025-10-07",
+          "observed_c": 26.8,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 8.82,
+          "margin_beyond_threshold_c": 3.82
+        },
+        {
+          "date": "2025-10-08",
+          "observed_c": 24.2,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 6.22,
+          "margin_beyond_threshold_c": 1.22
+        },
+        {
+          "date": "2025-10-09",
+          "observed_c": 23.1,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 5.12,
+          "margin_beyond_threshold_c": 0.12
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2026-02-22",
+      "end": "2026-02-26",
+      "days": 5,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": 8.1,
+      "extreme_departure_c": 10.2,
+      "extreme_observed_c": 20.7,
+      "cumulative_margin_beyond_threshold_c": 15.5,
+      "daily": [
+        {
+          "date": "2026-02-22",
+          "observed_c": 17.2,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 6.7,
+          "margin_beyond_threshold_c": 1.7
+        },
+        {
+          "date": "2026-02-23",
+          "observed_c": 19.1,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 8.6,
+          "margin_beyond_threshold_c": 3.6
+        },
+        {
+          "date": "2026-02-24",
+          "observed_c": 19.0,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 8.5,
+          "margin_beyond_threshold_c": 3.5
+        },
+        {
+          "date": "2026-02-25",
+          "observed_c": 17.0,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 6.5,
+          "margin_beyond_threshold_c": 1.5
+        },
+        {
+          "date": "2026-02-26",
+          "observed_c": 20.7,
+          "normal_c": 10.5,
+          "threshold_c": 15.5,
+          "departure_c": 10.2,
+          "margin_beyond_threshold_c": 5.2
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2026-04-04",
+      "end": "2026-04-06",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 7.79,
+      "extreme_departure_c": 8.36,
+      "extreme_observed_c": 25.0,
+      "cumulative_margin_beyond_threshold_c": 8.38,
+      "daily": [
+        {
+          "date": "2026-04-04",
+          "observed_c": 25.0,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 8.36,
+          "margin_beyond_threshold_c": 3.36
+        },
+        {
+          "date": "2026-04-05",
+          "observed_c": 24.8,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 8.16,
+          "margin_beyond_threshold_c": 3.16
+        },
+        {
+          "date": "2026-04-06",
+          "observed_c": 23.5,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 6.86,
+          "margin_beyond_threshold_c": 1.86
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2026-04-23",
+      "end": "2026-04-27",
+      "days": 5,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": 7.22,
+      "extreme_departure_c": 9.96,
+      "extreme_observed_c": 26.6,
+      "cumulative_margin_beyond_threshold_c": 11.1,
+      "daily": [
+        {
+          "date": "2026-04-23",
+          "observed_c": 22.9,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 6.26,
+          "margin_beyond_threshold_c": 1.26
+        },
+        {
+          "date": "2026-04-24",
+          "observed_c": 21.8,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 5.16,
+          "margin_beyond_threshold_c": 0.16
+        },
+        {
+          "date": "2026-04-25",
+          "observed_c": 24.1,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 7.46,
+          "margin_beyond_threshold_c": 2.46
+        },
+        {
+          "date": "2026-04-26",
+          "observed_c": 23.9,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 7.26,
+          "margin_beyond_threshold_c": 2.26
+        },
+        {
+          "date": "2026-04-27",
+          "observed_c": 26.6,
+          "normal_c": 16.64,
+          "threshold_c": 21.64,
+          "departure_c": 9.96,
+          "margin_beyond_threshold_c": 4.96
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2026-05-20",
+      "end": "2026-05-22",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": 8.44,
+      "extreme_departure_c": 10.34,
+      "extreme_observed_c": 31.0,
+      "cumulative_margin_beyond_threshold_c": 10.32,
+      "daily": [
+        {
+          "date": "2026-05-20",
+          "observed_c": 27.0,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 6.34,
+          "margin_beyond_threshold_c": 1.34
+        },
+        {
+          "date": "2026-05-21",
+          "observed_c": 29.3,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 8.64,
+          "margin_beyond_threshold_c": 3.64
+        },
+        {
+          "date": "2026-05-22",
+          "observed_c": 31.0,
+          "normal_c": 20.66,
+          "threshold_c": 25.66,
+          "departure_c": 10.34,
+          "margin_beyond_threshold_c": 5.34
+        }
+      ]
+    },
+    {
+      "type": "heat",
+      "start": "2026-08-11",
+      "end": "2026-08-14",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": 6.64,
+      "extreme_departure_c": 7.57,
+      "extreme_observed_c": 36.3,
+      "cumulative_margin_beyond_threshold_c": 6.58,
+      "daily": [
+        {
+          "date": "2026-08-11",
+          "observed_c": 33.9,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 5.17,
+          "margin_beyond_threshold_c": 0.17
+        },
+        {
+          "date": "2026-08-12",
+          "observed_c": 35.3,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 6.57,
+          "margin_beyond_threshold_c": 1.57
+        },
+        {
+          "date": "2026-08-13",
+          "observed_c": 36.3,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 7.57,
+          "margin_beyond_threshold_c": 2.57
+        },
+        {
+          "date": "2026-08-14",
+          "observed_c": 36.0,
+          "normal_c": 28.73,
+          "threshold_c": 33.73,
+          "departure_c": 7.27,
+          "margin_beyond_threshold_c": 2.27
+        }
+      ]
+    }
+  ],
+  "subcritical_cold": [
+    {
+      "type": "cold",
+      "start": "2022-01-22",
+      "end": "2022-01-25",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": -5.72,
+      "extreme_departure_c": -6.35,
+      "extreme_observed_c": -5.1,
+      "cumulative_margin_beyond_threshold_c": 2.9,
+      "daily": [
+        {
+          "date": "2022-01-22",
+          "observed_c": -4.2,
+          "normal_c": 1.25,
+          "threshold_c": -3.75,
+          "departure_c": -5.45,
+          "margin_beyond_threshold_c": 0.45
+        },
+        {
+          "date": "2022-01-23",
+          "observed_c": -5.1,
+          "normal_c": 1.25,
+          "threshold_c": -3.75,
+          "departure_c": -6.35,
+          "margin_beyond_threshold_c": 1.35
+        },
+        {
+          "date": "2022-01-24",
+          "observed_c": -4.6,
+          "normal_c": 1.25,
+          "threshold_c": -3.75,
+          "departure_c": -5.85,
+          "margin_beyond_threshold_c": 0.85
+        },
+        {
+          "date": "2022-01-25",
+          "observed_c": -4.0,
+          "normal_c": 1.25,
+          "threshold_c": -3.75,
+          "departure_c": -5.25,
+          "margin_beyond_threshold_c": 0.25
+        }
+      ]
+    },
+    {
+      "type": "cold",
+      "start": "2022-04-02",
+      "end": "2022-04-05",
+      "days": 4,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 2,
+      "mean_departure_c": -6.71,
+      "extreme_departure_c": -7.13,
+      "extreme_observed_c": -2.3,
+      "cumulative_margin_beyond_threshold_c": 6.82,
+      "daily": [
+        {
+          "date": "2022-04-02",
+          "observed_c": -2.3,
+          "normal_c": 4.83,
+          "threshold_c": -0.17,
+          "departure_c": -7.13,
+          "margin_beyond_threshold_c": 2.13
+        },
+        {
+          "date": "2022-04-03",
+          "observed_c": -2.1,
+          "normal_c": 4.83,
+          "threshold_c": -0.17,
+          "departure_c": -6.93,
+          "margin_beyond_threshold_c": 1.93
+        },
+        {
+          "date": "2022-04-04",
+          "observed_c": -1.7,
+          "normal_c": 4.83,
+          "threshold_c": -0.17,
+          "departure_c": -6.53,
+          "margin_beyond_threshold_c": 1.53
+        },
+        {
+          "date": "2022-04-05",
+          "observed_c": -1.4,
+          "normal_c": 4.83,
+          "threshold_c": -0.17,
+          "departure_c": -6.23,
+          "margin_beyond_threshold_c": 1.23
+        }
+      ]
+    },
+    {
+      "type": "cold",
+      "start": "2023-02-10",
+      "end": "2023-02-12",
+      "days": 3,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 3,
+      "mean_departure_c": -5.76,
+      "extreme_departure_c": -6.16,
+      "extreme_observed_c": -4.6,
+      "cumulative_margin_beyond_threshold_c": 2.28,
+      "daily": [
+        {
+          "date": "2023-02-10",
+          "observed_c": -4.2,
+          "normal_c": 1.56,
+          "threshold_c": -3.44,
+          "departure_c": -5.76,
+          "margin_beyond_threshold_c": 0.76
+        },
+        {
+          "date": "2023-02-11",
+          "observed_c": -4.6,
+          "normal_c": 1.56,
+          "threshold_c": -3.44,
+          "departure_c": -6.16,
+          "margin_beyond_threshold_c": 1.16
+        },
+        {
+          "date": "2023-02-12",
+          "observed_c": -3.8,
+          "normal_c": 1.56,
+          "threshold_c": -3.44,
+          "departure_c": -5.36,
+          "margin_beyond_threshold_c": 0.36
+        }
+      ]
+    },
+    {
+      "type": "cold",
+      "start": "2023-02-28",
+      "end": "2023-03-04",
+      "days": 5,
+      "confirmed_wave": false,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": -8.2,
+      "extreme_departure_c": -10.13,
+      "extreme_observed_c": -6.7,
+      "cumulative_margin_beyond_threshold_c": 15.98,
+      "daily": [
+        {
+          "date": "2023-02-28",
+          "observed_c": -6.0,
+          "normal_c": 1.56,
+          "threshold_c": -3.44,
+          "departure_c": -7.56,
+          "margin_beyond_threshold_c": 2.56
+        },
+        {
+          "date": "2023-03-01",
+          "observed_c": -6.7,
+          "normal_c": 3.43,
+          "threshold_c": -1.57,
+          "departure_c": -10.13,
+          "margin_beyond_threshold_c": 5.13
+        },
+        {
+          "date": "2023-03-02",
+          "observed_c": -5.8,
+          "normal_c": 3.43,
+          "threshold_c": -1.57,
+          "departure_c": -9.23,
+          "margin_beyond_threshold_c": 4.23
+        },
+        {
+          "date": "2023-03-03",
+          "observed_c": -5.6,
+          "normal_c": 3.43,
+          "threshold_c": -1.57,
+          "departure_c": -9.03,
+          "margin_beyond_threshold_c": 4.03
+        },
+        {
+          "date": "2023-03-04",
+          "observed_c": -1.6,
+          "normal_c": 3.43,
+          "threshold_c": -1.57,
+          "departure_c": -5.03,
+          "margin_beyond_threshold_c": 0.03
+        }
+      ]
+    }
+  ]
 }
