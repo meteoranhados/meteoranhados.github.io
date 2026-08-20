@@ -1,43 +1,11 @@
-<!doctype html>
-<html lang="pt">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Climatologia - Ranhados</title>
-<style>
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f5f6f8;color:#20242a}
-main{max-width:1100px;margin:auto;padding:24px} h1{margin-bottom:4px}.sub{color:#626a73;margin-top:0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-.card{background:#fff;border:1px solid #dde1e6;border-radius:12px;padding:16px}
-.big{font-size:28px;font-weight:700}.muted{color:#6b7280;font-size:13px}
-table{width:100%;border-collapse:collapse;background:#fff} th,td{padding:9px;border-bottom:1px solid #e5e7eb;text-align:right}
-th:first-child,td:first-child{text-align:left} section{margin-top:24px}
-</style></head><body><main>
-<h1>Climatologia - Ranhados</h1>
-<p class="sub">Página provisória de validação do Climate Analyzer.</p>
-<div id="cards" class="grid"></div>
-<section><h2>Ano atual</h2><div id="year"></div></section>
-<section><h2>Ondas de calor</h2><div id="heat"></div></section>
-<section><h2>Ondas de frio</h2><div id="cold"></div></section>
-<section><h2>Qualidade dos dados</h2><div id="quality"></div></section>
-<script>
-Promise.all([fetch("climate_summary.json").then(r=>r.json()),fetch("climate_waves.json").then(r=>r.json())]).then(([s,w])=>{
- const hs=s.heatwave,cs=s.coldwave;
- cards.innerHTML=`<div class="card"><div class="muted">Último dia fechado</div><div class="big">${s.source_last_closed_day}</div></div>
- <div class="card"><div class="muted">Onda de calor</div><div class="big">${hs.active?"ATIVA":"Não ativa"}</div><div>${hs.qualifying_streak_days} dia(s) qualificativos</div></div>
- <div class="card"><div class="muted">Onda de frio</div><div class="big">${cs.active?"ATIVA":"Não ativa"}</div><div>${cs.qualifying_streak_days} dia(s) qualificativos</div></div>
- <div class="card"><div class="muted">Falhas no histórico</div><div class="big">${s.quality.missing_day_count}</div><div>dias em falta</div></div>`;
- const y=s.current_year;
- if(y){const o=y.observed,n=y.normal_1991_2020;year.innerHTML=`<table>
- <tr><th>Indicador</th><th>${y.year}</th><th>Normal 1991-2020</th></tr>
- <tr><td>Tmax média</td><td>${o.tmax_mean_c} °C</td><td>${n.tmax_mean_c} °C</td></tr>
- <tr><td>T média</td><td>${o.tmean_c} °C</td><td>${n.tmean_c} °C</td></tr>
- <tr><td>Tmin média</td><td>${o.tmin_mean_c} °C</td><td>${n.tmin_mean_c} °C</td></tr>
- <tr><td>Precipitação</td><td>${o.precip_mm} mm</td><td>${n.precip_mm} mm</td></tr>
- <tr><td>Dias em onda de calor</td><td>${o.heatwave_days}</td><td>${n.heatwave_days}</td></tr>
- <tr><td>Dias em onda de frio</td><td>${o.coldwave_days}</td><td>${n.coldwave_days}</td></tr></table>`;}
- const makeWaves=(eps)=>eps.length?`<table><tr><th>Início</th><th>Fim</th><th>Dias</th><th>Anomalia média</th></tr>`+
- eps.slice().reverse().slice(0,12).map(e=>`<tr><td>${e.start}</td><td>${e.end}</td><td>${e.days}</td><td>${e.mean_departure_c} °C</td></tr>`).join("")+`</table>`:"Sem episódios confirmados.";
- heat.innerHTML=makeWaves(w.heatwaves); cold.innerHTML=makeWaves(w.coldwaves);
- quality.innerHTML=`${s.quality.missing_day_count} dias em falta, ${s.quality.invalid_row_count} linhas inválidas e ${s.quality.duplicate_count} duplicados.`;
-}).catch(err=>document.body.insertAdjacentHTML("beforeend","<pre>"+err+"</pre>"));
-</script></main></body></html>
+<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Climatologia — Ranhados</title><link rel="stylesheet" href="climate.css"></head><body><main>
+<div class="topbar"><div><p class="eyebrow">Estação Meteorológica de Ranhados</p><h1>Climatologia</h1><p class="lead">Análise automática da estação comparada com a normal climatológica 1991–2020: ano civil, ano hidrológico, extremos, ondas, histórico e boletins.</p></div><div id="generated" class="updated"></div></div>
+<nav class="tabs"><button class="tab active" data-target="resumo">Resumo</button><button class="tab" data-target="temperatura">Temperatura</button><button class="tab" data-target="precipitacao">Precipitação</button><button class="tab" data-target="ondas">Ondas</button><button class="tab" data-target="historico">Histórico</button><button class="tab" data-target="boletins-sec">Boletins</button><button class="tab" data-target="metodologia">Metodologia</button></nav>
+<section id="resumo" class="section active"><div id="hero" class="hero-grid"></div><div class="grid2"><div id="civil"></div><div id="hydro"></div></div><div class="grid2"><div class="panel"><h2>Anomalia mensal da temperatura média</h2><div id="temp-anom-chart" class="chart"></div></div><div class="panel"><h2>Precipitação mensal · % da normal</h2><div id="rain-pct-chart" class="chart"></div></div></div><div class="panel"><h2>Ano hidrológico · acumulado</h2><div id="hydro-chart" class="chart"></div></div></section>
+<section id="temperatura" class="section"><div class="panel"><h2>Evolução térmica do mês atual</h2><p class="method">Anomalia diária da temperatura média relativamente à normal mensal correspondente.</p><div id="daily-temp-chart" class="chart"></div></div><div id="extreme-cards" class="cards"></div></section>
+<section id="precipitacao" class="section"><div class="panel"><h2>Precipitação extrema persistente — ano civil atual</h2><p class="method">Máximos móveis em 1, 3, 5 e 10 dias. Uma falha de dados quebra a sequência.</p><div id="rolling" class="roll-grid"></div></div><div class="panel"><h2>Ano civil e ano hidrológico</h2><p>O ano civil continua a ser a referência geral da climatologia. Em paralelo, a precipitação é acompanhada no ano hidrológico, de 1 de outubro a 30 de setembro.</p></div></section>
+<section id="ondas" class="section"><div class="grid2"><div class="panel"><h2>Ondas de calor</h2><div id="heatwaves"></div></div><div class="panel"><h2>Ondas de frio</h2><div id="coldwaves"></div></div></div><div class="panel"><p class="method">Critério configurado: pelo menos 6 dias consecutivos com Tmax &gt; normal mensal Tmax +5 °C; para frio, Tmin &lt; normal mensal Tmin −5 °C.</p></div></section>
+<section id="historico" class="section"><div class="panel"><div class="chart-title"><div><h2>Quente / frio × seco / chuvoso</h2><p class="method">Eixo vertical: anomalia da temperatura média. Eixo horizontal: precipitação em % da normal. Pontos vazios assinalam períodos com falhas, mas cobertura ≥95%.</p></div><div class="controls"><select id="q-type"><option value="annual">Anos</option><option value="seasonal">Estações</option><option value="monthly">Meses</option></select><select id="q-detail" style="display:none"></select></div></div><div id="quadrant-chart" class="chart"></div></div></section>
+<section id="boletins-sec" class="section"><div class="panel"><h2>Boletins climatológicos automáticos</h2><p class="method">Arquivo mensal, sazonal e anual em HTML. A exportação PDF pode ser acrescentada depois de validarmos o conteúdo.</p><div id="bulletins" class="bulletin-list"></div><p><a href="boletins/index.html">Ver arquivo completo →</a></p></div></section>
+<section id="metodologia" class="section"><div class="panel"><h2>Qualidade e metodologia</h2><div id="quality" class="quality-grid"></div><p id="live-note" class="method"></p><p class="method"><strong>Comparação “até à data”:</strong> a temperatura é ponderada pelas normais mensais correspondentes aos dias do período. Para totais mensais de precipitação e contagens, a referência parcial é distribuída uniformemente pelos dias do mês apenas para obter a normal comparável até à data.</p><p class="method"><strong>Classificação IPMA:</strong> esta versão não inventa as categorias oficiais “Muito Quente”, “Extremamente Seco”, etc.; para isso faltam os percentis climatológicos P20/P40/P60/P80 e os extremos do período 1991–2020.</p><p class="method"><strong>Vento:</strong> não é reconstruída uma rosa dos ventos histórica a partir do dayfile. A análise detalhada será ativada apenas para o intervalo em que existam logs de intervalo adequados.</p></div></section>
+</main><script src="climate.js"></script></body></html>
