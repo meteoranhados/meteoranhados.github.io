@@ -12,7 +12,7 @@
     <div>
       <p class="eyebrow">Estação Meteorológica de Ranhados</p>
       <h1>Climatologia</h1>
-      <p class="lead">Normal 1991–2020, climatologia própria da estação, ano civil, ano hidrológico, episódios térmicos, índices, histórico, rankings e recordes.</p>
+      <p class="lead">Normal 1991–2020, referência dinâmica da própria estação, ano civil e hidrológico, episódios térmicos, índices, histórico, rankings e recordes.</p>
     </div>
     <div id="generated" class="updated"></div>
   </div>
@@ -52,11 +52,28 @@
 
   <section id="temperatura" class="section">
     <div class="panel">
-      <h2>Evolução térmica do mês atual</h2>
-      <p class="method">Anomalia diária da temperatura média relativamente à normal mensal correspondente. Nesta v0.3 o gráfico já mostra o valor exato ao passar o cursor; a interatividade avançada fica para a v0.4.</p>
-      <div id="daily-temp-chart" class="chart"></div>
+      <div class="chart-title">
+        <div>
+          <h2>Temperatura diária — comparação interativa</h2>
+          <p class="method">Passe o cursor sobre o gráfico para ver os valores exatos. Pode escolher ano, mês e variável e ligar/desligar cada referência na legenda.</p>
+        </div>
+        <div class="controls">
+          <label>Ano<select id="temp-year"></select></label>
+          <label>Mês<select id="temp-month"></select></label>
+          <label>Variável<select id="temp-variable"><option value="tmax">Tmax</option><option value="tmean" selected>T média</option><option value="tmin">Tmin</option></select></label>
+        </div>
+      </div>
+      <div id="temperature-interactive-chart" class="chart large-chart interactive-chart"></div>
     </div>
+
+    <div class="panel">
+      <h2>Evolução mensal do ano selecionado</h2>
+      <p class="method">Média mensal observada, normal 1991–2020 e climatologia mensal da estação.</p>
+      <div id="temperature-monthly-chart" class="chart interactive-chart"></div>
+    </div>
+
     <div id="extreme-cards" class="cards"></div>
+
     <div class="panel">
       <h2>Climatologia mensal da estação</h2>
       <p class="method">Médias dos meses completos e sem falhas já registados. O mês em curso só entra depois de fechar.</p>
@@ -66,14 +83,33 @@
 
   <section id="precipitacao" class="section">
     <div class="panel">
-      <h2>Precipitação extrema persistente — ano civil atual</h2>
+      <div class="chart-title">
+        <div>
+          <h2>Precipitação mensal — comparação interativa</h2>
+          <p class="method">Observado, normal 1991–2020 e climatologia própria da estação. Passe o cursor para valores exatos.</p>
+        </div>
+        <div class="controls"><label>Ano<select id="rain-year"></select></label></div>
+      </div>
+      <div id="rain-interactive-chart" class="chart large-chart interactive-chart"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Precipitação acumulada — ano civil</h2>
+      <p class="method">Acumulado observado, normal 1991–2020 e referência diária da própria estação.</p>
+      <div id="rain-cumulative-chart" class="chart interactive-chart"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Precipitação extrema persistente — ano civil selecionado</h2>
       <p class="method">Máximos móveis em 1, 3, 5 e 10 dias. Uma falha de dados quebra a sequência.</p>
       <div id="rolling" class="roll-grid"></div>
     </div>
+
     <div class="panel">
-      <h2>Precipitação mensal do ano atual</h2>
+      <h2>Precipitação mensal do ano selecionado</h2>
       <div id="rain-month-table" class="table-wrap"></div>
     </div>
+
     <div class="panel">
       <h2>Climatologia de precipitação da estação</h2>
       <p class="method">A precipitação média própria usa apenas meses completos sem falhas; por isso o número de anos utilizados pode variar de mês para mês.</p>

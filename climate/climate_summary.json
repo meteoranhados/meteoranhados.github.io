@@ -1,6 +1,6 @@
 {
-  "engine_version": "0.3.0",
-  "generated_utc": "2026-08-20T15:12:37+00:00",
+  "engine_version": "0.4.0",
+  "generated_utc": "2026-08-20T15:16:42+00:00",
   "station": "Ranhados",
   "reference_period": "1991-2020",
   "source_last_closed_day": "2026-08-19",
@@ -237,6 +237,56 @@
       "heatwave_days": 30.0,
       "coldwave_days": 18.0
     }
+  },
+  "current_year_station_reference_prior_years": {
+    "method": "daily_calendar_reference_prior_years",
+    "description": "Para cada dia de 1 Jan até à data, média dos mesmos dias disponíveis nos anos anteriores; depois agregação diária.",
+    "sample_years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "sample_year_count": 4,
+    "calendar_days_expected": 231,
+    "calendar_days_with_reference": 231,
+    "reference_coverage_pct": 100.0,
+    "daily_sample_count_min": 2,
+    "daily_sample_count_max": 4,
+    "daily_sample_count_mean": 3.94,
+    "observed_reference": {
+      "tmax_mean_c": 20.53,
+      "tmean_c": 13.87,
+      "tmin_mean_c": 7.86,
+      "precip_mm": 428.44,
+      "tropical_nights": 4.33,
+      "frost_days": 23.17,
+      "tmax_ge_25": 76.17,
+      "tmax_ge_30": 44.5,
+      "tmax_gt_35": 12.42,
+      "tmax_ge_40": 0.33,
+      "rain_days": 46.75,
+      "rain_gt_10": 14.5,
+      "rain_gt_20": 5.5,
+      "rain_gt_30": 1.75
+    }
+  },
+  "current_year_difference_vs_station_reference": {
+    "tmax_c": 0.35,
+    "tmean_c": 1.06,
+    "tmin_c": 1.8,
+    "precip_mm": 303.36,
+    "precip_pct_reference": 170.8,
+    "tropical_nights": 1.67,
+    "frost_days": -18.17,
+    "tmax_ge_25": 13.83,
+    "tmax_ge_30": 9.5,
+    "tmax_gt_35": -1.42,
+    "tmax_ge_40": -0.33,
+    "rain_days": 9.25,
+    "rain_gt_10": 13.5,
+    "rain_gt_20": 5.5,
+    "rain_gt_30": 3.25
   },
   "current_hydrological_year": {
     "start": "2025-10-01",
