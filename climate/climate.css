@@ -96,3 +96,31 @@ main{max-width:1160px;padding-top:34px}
 .hero-grid .card:nth-child(1){border-top:3px solid var(--warm)}.hero-grid .card:nth-child(2){border-top:3px solid var(--wet)}.hero-grid .card:nth-child(3){border-top:3px solid #d78355}.hero-grid .card:nth-child(4){border-top:3px solid var(--cold)}
 @media(max-width:900px){.rank-grid{grid-template-columns:1fr}.site-hero{display:block}.update-pill{display:inline-block;margin-top:14px}.hero-tags{margin-bottom:5px}}
 @media(max-width:600px){main{padding-top:22px}.site-hero h1{font-size:38px}.hero-tags{display:none}.tabs{border-radius:13px}.section-heading h2{font-size:22px}.index-picker{padding:9px}.index-choice{font-size:11px;padding:6px 8px}}
+
+/* v0.8 — consolidação semântica */
+:root{
+  --anom-hot:#c95432;
+  --anom-cold:#3f78ae;
+  --rain-observed:#176f8c;
+  --rain-normal:#72946f;
+  --rain-station:#5c86b0;
+  --single-series:#176b87;
+}
+.anom-pos{color:var(--anom-hot)!important;font-weight:850}
+.anom-neg{color:var(--anom-cold)!important;font-weight:850}
+.anom-neutral{color:var(--muted)!important;font-weight:750}
+.thermal-anomaly-panel{border-top:3px solid #b86c58}
+.annual-rain-panel{border-top:3px solid var(--wet)}
+.annual-synthesis{margin-top:2px}
+.semantic-legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:10px;margin-top:8px}
+.semantic-legend span{display:inline-flex;align-items:center;gap:5px}
+.semantic-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+
+/* Desktop navigation does not float over charts. */
+@media(min-width:701px){
+  .tabs{position:static!important;top:auto!important;backdrop-filter:none!important}
+}
+/* On small screens it remains useful as a solid sticky navigation. */
+@media(max-width:700px){
+  .tabs{position:sticky!important;top:0!important;z-index:30;background:rgba(247,250,251,.985)!important;backdrop-filter:blur(8px)}
+}
