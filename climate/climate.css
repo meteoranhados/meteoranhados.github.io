@@ -124,3 +124,29 @@ main{max-width:1160px;padding-top:34px}
 @media(max-width:700px){
   .tabs{position:sticky!important;top:0!important;z-index:30;background:rgba(247,250,251,.985)!important;backdrop-filter:blur(8px)}
 }
+
+/* v0.8.1 */
+:root{
+  --anom-hot:#c4473d;
+  --anom-cold:#3974ad;
+  --temp-observed:#b84b3f;
+  --temp-normal:#d88c7b;
+  --temp-station:#4f7fae;
+  --rain-observed:#2f7fa3;
+  --rain-normal:#6f9a70;
+  --rain-station:#d0a23d;
+}
+/* temperature: blue -> neutral -> red */
+.hm-cold3{background:#2f659e;color:#fff}
+.hm-cold2{background:#5e8abc;color:#fff}
+.hm-cold1{background:#aec5df;color:#25384a}
+.hm-neutral{background:#eef1f2;color:#596771}
+.hm-hot1{background:#e9b8ae;color:#633126}
+.hm-hot2{background:#d87967;color:#fff}
+.hm-hot3{background:#bd483e;color:#fff}
+/* precipitation: dry yellow -> normal green -> wet blue */
+.hm-dry3{background:#d8ad3d;color:#4b3813}
+.hm-dry2{background:#ead28b;color:#564925}
+.hm-rain-normal{background:#b9d2b7;color:#28452b}
+.hm-wet2{background:#77b5b8;color:#173f43}
+.hm-wet3{background:#347aa2;color:#fff}
