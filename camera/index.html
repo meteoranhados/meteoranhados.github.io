@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Câmara — Estação Meteorológica de Ranhados</title>
+  <!-- RANHADOS_GLOBAL_SHELL_CSS -->
+  <link rel="stylesheet" href="/integration/ranhados-shell.css">
+</head>
+<body>
+<!-- RANHADOS_GLOBAL_SHELL_START -->
+<nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
+  <div class="ranhados-shell__inner">
+    <a class="ranhados-shell__brand" href="/index.htm">Estação Meteorológica de Ranhados</a>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/index.htm">Agora</a><a class="ranhados-shell__link" href="/trends.htm">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link is-active" href="/camera/">Câmara</a></div>
+  </div>
+</nav>
+<!-- RANHADOS_GLOBAL_SHELL_END -->
+<main class="ranhados-camera">
+  <p style="font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#0f6078;font-size:11px">Estação Meteorológica de Ranhados</p>
+  <h1>Câmara meteorológica</h1>
+  <p>Imagem mais recente e timelapses gerados automaticamente pela estação.</p>
+  <div class="ranhados-camera__grid">
+    <div class="ranhados-camera__card">
+      <h2>Imagem mais recente</h2>
+      <img id="latest-camera" src="latest.jpg" alt="Imagem mais recente da câmara meteorológica de Ranhados">
+    </div>
+    <div class="ranhados-camera__card">
+      <h2>Arquivo rápido</h2>
+      <div class="ranhados-camera__links"><a href="monthly.mp4">Vídeo do mês →</a><a href="timelapse.mp4">Timelapse completo →</a></div>
+    </div>
+  </div>
+  <div class="ranhados-camera__card"><h2>Vídeo do mês</h2><video controls preload="metadata" src="monthly.mp4"></video></div><div class="ranhados-camera__card"><h2>Timelapse completo</h2><video controls preload="metadata" src="timelapse.mp4"></video></div>
+</main>
+<script>
+setInterval(() => {
+  const img = document.getElementById('latest-camera');
+  if (img) img.src = 'latest.jpg?t=' + Date.now();
+}, 300000);
+</script>
+</body>
+</html>
