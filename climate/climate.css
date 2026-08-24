@@ -150,3 +150,88 @@ main{max-width:1160px;padding-top:34px}
 .hm-rain-normal{background:#b9d2b7;color:#28452b}
 .hm-wet2{background:#77b5b8;color:#173f43}
 .hm-wet3{background:#347aa2;color:#fff}
+
+/* ================================================================
+   v0.9 — robustez + design consolidado
+   ================================================================ */
+:root{
+  --page:#edf3f6;
+  --surface:#ffffff;
+  --surface-soft:#f7fafb;
+  --ink:#182732;
+  --muted:#687985;
+  --line:#dbe5ea;
+  --accent:#0f6078;
+  --accent2:#0a5269;
+  --quality-warn:#b8872e;
+  --quality-warn-soft:#fff5d9;
+  --shadow-soft:0 10px 32px rgba(31,58,72,.055);
+}
+body{background:linear-gradient(180deg,#edf3f6 0,#f4f7f8 46%,#eef3f5 100%);color:var(--ink)}
+main{max-width:1160px;margin:0 auto;padding:38px 24px 70px}
+.site-hero{padding:0 4px 22px;border-bottom:1px solid rgba(91,115,128,.12);margin-bottom:18px}
+.site-hero h1{letter-spacing:-.035em;line-height:1.02}
+.site-hero .lead{max-width:700px;line-height:1.55}
+.hero-tags span{background:rgba(255,255,255,.72);border:1px solid var(--line);box-shadow:none}
+.tabs{border:1px solid rgba(111,134,146,.18);box-shadow:0 5px 20px rgba(37,64,78,.035);padding:5px;background:rgba(255,255,255,.80)}
+.tab{padding:10px 15px;font-weight:760;transition:background .16s ease,color .16s ease,transform .16s ease}
+.tab:hover{transform:translateY(-1px)}
+.tab.active{box-shadow:0 4px 12px rgba(15,96,120,.13)}
+.section{padding-top:16px}
+.section-heading{padding:10px 4px 14px;margin-bottom:12px;border-bottom:1px solid rgba(93,116,128,.13)}
+.section-heading h2{letter-spacing:-.025em}
+.panel{border:1px solid var(--line);box-shadow:var(--shadow-soft);border-radius:15px;background:rgba(255,255,255,.96)}
+.panel h2{letter-spacing:-.018em}
+.card,.context-card{border:1px solid var(--line);box-shadow:none;background:linear-gradient(180deg,#fff,#fbfcfd)}
+.hero-grid .card{min-height:114px}
+.hero-grid .card b{font-size:25px;letter-spacing:-.025em}
+.context-card{min-height:132px}
+.context-card b{font-size:25px;letter-spacing:-.025em}
+.controls label{font-weight:700;color:#657681}
+select{border:1px solid #cfdce2;background:#fff;box-shadow:none}
+.chart{margin-top:8px}
+.large-chart{min-height:410px}
+.chart svg{overflow:visible}
+.chart-legend{margin:7px 0 12px}
+.legend-btn{box-shadow:none;border-color:#d8e2e7;background:#fff}
+table{border-collapse:separate;border-spacing:0;width:100%}
+tbody tr:nth-child(even) td{background:#fafcfd}
+tbody tr:hover td{background:#f4f8fa}
+th{background:#f7fafb;color:#5f707b;font-size:11px;letter-spacing:.025em}
+td,th{border-bottom:1px solid #e6edf0}
+.disclosure summary{font-weight:800}
+
+/* Editorial synthesis on the overview page. */
+.overview-insight{margin:2px 0 14px;padding:17px 20px;border-radius:14px;border:1px solid #d6e4ea;background:linear-gradient(100deg,rgba(255,255,255,.96),rgba(241,248,250,.96));box-shadow:0 7px 24px rgba(39,70,84,.045);font-size:16px;line-height:1.55;color:#344854}
+.overview-insight strong{color:var(--ink);font-weight:860}
+.overview-insight .insight-main{font-size:18px;letter-spacing:-.012em}
+.overview-insight .insight-sub{display:block;margin-top:4px;color:var(--muted);font-size:13px}
+
+/* Section-level error boundary: a single failed module never blanks the site. */
+.section-error{margin:14px 0;padding:14px 16px;border:1px solid #e2c57e;border-left:4px solid var(--quality-warn);border-radius:10px;background:#fff9e9;color:#665325;font-size:13px}
+.section-error b{display:block;color:#4f411f;margin-bottom:3px}
+
+/* Thermal picker is deliberately criterion-first: exact temperatures, not nicknames. */
+.index-picker{gap:8px}
+.index-choice{font-variant-numeric:tabular-nums;font-weight:800;background:#fff;border-color:#d7e1e6;padding:8px 11px}
+.index-choice:has(input:checked){border-color:#b9594e;background:#fff6f4;color:#7e302b;box-shadow:0 0 0 2px rgba(185,89,78,.07)}
+.index-choice input{accent-color:#b84b3f}
+
+/* Quality styling: keep the data visible; mark caveats with a clear outline. */
+.quality-chip{position:relative;padding-left:14px}
+.quality-chip:before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:3px;background:#477e91}
+.quality-chip.warn:before{background:#477e91;border:2px solid var(--quality-warn);box-sizing:border-box}
+.annual-bar-note{color:var(--muted);font-size:11px;margin-top:7px}
+
+/* Temperature: red for warm, blue for cold. */
+.temperature-heading .section-kicker{color:#a54338}
+/* Precipitation: dry yellow, normal green, wet blue. */
+.rain-heading .section-kicker{color:#277a91}
+/* Historical synthesis gets more breathing room. */
+.annual-synthesis .panel{min-height:365px}
+.heatmap-wrap{padding-top:4px}
+.rank-panel{overflow:hidden}
+.rank-title h2{letter-spacing:-.015em}
+
+@media(max-width:900px){main{padding:26px 16px 50px}.grid2,.annual-synthesis{grid-template-columns:1fr}.hero-grid,.context-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){main{padding:18px 10px 40px}.hero-grid,.context-grid,.cards{grid-template-columns:1fr}.overview-insight{padding:14px 15px}.site-hero h1{font-size:38px}}

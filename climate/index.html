@@ -28,6 +28,7 @@
   </nav>
 
   <section id="resumo" class="section active">
+    <div id="overview-insight" class="overview-insight" aria-live="polite"></div>
     <div id="hero" class="hero-grid"></div>
     <div class="panel"><div class="section-title-row"><div><h2 id="year-context-title">Ano em contexto</h2><p class="method">Quatro indicadores-chave, sempre com a referência correspondente ao mesmo período.</p></div><span class="badge">Normal 1991–2020 · estação</span></div><div id="year-context" class="context-grid"></div></div>
     <div id="hydro-summary"></div>
@@ -47,7 +48,7 @@
     </div>
     <div class="panel"><h2>Evolução mensal do ano selecionado</h2><div id="temperature-monthly-chart" class="chart interactive-chart"></div></div>
     <div class="panel">
-      <div class="chart-title"><div><h2>Índices térmicos entre anos</h2><p id="thermal-index-note" class="method">Selecione até três indicadores para comparar simultaneamente.</p></div>
+      <div class="chart-title"><div><h2>Índices térmicos entre anos</h2><p id="thermal-index-note" class="method">Selecione até três limiares de temperatura para comparar simultaneamente.</p></div>
       <div class="controls"><label>Comparação<select id="thermal-period"><option value="same">Até à mesma data</option><option value="full">Anos completos</option></select></label></div></div>
       <div id="thermal-index-picker" class="index-picker" aria-label="Selecionar índices térmicos"></div>
       <div id="thermal-index-chart" class="chart interactive-chart"></div>
@@ -93,8 +94,8 @@
       <div class="panel thermal-anomaly-panel"><h2>Anomalia térmica anual</h2><p id="annual-anomaly-note" class="method">Comparação na mesma janela temporal.</p><div id="annual-anomaly-chart" class="chart interactive-chart"></div></div>
       <div class="panel annual-rain-panel"><h2>Precipitação anual · % da normal</h2><p id="annual-rain-note" class="method">Comparação na mesma janela temporal.</p><div id="annual-rain-pct-chart" class="chart interactive-chart"></div></div>
     </div>
-    <div class="panel"><div class="chart-title"><div><h2>Comparação entre anos</h2><p id="annual-comparison-note" class="method">Escolha uma métrica e compare todos os anos na mesma janela temporal. Cada ano mantém a mesma cor em toda a área histórica.</p></div><div class="controls"><label>Período<select id="annual-period"><option value="same">Até à mesma data</option><option value="full">Anos completos</option></select></label><label>Indicador<select id="annual-metric"></select></label></div></div><div id="annual-comparison-chart" class="chart large-chart interactive-chart"></div></div>
-    <div class="panel"><div class="chart-title"><div><h2>Quente / frio × seco / chuvoso</h2><p class="method">Anomalia da T média × precipitação em % da normal. Pontos vazios assinalam qualidade incompleta.</p></div><div class="controls"><label>Período<select id="q-type"><option value="annual">Anos</option><option value="seasonal">Estações</option><option value="monthly">Meses</option></select></label><label id="q-detail-label" class="hidden">Detalhe<select id="q-detail"></select></label></div></div><div id="quadrant-chart" class="chart large-chart"></div></div>
+    <div class="panel"><div class="chart-title"><div><h2>Comparação entre anos</h2><p id="annual-comparison-note" class="method">Escolha uma métrica e compare todos os anos na mesma janela temporal. Uma única métrica usa uma cor coerente; períodos com ressalva recebem contorno dourado.</p></div><div class="controls"><label>Período<select id="annual-period"><option value="same">Até à mesma data</option><option value="full">Anos completos</option></select></label><label>Indicador<select id="annual-metric"></select></label></div></div><div id="annual-comparison-chart" class="chart large-chart interactive-chart"></div></div>
+    <div class="panel"><div class="chart-title"><div><h2>Quente / frio × seco / chuvoso</h2><p class="method">Anomalia da T média × precipitação em % da normal. Pontos com contorno dourado assinalam qualidade incompleta.</p></div><div class="controls"><label>Período<select id="q-type"><option value="annual">Anos</option><option value="seasonal">Estações</option><option value="monthly">Meses</option></select></label><label id="q-detail-label" class="hidden">Detalhe<select id="q-detail"></select></label></div></div><div id="quadrant-chart" class="chart large-chart"></div></div>
     <div class="grid2"><div class="panel"><h2>Matriz de anomalias térmicas</h2><div id="temperature-heatmap" class="heatmap-wrap"></div></div><div class="panel"><h2>Matriz de precipitação</h2><div id="rain-heatmap" class="heatmap-wrap"></div></div></div>
     <div class="panel"><h2>Referência própria da estação</h2><p class="method">Série iniciada em 2022. É uma referência dinâmica, não uma normal climatológica de 30 anos.</p><div id="station-context-cards" class="cards compact"></div></div>
     <details class="panel disclosure"><summary>Ver tabela completa da referência mensal da estação</summary><div id="station-climate-table" class="table-wrap"></div></details>
@@ -105,7 +106,7 @@
     <div class="panel"><h2>Qualidade dos dados</h2><div id="quality" class="quality-grid"></div><p id="live-note" class="method"></p></div>
     <div class="panel"><h2>Regras de completude</h2><p class="method"><strong>Temperatura mensal:</strong> não se aceita um apuramento com mais de 3 falhas consecutivas ou mais de 5 falhas no mês. <strong>Precipitação mensal da estação:</strong> como não fazemos preenchimento por modelo/reanálise, um total entra na referência própria apenas com todos os dias presentes.</p></div>
     <div class="panel"><h2>Definições dos índices</h2><p class="method"><strong>Limiar de 35 °C e chuva forte:</strong> o site apresenta apenas Tmax &gt;35 °C e P &gt;10/&gt;20/&gt;30 mm, para coincidir exatamente com a normal 1991–2020 fornecida para Ranhados.</p><div id="definitions-table" class="table-wrap"></div><p class="method">O IPMA apresenta atualmente duas convenções diferentes para o limiar de 0 °C: as fichas climatológicas 1991–2020 usam TN &lt; 0 °C, enquanto a legenda do mapa dinâmico apresenta MNDTN0 como TN ≤ 0 °C. O motor calcula as duas e só compara com a normal quando a definição coincide.</p></div>
-    <div class="panel"><h2>Leitura da série</h2><p class="method">A referência da estação é curta (desde 2022). Serve para contexto local e comparação operacional, não para inferir por si só uma tendência climática de longo prazo.</p><p class="method">Vento detalhado será acrescentado apenas para o período em que existam logs de intervalo adequados.</p></div>
+    <div class="panel"><h2>Leitura da série</h2><p class="method">A média/referência da estação é curta (desde 2022). Serve para contexto local e comparação operacional com o mesmo período, não para inferir por si só uma tendência climática de longo prazo.</p><p class="method">Vento detalhado será acrescentado apenas para o período em que existam logs de intervalo adequados.</p></div>
   </section>
 </main>
 <script src="climate.js"></script>
