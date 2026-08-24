@@ -18,6 +18,7 @@
 </nav>
 <!-- RANHADOS_GLOBAL_SHELL_END -->
 <main>
+  <div id="global-warning-slot" class="global-warning-slot hidden" aria-live="polite"></div>
   <header class="site-hero">
     <div class="hero-copy">
       <p class="eyebrow">Estação Meteorológica de Ranhados</p>
@@ -38,9 +39,11 @@
     <button class="tab" data-target="metodologia">Metodologia</button>
   </nav>
 
-  <section id="resumo" class="section active">
-    <div id="overview-insight" class="overview-insight" aria-live="polite"></div>
-    <div id="hero" class="hero-grid"></div>
+  <section id="resumo" class="section active" data-section-theme="overview">
+    <div class="overview-stage">
+      <div class="overview-stage-copy"><span class="section-kicker">Leitura rápida</span><div id="overview-insight" class="overview-insight" aria-live="polite"></div></div>
+      <div id="hero" class="hero-grid"></div>
+    </div>
     <div class="panel"><div class="section-title-row"><div><h2 id="year-context-title">Ano em contexto</h2><p class="method">Quatro indicadores-chave, sempre com a referência correspondente ao mesmo período.</p></div><span class="badge">Normal 1991–2020 · estação</span></div><div id="year-context" class="context-grid"></div></div>
     <div id="hydro-summary"></div>
     <a class="bulletin-promo" href="boletins/">
@@ -54,7 +57,7 @@
     <details class="panel disclosure"><summary>Comparação detalhada do mês atual</summary><p class="method">Observado, normal 1991–2020 e os mesmos dias dos anos anteriores da estação.</p><div id="current-month-references" class="table-wrap"></div></details>
   </section>
 
-  <section id="temperatura" class="section">
+  <section id="temperatura" class="section" data-section-theme="temperature">
     <div class="section-heading temperature-heading"><p class="section-kicker">Temperatura</p><h2>Do dia ao histórico térmico</h2><p>Explore a evolução diária, as médias mensais, os índices térmicos e a referência própria da estação.</p></div>
     <div class="panel">
       <div class="chart-title"><div><h2>Temperatura diária</h2><p class="method">Observado, normal 1991–2020 e referência diária da estação. Passe o cursor para os valores exatos.</p></div>
@@ -72,19 +75,19 @@
     <details class="panel disclosure"><summary>Ver climatologia mensal de temperatura da estação</summary><div id="station-temperature-table" class="table-wrap"></div></details>
   </section>
 
-  <section id="precipitacao" class="section">
+  <section id="precipitacao" class="section" data-section-theme="rain">
     <div class="section-heading rain-heading"><p class="section-kicker">Precipitação</p><h2>Quantidade, persistência e frequência</h2><p>Totais mensais, acumulados, ano hidrológico e frequência de dias de precipitação intensa.</p></div>
     <div class="panel"><div class="chart-title"><div><h2>Precipitação mensal</h2><p class="method">Observado, normal 1991–2020 e referência mensal da estação.</p></div><div class="controls"><label>Ano<select id="rain-year"></select></label></div></div><div id="rain-interactive-chart" class="chart large-chart interactive-chart"></div></div>
     <div class="panel"><h2>Precipitação acumulada — ano selecionado</h2><div id="rain-cumulative-chart" class="chart interactive-chart"></div></div>
     <div class="grid2"><div class="panel"><h2>Ano hidrológico atual</h2><div id="hydro-chart" class="chart interactive-chart"></div></div><div class="panel"><h2>Máximos persistentes</h2><div id="rolling" class="roll-grid"></div></div></div>
-    <div class="panel hydro-history-panel"><div class="chart-title"><div><p class="section-kicker">Ano hidrológico</p><h2>Comparação entre anos hidrológicos</h2><p id="hydro-history-note" class="method">Todos os anos são comparados na mesma fase do ciclo iniciado a 1 de outubro.</p></div><div class="controls"><label>Período<select id="hydro-period"><option value="same">Até à mesma data</option><option value="full">Anos hidrológicos completos</option></select></label><label>Indicador<select id="hydro-metric"><option value="pct">% da normal</option><option value="total">Precipitação acumulada</option></select></label></div></div><div id="hydro-history-chart" class="chart interactive-chart"></div></div>
+    <div class="panel hydro-history-panel"><div class="chart-title"><div><p class="section-kicker">Ano hidrológico</p><h2>Comparação entre anos hidrológicos</h2><p id="hydro-history-note" class="method">Todos os anos são comparados na mesma fase do ciclo iniciado a 1 de outubro.</p></div><div class="controls"><label>Período<select id="hydro-period"><option value="same">Até à mesma data</option><option value="full">Anos hidrológicos completos</option></select></label><label>Indicador<select id="hydro-metric"><option value="departure">Desvio da normal (%)</option><option value="total">Precipitação acumulada (mm)</option></select></label></div></div><div id="hydro-history-chart" class="chart interactive-chart"></div></div>
     <div class="panel"><div class="chart-title"><div><h2>Curvas acumuladas dos anos hidrológicos</h2><p id="hydro-curves-note" class="method">Trajetórias acumuladas até à mesma data; tons de azul distinguem os anos e a normal surge a verde tracejado.</p></div></div><div id="hydro-curves-chart" class="chart large-chart interactive-chart"></div></div>
     <div class="panel"><div class="chart-title"><div><h2>Dias de precipitação entre anos</h2><p id="rain-index-note" class="method"></p></div><div class="controls"><label>Comparação<select id="rain-period"><option value="same">Até à mesma data</option><option value="full">Anos completos</option></select></label><label>Indicador<select id="rain-index"></select></label></div></div><div id="rain-index-chart" class="chart interactive-chart"></div></div>
     <details class="panel disclosure"><summary>Ver dados mensais de precipitação</summary><div id="rain-month-table" class="table-wrap"></div></details>
     <details class="panel disclosure"><summary>Ver climatologia de precipitação da estação</summary><div id="station-rain-table" class="table-wrap"></div></details>
   </section>
 
-  <section id="extremos" class="section">
+  <section id="extremos" class="section" data-section-theme="extremes">
     <div class="section-heading extremes-heading"><p class="section-kicker">Extremos e ondas</p><h2>Eventos que se destacam na série</h2><p>Recordes climatológicos selecionados, ondas confirmadas, episódios subcríticos e rankings.</p></div>
     <div id="record-cards" class="cards"></div>
     <div id="wave-summary" class="cards compact wave-summary"></div>
@@ -106,7 +109,7 @@
     </div>
   </section>
 
-  <section id="historico" class="section">
+  <section id="historico" class="section" data-section-theme="history">
     <div class="section-heading history-heading"><p class="section-kicker">Histórico</p><h2>Como os anos e os meses se comparam</h2><p>Comparações anuais, quadrantes térmico-hídricos, matrizes mensais, rankings equivalentes e referência recente da estação.</p></div>
     <div class="grid2 annual-synthesis">
       <div class="panel thermal-anomaly-panel"><h2>Anomalia térmica anual</h2><p id="annual-anomaly-note" class="method">Comparação na mesma janela temporal.</p><div id="annual-anomaly-chart" class="chart interactive-chart"></div></div>
@@ -119,10 +122,10 @@
     <details class="panel disclosure"><summary>Ver tabela completa da referência mensal da estação</summary><div id="station-climate-table" class="table-wrap"></div></details>
   </section>
 
-  <section id="metodologia" class="section">
+  <section id="metodologia" class="section" data-section-theme="method">
     <div class="section-heading method-heading"><p class="section-kicker">Metodologia</p><h2>Como são calculados e validados os indicadores</h2><p>Critérios de completude, definições e limitações da série.</p></div>
     <div class="panel"><h2>Qualidade dos dados</h2><div id="quality" class="quality-grid"></div><p id="live-note" class="method"></p></div>
-    <div class="panel"><h2>Regras de completude</h2><p class="method"><strong>Temperatura mensal:</strong> não se aceita um apuramento com mais de 3 falhas consecutivas ou mais de 5 falhas no mês. <strong>Precipitação mensal da estação:</strong> como não fazemos preenchimento por modelo/reanálise, um total entra na referência própria apenas com todos os dias presentes.</p></div>
+    <div class="panel"><h2>Regras de completude</h2><p class="method"><strong>Temperatura mensal:</strong> mantém a regra estrita: máximo de 5 falhas no total e 3 consecutivas. <strong>Temperatura anual:</strong> usa uma regra própria de cobertura ≥95%; com falhas, o ano continua visível com contorno de ressalva e a normal térmica usa apenas as mesmas datas observadas. <strong>Precipitação:</strong> continua conservadora — não se estima chuva em dias em falta.</p></div>
     <div class="panel"><h2>Definições dos índices</h2><p class="method"><strong>Limiar de 35 °C e chuva forte:</strong> o site apresenta apenas Tmax &gt;35 °C e P &gt;10/&gt;20/&gt;30 mm, para coincidir exatamente com a normal 1991–2020 fornecida para Ranhados.</p><div id="definitions-table" class="table-wrap"></div><p class="method">O IPMA apresenta atualmente duas convenções diferentes para o limiar de 0 °C: as fichas climatológicas 1991–2020 usam TN &lt; 0 °C, enquanto a legenda do mapa dinâmico apresenta MNDTN0 como TN ≤ 0 °C. O motor calcula as duas e só compara com a normal quando a definição coincide.</p></div>
     <div class="panel"><h2>Leitura da série</h2><p class="method">A média/referência da estação é curta (desde 2022). Serve para contexto local e comparação operacional com o mesmo período, não para inferir por si só uma tendência climática de longo prazo.</p><p class="method"><strong>Ano hidrológico:</strong> 1 de outubro–30 de setembro. Nas comparações com o ano em curso, todos os anos anteriores são cortados no mesmo dia do ciclo. Qualquer falha diária de precipitação é assinalada como ressalva.</p><p class="method">Vento detalhado será acrescentado apenas para o período em que existam logs de intervalo adequados.</p></div>
   </section>

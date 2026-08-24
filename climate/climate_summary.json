@@ -1,6 +1,6 @@
 {
-  "engine_version": "1.1.0",
-  "generated_utc": "2026-08-24T15:43:51+00:00",
+  "engine_version": "1.2.0",
+  "generated_utc": "2026-08-24T15:49:14+00:00",
   "station": "Ranhados",
   "reference_period": "1991-2020",
   "source_last_closed_day": "2026-08-23",
@@ -247,6 +247,13 @@
         "end": "2026-02-05"
       }
     },
+    "temperature_normal_observed_dates": {
+      "tmax_mean_c": 18.96,
+      "tmean_c": 12.95,
+      "tmin_mean_c": 6.95,
+      "days_matched": 235,
+      "method": "normal mensal 1991–2020 ponderada apenas pelas datas observadas"
+    },
     "year": 2026,
     "calendar_period_complete": false,
     "annual_reference": {
@@ -258,9 +265,14 @@
       "temperature_valid_months": 7,
       "precipitation_valid_months": 7,
       "temperature_year_valid": false,
+      "temperature_complete": false,
+      "temperature_caveat": false,
+      "temperature_min_coverage_pct": 95.0,
       "precipitation_year_valid": false,
+      "precipitation_complete": false,
       "quadrant_year_valid": false,
       "missing_day_count": 0,
+      "coverage_pct": 100.0,
       "note": "Ano em curso: comparar por período equivalente."
     }
   },

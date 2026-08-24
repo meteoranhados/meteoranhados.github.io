@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-24T13:22:39+00:00",
+  "generated_utc": "2026-08-24T15:49:14+00:00",
   "definitions": {
     "tmax_ge_25": {
       "label": "Dias de verão",
@@ -93,10 +93,15 @@
         "temperature_valid_months": 12,
         "precipitation_valid_months": 10,
         "temperature_year_valid": true,
+        "temperature_complete": false,
+        "temperature_caveat": true,
+        "temperature_min_coverage_pct": 95.0,
         "precipitation_year_valid": false,
+        "precipitation_complete": false,
         "quadrant_year_valid": false,
         "missing_day_count": 4,
-        "note": "Temperatura anual requer 12 apuramentos mensais térmicos válidos; precipitação anual da estação requer 12 totais mensais completos."
+        "coverage_pct": 98.9,
+        "note": "Temperatura anual utilizável com cobertura >= 95% e normal térmica ajustada às datas observadas; falhas recebem ressalva. Precipitação anual só é completa sem dias em falta."
       },
       "observed": {
         "tropical_nights": 4,
@@ -133,11 +138,16 @@
         "period_status": "complete",
         "temperature_valid_months": 11,
         "precipitation_valid_months": 10,
-        "temperature_year_valid": false,
+        "temperature_year_valid": true,
+        "temperature_complete": false,
+        "temperature_caveat": true,
+        "temperature_min_coverage_pct": 95.0,
         "precipitation_year_valid": false,
+        "precipitation_complete": false,
         "quadrant_year_valid": false,
         "missing_day_count": 8,
-        "note": "Temperatura anual requer 12 apuramentos mensais térmicos válidos; precipitação anual da estação requer 12 totais mensais completos."
+        "coverage_pct": 97.8,
+        "note": "Temperatura anual utilizável com cobertura >= 95% e normal térmica ajustada às datas observadas; falhas recebem ressalva. Precipitação anual só é completa sem dias em falta."
       },
       "observed": {
         "tropical_nights": 0,
@@ -174,11 +184,16 @@
         "period_status": "complete",
         "temperature_valid_months": 11,
         "precipitation_valid_months": 8,
-        "temperature_year_valid": false,
+        "temperature_year_valid": true,
+        "temperature_complete": false,
+        "temperature_caveat": true,
+        "temperature_min_coverage_pct": 95.0,
         "precipitation_year_valid": false,
+        "precipitation_complete": false,
         "quadrant_year_valid": false,
         "missing_day_count": 16,
-        "note": "Temperatura anual requer 12 apuramentos mensais térmicos válidos; precipitação anual da estação requer 12 totais mensais completos."
+        "coverage_pct": 95.6,
+        "note": "Temperatura anual utilizável com cobertura >= 95% e normal térmica ajustada às datas observadas; falhas recebem ressalva. Precipitação anual só é completa sem dias em falta."
       },
       "observed": {
         "tropical_nights": 4,
@@ -216,10 +231,15 @@
         "temperature_valid_months": 12,
         "precipitation_valid_months": 9,
         "temperature_year_valid": true,
+        "temperature_complete": false,
+        "temperature_caveat": true,
+        "temperature_min_coverage_pct": 95.0,
         "precipitation_year_valid": false,
+        "precipitation_complete": false,
         "quadrant_year_valid": false,
         "missing_day_count": 4,
-        "note": "Temperatura anual requer 12 apuramentos mensais térmicos válidos; precipitação anual da estação requer 12 totais mensais completos."
+        "coverage_pct": 98.9,
+        "note": "Temperatura anual utilizável com cobertura >= 95% e normal térmica ajustada às datas observadas; falhas recebem ressalva. Precipitação anual só é completa sem dias em falta."
       },
       "observed": {
         "tropical_nights": 10,
@@ -257,9 +277,14 @@
         "temperature_valid_months": 7,
         "precipitation_valid_months": 7,
         "temperature_year_valid": false,
+        "temperature_complete": false,
+        "temperature_caveat": false,
+        "temperature_min_coverage_pct": 95.0,
         "precipitation_year_valid": false,
+        "precipitation_complete": false,
         "quadrant_year_valid": false,
         "missing_day_count": 0,
+        "coverage_pct": 100.0,
         "note": "Ano em curso: comparar por período equivalente."
       },
       "observed": {
