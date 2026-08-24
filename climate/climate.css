@@ -235,3 +235,14 @@ td,th{border-bottom:1px solid #e6edf0}
 
 @media(max-width:900px){main{padding:26px 16px 50px}.grid2,.annual-synthesis{grid-template-columns:1fr}.hero-grid,.context-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){main{padding:18px 10px 40px}.hero-grid,.context-grid,.cards{grid-template-columns:1fr}.overview-insight{padding:14px 15px}.site-hero h1{font-size:38px}}
+
+/* ================================================================
+   v0.10 — fecho do conteúdo histórico/hidrológico
+   ================================================================ */
+.hydro-history-panel{border-top:3px solid var(--rain-observed)}
+.rank-filter-panel{padding-top:16px;padding-bottom:16px;background:linear-gradient(100deg,#fff,#f8fbfc)}
+.rank-filter-panel .chart-title{align-items:end}
+.hydro-history-panel .section-kicker,.rank-filter-panel .section-kicker{margin-bottom:4px}
+#hydro-curves-chart .chart-legend{gap:6px}
+#hydro-curves-chart .legend-btn{font-size:11px;padding:5px 8px}
+@media(max-width:700px){.rank-filter-panel .chart-title{align-items:start}}
