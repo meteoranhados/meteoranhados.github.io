@@ -251,3 +251,40 @@ td,th{border-bottom:1px solid #e6edf0}
 .inline-link{color:var(--accent2);font-weight:800;text-decoration:none;white-space:nowrap}.inline-link:hover{text-decoration:underline}
 .climate-footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:28px 3px 0;padding:18px 4px 0;border-top:1px solid rgba(93,116,128,.16);font-size:11px;color:var(--muted)}
 .climate-footer span:first-child{font-weight:850;color:#455a66}
+
+
+/* ================================================================
+   v1.1 — boletins climatológicos
+   ================================================================ */
+.tab-link{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--panel);padding:10px 15px;border-radius:999px;cursor:pointer;font-weight:760;color:var(--ink);text-decoration:none;transition:background .16s ease,color .16s ease,transform .16s ease}
+.tab-link:hover{transform:translateY(-1px);background:#eef6f8;color:var(--accent2)}
+.bulletin-promo{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:15px;padding:18px 20px;border:1px solid #d4e2e7;border-radius:15px;background:linear-gradient(110deg,#fff,#f0f7f9);color:var(--ink);text-decoration:none;box-shadow:var(--shadow-soft)}
+.bulletin-promo h2{margin:2px 0 3px}.bulletin-promo p{margin:0;color:var(--muted);max-width:760px}.bulletin-promo strong{color:var(--accent2);white-space:nowrap}
+.bulletin-v11{max-width:1160px}
+.bulletin-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.bulletin-actions .back{margin:0}.bulletin-actions button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;color:var(--accent2);font-weight:800;cursor:pointer}
+.bulletin-cover{background:linear-gradient(115deg,#fff,#f3f8fa);box-shadow:var(--shadow-soft)}
+.bulletin-cover h1{font-size:clamp(30px,4vw,48px)}
+.bulletin-verdict{font-size:17px!important;font-weight:800;color:#40535e!important;margin:12px 0 0!important}
+.bulletin-badges{display:flex;flex-direction:column;gap:8px;align-items:flex-end}.badge.station{background:#eef3fb;color:#4f6e9a}
+.bulletin-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:15px 0}
+.bulletin-kpi{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;min-height:112px}
+.bulletin-kpi:before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#7e919d}
+.bulletin-kpi.thermal:before,.bulletin-kpi.hot:before{background:#c4473d}.bulletin-kpi.cold:before{background:#3974ad}.bulletin-kpi.rain:before{background:#2f7fa3}
+.bulletin-kpi span,.bulletin-extremes span,.rank-chip span{display:block;color:var(--muted);font-size:12px;font-weight:750}.bulletin-kpi b{display:block;margin:4px 0 3px;font-size:25px;letter-spacing:-.025em}.bulletin-kpi small{color:var(--muted)}
+.bulletin-ranks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 15px}.rank-chip{background:#fff;border:1px solid var(--line);border-left:4px solid #8095a1;border-radius:12px;padding:13px 15px}.rank-chip.thermal{border-left-color:#c4473d}.rank-chip.rain{border-left-color:#2f7fa3}.rank-chip b{display:block;margin-top:3px;font-size:16px}
+.bulletin-grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}.bulletin-chart{overflow:hidden}.bulletin-svg{width:100%;height:auto;display:block}
+.bulletin-extremes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.bulletin-extremes>div{border:1px solid var(--line);border-radius:11px;padding:13px;background:#fbfcfd}.bulletin-extremes b{display:block;font-size:21px;margin:4px 0}.bulletin-extremes small{color:var(--muted)}
+.quality-outline{display:inline-flex;padding:3px 7px;border:2px solid var(--quality-warn);border-radius:7px;color:#71591e;font-size:11px;font-weight:800;background:#fff}
+.bulletin-archive{max-width:1120px}.bulletin-archive-head{margin-bottom:20px}.bulletin-archive-head h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.04em;margin:0}.bulletin-latest{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px;margin:10px 0 24px;border-radius:16px;border:1px solid #cfdfe5;background:linear-gradient(110deg,#fff,#eef7f9);text-decoration:none;color:var(--ink)}.bulletin-latest span{font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.08em;color:var(--accent2)}.bulletin-latest h2{margin:3px 0}.bulletin-latest p{margin:0;color:var(--muted)}.bulletin-latest>strong{color:var(--accent2);white-space:nowrap}
+.bulletin-year{margin-top:24px}.bulletin-year>h2{font-size:20px;margin:0 0 10px}.bulletin-archive-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.bulletin-archive-grid.annuals{grid-template-columns:repeat(4,minmax(0,1fr))}
+.bulletin-archive-card{display:block;border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-decoration:none;color:var(--ink);background:#fff;transition:transform .15s ease,border-color .15s ease}.bulletin-archive-card:hover{transform:translateY(-2px);border-color:#a9c4cf}.bulletin-archive-card span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;font-weight:850;letter-spacing:.06em}.bulletin-archive-card b{display:block;font-size:17px;margin:2px 0}.bulletin-archive-card small{color:var(--muted)}.bulletin-archive-card.annual{border-top:3px solid var(--accent2)}
+@media(max-width:900px){.bulletin-kpis,.bulletin-archive-grid,.bulletin-archive-grid.annuals{grid-template-columns:repeat(2,1fr)}.bulletin-grid2{grid-template-columns:1fr}}
+@media(max-width:620px){.bulletin-promo,.bulletin-latest,.bulletin-head,.bulletin-actions{align-items:flex-start;flex-direction:column}.bulletin-badges{align-items:flex-start}.bulletin-kpis,.bulletin-ranks,.bulletin-extremes,.bulletin-archive-grid,.bulletin-archive-grid.annuals{grid-template-columns:1fr}}
+@media print{
+  .ranhados-shell,.bulletin-actions,.back{display:none!important}
+  body{background:#fff!important}.bulletin-v11{max-width:none;padding:0!important}
+  .panel,.bulletin-kpi,.bulletin-head{box-shadow:none!important;break-inside:avoid}
+  .bulletin-grid2{grid-template-columns:1fr 1fr}
+  a{color:inherit;text-decoration:none}
+}
