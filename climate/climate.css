@@ -298,3 +298,26 @@ body{background:radial-gradient(circle at 8% 0%,rgba(67,130,157,.10),transparent
 .section-heading{position:relative;overflow:hidden;margin:8px 0 18px;padding:22px 24px;border:0;border-radius:18px}.section-heading h2{font-size:clamp(27px,3vw,36px);letter-spacing:-.04em}.temperature-heading{background:linear-gradient(110deg,#edf4fb,#fff 49%,#fbefec)}.rain-heading{background:linear-gradient(110deg,#fff8df,#f3f8f3 48%,#edf6fa)}.extremes-heading{background:linear-gradient(110deg,#fbefec,#fff 48%,#eef4fb)}.history-heading{background:linear-gradient(110deg,#eef5f7,#fff)}.method-heading{background:linear-gradient(110deg,#f4f5f5,#fff)}
 .panel{border-radius:18px;padding:21px 22px;box-shadow:0 8px 28px rgba(31,58,72,.045)}.grid2{gap:18px}.section>.panel,.section>.grid2,.section>.rank-grid,.section>.bulletin-promo{margin-top:18px}.large-chart{min-height:440px}.controls{background:#f6f9fa;border:1px solid #e3ecef;border-radius:12px;padding:7px}.bulletin-cover{border-radius:24px;padding:30px;background:linear-gradient(120deg,#102b39,#1d5267);color:#fff}.bulletin-cover h1{color:#fff}.bulletin-cover p{color:#d9e8ed!important}.bulletin-quadrant{margin-top:15px}.bulletin-chart-head{display:flex;justify-content:space-between;align-items:end;gap:20px}.bulletin-chart-head .method{max-width:470px;text-align:right}.quality-outline{background:#fffdf8}
 @media(max-width:960px){.site-hero{grid-template-columns:1fr}.overview-stage{grid-template-columns:1fr}.bulletin-chart-head{display:block}.bulletin-chart-head .method{text-align:left}}@media(max-width:700px){main{padding:14px 10px 46px}.site-hero{border-radius:18px;padding:24px 20px}.tabs{overflow-x:auto;justify-content:flex-start}.overview-stage{padding:18px;border-radius:18px}.overview-stage .hero-grid{grid-template-columns:1fr}.insight-metrics{grid-template-columns:1fr 1fr}}@media(max-width:460px){.insight-metrics{grid-template-columns:1fr}}
+
+
+/* ================================================================
+   v1.3 — vento observado a partir dos logs de intervalo
+   ================================================================ */
+:root{--wind:#4e869a;--wind-deep:#285f73;--wind-soft:#dcecf1;--wind-gust:#c86a4e}
+.wind-heading{background:linear-gradient(110deg,#eef7f8,#fff 48%,#edf3f7)}
+.wind-heading:after{background:linear-gradient(135deg,rgba(78,134,154,.18),rgba(74,113,142,.10))}
+.wind-heading .section-kicker{color:var(--wind-deep)}
+.wind-control-panel{border-top:3px solid var(--wind);background:linear-gradient(180deg,#fff,#f8fbfc)}
+.wind-unavailable{padding:28px;background:linear-gradient(110deg,#fff,#f2f8fa);border-left:4px solid var(--wind)}
+.wind-unavailable h2{font-size:26px;margin:2px 0 7px}
+.wind-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-top:18px}
+.wind-kpi{position:relative;overflow:hidden;background:#fff;border:1px solid #d9e6eb;border-radius:15px;padding:16px 17px;min-height:112px;box-shadow:0 7px 23px rgba(31,58,72,.04)}
+.wind-kpi:before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--wind)}
+.wind-kpi.direction:before{background:var(--wind-deep)}.wind-kpi.gust:before{background:var(--wind-gust)}.wind-kpi.calm:before{background:#8caeb8}
+.wind-kpi span{display:block;color:var(--muted);font-size:11px;font-weight:760;text-transform:uppercase;letter-spacing:.035em}.wind-kpi b{display:block;font-size:27px;margin:5px 0 2px;letter-spacing:-.035em}.wind-kpi small{color:var(--muted)}
+.wind-primary-grid{align-items:stretch}.wind-rose-panel{background:radial-gradient(circle at 50% 47%,#fff 0,#fff 54%,#f5fafb 100%)}
+.wind-rose{max-width:570px;margin:0 auto}.wind-rose svg{display:block;width:100%;height:auto}
+.wind-audit-summary{margin:12px 0 16px}.wind-audit-summary>div{background:#f8fbfc}
+[data-section-theme="wind"] .panel h2{color:#183e4e}
+@media(max-width:860px){.wind-kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.wind-kpis{grid-template-columns:1fr}.wind-rose{margin-inline:-8px}}

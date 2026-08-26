@@ -295,10 +295,29 @@ function contextCard(label,value,normalLine,stationLine,cls=''){return `<div cla
 function hydroBlue(i,total){const palette=['#1f5f83','#2f7799','#4b8ba8','#70a0b6','#9bb9c7','#bed0d7'];return palette[Math.min(i,palette.length-1)]}
 function monthPluralName(m){return ['','janeiros','fevereiros','marços','abris','maios','junhos','julhos','agostos','setembros','outubros','novembros','dezembros'][Number(m)]||'meses'}
 
+function windRose(host,rose,calmPct=0){
+  clear(host);if(!rose?.length){host.innerHTML='<div class="chart-empty">Sem dados direcionais para este período.</div>';return}
+  const W=520,H=470,cx=260,cy=225,maxR=165,labelR=195,max=Math.max(...rose.map(x=>Number(x.frequency_pct)||0),1);
+  const svg=se('svg',{viewBox:`0 0 ${W} ${H}`,'aria-label':'Rosa dos ventos'});
+  [0.25,0.5,0.75,1].forEach(fr=>{svg.append(se('circle',{cx,cy,r:maxR*fr,fill:'none',stroke:'#dfe8ec','stroke-width':1}));svg.append(se('text',{x:cx+4,y:cy-maxR*fr+12,'font-size':9,fill:'#87969e'},`${n(max*fr,0)}%`))});
+  const polar=(r,a)=>{const rad=(a-90)*Math.PI/180;return [cx+r*Math.cos(rad),cy+r*Math.sin(rad)]};
+  rose.forEach((d,i)=>{const mid=i*22.5,start=mid-9.5,end=mid+9.5,r=maxR*(Number(d.frequency_pct)||0)/max;const [x1,y1]=polar(17,start),[x2,y2]=polar(r,start),[x3,y3]=polar(r,end),[x4,y4]=polar(17,end);const path=se('path',{d:`M ${x1} ${y1} L ${x2} ${y2} A ${r} ${r} 0 0 1 ${x3} ${y3} L ${x4} ${y4} Z`,fill:'var(--wind)',opacity:.78,stroke:'#fff','stroke-width':1,style:'cursor:pointer'});path.addEventListener('mousemove',ev=>showTip(ev,`<b>${d.sector}</b><div class="tip-row"><span>Frequência</span><strong>${n(d.frequency_pct,1)}%</strong></div><div class="tip-row"><span>Velocidade média no setor</span><strong>${n(d.mean_latest_speed,1)} km/h</strong></div>`));path.addEventListener('mouseleave',hideTip);svg.append(path);const [lx,ly]=polar(labelR,mid);svg.append(se('text',{x:lx,y:ly+4,'text-anchor':'middle','font-size':i%2===0?12:9,'font-weight':i%2===0?800:650,fill:i%2===0?'#334c59':'#71828b'},d.sector))});
+  svg.append(se('circle',{cx,cy,r:34,fill:'#fff',stroke:'#dbe6ea','stroke-width':1.5}));svg.append(se('text',{x:cx,y:cy-2,'text-anchor':'middle','font-size':17,'font-weight':850,fill:'#294552'},`${n(calmPct,1)}%`));svg.append(se('text',{x:cx,y:cy+14,'text-anchor':'middle','font-size':9,fill:'#71828b'},'calmaria'));
+  host.append(svg);
+}
+function windQualityLabel(q){if(!q)return 'sem auditoria';const d=Number(q.sample_density_pct);return !Number.isFinite(d)?'cobertura desconhecida':d>=95?'cobertura muito boa':d>=80?'com ressalva':'cobertura limitada'}
+function windPeriodData(wind,year,month){
+  if(year==='all'&&month==='all')return wind.overall;
+  if(year==='all'&&month!=='all')return wind.by_month?.[String(Number(month))]||null;
+  if(year!=='all'&&month==='all')return wind.by_year?.[String(year)]||null;
+  return wind.by_year_month?.[`${year}-${String(month).padStart(2,'0')}`]||null;
+}
+function windMonthlyRows(wind,year,month){let rows=wind.monthly_series||[];if(year!=='all')rows=rows.filter(x=>String(x.year)===String(year));if(month!=='all')rows=rows.filter(x=>String(x.month)===String(Number(month)));return rows}
+
 async function init(){
   tabs();
-  const names=['climate_summary.json','climate_monthly.json','climate_hydrological.json','climate_quadrants.json','climate_waves.json','climate_extremes.json','climate_daily.json','climate_station.json','climate_indices.json','climate_records.json','climate_rankings.json','climate_annual.json','climate_annual_comparison.json','climate_hydrological_comparison.json'];
-  const [s,m,h,q,w,e,d,st,ind,rec,ranks,annual,ac,hc]=await Promise.all(names.map(fetchJson));
+  const names=['climate_summary.json','climate_monthly.json','climate_hydrological.json','climate_quadrants.json','climate_waves.json','climate_extremes.json','climate_daily.json','climate_station.json','climate_indices.json','climate_records.json','climate_rankings.json','climate_annual.json','climate_annual_comparison.json','climate_hydrological_comparison.json','climate_wind.json'];
+  const [s,m,h,q,w,e,d,st,ind,rec,ranks,annual,ac,hc,wind]=await Promise.all(names.map(fetchJson));
   $('#generated').textContent=`Atualizado ${new Date(s.generated_utc).toLocaleString('pt-PT')} · último dia fechado ${dpt(s.source_last_closed_day)}`;
   const y=s.current_year,cm=s.current_month,hy=s.current_hydrological_year,live=s.live,sy=s.current_year_station_reference_prior_years||{},sd=s.current_year_difference_vs_station_reference||{},sr=sy.observed_reference||{};
   const years=[...new Set(d.days.map(x=>Number(x.date.slice(0,4))))].sort((a,b)=>a-b);
@@ -366,6 +385,26 @@ async function init(){
   $('#rain-period').addEventListener('change',renderRainAnnual);$('#rain-index').addEventListener('change',renderRainAnnual);renderRainAnnual();
 
 
+  });
+
+
+  await safeSection('vento','Vento',async()=>{
+    const unavailable=$('#wind-unavailable'),content=$('#wind-content');
+    if(!wind?.available){content.classList.add('hidden');unavailable.classList.remove('hidden');unavailable.innerHTML=`<p class="section-kicker">Série detalhada ainda indisponível</p><h2>Não encontrei logs padrão do Cumulus</h2><p>${wind?.metadata?.message||'A análise de vento será ativada automaticamente quando os ficheiros mensais padrão estiverem disponíveis em /cumulus-data.'}</p><p class="method">O dayfile continua a guardar extremos diários, mas uma verdadeira rosa dos ventos exige os registos de intervalo.</p>`;return}
+    unavailable.classList.add('hidden');content.classList.remove('hidden');
+    const wy=$('#wind-year'),wm=$('#wind-month');(wind.selectors?.years||[]).forEach(v=>wy.add(new Option(String(v),String(v))));(wind.selectors?.months||[]).forEach(x=>wm.add(new Option(x.label,String(x.value))));
+    const latest=wind.metadata?.last?new Date(wind.metadata.last):null;if(latest&&!Number.isNaN(latest.getTime()))wy.value=String(latest.getFullYear());
+    function renderWind(){const yy=wy.value,mm=wm.value,p=windPeriodData(wind,yy,mm);if(!p){$('#wind-period-title').textContent='Sem dados neste período';$('#wind-period-note').textContent='Escolha outro ano ou mês.';$('#wind-kpis').innerHTML='';$('#wind-rose').innerHTML='<div class="chart-empty">Sem dados.</div>';$('#wind-speed-distribution').innerHTML='';$('#wind-hourly').innerHTML='';$('#wind-monthly-series').innerHTML='';return}
+      const label=yy==='all'?(mm==='all'?'Toda a série':`Todos os ${ml[Number(mm)].toLowerCase()}s`):(mm==='all'?String(yy):`${ml[Number(mm)]} ${yy}`);$('#wind-period-title').textContent=label;const q=p.quality||{};$('#wind-period-note').textContent=`${p.sample_count.toLocaleString('pt-PT')} amostras · ${p.day_count} dias · ${windQualityLabel(q)} · série detalhada desde ${dpt((wind.metadata.first||'').slice(0,10))}. Não existe normal 1991–2020 de vento.`;
+      $('#wind-kpis').innerHTML=`<div class="wind-kpi direction"><span>Direção predominante</span><b>${p.dominant_sector||'—'}</b><small>${n(p.dominant_sector_frequency_pct,1)}% das amostras</small></div><div class="wind-kpi"><span>Velocidade média</span><b>${n(p.avg_speed,1)} km/h</b><small>campo de média do Cumulus</small></div><div class="wind-kpi gust"><span>Rajada máxima</span><b>${n(p.max_gust,0)} km/h</b><small>${p.max_gust_datetime?new Date(p.max_gust_datetime).toLocaleString('pt-PT'):'—'}</small></div><div class="wind-kpi calm"><span>Calmaria</span><b>${n(p.calm_frequency_pct,1)}%</b><small>&lt; ${n(p.calm_threshold,1)} km/h</small></div>`;
+      windRose($('#wind-rose'),p.rose,p.calm_frequency_pct);
+      interactiveGroupedBars($('#wind-speed-distribution'),p.speed_bins.map(x=>x.label),[{label:'Frequência',data:p.speed_bins.map(x=>x.frequency_pct),unit:'%',decimals:1,color:cssv('--wind')}],{unit:'%',decimals:0,zeroMin:true});
+      const hrs=p.hourly.filter(x=>x.samples);interactiveLineChart($('#wind-hourly'),[{label:'Velocidade média',data:hrs.map(x=>({label:x.label,value:x.avg_speed,tooltipTitle:x.label})),unit:' km/h',color:cssv('--wind'),width:3},{label:'Rajada máxima',data:hrs.map(x=>({label:x.label,value:x.max_gust,tooltipTitle:x.label})),unit:' km/h',color:cssv('--warm'),dash:'6 4',pointRadius:1.5}],{unit:' km/h',decimals:0,zeroMin:true});
+      const mr=windMonthlyRows(wind,yy,mm);interactiveLineChart($('#wind-monthly-series'),[{label:'Velocidade média',data:mr.map(x=>({label:x.label,value:x.avg_speed,tooltipTitle:`${x.month_name} ${x.year}`})),unit:' km/h',color:cssv('--wind'),width:3},{label:'Rajada máxima',data:mr.map(x=>({label:x.label,value:x.max_gust,tooltipTitle:`${x.month_name} ${x.year}`})),unit:' km/h',color:cssv('--warm'),dash:'5 4',pointRadius:2}],{unit:' km/h',decimals:0,zeroMin:true});
+    }
+    wy.addEventListener('change',renderWind);wm.addEventListener('change',renderWind);renderWind();
+    const meta=wind.metadata||{},aud=wind.audit||{};$('#wind-audit-summary').innerHTML=`<div><span>Início da série detalhada</span><b>${meta.first?dpt(meta.first.slice(0,10)):'—'}</b></div><div><span>Última amostra</span><b>${meta.last?new Date(meta.last).toLocaleString('pt-PT'):'—'}</b></div><div><span>Intervalo dominante</span><b>${meta.nominal_interval_minutes??'—'} min</b></div><div><span>Ficheiros mensais</span><b>${meta.file_count??0}</b></div><div><span>Direção atual disponível</span><b>${n(meta.bearing_current_pct,1)}%</b></div><div><span>Meses inteiros em falta</span><b>${(aud.missing_calendar_months||[]).length}</b></div>`;
+    $('#wind-audit-table').innerHTML=table(['Ficheiro','Amostras','Inválidas','Início','Fim','Intervalo','Densidade','Maior falha'],(aud.files||[]).map(x=>[x.file,x.valid_rows,x.invalid_rows,x.first?new Date(x.first).toLocaleString('pt-PT'):'—',x.last?new Date(x.last).toLocaleString('pt-PT'):'—',x.nominal_interval_minutes?`${x.nominal_interval_minutes} min`:'—',x.sample_density_pct===null?'—':`${n(x.sample_density_pct,1)}%`,x.largest_gap_minutes?`${n(x.largest_gap_minutes,0)} min`:'—']));
   });
 
   await safeSection('extremos','Extremos e ondas',async()=>{
