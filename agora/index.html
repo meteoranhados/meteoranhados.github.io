@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Tempo atual e previsão para Ranhados, Mêda, a partir da estação meteorológica local e de modelos numéricos.">
+  <title>Agora — Estação Meteorológica de Ranhados</title>
+  <link rel="stylesheet" href="agora.css">
+<!-- RANHADOS_GLOBAL_SHELL_CSS -->
+<link rel="stylesheet" href="/integration/ranhados-shell.css">
+<!-- RANHADOS_GLOBAL_SHELL_JS -->
+<script src="/integration/ranhados-shell.js" defer></script>
+</head>
+<body>
+<!-- RANHADOS_GLOBAL_SHELL_START -->
+<nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
+  <div class="ranhados-shell__inner">
+    <a class="ranhados-shell__brand" href="/agora/">Estação Meteorológica de Ranhados</a>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link is-active" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/trends.htm">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div>
+  </div>
+  <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
+</nav>
+<!-- RANHADOS_GLOBAL_SHELL_END -->
+<main class="now-page">
+  <section class="now-hero">
+    <div class="now-hero__weather">
+      <p class="eyebrow">Ranhados · Mêda · 755 m</p>
+      <div class="now-primary">
+        <div>
+          <div id="now-temp" class="now-temperature">—</div>
+          <div id="now-status" class="now-status">A carregar dados da estação…</div>
+        </div>
+        <div id="now-symbol" class="now-symbol" aria-hidden="true"></div>
+      </div>
+      <div id="now-core" class="now-core"></div>
+      <p id="now-updated" class="updated"></p>
+    </div>
+    <a class="camera-live" href="/camera/" aria-label="Abrir câmara meteorológica">
+      <img id="camera-img" src="/camera/latest.jpg" alt="Imagem mais recente da câmara meteorológica de Ranhados">
+      <span><b>Câmara meteorológica</b><small>imagem mais recente</small></span>
+    </a>
+  </section>
+
+  <section id="today-strip" class="today-strip"></section>
+
+  <section class="forecast-section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Previsão por coordenadas</p>
+        <h1>Próximos dias</h1>
+        <p>Previsão principal para 40.99643, −7.32928 e 755 m. O observado vem sempre da estação; a previsão vem de modelos numéricos.</p>
+      </div>
+      <div id="forecast-source" class="source-pill">A carregar previsão…</div>
+    </div>
+    <div id="daily-forecast" class="daily-forecast"></div>
+  </section>
+
+  <section class="bridge-panel">
+    <div class="section-head bridge-head">
+      <div>
+        <p class="eyebrow">Estação + modelo</p>
+        <h2>Observado → previsão</h2>
+        <p id="bridge-explainer">Últimas 24 horas observadas na estação e próximas 48 horas previstas.</p>
+      </div>
+      <div class="chart-controls">
+        <label>Variável
+          <select id="timeline-variable">
+            <option value="temperature">Temperatura</option>
+            <option value="precipitation">Precipitação</option>
+            <option value="wind">Vento</option>
+            <option value="pressure">Pressão</option>
+            <option value="humidity">Humidade</option>
+          </select>
+        </label>
+        <label id="local-bridge-label" class="check-control"><input id="local-bridge-toggle" type="checkbox" checked> Ponte local</label>
+      </div>
+    </div>
+    <div id="timeline-legend" class="timeline-legend"></div>
+    <div id="timeline-chart" class="timeline-chart"></div>
+    <div id="local-bridge-method" class="method-note"></div>
+  </section>
+
+  <section class="models-panel">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Dispersão entre modelos</p>
+        <h2>ECMWF × GFS</h2>
+        <p>Não é uma “previsão média”: mostra quanto dois modelos globais diferem para Ranhados.</p>
+      </div>
+    </div>
+    <div id="model-summary" class="model-summary"></div>
+    <div id="model-table" class="model-table-wrap"></div>
+  </section>
+
+  <section class="station-detail">
+    <details>
+      <summary><span>Todos os dados atuais da estação</span><small>Temperatura, chuva, vento, pressão, solar, UV e sensores</small></summary>
+      <div id="station-groups" class="station-groups"></div>
+    </details>
+  </section>
+
+  <section class="context-links">
+    <a href="/climate/"><span id="ico-climate"></span><b>Climatologia</b><small>normal, estação, histórico e extremos</small></a>
+    <a href="/climate/boletins/"><span id="ico-report"></span><b>Boletins</b><small>mensais e anuais</small></a>
+    <a href="/records.htm"><span id="ico-record"></span><b>Recordes</b><small>recordes técnicos do Cumulus</small></a>
+    <a href="/camera/"><span id="ico-camera"></span><b>Câmara</b><small>imagem e timelapses</small></a>
+  </section>
+
+  <footer>
+    <span>Observações: Cumulus MX · Estação Meteorológica de Ranhados</span>
+    <span>Previsão: Open-Meteo · Best Match / ECMWF / GFS</span>
+  </footer>
+</main>
+<script src="agora.js" defer></script>
+</body>
+</html>
