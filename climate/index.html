@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="climate.css">
 <!-- RANHADOS_GLOBAL_SHELL_CSS -->
 <link rel="stylesheet" href="/integration/ranhados-shell.css">
+<!-- RANHADOS_GLOBAL_SHELL_JS -->
+<script src="/integration/ranhados-shell.js" defer></script>
 </head>
 <body>
 <!-- RANHADOS_GLOBAL_SHELL_START -->
@@ -15,10 +17,10 @@
     <a class="ranhados-shell__brand" href="/index.htm">Estação Meteorológica de Ranhados</a>
     <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/index.htm">Agora</a><a class="ranhados-shell__link" href="/trends.htm">Gráficos</a><a class="ranhados-shell__link is-active" href="/climate/">Climatologia</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div>
   </div>
+  <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
 </nav>
 <!-- RANHADOS_GLOBAL_SHELL_END -->
 <main>
-  <div id="global-warning-slot" class="global-warning-slot hidden" aria-live="polite"></div>
   <header class="site-hero">
     <div class="hero-copy">
       <p class="eyebrow">Estação Meteorológica de Ranhados</p>
@@ -93,16 +95,19 @@
     <div id="wind-unavailable" class="panel wind-unavailable hidden"></div>
     <div id="wind-content">
       <div class="panel wind-control-panel"><div class="chart-title"><div><p class="section-kicker">Período</p><h2 id="wind-period-title">Série de vento</h2><p id="wind-period-note" class="method"></p></div><div class="controls"><label>Ano<select id="wind-year"><option value="all">Todos</option></select></label><label>Mês<select id="wind-month"><option value="all">Todos</option></select></label></div></div></div>
-      <div id="wind-kpis" class="wind-kpis"></div>
-      <div class="grid2 wind-primary-grid">
-        <div class="panel wind-rose-panel"><div class="chart-title"><div><h2>Rosa dos ventos</h2><p class="method">Frequência por direção. Calmarias ficam fora dos setores e são indicadas à parte.</p></div></div><div id="wind-rose" class="wind-rose"></div></div>
-        <div class="panel"><h2>Distribuição da velocidade</h2><p class="method">Classes da velocidade média registada no log.</p><div id="wind-speed-distribution" class="chart interactive-chart"></div></div>
+      <div id="wind-period-empty" class="panel wind-period-empty hidden"><p class="section-kicker">Sem registos para a seleção</p><h2 id="wind-empty-title">Este período não tem logs de vento.</h2><p id="wind-empty-note"></p><button id="wind-latest-button" class="more-btn" type="button">Ir para o último período disponível</button></div>
+      <div id="wind-analysis-panels">
+        <div id="wind-kpis" class="wind-kpis"></div>
+        <div class="grid2 wind-primary-grid">
+          <div class="panel wind-rose-panel"><div class="chart-title"><div><h2>Rosa dos ventos</h2><p id="wind-rose-note" class="method">Frequência por direção. Calmarias ficam fora dos setores e são indicadas à parte.</p></div><div class="controls"><label>Mostrar<select id="wind-rose-mode"><option value="frequency">Frequência</option><option value="mean">Velocidade média</option><option value="gust">Rajada máxima</option></select></label></div></div><div id="wind-rose" class="wind-rose"></div></div>
+          <div class="panel"><h2>Distribuição da velocidade</h2><p class="method">Classes da velocidade média registada no log.</p><div id="wind-speed-distribution" class="chart interactive-chart"></div></div>
+        </div>
+        <div class="grid2">
+          <div class="panel"><h2>Vento ao longo do dia</h2><p class="method">Velocidade média por hora local; a linha secundária mostra a maior rajada registada em cada hora.</p><div id="wind-hourly" class="chart interactive-chart"></div></div>
+          <div class="panel"><h2 id="wind-series-title">Evolução mensal</h2><p id="wind-series-note" class="method">Velocidade média e rajada máxima dos meses disponíveis.</p><div id="wind-monthly-series" class="chart interactive-chart"></div></div>
+        </div>
+        <details class="panel disclosure"><summary>Ver auditoria e cobertura dos logs de vento</summary><div id="wind-audit-summary" class="quality-grid wind-audit-summary"></div><div id="wind-audit-table" class="table-wrap"></div><div id="wind-duplicate-note" class="method"></div></details>
       </div>
-      <div class="grid2">
-        <div class="panel"><h2>Vento ao longo do dia</h2><p class="method">Velocidade média por hora local; a linha secundária mostra a maior rajada registada em cada hora.</p><div id="wind-hourly" class="chart interactive-chart"></div></div>
-        <div class="panel"><h2>Evolução mensal</h2><p class="method">Velocidade média e rajada máxima dos meses disponíveis.</p><div id="wind-monthly-series" class="chart interactive-chart"></div></div>
-      </div>
-      <details class="panel disclosure"><summary>Ver auditoria e cobertura dos logs de vento</summary><div id="wind-audit-summary" class="quality-grid wind-audit-summary"></div><div id="wind-audit-table" class="table-wrap"></div></details>
     </div>
   </section>
 
@@ -146,7 +151,7 @@
     <div class="panel"><h2>Qualidade dos dados</h2><div id="quality" class="quality-grid"></div><p id="live-note" class="method"></p></div>
     <div class="panel"><h2>Regras de completude</h2><p class="method"><strong>Temperatura mensal:</strong> mantém a regra estrita: máximo de 5 falhas no total e 3 consecutivas. <strong>Temperatura anual:</strong> usa uma regra própria de cobertura ≥95%; com falhas, o ano continua visível com contorno de ressalva e a normal térmica usa apenas as mesmas datas observadas. <strong>Precipitação:</strong> continua conservadora — não se estima chuva em dias em falta.</p></div>
     <div class="panel"><h2>Definições dos índices</h2><p class="method"><strong>Limiar de 35 °C e chuva forte:</strong> o site apresenta apenas Tmax &gt;35 °C e P &gt;10/&gt;20/&gt;30 mm, para coincidir exatamente com a normal 1991–2020 fornecida para Ranhados.</p><div id="definitions-table" class="table-wrap"></div><p class="method">O IPMA apresenta atualmente duas convenções diferentes para o limiar de 0 °C: as fichas climatológicas 1991–2020 usam TN &lt; 0 °C, enquanto a legenda do mapa dinâmico apresenta MNDTN0 como TN ≤ 0 °C. O motor calcula as duas e só compara com a normal quando a definição coincide.</p></div>
-    <div class="panel"><h2>Leitura da série</h2><p class="method">A média/referência da estação é curta (desde 2022). Serve para contexto local e comparação operacional com o mesmo período, não para inferir por si só uma tendência climática de longo prazo.</p><p class="method"><strong>Ano hidrológico:</strong> 1 de outubro–30 de setembro. Nas comparações com o ano em curso, todos os anos anteriores são cortados no mesmo dia do ciclo. Qualquer falha diária de precipitação é assinalada como ressalva.</p><p class="method"><strong>Vento:</strong> a análise detalhada usa os ficheiros mensais padrão do Cumulus. A rosa usa a velocidade mais recente e a direção atual; quando a direção atual não existe numa linha, usa-se a direção média. Não existe normal 1991–2020 de vento neste projeto, pelo que esta área descreve apenas a série observada da estação.</p></div>
+    <div class="panel"><h2>Leitura da série</h2><p class="method">A média/referência da estação é curta (desde 2022). Serve para contexto local e comparação operacional com o mesmo período, não para inferir por si só uma tendência climática de longo prazo.</p><p class="method"><strong>Ano hidrológico:</strong> 1 de outubro–30 de setembro. Nas comparações com o ano em curso, todos os anos anteriores são cortados no mesmo dia do ciclo. Qualquer falha diária de precipitação é assinalada como ressalva.</p><p class="method"><strong>Vento:</strong> a análise detalhada reconhece tanto <code>YYYYMMlog.txt</code> como nomes mensais antigos e deduplica ficheiros do mesmo mês. A rosa usa a velocidade mais recente e a direção atual; quando esta não existe, usa a direção média. Não existe normal 1991–2020 de vento. <strong>Avisos:</strong> a navegação global consulta a API oficial do IPMA e apresenta apenas avisos amarelos, laranja ou vermelhos da área GDA (distrito da Guarda).</p></div>
   </section>
   <footer class="climate-footer">
     <span>Estação Meteorológica de Ranhados</span>

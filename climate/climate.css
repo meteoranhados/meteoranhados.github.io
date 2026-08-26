@@ -321,3 +321,8 @@ body{background:radial-gradient(circle at 8% 0%,rgba(67,130,157,.10),transparent
 [data-section-theme="wind"] .panel h2{color:#183e4e}
 @media(max-width:860px){.wind-kpis{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.wind-kpis{grid-template-columns:1fr}.wind-rose{margin-inline:-8px}}
+
+/* v1.4 wind UX */
+.wind-period-empty{padding:34px 30px;text-align:center;background:linear-gradient(120deg,#fff,#f1f7f9);border:1px solid #d7e6eb}
+.wind-period-empty h2{font-size:27px;margin:3px 0 8px}.wind-period-empty p{max-width:700px;margin:0 auto 16px;color:var(--muted)}
+.wind-period-empty .more-btn{margin:0 auto}#wind-rose-mode{min-width:150px}
