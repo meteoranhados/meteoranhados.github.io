@@ -43,6 +43,26 @@
 
   <section id="today-strip" class="today-strip"></section>
 
+  <section class="recent-panel">
+    <div class="section-head recent-head">
+      <div>
+        <p class="eyebrow">Observações da estação</p>
+        <h2>Últimas 24 horas</h2>
+        <p id="recent-source-note">Evolução recente medida em Ranhados.</p>
+      </div>
+      <div id="recent-tabs" class="recent-tabs" role="tablist" aria-label="Variável das últimas 24 horas">
+        <button class="recent-tab is-active" data-recent-var="temperature" type="button"></button>
+        <button class="recent-tab" data-recent-var="precipitation" type="button"></button>
+        <button class="recent-tab" data-recent-var="wind" type="button"></button>
+        <button class="recent-tab" data-recent-var="pressure" type="button"></button>
+        <button class="recent-tab" data-recent-var="humidity" type="button"></button>
+        <button class="recent-tab" data-recent-var="solar" type="button"></button>
+      </div>
+    </div>
+    <div id="recent-summary" class="recent-summary"></div>
+    <div id="recent-chart" class="recent-chart"></div>
+  </section>
+
   <section class="forecast-section">
     <div class="section-head">
       <div>

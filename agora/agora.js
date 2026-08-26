@@ -5,6 +5,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&
 const dayName=d=>new Intl.DateTimeFormat('pt-PT',{weekday:'short'}).format(d).replace('.','');
 const dateShort=d=>new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit'}).format(d);
 const timeShort=d=>new Intl.DateTimeFormat('pt-PT',{hour:'2-digit',minute:'2-digit'}).format(d);
+const toMs=t=>typeof t==='number'?t:(t&&typeof t==='object'&&t.time_ms?Number(t.time_ms):new Date(t).getTime());
 
 function icon(name,cls=''){
   const common=`class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"`;
@@ -189,7 +190,12 @@ function futureHourly(){
 }
 function obs24(){
   const a=history?.samples||[];if(!a.length)return[];
-  const last=new Date(a[a.length-1].time).getTime(),cut=last-24*3600*1000;return a.filter(x=>new Date(x.time).getTime()>=cut);
+  const last=Number(a[a.length-1].time_ms||toMs(a[a.length-1].time));
+  if(!Number.isFinite(last))return[];
+  // Never join a stale historical fragment to a current forecast.
+  if(Math.abs(Date.now()-last)>48*3600*1000)return[];
+  const cut=last-24*3600*1000;
+  return a.filter(x=>Number(x.time_ms||toMs(x.time))>=cut);
 }
 function svgLinePath(points,x,y){return points.map((p,i)=>`${i?'L':'M'} ${x(p.ms).toFixed(1)} ${y(p.v).toFixed(1)}`).join(' ')}
 function renderTimeline(){
@@ -204,7 +210,7 @@ function renderTimeline(){
     precipitation:{unit:' mm',dec:1,label:'Precipitação'}
   }[variable];
   if(variable==='precipitation'){renderPrecipTimeline(host,fut,h);return}
-  const op=obs.filter(x=>x[cfg.obs]!=null).map(x=>({ms:new Date(x.time).getTime(),v:Number(x[cfg.obs])}));
+  const op=obs.filter(x=>x[cfg.obs]!=null).map(x=>({ms:Number(x.time_ms||toMs(x.time)),v:Number(x[cfg.obs])}));
   const fp=fut.filter(x=>h[cfg.fc]?.[x.i]!=null).map(x=>({ms:x.ms,v:Number(h[cfg.fc][x.i])}));
   const bp=(useBridge&&cfg.bridge&&bridge[cfg.bridge])?fut.filter(x=>bridge[cfg.bridge]?.[x.i]!=null).map(x=>({ms:x.ms,v:Number(bridge[cfg.bridge][x.i])})):[];
   drawLineTimeline(host,op,fp,bp,cfg);
@@ -227,7 +233,7 @@ function drawLineTimeline(host,obs,fc,bridge,cfg){
   s+='</svg>';host.innerHTML=s;
 }
 function renderPrecipTimeline(host,fut,h){
-  const obs=(history?.hourly_rain||[]).map(x=>({ms:new Date(x.time).getTime(),v:Number(x.precip_mm||0)}));
+  const obs=(history?.hourly_rain||[]).map(x=>({ms:Number(x.time_ms||toMs(x.time)),v:Number(x.precip_mm||0)}));
   const fp=fut.filter(x=>h.precipitation?.[x.i]!=null).map(x=>({ms:x.ms,v:Number(h.precipitation[x.i]||0)}));
   const all=[...obs,...fp];if(!all.length){host.innerHTML='<div class="chart-empty">Sem dados de precipitação.</div>';return}
   const W=1040,H=360,m={l:52,r:20,t:22,b:44},minT=Math.min(...all.map(x=>x.ms)),maxT=Math.max(...all.map(x=>x.ms)),maxV=Math.max(1,...all.map(x=>x.v))*1.12,x=t=>m.l+(t-minT)/(maxT-minT)*(W-m.l-m.r),y=v=>m.t+(maxV-v)/maxV*(H-m.t-m.b),bw=Math.max(2,(W-m.l-m.r)/(all.length+5)*.72);
@@ -239,11 +245,91 @@ function renderPrecipTimeline(host,fut,h){
   for(let i=0;i<=6;i++){const t=minT+(maxT-minT)*i/6,xx=x(t);s+=`<text x="${xx}" y="${H-17}" text-anchor="middle" font-size="9" fill="#71828b">${timeShort(new Date(t))}<tspan x="${xx}" dy="11">${dateShort(new Date(t))}</tspan></text>`}
   s+='</svg>';host.innerHTML=s;$('#timeline-legend').innerHTML='<span><i style="background:#193f52"></i>Observado</span><span><i style="background:#2f7fa3"></i>Previsto</span>';$('#local-bridge-method').textContent='A ponte local não altera precipitação.';$('#bridge-explainer').textContent='Precipitação horária observada nas últimas 24 h e prevista nas próximas 48 h.';
 }
+function recentData(){
+  return obs24();
+}
+function seriesStats(values){
+  const v=values.filter(Number.isFinite);
+  if(!v.length)return{min:null,max:null,avg:null};
+  return{min:Math.min(...v),max:Math.max(...v),avg:v.reduce((a,b)=>a+b,0)/v.length};
+}
+function valueAtHoursAgo(rows,key,hours){
+  if(!rows.length)return null;
+  const end=Number(rows[rows.length-1].time_ms||toMs(rows[rows.length-1].time));
+  const target=end-hours*3600*1000;
+  let best=null,delta=Infinity;
+  rows.forEach(r=>{
+    if(r[key]==null)return;
+    const d=Math.abs(Number(r.time_ms||toMs(r.time))-target);
+    if(d<delta){delta=d;best=Number(r[key])}
+  });
+  return best;
+}
+function recentStat(label,value,sub=''){
+  return `<div class="recent-stat"><span>${label}</span><b>${value}</b>${sub?`<small>${sub}</small>`:''}</div>`;
+}
+function drawRecentLine(host,points,cfg,second=[]){
+  if(!points.length){host.innerHTML='<div class="chart-empty">Sem observações recentes suficientes.</div>';return}
+  const all=[...points,...second],W=1040,H=325,m={l:58,r:20,t:20,b:42},minT=Math.min(...all.map(x=>x.ms)),maxT=Math.max(...all.map(x=>x.ms)),vals=all.map(x=>x.v).filter(Number.isFinite),vmin=Math.min(...vals),vmax=Math.max(...vals),pad=(vmax-vmin)*.12||1,ymin=vmin-pad,ymax=vmax+pad,x=t=>m.l+(t-minT)/(maxT-minT)*(W-m.l-m.r),y=v=>m.t+(ymax-v)/(ymax-ymin)*(H-m.t-m.b);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img">`;
+  for(let i=0;i<=4;i++){const v=ymin+(ymax-ymin)*i/4,yy=y(v);s+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e6edef"/><text x="${m.l-7}" y="${yy+4}" text-anchor="end" font-size="10" fill="#70818a">${fmt(v,cfg.dec)}${cfg.unit}</text>`}
+  for(let i=0;i<=6;i++){const t=minT+(maxT-minT)*i/6,xx=x(t);s+=`<text x="${xx}" y="${H-15}" text-anchor="middle" font-size="9" fill="#71828b">${timeShort(new Date(t))}<tspan x="${xx}" dy="11">${dateShort(new Date(t))}</tspan></text>`}
+  s+=`<path d="${svgLinePath(points,x,y)}" fill="none" stroke="#193f52" stroke-width="3"/>`;
+  if(second.length)s+=`<path d="${svgLinePath(second,x,y)}" fill="none" stroke="#c54d42" stroke-width="2" stroke-dasharray="5 4"/>`;
+  const last=points[points.length-1];s+=`<circle cx="${x(last.ms)}" cy="${y(last.v)}" r="4" fill="#193f52" stroke="#fff" stroke-width="2"/>`;
+  s+='</svg>';host.innerHTML=s;
+}
+function drawRecentBars(host,points,unit=' mm'){
+  if(!points.length){host.innerHTML='<div class="chart-empty">Sem precipitação recente.</div>';return}
+  const W=1040,H=325,m={l:52,r:20,t:20,b:42},minT=Math.min(...points.map(x=>x.ms)),maxT=Math.max(...points.map(x=>x.ms)),maxV=Math.max(1,...points.map(x=>x.v))*1.15,x=t=>m.l+(t-minT)/(maxT-minT)*(W-m.l-m.r),y=v=>m.t+(maxV-v)/maxV*(H-m.t-m.b),bw=Math.max(4,(W-m.l-m.r)/(points.length+2)*.65);
+  let s=`<svg viewBox="0 0 ${W} ${H}">`;
+  for(let i=0;i<=4;i++){const v=maxV*i/4,yy=y(v);s+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e6edef"/><text x="${m.l-6}" y="${yy+4}" text-anchor="end" font-size="10" fill="#70818a">${fmt(v,1)}</text>`}
+  points.forEach(p=>s+=`<rect x="${x(p.ms)-bw/2}" y="${y(p.v)}" width="${bw}" height="${Math.max(1,H-m.b-y(p.v))}" fill="#2f7fa3" rx="2"/>`);
+  for(let i=0;i<=6;i++){const t=minT+(maxT-minT)*i/6,xx=x(t);s+=`<text x="${xx}" y="${H-15}" text-anchor="middle" font-size="9" fill="#71828b">${timeShort(new Date(t))}<tspan x="${xx}" dy="11">${dateShort(new Date(t))}</tspan></text>`}
+  s+='</svg>';host.innerHTML=s;
+}
+function renderRecent(variable='temperature'){
+  const rows=recentData(),host=$('#recent-chart'),sum=$('#recent-summary');
+  const source=history?.source||'Cumulus';
+  $('#recent-source-note').textContent=history?.available?`Dados medidos pela estação · ${source}.`:'Histórico recente temporariamente indisponível.';
+  [...document.querySelectorAll('.recent-tab')].forEach(b=>b.classList.toggle('is-active',b.dataset.recentVar===variable));
+  if(!rows.length){sum.innerHTML='';host.innerHTML='<div class="chart-empty">O histórico recente ainda não está disponível. A leitura atual da estação continua válida.</div>';return}
+  const ms=r=>Number(r.time_ms||toMs(r.time));
+  if(variable==='temperature'){
+    const pts=rows.filter(r=>r.temp!=null).map(r=>({ms:ms(r),v:Number(r.temp)})),st=seriesStats(pts.map(x=>x.v)),cur=pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'temp',3),delta=cur!=null&&ago!=null?cur-ago:null;
+    sum.innerHTML=recentStat('Atual',`${fmt(cur,1)} °C`)+recentStat('Máxima 24 h',`${fmt(st.max,1)} °C`)+recentStat('Mínima 24 h',`${fmt(st.min,1)} °C`)+recentStat('Variação 3 h',`${delta!=null&&delta>0?'+':''}${fmt(delta,1)} °C`);
+    drawRecentLine(host,pts,{unit:'°C',dec:1});
+  }else if(variable==='humidity'){
+    const pts=rows.filter(r=>r.hum!=null).map(r=>({ms:ms(r),v:Number(r.hum)})),st=seriesStats(pts.map(x=>x.v)),cur=pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'hum',3),delta=cur!=null&&ago!=null?cur-ago:null;
+    sum.innerHTML=recentStat('Atual',`${fmt(cur,0)}%`)+recentStat('Máxima 24 h',`${fmt(st.max,0)}%`)+recentStat('Mínima 24 h',`${fmt(st.min,0)}%`)+recentStat('Variação 3 h',`${delta!=null&&delta>0?'+':''}${fmt(delta,0)} p.p.`);
+    drawRecentLine(host,pts,{unit:'%',dec:0});
+  }else if(variable==='pressure'){
+    const pts=rows.filter(r=>r.pressure!=null).map(r=>({ms:ms(r),v:Number(r.pressure)})),st=seriesStats(pts.map(x=>x.v)),cur=pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'pressure',3),delta=cur!=null&&ago!=null?cur-ago:null;
+    sum.innerHTML=recentStat('Atual',`${fmt(cur,1)} hPa`)+recentStat('Máxima 24 h',`${fmt(st.max,1)} hPa`)+recentStat('Mínima 24 h',`${fmt(st.min,1)} hPa`)+recentStat('Variação 3 h',`${delta!=null&&delta>0?'+':''}${fmt(delta,1)} hPa`);
+    drawRecentLine(host,pts,{unit:' hPa',dec:1});
+  }else if(variable==='wind'){
+    const pts=rows.filter(r=>r.wind_avg!=null).map(r=>({ms:ms(r),v:Number(r.wind_avg)})),gust=rows.filter(r=>r.wind_gust!=null).map(r=>({ms:ms(r),v:Number(r.wind_gust)})),st=seriesStats(pts.map(x=>x.v)),gs=seriesStats(gust.map(x=>x.v)),last=rows.at(-1);
+    sum.innerHTML=recentStat('Atual',`${fmt(last.wind_avg,1)} km/h`,windDir(last.wind_bearing))+recentStat('Média 24 h',`${fmt(st.avg,1)} km/h`)+recentStat('Rajada máxima',`${fmt(gs.max,1)} km/h`)+recentStat('Direção atual',windDir(last.wind_bearing));
+    drawRecentLine(host,pts,{unit:' km/h',dec:0},gust);
+  }else if(variable==='solar'){
+    const pts=rows.filter(r=>r.solar!=null).map(r=>({ms:ms(r),v:Number(r.solar)})),st=seriesStats(pts.map(x=>x.v)),uv=rows.filter(r=>r.uv!=null).map(r=>Number(r.uv)),uvs=seriesStats(uv),last=rows.at(-1);
+    sum.innerHTML=recentStat('Radiação atual',`${fmt(last.solar,0)} W/m²`)+recentStat('Máx. 24 h',`${fmt(st.max,0)} W/m²`)+recentStat('UV atual',fmt(last.uv,1))+recentStat('UV máximo 24 h',fmt(uvs.max,1));
+    drawRecentLine(host,pts,{unit:' W/m²',dec:0});
+  }else{
+    const bars=(history?.hourly_rain||[]).filter(x=>Number(x.time_ms||toMs(x.time))>=Number(rows[0].time_ms||toMs(rows[0].time))).map(x=>({ms:Number(x.time_ms||toMs(x.time)),v:Number(x.precip_mm||0)}));
+    const total=bars.reduce((a,b)=>a+b.v,0),maxHour=Math.max(0,...bars.map(x=>x.v)),rates=rows.filter(r=>r.rain_rate!=null).map(r=>Number(r.rain_rate)),rateMax=Math.max(0,...rates),last=rows.at(-1);
+    sum.innerHTML=recentStat('Total 24 h',`${fmt(total,1)} mm`)+recentStat('Hora mais chuvosa',`${fmt(maxHour,1)} mm`)+recentStat('Intensidade máxima',`${fmt(rateMax,1)} mm/h`)+recentStat('Acumulado hoje',`${fmt(last.rain_today,1)} mm`);
+    drawRecentBars(host,bars);
+  }
+}
+
 async function init(){
   $('#ico-climate').innerHTML=icon('chart');$('#ico-report').innerHTML=icon('report');$('#ico-record').innerHTML=icon('trophy');$('#ico-camera').innerHTML=icon('camera');
+  const recentLabels={temperature:['temp','Temperatura'],precipitation:['rain','Chuva'],wind:['wind','Vento'],pressure:['pressure','Pressão'],humidity:['drop','Humidade'],solar:['sun','Solar / UV']};
+  document.querySelectorAll('.recent-tab').forEach(b=>{const x=recentLabels[b.dataset.recentVar];b.innerHTML=icon(x[0])+`<span>${x[1]}</span>`;b.addEventListener('click',()=>renderRecent(b.dataset.recentVar))});
   try{
     [current,forecast,history]=await Promise.all([getJson('current.json'),getJson('forecast.json'),getJson('history24h.json')]);
-    renderCurrent();renderForecast();
+    renderCurrent();renderRecent('temperature');renderForecast();
   }catch(e){
     console.error(e);$('#now-status').textContent='Alguns dados estão temporariamente indisponíveis.';
   }
