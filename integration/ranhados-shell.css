@@ -1,4 +1,4 @@
-/* Ranhados public-site integration shell v1.4 */
+/* Ranhados public-site integration shell v1.4.1 */
 :root{--rh-shell-bg:#f8fbfc;--rh-shell-ink:#21333e;--rh-shell-muted:#657985;--rh-shell-line:#dbe5ea;--rh-shell-accent:#0f6078;--rh-shell-shadow:0 5px 20px rgba(31,58,72,.055)}
 .ranhados-shell{box-sizing:border-box;width:100%;background:rgba(248,251,252,.98);border-bottom:1px solid var(--rh-shell-line);box-shadow:var(--rh-shell-shadow);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--rh-shell-ink);position:relative;z-index:2147483000}
 .ranhados-shell *{box-sizing:border-box}
@@ -20,3 +20,11 @@
 .ranhados-ipma-warning.is-yellow{background:#fff3bd;color:#58450d}.ranhados-ipma-warning.is-orange{background:#ffe2bd;color:#6d3909}.ranhados-ipma-warning.is-red{background:#f8d3cf;color:#721f18}
 .ranhados-ipma-warning__inner{max-width:1180px;margin:0 auto;padding:9px 18px;display:flex;align-items:center;gap:12px}.ranhados-ipma-warning__badge{display:inline-flex;padding:5px 8px;border-radius:7px;background:rgba(255,255,255,.58);font-size:10px;font-weight:950;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}.ranhados-ipma-warning__main{display:flex;align-items:baseline;gap:9px;min-width:0;flex:1}.ranhados-ipma-warning__main strong{font-size:12px}.ranhados-ipma-warning__main span{font-size:11px;opacity:.82}.ranhados-ipma-warning__count{font-size:10px;font-weight:900;white-space:nowrap}.ranhados-ipma-warning__details{max-width:1180px;margin:0 auto;padding:0 18px 9px}.ranhados-ipma-warning__details summary{cursor:pointer;font-size:10px;font-weight:850;display:inline-block}.ranhados-ipma-warning__list{display:grid;gap:7px;margin-top:8px}.ranhados-ipma-warning__item{padding:9px 10px;border-radius:9px;background:rgba(255,255,255,.58);border-left:4px solid #c6a22a}.ranhados-ipma-warning__item.is-orange{border-left-color:#dc7a1d}.ranhados-ipma-warning__item.is-red{border-left-color:#c94035}.ranhados-ipma-warning__item strong,.ranhados-ipma-warning__item span{display:block;font-size:11px}.ranhados-ipma-warning__item p{margin:5px 0 0;font-size:11px;line-height:1.4}.ranhados-ipma-warning__list small{font-size:9px;opacity:.75}
 @media(max-width:650px){.ranhados-ipma-warning__inner{align-items:flex-start;flex-wrap:wrap;padding:9px 10px}.ranhados-ipma-warning__main{display:block;flex-basis:70%}.ranhados-ipma-warning__main span{display:block;margin-top:2px}.ranhados-ipma-warning__details{padding-inline:10px}}
+
+/* v1.4.1 — grouped warning phenomena + icons */
+.ranhados-ipma-warning__phenomena{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ranhados-ipma-warning__phenomenon{display:inline-flex;gap:4px;align-items:center;padding:4px 7px;border-radius:7px;background:rgba(255,255,255,.42);font-size:10px;font-weight:850;white-space:nowrap}
+.ranhados-warning-icon{width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.ranhados-warning-icon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ranhados-ipma-warning__itemhead{display:flex;gap:8px;align-items:flex-start}.ranhados-ipma-warning__itemhead .ranhados-warning-icon{margin-top:1px}
+@media(max-width:760px){.ranhados-ipma-warning__phenomena{order:3;width:100%}.ranhados-ipma-warning__main{flex-basis:55%}}
