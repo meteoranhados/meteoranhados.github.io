@@ -60,7 +60,7 @@ async function getJson(url){
 }
 function val(d,k){return d?.data?.[k]}
 
-let current=null,forecast=null,history=null;
+let current=null,forecast=null,history=null,climate=null;
 
 function renderCurrent(){
   const d=current?.data||{}, primary=forecast?.primary?.hourly||{};
@@ -77,9 +77,14 @@ function renderCurrent(){
     ['pressure','Pressão',`${fmt(d.press,1)} hPa`,`${Number(d.presstrendval)>0?'+':''}${fmt(d.presstrendval,1)} hPa/3h`],
     ['rain','Chuva hoje',`${fmt(d.rfall,1)} mm`,`última hora ${fmt(d.rhour,1)} mm`],
     ['temp','Sensação',`${fmt(d.feelslike,1)}°C`,`aparente ${fmt(d.apptemp,1)}°C`],
-    ['sun','Solar',`${fmt(d.SolarRad,0)} W/m²`,`UV ${fmt(d.UV,1)}`]
+    ['sun','Solar',`${fmt(d.SolarRad,0)} W/m²`,`UV ${fmt(d.UV,1)}${d.CurrentSolarMax>0?` · ${fmt(100*d.SolarRad/d.CurrentSolarMax,0)}% potencial`:''}`]
   ].map(x=>`<div class="core-item">${icon(x[0])}<span>${x[1]}</span><b>${x[2]}</b><small>${x[3]}</small></div>`).join('');
   $('#now-updated').textContent=`Cumulus MX · ${d.date||''} ${d.timehhmmss||''}${current?.stale?' · última leitura válida em cache':''}`;
+  const astro=[];
+  if(d.sunrise)astro.push(`<span>${icon('sun')} Nascer ${esc(d.sunrise)}</span>`);
+  if(d.sunset)astro.push(`<span>${icon('sun')} Pôr ${esc(d.sunset)}</span>`);
+  if(d.daylength)astro.push(`<span>${icon('chart')} ${esc(d.daylength)} de luz</span>`);
+  $('#astro-line').innerHTML=astro.join('');
 
   const cards=[
     ['temp','T máxima',`${fmt(d.tempTH,1)} °C`,d.TtempTH||''],
@@ -116,7 +121,13 @@ function renderStationGroups(){
     ['Sol e radiação',[
       ['UV',d.UV,'',1],['UV máximo hoje',d.UVTH,'',1],['Radiação solar',d.SolarRad,' W/m²',0],
       ['Máx. solar hoje',d.solarTH,' W/m²',0],['Máximo teórico',d.CurrentSolarMax,' W/m²',0],
-      ['Horas de sol',d.SunshineHours,' h',1],['Sol agora',Number(d.IsSunny)===1?'Sim':'Não','',null],['ET hoje',d.ET,' mm',2]
+      ['Horas de sol hoje',d.SunshineHours,' h',1],['Horas de sol no mês',d.SunshineHoursMonth,' h',1],
+      ['Potencial solar atual',d.CurrentSolarMax,' W/m²',0],['% do potencial',d.CurrentSolarMax>0?100*d.SolarRad/d.CurrentSolarMax:null,'%',0],
+      ['Sol agora',Number(d.IsSunny)===1?'Sim':'Não','',null],['ET hoje',d.ET,' mm',2]
+    ]],
+    ['Agro / sazonal',[
+      ['Graus-dia aquecimento hoje',d.heatdegdays,'',2],['Graus-dia arrefecimento hoje',d.cooldegdays,'',2],
+      ['Chill hours hoje',d.chillhoursToday,' h',1],['Chill hours da época',d.chillhours,' h',1]
     ]],
     ['Estação e extras',[
       ['Base das nuvens',d.cloudbasevalue,d.cloudbaseunit?` ${d.cloudbaseunit}`:'',0],['Contacto sensores',Number(d.SensorContactLost)===1?'Perdido':'OK','',null],
@@ -158,6 +169,17 @@ function renderForecast(){
 function modelDayMap(model){
   const rows=dailyRows(model);return new Map(rows.map(r=>[r.time,r]));
 }
+function agreement(kind,value,aux=null){
+  if(kind==='temp'){
+    if(value<1.5)return{label:'Bom acordo',cls:'agreement-good'};
+    if(value<3)return{label:'Divergência moderada',cls:'agreement-medium'};
+    return{label:'Divergência elevada',cls:'agreement-high'};
+  }
+  if(aux!=null && aux<2)return{label:'Pouca chuva prevista',cls:'agreement-good'};
+  if(value<.30)return{label:'Bom acordo',cls:'agreement-good'};
+  if(value<.70)return{label:'Divergência moderada',cls:'agreement-medium'};
+  return{label:'Divergência elevada',cls:'agreement-high'};
+}
 function renderModelCompare(){
   const e=forecast?.models?.ecmwf,g=forecast?.models?.gfs,p=forecast?.primary;
   if(!e?.available||!g?.available||!p?.available){$('#model-summary').innerHTML='<div class="model-stat"><span>Comparação</span><b>Indisponível</b></div>';return}
@@ -170,12 +192,12 @@ function renderModelCompare(){
     if(i<3){rain3e+=Number(er.precipitation_sum||0);rain3g+=Number(gr.precipitation_sum||0)}
     rows.push({date:d,e:er,g:gr,p:pr,ts});
   });
-  const rainSpread=Math.abs(rain3e-rain3g);
-  const spreadClass=maxTempSpread<1.5?'spread-low':maxTempSpread<3?'spread-mid':'spread-high';
+  const rainSpread=Math.abs(rain3e-rain3g),rainMean=(rain3e+rain3g)/2,rainRelative=rainSpread/Math.max(rainMean,1);
+  const ta=agreement('temp',maxTempSpread),ra=agreement('rain',rainRelative,rainMean);
   $('#model-summary').innerHTML=`
-    <div class="model-stat"><span>Maior diferença Tmax</span><b class="${spreadClass}">${fmt(maxTempSpread,1)} °C</b><small>ECMWF vs GFS · 7 dias</small></div>
-    <div class="model-stat"><span>Diferença chuva 3 dias</span><b>${fmt(rainSpread,1)} mm</b><small>totais previstos pelos dois modelos</small></div>
-    <div class="model-stat"><span>Modelo principal</span><b>Best Match</b><small>usado nos cartões e na linha principal</small></div>`;
+    <div class="model-stat"><span>Acordo em temperatura</span><div class="agreement-badge ${ta.cls}">${ta.label}</div><small class="agreement-detail">maior Δ Tmax: ${fmt(maxTempSpread,1)} °C · 7 dias</small></div>
+    <div class="model-stat"><span>Acordo em precipitação</span><div class="agreement-badge ${ra.cls}">${ra.label}</div><small class="agreement-detail">ECMWF ${fmt(rain3e,1)} · GFS ${fmt(rain3g,1)} mm · 3 dias</small></div>
+    <div class="model-stat"><span>Modelo principal</span><b>Best Match</b><small>os dois modelos abaixo servem para perceber a dispersão, não a “confiança” absoluta</small></div>`;
   $('#model-table').innerHTML=`<table class="model-table"><thead><tr><th>Dia</th><th>Best Match</th><th>ECMWF</th><th>GFS</th><th>Δ Tmax</th><th>Chuva ECMWF / GFS</th></tr></thead><tbody>${
     rows.map(r=>`<tr><td><b>${dateShort(new Date(r.date+'T12:00'))}</b></td>
       <td>${fmt(r.p.temperature_2m_max,0)} / ${fmt(r.p.temperature_2m_min,0)}°</td>
@@ -245,6 +267,77 @@ function renderPrecipTimeline(host,fut,h){
   for(let i=0;i<=6;i++){const t=minT+(maxT-minT)*i/6,xx=x(t);s+=`<text x="${xx}" y="${H-17}" text-anchor="middle" font-size="9" fill="#71828b">${timeShort(new Date(t))}<tspan x="${xx}" dy="11">${dateShort(new Date(t))}</tspan></text>`}
   s+='</svg>';host.innerHTML=s;$('#timeline-legend').innerHTML='<span><i style="background:#193f52"></i>Observado</span><span><i style="background:#2f7fa3"></i>Previsto</span>';$('#local-bridge-method').textContent='A ponte local não altera precipitação.';$('#bridge-explainer').textContent='Precipitação horária observada nas últimas 24 h e prevista nas próximas 48 h.';
 }
+function monthDescriptor(tempAnom,rainPct){
+  let t={text:'próximo do normal',cls:'neutral'};
+  if(tempAnom>=2)t={text:'muito mais quente',cls:'warm'};
+  else if(tempAnom>=.7)t={text:'mais quente',cls:'warm'};
+  else if(tempAnom<=-2)t={text:'muito mais frio',cls:'cold'};
+  else if(tempAnom<=-.7)t={text:'mais frio',cls:'cold'};
+  let r={text:'próximo do normal',cls:'neutral'};
+  if(rainPct>=160)r={text:'muito mais chuvoso',cls:'wet'};
+  else if(rainPct>=115)r={text:'mais chuvoso',cls:'wet'};
+  else if(rainPct<=50)r={text:'muito mais seco',cls:'dry'};
+  else if(rainPct<=85)r={text:'mais seco',cls:'dry'};
+  return{t,r};
+}
+function monthFeature(iconName,label,value,sub=''){
+  return `<div class="month-feature">${icon(iconName)}<span>${label}</span><b>${value}</b><small>${sub}</small></div>`;
+}
+function monthIndex(label,value,sub=''){
+  return `<div class="month-index"><span>${label}</span><b>${value}</b>${sub?`<small>${sub}</small>`:''}</div>`;
+}
+function renderMonthContext(){
+  const cm=climate?.current_month,obs=cm?.observed,norm=cm?.normal_1991_2020_same_period,anom=cm?.anomaly,ref=climate?.current_month_station_reference_prior_years?.observed_average,d=current?.data||{};
+  if(!obs||!norm){
+    $('#month-story').textContent='Contexto climatológico temporariamente indisponível.';
+    $('#month-feature-stats').innerHTML='';$('#month-indices').innerHTML='';return;
+  }
+  const last=climate?.source_last_closed_day?new Date(climate.source_last_closed_day+'T12:00'):null;
+  const title=last?new Intl.DateTimeFormat('pt-PT',{month:'long',year:'numeric'}).format(last):'Este mês';
+  $('#month-title').textContent=`${title.charAt(0).toUpperCase()+title.slice(1)} — em números`;
+  const ds=monthDescriptor(Number(anom.tmean_c||0),Number(anom.precip_pct_normal||100));
+  $('#month-story').textContent=`Até ao último dia fechado, o mês está ${ds.t.text} e ${ds.r.text} do que a referência 1991–2020 para o mesmo período.`;
+  const stationTemp=ref?.tmean_c!=null?Number(obs.tmean_c)-Number(ref.tmean_c):null;
+  const stationRain=ref?.precip_mm?Number(obs.precip_mm)/Number(ref.precip_mm)*100:null;
+  $('#month-context-badges').innerHTML=`
+    <span class="context-badge ${ds.t.cls}">T média ${Number(anom.tmean_c)>=0?'+':''}${fmt(anom.tmean_c,1)} °C vs normal</span>
+    <span class="context-badge ${ds.r.cls}">Chuva ${fmt(anom.precip_pct_normal,0)}% da normal</span>
+    ${stationTemp!=null?`<span class="context-badge ${stationTemp>.5?'warm':stationTemp<-.5?'cold':'neutral'}">${stationTemp>=0?'+':''}${fmt(stationTemp,1)} °C vs estação</span>`:''}
+    ${stationRain!=null?`<span class="context-badge ${stationRain>115?'wet':stationRain<85?'dry':'neutral'}">${fmt(stationRain,0)}% vs estação</span>`:''}`;
+  const sunMonth=d.SunshineHoursMonth!=null?Number(d.SunshineHoursMonth):obs.sunshine_hours;
+  const et=obs.et_mm;
+  $('#month-feature-stats').innerHTML=
+    monthFeature('temp','Temperatura média',`${fmt(obs.tmean_c,1)} °C`,`${Number(anom.tmean_c)>=0?'+':''}${fmt(anom.tmean_c,1)} °C vs normal${stationTemp!=null?` · ${stationTemp>=0?'+':''}${fmt(stationTemp,1)} °C vs estação`:''}`)+
+    monthFeature('rain','Precipitação',`${fmt(obs.precip_mm,1)} mm`,`${fmt(anom.precip_pct_normal,0)}% da normal${stationRain!=null?` · ${fmt(stationRain,0)}% da estação`:''}`)+
+    monthFeature('sun','Horas de sol',sunMonth!=null?`${fmt(sunMonth,1)} h`:'—',d.SunshineHoursMonth!=null?'mês até ao momento, Cumulus':'dias fechados')+
+    monthFeature('chart','Evapotranspiração',et!=null?`${fmt(et,1)} mm`:'—','soma dos dias fechados do mês');
+  const x=obs;
+  const maxRain=cm.extremes?.max_daily_precip;
+  const heatActive=climate?.heatwave?.active===true||climate?.heatwave?.status==='active';
+  const coldActive=climate?.coldwave?.active===true||climate?.coldwave?.status==='active';
+  const idx=[
+    ['Dias ≥25 °C',x.tmax_ge_25,''],
+    ['Dias ≥30 °C',x.tmax_ge_30,''],
+    ['Dias >35 °C',x.tmax_gt_35,`normal ≈ ${fmt(norm.tmax_gt_35,1)}`],
+    ['Dias ≥40 °C',x.tmax_ge_40,''],
+    ['Noites tropicais',x.tropical_nights,`normal ≈ ${fmt(norm.tropical_nights,1)}`],
+    ['Dias de geada',x.frost_days,`normal ≈ ${fmt(norm.frost_days,1)}`],
+    ['Dias de chuva',x.rain_days,`normal ≈ ${fmt(norm.rain_days,1)}`],
+    ['Chuva >10 mm',x.rain_gt_10,`normal ≈ ${fmt(norm.rain_gt_10,1)}`],
+    ['Chuva >20 mm',x.rain_gt_20,`normal ≈ ${fmt(norm.rain_gt_20,1)}`],
+    ['Chuva >30 mm',x.rain_gt_30,`normal ≈ ${fmt(norm.rain_gt_30,1)}`],
+    ['Dias em onda de calor',x.heatwave_days,heatActive?'onda ativa':''],
+    ['Dias em onda de frio',x.coldwave_days,coldActive?'onda ativa':''],
+    ['Maior chuva diária',maxRain?`${fmt(maxRain.value_mm,1)} mm`:'—',maxRain?.date?dateShort(new Date(maxRain.date+'T12:00')):''],
+    ['Graus-dia aquecimento',x.heating_degree_days!=null?fmt(x.heating_degree_days,1):'—','dias fechados'],
+    ['Graus-dia arrefecimento',x.cooling_degree_days!=null?fmt(x.cooling_degree_days,1):'—','dias fechados'],
+    ['Chill hours da época',d.chillhours!=null?`${fmt(d.chillhours,1)} h`:'—','acumulado sazonal Cumulus']
+  ];
+  $('#month-indices').innerHTML=idx.map(v=>monthIndex(v[0],v[1],v[2])).join('');
+  const miss=cm.missing_day_count||0;
+  $('#month-quality-note').textContent=`Período climatológico: ${cm.start} a ${cm.end} · ${cm.days_available}/${cm.days_expected} dias disponíveis${miss?` · ${miss} dia(s) em falta`:''}. As “normais” indicadas nos índices são proporcionais ao mesmo período do mês.`;
+}
+
 function recentData(){
   return obs24();
 }
@@ -296,24 +389,26 @@ function renderRecent(variable='temperature'){
   if(!rows.length){sum.innerHTML='';host.innerHTML='<div class="chart-empty">O histórico recente ainda não está disponível. A leitura atual da estação continua válida.</div>';return}
   const ms=r=>Number(r.time_ms||toMs(r.time));
   if(variable==='temperature'){
-    const pts=rows.filter(r=>r.temp!=null).map(r=>({ms:ms(r),v:Number(r.temp)})),st=seriesStats(pts.map(x=>x.v)),cur=pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'temp',3),delta=cur!=null&&ago!=null?cur-ago:null;
+    const pts=rows.filter(r=>r.temp!=null).map(r=>({ms:ms(r),v:Number(r.temp)})),st=seriesStats(pts.map(x=>x.v)),cur=current?.data?.temp!=null?Number(current.data.temp):pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'temp',3),delta=cur!=null&&ago!=null?cur-ago:null;
     sum.innerHTML=recentStat('Atual',`${fmt(cur,1)} °C`)+recentStat('Máxima 24 h',`${fmt(st.max,1)} °C`)+recentStat('Mínima 24 h',`${fmt(st.min,1)} °C`)+recentStat('Variação 3 h',`${delta!=null&&delta>0?'+':''}${fmt(delta,1)} °C`);
     drawRecentLine(host,pts,{unit:'°C',dec:1});
   }else if(variable==='humidity'){
-    const pts=rows.filter(r=>r.hum!=null).map(r=>({ms:ms(r),v:Number(r.hum)})),st=seriesStats(pts.map(x=>x.v)),cur=pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'hum',3),delta=cur!=null&&ago!=null?cur-ago:null;
+    const pts=rows.filter(r=>r.hum!=null).map(r=>({ms:ms(r),v:Number(r.hum)})),st=seriesStats(pts.map(x=>x.v)),cur=current?.data?.hum!=null?Number(current.data.hum):pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'hum',3),delta=cur!=null&&ago!=null?cur-ago:null;
     sum.innerHTML=recentStat('Atual',`${fmt(cur,0)}%`)+recentStat('Máxima 24 h',`${fmt(st.max,0)}%`)+recentStat('Mínima 24 h',`${fmt(st.min,0)}%`)+recentStat('Variação 3 h',`${delta!=null&&delta>0?'+':''}${fmt(delta,0)} p.p.`);
     drawRecentLine(host,pts,{unit:'%',dec:0});
   }else if(variable==='pressure'){
-    const pts=rows.filter(r=>r.pressure!=null).map(r=>({ms:ms(r),v:Number(r.pressure)})),st=seriesStats(pts.map(x=>x.v)),cur=pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'pressure',3),delta=cur!=null&&ago!=null?cur-ago:null;
+    const pts=rows.filter(r=>r.pressure!=null).map(r=>({ms:ms(r),v:Number(r.pressure)})),st=seriesStats(pts.map(x=>x.v)),cur=current?.data?.press!=null?Number(current.data.press):pts.at(-1)?.v,ago=valueAtHoursAgo(rows,'pressure',3),delta=cur!=null&&ago!=null?cur-ago:null;
     sum.innerHTML=recentStat('Atual',`${fmt(cur,1)} hPa`)+recentStat('Máxima 24 h',`${fmt(st.max,1)} hPa`)+recentStat('Mínima 24 h',`${fmt(st.min,1)} hPa`)+recentStat('Variação 3 h',`${delta!=null&&delta>0?'+':''}${fmt(delta,1)} hPa`);
     drawRecentLine(host,pts,{unit:' hPa',dec:1});
   }else if(variable==='wind'){
-    const pts=rows.filter(r=>r.wind_avg!=null).map(r=>({ms:ms(r),v:Number(r.wind_avg)})),gust=rows.filter(r=>r.wind_gust!=null).map(r=>({ms:ms(r),v:Number(r.wind_gust)})),st=seriesStats(pts.map(x=>x.v)),gs=seriesStats(gust.map(x=>x.v)),last=rows.at(-1);
-    sum.innerHTML=recentStat('Atual',`${fmt(last.wind_avg,1)} km/h`,windDir(last.wind_bearing))+recentStat('Média 24 h',`${fmt(st.avg,1)} km/h`)+recentStat('Rajada máxima',`${fmt(gs.max,1)} km/h`)+recentStat('Direção atual',windDir(last.wind_bearing));
+    const pts=rows.filter(r=>r.wind_avg!=null).map(r=>({ms:ms(r),v:Number(r.wind_avg)})),gust=rows.filter(r=>r.wind_gust!=null).map(r=>({ms:ms(r),v:Number(r.wind_gust)})),st=seriesStats(pts.map(x=>x.v)),gs=seriesStats(gust.map(x=>x.v)),last=rows.at(-1),cw=current?.data||{};
+    const currentWind=cw.wspeed!=null?Number(cw.wspeed):last.wind_avg,currentDir=cw.currentwdir||cw.wdir||windDir(cw.bearing??last.wind_bearing);
+    sum.innerHTML=recentStat('Atual',`${fmt(currentWind,1)} km/h`,currentDir)+recentStat('Média 24 h',`${fmt(st.avg,1)} km/h`)+recentStat('Rajada máxima',`${fmt(gs.max,1)} km/h`)+recentStat('Direção atual',currentDir);
     drawRecentLine(host,pts,{unit:' km/h',dec:0},gust);
   }else if(variable==='solar'){
-    const pts=rows.filter(r=>r.solar!=null).map(r=>({ms:ms(r),v:Number(r.solar)})),st=seriesStats(pts.map(x=>x.v)),uv=rows.filter(r=>r.uv!=null).map(r=>Number(r.uv)),uvs=seriesStats(uv),last=rows.at(-1);
-    sum.innerHTML=recentStat('Radiação atual',`${fmt(last.solar,0)} W/m²`)+recentStat('Máx. 24 h',`${fmt(st.max,0)} W/m²`)+recentStat('UV atual',fmt(last.uv,1))+recentStat('UV máximo 24 h',fmt(uvs.max,1));
+    const pts=rows.filter(r=>r.solar!=null).map(r=>({ms:ms(r),v:Number(r.solar)})),st=seriesStats(pts.map(x=>x.v)),uv=rows.filter(r=>r.uv!=null).map(r=>Number(r.uv)),uvs=seriesStats(uv),last=rows.at(-1),cd=current?.data||{};
+    const solarNow=cd.SolarRad!=null?Number(cd.SolarRad):last.solar,uvNow=cd.UV!=null?Number(cd.UV):last.uv;
+    sum.innerHTML=recentStat('Radiação atual',`${fmt(solarNow,0)} W/m²`)+recentStat('Máx. 24 h',`${fmt(st.max,0)} W/m²`)+recentStat('UV atual',fmt(uvNow,1))+recentStat('UV máximo 24 h',fmt(uvs.max,1));
     drawRecentLine(host,pts,{unit:' W/m²',dec:0});
   }else{
     const bars=(history?.hourly_rain||[]).filter(x=>Number(x.time_ms||toMs(x.time))>=Number(rows[0].time_ms||toMs(rows[0].time))).map(x=>({ms:Number(x.time_ms||toMs(x.time)),v:Number(x.precip_mm||0)}));
@@ -328,13 +423,13 @@ async function init(){
   const recentLabels={temperature:['temp','Temperatura'],precipitation:['rain','Chuva'],wind:['wind','Vento'],pressure:['pressure','Pressão'],humidity:['drop','Humidade'],solar:['sun','Solar / UV']};
   document.querySelectorAll('.recent-tab').forEach(b=>{const x=recentLabels[b.dataset.recentVar];b.innerHTML=icon(x[0])+`<span>${x[1]}</span>`;b.addEventListener('click',()=>renderRecent(b.dataset.recentVar))});
   try{
-    [current,forecast,history]=await Promise.all([getJson('current.json'),getJson('forecast.json'),getJson('history24h.json')]);
-    renderCurrent();renderRecent('temperature');renderForecast();
+    [current,forecast,history,climate]=await Promise.all([getJson('current.json'),getJson('forecast.json'),getJson('history24h.json'),getJson('/climate/climate_summary.json')]);
+    renderCurrent();renderRecent('temperature');renderForecast();renderMonthContext();
   }catch(e){
     console.error(e);$('#now-status').textContent='Alguns dados estão temporariamente indisponíveis.';
   }
   $('#timeline-variable').addEventListener('change',renderTimeline);$('#local-bridge-toggle').addEventListener('change',renderTimeline);
-  setInterval(async()=>{try{current=await getJson('current.json');renderCurrent()}catch(e){}},60000);
+  setInterval(async()=>{try{current=await getJson('current.json');renderCurrent();renderMonthContext()}catch(e){}},60000);
   setInterval(()=>{const img=$('#camera-img');if(img)img.src='/camera/latest.jpg?t='+Date.now()},300000);
 }
 init();
