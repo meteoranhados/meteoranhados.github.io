@@ -18,6 +18,7 @@ function icon(name,cls=''){
     sun:`<svg ${common}><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`,
     uv:`<svg ${common}><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2"/><path d="M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>`,
     camera:`<svg ${common}><path d="M4 7h4l1.5-2h5L16 7h4v12H4Z"/><circle cx="12" cy="13" r="3"/></svg>`,
+    calendar:`<svg ${common}><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4m8-4v4M4 10h16M8 14h2m4 0h2M8 17h2m4 0h2"/></svg>`,
     chart:`<svg ${common}><path d="M4 19V9m5 10V5m5 14v-7m5 7V3"/></svg>`,
     report:`<svg ${common}><path d="M6 3h9l3 3v15H6Z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg>`,
     trophy:`<svg ${common}><path d="M8 4h8v4a4 4 0 0 1-8 0Z"/><path d="M8 6H4v1a4 4 0 0 0 4 4m8-5h4v1a4 4 0 0 1-4 4M12 12v5m-4 4h8m-6-4h4"/></svg>`,
@@ -60,7 +61,7 @@ async function getJson(url){
 }
 function val(d,k){return d?.data?.[k]}
 
-let current=null,forecast=null,history=null,climate=null;
+let current=null,forecast=null,history=null,climate=null,calendarData=null;
 
 function renderCurrent(){
   const d=current?.data||{}, primary=forecast?.primary?.hourly||{};
@@ -420,18 +421,35 @@ function renderRecent(variable='temperature'){
   }
 }
 
+
+function renderTodayHistory(){
+ if(!calendarData?.available)return;
+ const now=new Date(),m=now.getMonth()+1,d=now.getDate(),key=`${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`,rows=[...(calendarData.same_calendar_day?.[key]||[])];
+ const names=['','janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+ $('#today-history-title').textContent=`${d} de ${names[m]} ao longo da série`;
+ const cd=current?.data||{};
+ rows.push({year:now.getFullYear(),tmin:cd.tempTL,tmax:cd.tempTH,tmean:null,rain:cd.rfall,live:true});
+ rows.sort((a,b)=>a.year-b.year);
+ $('#today-history-grid').innerHTML=rows.map(r=>`<div class="today-history-card ${r.live?'live':''}"><b>${r.year}${r.live?' · hoje':''}</b><span>${fmt(r.tmin,1)} / ${fmt(r.tmax,1)} °C</span><span>${r.tmean==null?'média: —':`média: ${fmt(r.tmean,1)} °C`}</span><span>chuva: ${fmt(r.rain,1)} mm</span>${r.live?'<small>dia em curso — sem ranking</small>':''}</div>`).join('');
+ const closed=rows.filter(r=>!r.live&&r.tmax!=null);
+ if(closed.length){
+   const max=Math.max(...closed.map(r=>Number(r.tmax))),min=Math.min(...closed.map(r=>Number(r.tmin))),wet=Math.max(...closed.map(r=>Number(r.rain||0)));
+   $('#today-history-text').textContent=`Nos anos fechados desta data: Tmax recorde ${fmt(max,1)} °C · Tmin recorde ${fmt(min,1)} °C · maior chuva ${fmt(wet,1)} mm. O dia atual só entra no ranking depois de fechar.`;
+ }
+}
+
 async function init(){
-  $('#ico-climate').innerHTML=icon('chart');$('#ico-report').innerHTML=icon('report');$('#ico-record').innerHTML=icon('trophy');$('#ico-camera').innerHTML=icon('camera');
+  $('#ico-climate').innerHTML=icon('chart');$('#ico-report').innerHTML=icon('report');$('#ico-record').innerHTML=icon('trophy');$('#ico-calendar').innerHTML=icon('calendar');$('#ico-camera').innerHTML=icon('camera');
   const recentLabels={temperature:['temp','Temperatura'],precipitation:['rain','Chuva'],wind:['wind','Vento'],pressure:['pressure','Pressão'],humidity:['drop','Humidade'],solar:['sun','Solar / UV']};
   document.querySelectorAll('.recent-tab').forEach(b=>{const x=recentLabels[b.dataset.recentVar];b.innerHTML=icon(x[0])+`<span>${x[1]}</span>`;b.addEventListener('click',()=>renderRecent(b.dataset.recentVar))});
   try{
-    [current,forecast,history,climate]=await Promise.all([getJson('current.json'),getJson('forecast.json'),getJson('history24h.json'),getJson('/climate/climate_summary.json')]);
-    renderCurrent();renderRecent('temperature');renderForecast();renderMonthContext();
+    [current,forecast,history,climate,calendarData]=await Promise.all([getJson('current.json'),getJson('forecast.json'),getJson('history24h.json'),getJson('/climate/climate_summary.json'),getJson('/calendario/calendar.json')]);
+    renderCurrent();renderRecent('temperature');renderForecast();renderMonthContext();renderTodayHistory();
   }catch(e){
     console.error(e);$('#now-status').textContent='Alguns dados estão temporariamente indisponíveis.';
   }
   $('#timeline-variable').addEventListener('change',renderTimeline);$('#local-bridge-toggle').addEventListener('change',renderTimeline);
-  setInterval(async()=>{try{current=await getJson('current.json');renderCurrent();renderMonthContext()}catch(e){}},60000);
+  setInterval(async()=>{try{current=await getJson('current.json');renderCurrent();renderMonthContext();renderTodayHistory()}catch(e){}},60000);
   setInterval(()=>{const img=$('#camera-img');if(img)img.src='/camera/latest.jpg?t='+Date.now()},300000);
 }
 init();

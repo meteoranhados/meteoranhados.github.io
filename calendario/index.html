@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Calendário meteorológico da Estação Meteorológica de Ranhados.">
+<title>Calendário meteorológico — Ranhados</title>
+<link rel="stylesheet" href="calendar.css">
+<!-- RANHADOS_GLOBAL_SHELL_CSS -->
+<link rel="stylesheet" href="/integration/ranhados-shell.css">
+<!-- RANHADOS_GLOBAL_SHELL_JS -->
+<script src="/integration/ranhados-shell.js" defer></script>
+</head>
+<body>
+<!-- RANHADOS_GLOBAL_SHELL_START -->
+<nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
+  <div class="ranhados-shell__inner">
+    <a class="ranhados-shell__brand" href="/agora/">Estação Meteorológica de Ranhados</a>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link is-active" href="/climate/">Climatologia</a><a class="ranhados-shell__link" href="/recordes/">Recordes</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div>
+  </div>
+  <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
+</nav>
+<!-- RANHADOS_GLOBAL_SHELL_END --><main class="cx-page">
+<header class="cx-hero">
+  <div><p class="eyebrow">Arquivo visual</p><h1>Calendário meteorológico</h1><p>Um ano inteiro num relance. Veja calor, frio, chuva, extremos e falhas de dados dia a dia.</p></div>
+  <div id="cx-series" class="cx-series">A carregar…</div>
+</header>
+
+<section class="cx-toolbar">
+  <div class="cx-years" id="cx-years"></div>
+  <div class="cx-modes" id="cx-modes">
+    <button data-mode="tmean" class="is-active">Temperatura média</button>
+    <button data-mode="rain">Precipitação</button>
+    <button data-mode="tmax">T máxima</button>
+    <button data-mode="tmin">T mínima</button>
+    <button data-mode="extremes">Extremos</button>
+  </div>
+</section>
+
+<section id="cx-summary" class="cx-summary"></section>
+
+<section class="cx-main">
+  <div class="cx-head">
+    <div><p class="eyebrow" id="cx-kicker">Temperatura média</p><h2 id="cx-title">2026</h2><p id="cx-desc"></p></div>
+    <div id="cx-legend" class="cx-legend"></div>
+  </div>
+  <div id="cx-calendar" class="cx-calendar"></div>
+</section>
+
+<section class="cx-split">
+  <div class="cx-panel">
+    <p class="eyebrow">Dia selecionado</p>
+    <h2 id="cx-day-title">Selecione um dia</h2>
+    <div id="cx-day-detail" class="cx-day-detail"></div>
+  </div>
+  <div class="cx-panel">
+    <p class="eyebrow">Mesma data ao longo da série</p>
+    <h2 id="cx-history-title">Comparação entre anos</h2>
+    <div id="cx-history" class="cx-history"></div>
+  </div>
+</section>
+
+<section class="cx-method"><details><summary>Como ler o calendário?</summary><div>
+<p><strong>Temperatura média / Tmax / Tmin:</strong> a cor representa o valor absoluto daquele dia. Não é uma anomalia diária face a uma normal diária.</p>
+<p><strong>Precipitação:</strong> branco significa 0 mm; a intensidade azul aumenta com a quantidade observada.</p>
+<p><strong>Extremos:</strong> símbolos assinalam Tmax ≥30 °C, Tmax >35 °C, noite tropical, geada e precipitação >10/20/30 mm.</p>
+<p><strong>Dias cinzentos tracejados:</strong> não há registo diário; não são tratados como zero.</p>
+</div></details></section>
+<footer><span>Estação Meteorológica de Ranhados · Mêda</span><span>Arquivo diário: Cumulus MX / Climate Analyzer</span></footer>
+</main><script src="calendar.js" defer></script></body></html>
