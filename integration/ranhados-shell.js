@@ -45,5 +45,15 @@
       const source=document.createElement('small');source.textContent=`Fonte: IPMA, I.P.${d.stale?' · última leitura válida em cache':''}`;list.append(source);details.append(sum,list);host.append(details);
     }catch(e){console.warn('Avisos IPMA indisponíveis',e)}
   }
-  run();setInterval(run,300000);
+  async function runStationStatus(){
+    const el=document.getElementById('ranhados-station-status');if(!el)return;
+    try{
+      const r=await fetch('/estado/status.json',{cache:'no-store'});if(!r.ok)return;
+      const d=await r.json(),name={ok:'Estação OK',attention:'Atenção',critical:'Problema'}[d.overall]||'Estado';
+      el.className=`ranhados-shell__status is-${d.overall||'unknown'}`;
+      const label=el.childNodes[el.childNodes.length-1];if(label)label.textContent=name;
+      el.title=`Estado técnico · gerado ${d.generated_utc||''}`;
+    }catch(e){}
+  }
+  run();setInterval(run,300000);runStationStatus();setInterval(runStationStatus,300000);
 })();

@@ -6,20 +6,24 @@
   <title>Câmara — Estação Meteorológica de Ranhados</title>
   <!-- RANHADOS_GLOBAL_SHELL_CSS -->
   <link rel="stylesheet" href="/integration/ranhados-shell.css">
+<meta name="theme-color" content="#17475b">
+<meta name="color-scheme" content="light">
+<link rel="manifest" href="/manifest.webmanifest">
 <!-- RANHADOS_GLOBAL_SHELL_JS -->
 <script src="/integration/ranhados-shell.js" defer></script>
 </head>
 <body>
 <!-- RANHADOS_GLOBAL_SHELL_START -->
+<a class="ranhados-skip" href="#main-content">Saltar para o conteúdo</a>
 <nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
   <div class="ranhados-shell__inner">
     <a class="ranhados-shell__brand" href="/agora/">Estação Meteorológica de Ranhados</a>
-    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/previsao/">Previsão</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link" href="/observatorio/">Observatório</a><a class="ranhados-shell__link is-active" href="/camera/">Câmara</a></div>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/previsao/">Previsão</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link" href="/observatorio/">Observatório</a><a class="ranhados-shell__link is-active" href="/camera/" aria-current="page">Câmara</a></div><a id="ranhados-station-status" class="ranhados-shell__status" href="/estado/" aria-label="Estado da estação"><span></span>Estado</a>
   </div>
   <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
 </nav>
 <!-- RANHADOS_GLOBAL_SHELL_END -->
-<main class="ranhados-camera">
+<main id="main-content" class="ranhados-camera">
   <p style="font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#0f6078;font-size:11px">Estação Meteorológica de Ranhados</p>
   <h1>Câmara meteorológica</h1>
   <p>Imagem mais recente e timelapses gerados automaticamente pela estação.</p>

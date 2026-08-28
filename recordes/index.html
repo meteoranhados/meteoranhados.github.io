@@ -4,20 +4,24 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Recordes meteorológicos da Estação Meteorológica de Ranhados, Mêda.">
 <title>Recordes — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="records.css">
+<meta name="theme-color" content="#17475b">
+<meta name="color-scheme" content="light">
+<link rel="manifest" href="/manifest.webmanifest">
 <!-- RANHADOS_GLOBAL_SHELL_CSS -->
 <link rel="stylesheet" href="/integration/ranhados-shell.css">
 <!-- RANHADOS_GLOBAL_SHELL_JS -->
 <script src="/integration/ranhados-shell.js" defer></script>
 </head><body>
 <!-- RANHADOS_GLOBAL_SHELL_START -->
+<a class="ranhados-skip" href="#main-content">Saltar para o conteúdo</a>
 <nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
   <div class="ranhados-shell__inner">
     <a class="ranhados-shell__brand" href="/agora/">Estação Meteorológica de Ranhados</a>
-    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/previsao/">Previsão</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link is-active" href="/observatorio/">Observatório</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/previsao/">Previsão</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link is-active" href="/observatorio/" aria-current="page">Observatório</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div><a id="ranhados-station-status" class="ranhados-shell__status" href="/estado/" aria-label="Estado da estação"><span></span>Estado</a>
   </div>
   <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
 </nav>
-<!-- RANHADOS_GLOBAL_SHELL_END --><main class="rx-page">
+<!-- RANHADOS_GLOBAL_SHELL_END --><main id="main-content" class="rx-page">
 <header class="rx-hero"><div><p class="eyebrow">Arquivo meteorológico</p><h1>Recordes</h1><p>Extremos observados e recordes derivados da série da Estação Meteorológica de Ranhados. Os totais mensais e anuais respeitam as regras de qualidade da Climatologia.</p></div><div id="rx-period" class="rx-period">A carregar série…</div></header>
 <section id="rx-featured" class="rx-featured"></section>
 <section class="rx-main"><div class="rx-main-head"><div><p class="eyebrow">Recordes absolutos</p><h2 id="rx-category-title">Temperatura</h2></div><div id="rx-categories" class="rx-categories"></div></div><div id="rx-record-grid" class="rx-record-grid"></div></section>
