@@ -129,7 +129,10 @@ function renderStationGroups(){
     ]],
     ['Agro / sazonal',[
       ['Graus-dia aquecimento hoje',d.heatdegdays,'',2],['Graus-dia arrefecimento hoje',d.cooldegdays,'',2],
-      ['Chill hours hoje',d.chillhoursToday,' h',1],['Chill hours da época',d.chillhours,' h',1]
+      ['Chill hours hoje',d.chillhoursToday,' h',1],['Chill hours da época',d.chillhours,' h',1],
+      ['WBGT',Number(d.WetBulbGlobeTemp)>-100?d.WetBulbGlobeTemp:null,' °C',1],
+      ['Nível WBGT',Number(d.WBGTlevel)>0?d.WBGTlevel:null,' / 5',0],
+      ['Temperatura globo',Number(d.BlackGlobeTemp)>-100?d.BlackGlobeTemp:null,' °C',1]
     ]],
     ['Estação e extras',[
       ['Base das nuvens',d.cloudbasevalue,d.cloudbaseunit?` ${d.cloudbaseunit}`:'',0],['Contacto sensores',Number(d.SensorContactLost)===1?'Perdido':'OK','',null],

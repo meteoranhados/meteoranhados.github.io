@@ -1,0 +1,63 @@
+{
+  "version": "2.0.0",
+  "generated_utc": "2026-08-28T10:45:09+00:00",
+  "overall": "ok",
+  "station": {
+    "available": true,
+    "source": "Cumulus MX Local API",
+    "current_generated_utc": "2026-08-28T10:45:09+00:00",
+    "cumulus_version": "5.1.5",
+    "cumulus_build": "5012",
+    "program_uptime": "1 days 18 hours",
+    "system_uptime": "1 days 18 hours",
+    "station_uptime": null,
+    "cpu_temp_c": 27.8,
+    "low_battery_list": null,
+    "new_build_available": false,
+    "new_build_number": "5012",
+    "alarms": {
+      "data_stopped": false,
+      "battery_low": false,
+      "data_spike": false,
+      "sensor_contact_lost": false,
+      "error": false,
+      "high_wind_gust": false,
+      "high_wind_speed": false,
+      "high_rain_today": false,
+      "high_rain_rate": false,
+      "low_temp": false,
+      "high_temp": false,
+      "low_pressure": false,
+      "high_pressure": false
+    }
+  },
+  "data": {
+    "last_closed_day": "2026-08-27",
+    "valid_days": 1668,
+    "missing_days": 32,
+    "invalid_rows": 0,
+    "duplicates": 0
+  },
+  "forecast": {
+    "available": true,
+    "stale": false,
+    "last_success_utc": "2026-08-28T10:44:07+00:00",
+    "ensemble_available": true
+  },
+  "ipma": {
+    "available": true,
+    "stale": false,
+    "warning_count": 0,
+    "generated_utc": "2026-08-28T10:44:09+00:00"
+  },
+  "graphs": {
+    "available": true,
+    "stale": false,
+    "last_ms": 1787913600000,
+    "sample_count": 145
+  },
+  "notes": {
+    "camera": "A idade da câmara não é avaliada pelo Climate Analyzer porque a câmara é montada apenas no publisher.",
+    "public_delay": "A publicação GitHub Pages ocorre no ciclo do weather-publisher; o timestamp de geração permite avaliar a frescura."
+  }
+}
