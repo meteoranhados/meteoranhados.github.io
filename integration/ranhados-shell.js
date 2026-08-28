@@ -66,20 +66,6 @@
     const set=open=>{sheet.hidden=!open;toggle.setAttribute('aria-expanded',String(open));document.body.classList.toggle('ranhados-chart-lock',open)};
     toggle.addEventListener('click',()=>set(sheet.hidden));sheet.querySelectorAll('[data-rh-more-close]').forEach(x=>x.addEventListener('click',()=>set(false)));addEventListener('keydown',e=>{if(e.key==='Escape'&&!sheet.hidden)set(false)});
   }
-  function setupInstall(){
-    let promptEvent=null;const buttons=[...document.querySelectorAll('[data-rh-install]')],help=document.getElementById('ranhados-install-help'),helpText=document.getElementById('ranhados-install-help-text');
-    const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;if(standalone)return;
-    const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
-    const show=()=>buttons.forEach(b=>b.hidden=false);
-    addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptEvent=e;show()});
-    if(isIOS)show();
-    buttons.forEach(b=>b.addEventListener('click',async()=>{
-      if(promptEvent){promptEvent.prompt();await promptEvent.userChoice;promptEvent=null;buttons.forEach(x=>x.hidden=true);return}
-      if(help&&helpText){helpText.textContent=isIOS?'No Safari, toque em Partilhar e escolha “Adicionar ao ecrã principal”.':'Abra o menu do browser e escolha “Instalar aplicação” ou “Adicionar ao ecrã principal”.';help.hidden=false}
-    }));
-    document.querySelectorAll('[data-rh-install-close]').forEach(b=>b.addEventListener('click',()=>{if(help)help.hidden=true}));
-    if(help)help.addEventListener('click',e=>{if(e.target===help)help.hidden=true});
-  }
   function setupServiceWorker(){
     if(!('serviceWorker' in navigator))return;
     navigator.serviceWorker.register('/sw.js',{scope:'/'}).then(reg=>{
@@ -94,5 +80,5 @@
     document.querySelectorAll(selector).forEach(chart=>{if(chart.dataset.rhExpand)return;chart.dataset.rhExpand='1';if(getComputedStyle(chart).position==='static')chart.style.position='relative';const b=document.createElement('button');b.type='button';b.className='ranhados-chart-expand';b.setAttribute('aria-label','Expandir gráfico');b.textContent='⛶';b.onclick=()=>{const on=chart.classList.toggle('ranhados-chart-fullscreen');document.body.classList.toggle('ranhados-chart-lock',on);b.textContent=on?'×':'⛶';b.setAttribute('aria-label',on?'Fechar gráfico':'Expandir gráfico')};chart.append(b)});
   }
   addEventListener('keydown',e=>{if(e.key==='Escape'){const c=document.querySelector('.ranhados-chart-fullscreen');if(c){c.classList.remove('ranhados-chart-fullscreen');document.body.classList.remove('ranhados-chart-lock')}}});
-  run();setInterval(run,300000);runStationStatus();setInterval(runStationStatus,300000);setupConnectivity();setupMoreSheet();setupInstall();setupServiceWorker();setupChartExpand();setInterval(setupChartExpand,1800);
+  run();setInterval(run,300000);runStationStatus();setInterval(runStationStatus,300000);setupConnectivity();setupMoreSheet();setupServiceWorker();setupChartExpand();setInterval(setupChartExpand,1800);
 })();

@@ -448,13 +448,13 @@ async function init(){
   const recentLabels={temperature:['temp','Temperatura'],precipitation:['rain','Chuva'],wind:['wind','Vento'],pressure:['pressure','Pressão'],humidity:['drop','Humidade'],solar:['sun','Solar / UV']};
   document.querySelectorAll('.recent-tab').forEach(b=>{const x=recentLabels[b.dataset.recentVar];b.innerHTML=icon(x[0])+`<span>${x[1]}</span>`;b.addEventListener('click',()=>renderRecent(b.dataset.recentVar))});
   try{
-    [current,forecast,history,climate,calendarData]=await Promise.all([getJson('current.json'),getJson('forecast.json'),getJson('history24h.json'),getJson('/climate/climate_summary.json'),getJson('/calendario/calendar.json')]);
+    [current,forecast,history,climate,calendarData]=await Promise.all([getJson('/api/v1/current.json'),getJson('/api/v1/forecast.json'),getJson('/api/v1/history24h.json'),getJson('/api/v1/climate-summary.json'),getJson('/api/v1/calendar.json')]);
     renderCurrent();renderRecent('temperature');renderForecast();renderMonthContext();renderTodayHistory();
   }catch(e){
     console.error(e);$('#now-status').textContent='Alguns dados estão temporariamente indisponíveis.';
   }
   $('#timeline-variable').addEventListener('change',renderTimeline);$('#local-bridge-toggle').addEventListener('change',renderTimeline);
-  setInterval(async()=>{try{current=await getJson('current.json');renderCurrent();renderMonthContext();renderTodayHistory()}catch(e){}},60000);
+  setInterval(async()=>{try{current=await getJson('/api/v1/current.json');renderCurrent();renderMonthContext();renderTodayHistory()}catch(e){}},60000);
   setInterval(()=>{const img=$('#camera-img');if(img)img.src='/camera/latest.jpg?t='+Date.now()},300000);
 }
 init();

@@ -91,7 +91,7 @@ function selectDate(iso){
 function setMode(m){mode=m;document.querySelectorAll('#cx-modes button').forEach(b=>b.classList.toggle('is-active',b.dataset.mode===mode));const names={tmean:'Temperatura média diária',rain:'Precipitação diária',tmax:'Temperatura máxima diária',tmin:'Temperatura mínima diária',extremes:'Extremos e limiares'};$('#cx-kicker').textContent=names[m];$('#cx-desc').textContent=m==='extremes'?'Marcadores assinalam dias que ultrapassaram limiares meteorológicos.':'Clique num dia para ver detalhe e comparar a mesma data entre anos.';renderCalendar()}
 function setYear(y){year=Number(y);document.querySelectorAll('#cx-years button').forEach(b=>b.classList.toggle('is-active',Number(b.dataset.year)===year));$('#cx-title').textContent=year;renderSummary();renderCalendar();const now=new Date();const iso=`${year}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;selectDate(iso)}
 async function init(){
- [data,current]=await Promise.all([getJson('calendar.json'),getJson('/agora/current.json').catch(()=>null)]);
+ [data,current]=await Promise.all([getJson('/api/v1/calendar.json'),getJson('/api/v1/current.json').catch(()=>null)]);
  $('#cx-series').textContent=`Série ${dateText(data.series_start)} — ${dateText(data.series_end)}`;
  $('#cx-years').innerHTML=(data.years||[]).map(y=>`<button data-year="${y}">${y}</button>`).join('');
  document.querySelectorAll('#cx-years button').forEach(b=>b.onclick=()=>setYear(b.dataset.year));

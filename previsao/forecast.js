@@ -108,7 +108,7 @@ function renderVerification(){
  const rows=verification.samples||[],vars=[['temperature','Temperatura','°C'],['humidity','Humidade','%'],['wind','Vento',' km/h'],['precipitation','Chuva',' mm']];$('#fx-verification').innerHTML=`<div class="fx-stats">${vars.map(([k,l,u])=>{const pairs=rows.filter(r=>r.observed?.[k]!=null&&r.best_match?.[k]!=null),mae=pairs.length?pairs.reduce((a,r)=>a+Math.abs(Number(r.best_match[k])-Number(r.observed[k])),0)/pairs.length:null;return `<div class="fx-stat"><span>${l} · MAE</span><b>${fmt(mae,k==='humidity'?0:1)}${u}</b><small>${pairs.length} pontos</small></div>`}).join('')}</div>`;
 }
 async function init(){
- [forecast,current,verification]=await Promise.all([getJson('/agora/forecast.json'),getJson('/agora/current.json').catch(()=>null),getJson('/graficos/forecast-verification.json').catch(()=>null)]);
+ [forecast,current,verification]=await Promise.all([getJson('/api/v1/forecast.json'),getJson('/api/v1/current.json').catch(()=>null),getJson('/api/v1/forecast-verification.json').catch(()=>null)]);
  $('#fx-status').textContent=`${forecast.source||'Open-Meteo'} · ${forecast.stale?'cache':'atualizada'} · 40.99643, −7.32928`;
  renderDays();renderTabs();renderMeteogram();renderBridge();renderAgreement();renderEnsemble();renderUsefulDetails();renderAgro();renderModelChart();renderHourly();renderVerification();
  $('#fx-model-var').onchange=renderModelChart;

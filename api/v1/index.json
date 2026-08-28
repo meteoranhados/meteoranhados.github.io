@@ -1,0 +1,156 @@
+{
+  "api_version": "v1",
+  "engine_version": "2.2.0",
+  "generated_utc": "2026-08-28T11:48:11+00:00",
+  "station": "Estação Meteorológica de Ranhados · Mêda",
+  "format": "JSON UTF-8",
+  "endpoints": [
+    {
+      "name": "current",
+      "path": "/api/v1/current.json",
+      "description": "Observação atual do Cumulus MX",
+      "available": true
+    },
+    {
+      "name": "forecast",
+      "path": "/api/v1/forecast.json",
+      "description": "Previsão Best Match, ECMWF, GFS e ensemble quando disponível",
+      "available": true
+    },
+    {
+      "name": "history24h",
+      "path": "/api/v1/history24h.json",
+      "description": "Observações recentes para gráficos de curto prazo",
+      "available": true
+    },
+    {
+      "name": "warnings",
+      "path": "/api/v1/warnings.json",
+      "description": "Avisos oficiais IPMA filtrados para o distrito da Guarda",
+      "available": true
+    },
+    {
+      "name": "status",
+      "path": "/api/v1/status.json",
+      "description": "Estado técnico público da estação",
+      "available": true
+    },
+    {
+      "name": "climate-summary",
+      "path": "/api/v1/climate-summary.json",
+      "description": "Resumo climatológico em curso",
+      "available": true
+    },
+    {
+      "name": "daily",
+      "path": "/api/v1/daily.json",
+      "description": "Série diária processada",
+      "available": true
+    },
+    {
+      "name": "monthly",
+      "path": "/api/v1/monthly.json",
+      "description": "Série mensal processada",
+      "available": true
+    },
+    {
+      "name": "annual",
+      "path": "/api/v1/annual.json",
+      "description": "Série anual processada",
+      "available": true
+    },
+    {
+      "name": "hydrological",
+      "path": "/api/v1/hydrological.json",
+      "description": "Anos hidrológicos",
+      "available": true
+    },
+    {
+      "name": "station-climatology",
+      "path": "/api/v1/station-climatology.json",
+      "description": "Referência climatológica da estação",
+      "available": true
+    },
+    {
+      "name": "records",
+      "path": "/api/v1/records.json",
+      "description": "Recordes e métricas derivadas",
+      "available": true
+    },
+    {
+      "name": "rankings",
+      "path": "/api/v1/rankings.json",
+      "description": "Rankings climatológicos",
+      "available": true
+    },
+    {
+      "name": "extremes",
+      "path": "/api/v1/extremes.json",
+      "description": "Extremos por períodos",
+      "available": true
+    },
+    {
+      "name": "indices",
+      "path": "/api/v1/indices.json",
+      "description": "Índices climatológicos",
+      "available": true
+    },
+    {
+      "name": "waves",
+      "path": "/api/v1/waves.json",
+      "description": "Ondas de calor/frio e sequências subcríticas",
+      "available": true
+    },
+    {
+      "name": "quality",
+      "path": "/api/v1/quality.json",
+      "description": "Qualidade e falhas do arquivo diário",
+      "available": true
+    },
+    {
+      "name": "wind",
+      "path": "/api/v1/wind.json",
+      "description": "Análise climatológica de vento",
+      "available": true
+    },
+    {
+      "name": "calendar",
+      "path": "/api/v1/calendar.json",
+      "description": "Calendário meteorológico diário",
+      "available": true
+    },
+    {
+      "name": "observatory",
+      "path": "/api/v1/observatory.json",
+      "description": "Dados analíticos do Observatório",
+      "available": true
+    },
+    {
+      "name": "forecast-skill",
+      "path": "/api/v1/forecast-skill.json",
+      "description": "Desempenho histórico D+1…D+7 por modelo",
+      "available": true
+    },
+    {
+      "name": "forecast-verification",
+      "path": "/api/v1/forecast-verification.json",
+      "description": "Arquivo próprio previsão × observado",
+      "available": true
+    },
+    {
+      "name": "graph-24h",
+      "path": "/api/v1/graph-24h.json",
+      "description": "Série recente agregada para gráficos",
+      "available": true
+    }
+  ],
+  "cache_guidance": {
+    "current": "5 minutos",
+    "forecast": "30 minutos",
+    "warnings": "10 minutos",
+    "history24h": "5 minutos",
+    "graph-24h": "15 minutos",
+    "climate": "após fecho do dia"
+  },
+  "note": "A API é a interface pública estável; os caminhos internos do site podem mudar em versões futuras."
+}

@@ -1,10 +1,83 @@
 {
+  "id": "/",
   "name": "Estação Meteorológica de Ranhados",
   "short_name": "Meteo Ranhados",
-  "start_url": "/agora/",
+  "description": "Tempo atual, previsão, radar, gráficos e climatologia da Estação Meteorológica de Ranhados.",
+  "lang": "pt-PT",
+  "start_url": "/agora/?pwa=1",
   "scope": "/",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
   "background_color": "#edf3f5",
   "theme_color": "#17475b",
-  "description": "Observações, previsão e climatologia da Estação Meteorológica de Ranhados."
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Agora",
+      "short_name": "Agora",
+      "url": "/agora/",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Previsão",
+      "short_name": "Previsão",
+      "url": "/previsao/",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Radar",
+      "short_name": "Radar",
+      "url": "/radar/",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Câmara",
+      "short_name": "Câmara",
+      "url": "/camera/",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
 }
