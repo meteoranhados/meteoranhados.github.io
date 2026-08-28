@@ -21,9 +21,11 @@
   <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
 </nav>
 <!-- RANHADOS_GLOBAL_SHELL_END --><main id="main-content" class="fx-page">
-<header class="fx-hero"><div><p class="eyebrow">Ranhados · Mêda · 755 m</p><h1>Previsão</h1><p>Previsão horária e diária por coordenadas. Best Match é a linha principal; ECMWF e GFS são mostrados separadamente para perceber a dispersão entre modelos.</p></div><div id="fx-status" class="fx-status">A carregar…</div></header>
+<header class="fx-hero"><div><p class="eyebrow">Ranhados · Mêda · 755 m</p><h1>Previsão</h1><p>Previsão horária e até 14 dias por coordenadas. Best Match é a linha principal; ECMWF e GFS são mostrados separadamente para perceber a dispersão entre modelos.</p></div><div id="fx-status" class="fx-status">A carregar…</div></header>
 
 <section id="fx-days" class="fx-days"></section>
+
+<section class="fx-panel fx-radar-panel"><div class="fx-panel-head"><div><p class="eyebrow">Observação remota</p><h2>Radar de precipitação</h2><p class="fx-note">Últimas imagens observadas; Ranhados está marcado no centro da área.</p></div><a class="fx-more" href="/radar/">Abrir radar em grande →</a></div><iframe class="fx-radar-frame" src="/radar/?embed=1" title="Radar de precipitação em torno de Ranhados" loading="lazy"></iframe></section>
 
 <section class="fx-main">
 <div class="fx-main-head"><div><p class="eyebrow">Próximas 72 horas</p><h2>Meteograma</h2><p id="fx-meteo-desc">Evolução horária da previsão principal.</p></div><div id="fx-tabs" class="fx-tabs"></div></div>
@@ -45,6 +47,8 @@
 <p class="eyebrow">Detalhes úteis</p><h2>Atmosfera e solo · próximas horas</h2>
 <div id="fx-details" class="fx-details"></div>
 </section>
+
+<section class="fx-panel fx-agro-panel"><div class="fx-panel-head"><div><p class="eyebrow">Agrometeorologia</p><h2>Leitura prática</h2><p class="fx-note">Resumo modelado para água, stress atmosférico e frio. É contextual, não substitui sensores de solo.</p></div></div><div id="fx-agro" class="fx-agro"></div></section>
 
 <section class="fx-panel fx-model-panel">
 <div class="fx-panel-head"><div><p class="eyebrow">Dispersão diária</p><h2>Modelos nos próximos dias</h2></div><select id="fx-model-var"><option value="temperature">Temperatura máxima</option><option value="precipitation">Precipitação</option></select></div>

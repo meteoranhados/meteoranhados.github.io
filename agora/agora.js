@@ -20,6 +20,7 @@ function icon(name,cls=''){
     camera:`<svg ${common}><path d="M4 7h4l1.5-2h5L16 7h4v12H4Z"/><circle cx="12" cy="13" r="3"/></svg>`,
     calendar:`<svg ${common}><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4m8-4v4M4 10h16M8 14h2m4 0h2M8 17h2m4 0h2"/></svg>`,
     observatory:`<svg ${common}><circle cx="6" cy="16" r="2"/><circle cx="12" cy="8" r="2"/><circle cx="18" cy="13" r="2"/><path d="m7.7 14.9 2.6-5.1m3.5-.7 2.4 2.8M4 20h16"/></svg>`,
+    radar:`<svg ${common}><path d="M4 18a8 8 0 1 1 16 0"/><path d="M7 18a5 5 0 1 1 10 0"/><path d="M10 18a2 2 0 1 1 4 0"/><path d="m12 18 5-7"/></svg>`,
     chart:`<svg ${common}><path d="M4 19V9m5 10V5m5 14v-7m5 7V3"/></svg>`,
     report:`<svg ${common}><path d="M6 3h9l3 3v15H6Z"/><path d="M15 3v4h4M9 11h6M9 15h6"/></svg>`,
     trophy:`<svg ${common}><path d="M8 4h8v4a4 4 0 0 1-8 0Z"/><path d="M8 6H4v1a4 4 0 0 0 4 4m8-5h4v1a4 4 0 0 1-4 4M12 12v5m-4 4h8m-6-4h4"/></svg>`,
@@ -443,7 +444,7 @@ function renderTodayHistory(){
 }
 
 async function init(){
-  $('#ico-climate').innerHTML=icon('chart');$('#ico-report').innerHTML=icon('report');$('#ico-record').innerHTML=icon('trophy');$('#ico-observatory').innerHTML=icon('observatory');$('#ico-calendar').innerHTML=icon('calendar');$('#ico-camera').innerHTML=icon('camera');
+  $('#ico-climate').innerHTML=icon('chart');$('#ico-report').innerHTML=icon('report');$('#ico-record').innerHTML=icon('trophy');$('#ico-observatory').innerHTML=icon('observatory');$('#ico-calendar').innerHTML=icon('calendar');$('#ico-radar').innerHTML=icon('radar');$('#ico-camera').innerHTML=icon('camera');
   const recentLabels={temperature:['temp','Temperatura'],precipitation:['rain','Chuva'],wind:['wind','Vento'],pressure:['pressure','Pressão'],humidity:['drop','Humidade'],solar:['sun','Solar / UV']};
   document.querySelectorAll('.recent-tab').forEach(b=>{const x=recentLabels[b.dataset.recentVar];b.innerHTML=icon(x[0])+`<span>${x[1]}</span>`;b.addEventListener('click',()=>renderRecent(b.dataset.recentVar))});
   try{
