@@ -57,3 +57,12 @@
 @media(display-mode:standalone){.ranhados-shell{box-shadow:none}.ranhados-shell__brand{text-transform:none;letter-spacing:.01em}}
 
 @media(max-width:760px){.ranhados-camera{padding:18px 10px 25px}.ranhados-camera h1{font-size:31px}.ranhados-camera__card{border-radius:14px;padding:10px}.ranhados-camera video{max-height:70vh}}
+
+
+/* v2.3 — local identity: Ranhados */
+.ranhados-shell__brand{display:inline-flex;align-items:center;gap:8px}.ranhados-shell__brand img{width:25px;height:25px;border-radius:8px;flex:none}.ranhados-shell__brand span{min-width:0}
+:is(.now-hero__weather,.fx-hero,.gx-hero,.ox-hero,.cx-hero,.rx-hero,.rr-hero,.sx-hero,.dx-hero,.site-hero){position:relative;overflow:hidden}
+:is(.now-hero__weather,.fx-hero,.gx-hero,.ox-hero,.cx-hero,.rx-hero,.rr-hero,.sx-hero,.dx-hero,.site-hero)::after{content:'';position:absolute;right:-18px;bottom:-8px;width:min(48%,560px);height:105px;background:url('/identity/ranhados-signature.svg') right bottom/contain no-repeat;opacity:.14;pointer-events:none;z-index:0}
+:is(.now-hero__weather,.fx-hero,.gx-hero,.ox-hero,.cx-hero,.rx-hero,.rr-hero,.sx-hero,.dx-hero,.site-hero)>*{position:relative;z-index:1}
+.ranhados-camera:before{content:'';display:block;width:72px;height:72px;background:url('/identity/ranhados-mark.svg') center/contain no-repeat;margin-bottom:12px}
+@media(max-width:760px){.ranhados-shell__brand{gap:6px}.ranhados-shell__brand img{width:23px;height:23px}.ranhados-shell__brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}:is(.now-hero__weather,.fx-hero,.gx-hero,.ox-hero,.cx-hero,.rx-hero,.rr-hero,.sx-hero,.dx-hero,.site-hero)::after{width:66%;height:78px;opacity:.11}}
