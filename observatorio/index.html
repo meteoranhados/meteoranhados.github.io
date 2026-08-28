@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Observatório meteorológico e climatológico da Estação Meteorológica de Ranhados.">
+<title>Observatório — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="observatory.css"><!-- RANHADOS_GLOBAL_SHELL_CSS -->
+<link rel="stylesheet" href="/integration/ranhados-shell.css">
+<!-- RANHADOS_GLOBAL_SHELL_JS -->
+<script src="/integration/ranhados-shell.js" defer></script>
+</head>
+<body>
+<!-- RANHADOS_GLOBAL_SHELL_START -->
+<nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
+  <div class="ranhados-shell__inner">
+    <a class="ranhados-shell__brand" href="/agora/">Estação Meteorológica de Ranhados</a>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/previsao/">Previsão</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link is-active" href="/observatorio/">Observatório</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div>
+  </div>
+  <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
+</nav>
+<!-- RANHADOS_GLOBAL_SHELL_END --><main class="ox-page">
+<header class="ox-hero"><div><p class="eyebrow">Análise da série local</p><h1>Observatório</h1><p>Relações entre variáveis, anomalias mensais, persistência de extremos, vento e qualidade dos dados. A série da estação é curta; a página distingue descrição local de tendência climática.</p></div><div id="ox-series" class="ox-series">A carregar…</div></header>
+
+<section class="ox-nav" id="ox-nav">
+<button data-view="anomalies" class="is-active">Anomalias</button><button data-view="relations">Relações</button><button data-view="extremes">Extremos</button><button data-view="wind">Vento</button><button data-view="quality">Qualidade</button>
+</section>
+
+<section id="ox-anomalies" class="ox-view">
+<div class="ox-panel"><div class="ox-head"><div><p class="eyebrow">Mês × ano</p><h2>Matriz de anomalias</h2><p>Meses válidos face à normal 1991–2020.</p></div><select id="ox-matrix-mode"><option value="temp">Temperatura</option><option value="rain">Precipitação</option></select></div><div id="ox-matrix" class="ox-matrix"></div></div>
+<div class="ox-split"><div class="ox-panel"><p class="eyebrow">Série da estação</p><h2>Evolução anual</h2><div id="ox-annual-chart" class="ox-chart"></div><p class="ox-note" id="ox-trend-note"></p></div><div class="ox-panel"><p class="eyebrow">Perfil mensal</p><h2>Estação × normal</h2><div id="ox-month-profile" class="ox-chart"></div></div></div>
+</section>
+
+<section id="ox-relations" class="ox-view" hidden>
+<div class="ox-panel"><div class="ox-head"><div><p class="eyebrow">Relações diárias</p><h2>Explorador de correlações</h2><p>Correlação não significa causalidade; serve para explorar a estrutura da série.</p></div><select id="ox-relation"></select></div><div id="ox-relation-stats" class="ox-stats"></div><div id="ox-scatter" class="ox-chart large"></div></div>
+</section>
+
+<section id="ox-extremes" class="ox-view" hidden>
+<div class="ox-panel"><div class="ox-head"><div><p class="eyebrow">Persistência</p><h2>Índices por ano</h2></div><select id="ox-index"><option value="hot30">Dias ≥30 °C</option><option value="hot35">Dias >35 °C</option><option value="tropical">Noites tropicais</option><option value="frost">Dias de geada</option><option value="rain_days">Dias de chuva</option><option value="dry_spell_max">Maior sequência seca</option></select></div><div id="ox-index-chart" class="ox-chart"></div></div>
+<div class="ox-links"><a href="/recordes/">Recordes e rankings →</a><a href="/calendario/">Calendário meteorológico →</a><a href="/climate/">Climatologia completa →</a></div>
+</section>
+
+<section id="ox-wind" class="ox-view" hidden>
+<div class="ox-split"><div class="ox-panel"><p class="eyebrow">Direção dominante diária</p><h2>Distribuição por setor</h2><div id="ox-wind-chart" class="ox-chart"></div></div><div class="ox-panel"><p class="eyebrow">Nota metodológica</p><h2>O que esta rosa representa</h2><div id="ox-wind-note" class="ox-copy"></div><a class="ox-more" href="/climate/?tab=wind">Abrir análise detalhada de vento →</a></div></div>
+</section>
+
+<section id="ox-quality" class="ox-view" hidden>
+<div class="ox-panel"><p class="eyebrow">Integridade da série</p><h2>Cobertura por ano</h2><div id="ox-quality-stats" class="ox-stats"></div><div id="ox-quality-chart" class="ox-chart"></div></div>
+<div class="ox-panel" style="margin-top:12px"><p class="eyebrow">Metodologia</p><h2>Limites de interpretação</h2><div id="ox-method" class="ox-copy"></div></div>
+</section>
+
+<footer><span>Observatório de Ranhados · análise automática</span><span>Normal de referência: 1991–2020 · série local da estação</span></footer>
+</main><script src="observatory.js" defer></script></body></html>

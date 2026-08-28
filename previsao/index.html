@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Previsão meteorológica detalhada para Ranhados, Mêda, com Best Match, ECMWF e GFS.">
+<title>Previsão — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="forecast.css"><!-- RANHADOS_GLOBAL_SHELL_CSS -->
+<link rel="stylesheet" href="/integration/ranhados-shell.css">
+<!-- RANHADOS_GLOBAL_SHELL_JS -->
+<script src="/integration/ranhados-shell.js" defer></script>
+</head>
+<body>
+<!-- RANHADOS_GLOBAL_SHELL_START -->
+<nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
+  <div class="ranhados-shell__inner">
+    <a class="ranhados-shell__brand" href="/agora/">Estação Meteorológica de Ranhados</a>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link is-active" href="/previsao/">Previsão</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link" href="/observatorio/">Observatório</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div>
+  </div>
+  <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
+</nav>
+<!-- RANHADOS_GLOBAL_SHELL_END --><main class="fx-page">
+<header class="fx-hero"><div><p class="eyebrow">Ranhados · Mêda · 755 m</p><h1>Previsão</h1><p>Previsão horária e diária por coordenadas. Best Match é a linha principal; ECMWF e GFS são mostrados separadamente para perceber a dispersão entre modelos.</p></div><div id="fx-status" class="fx-status">A carregar…</div></header>
+
+<section id="fx-days" class="fx-days"></section>
+
+<section class="fx-main">
+<div class="fx-main-head"><div><p class="eyebrow">Próximas 72 horas</p><h2>Meteograma</h2><p id="fx-meteo-desc">Evolução horária da previsão principal.</p></div><div id="fx-tabs" class="fx-tabs"></div></div>
+<div id="fx-meteo-stats" class="fx-stats"></div><div id="fx-chart" class="fx-chart"></div><p id="fx-chart-note" class="fx-note"></p>
+</section>
+
+<section class="fx-split">
+<div class="fx-panel"><div class="fx-panel-head"><div><p class="eyebrow">Modelo × estação</p><h2>Ponte local</h2></div></div><div id="fx-bridge"></div></div>
+<div class="fx-panel"><p class="eyebrow">Acordo entre modelos</p><h2>ECMWF × GFS</h2><div id="fx-agreement"></div></div>
+</section>
+
+<section class="fx-panel fx-model-panel">
+<div class="fx-panel-head"><div><p class="eyebrow">Dispersão diária</p><h2>Modelos nos próximos dias</h2></div><select id="fx-model-var"><option value="temperature">Temperatura máxima</option><option value="precipitation">Precipitação</option></select></div>
+<div id="fx-model-chart" class="fx-model-chart"></div>
+</section>
+
+<section class="fx-panel">
+<div class="fx-panel-head"><div><p class="eyebrow">Hora a hora</p><h2>Próximas 24 horas</h2></div></div>
+<div id="fx-hourly-table" class="fx-hourly-table"></div>
+</section>
+
+<section class="fx-panel">
+<p class="eyebrow">Verificação</p><h2>Como têm corrido as previsões?</h2>
+<div id="fx-verification"></div>
+<a class="fx-more" href="/graficos/">Abrir previsão × observado nos Gráficos →</a>
+</section>
+
+<section class="fx-method"><details><summary>Fontes e método</summary><div>
+<p><strong>Best Match:</strong> previsão principal do Open-Meteo para as coordenadas da estação. <strong>ECMWF IFS</strong> e <strong>GFS</strong> são mantidos separados para mostrar diferenças entre modelos.</p>
+<p><strong>Ponte local:</strong> correção simples e transparente de temperatura, humidade e pressão a partir da diferença entre a observação atual da estação e o Best Match. A correção desaparece gradualmente em 8–12 h. Não altera precipitação, vento ou códigos de tempo.</p>
+<p>A concordância entre dois modelos não é sinónimo de certeza. A verificação histórica da estação é a ferramenta adequada para avaliar desempenho real.</p>
+</div></details></section>
+<footer><span>Estação Meteorológica de Ranhados · Mêda</span><span>Previsão: Open-Meteo · Best Match / ECMWF / GFS</span></footer>
+</main><script src="forecast.js" defer></script></body></html>
