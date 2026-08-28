@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Recordes meteorológicos da Estação Meteorológica de Ranhados, Mêda.">
+<title>Recordes — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="records.css">
+<!-- RANHADOS_GLOBAL_SHELL_CSS -->
+<link rel="stylesheet" href="/integration/ranhados-shell.css">
+<!-- RANHADOS_GLOBAL_SHELL_JS -->
+<script src="/integration/ranhados-shell.js" defer></script>
+</head><body>
+<!-- RANHADOS_GLOBAL_SHELL_START -->
+<nav class="ranhados-shell" aria-label="Navegação principal da Estação Meteorológica de Ranhados">
+  <div class="ranhados-shell__inner">
+    <a class="ranhados-shell__brand" href="/agora/">Estação Meteorológica de Ranhados</a>
+    <div class="ranhados-shell__links"><a class="ranhados-shell__link" href="/agora/">Agora</a><a class="ranhados-shell__link" href="/graficos/">Gráficos</a><a class="ranhados-shell__link" href="/climate/">Climatologia</a><a class="ranhados-shell__link is-active" href="/recordes/">Recordes</a><a class="ranhados-shell__link" href="/camera/">Câmara</a></div>
+  </div>
+  <div id="ranhados-ipma-warning" class="ranhados-ipma-warning" aria-live="polite"></div>
+</nav>
+<!-- RANHADOS_GLOBAL_SHELL_END --><main class="rx-page">
+<header class="rx-hero"><div><p class="eyebrow">Arquivo meteorológico</p><h1>Recordes</h1><p>Extremos observados e recordes derivados da série da Estação Meteorológica de Ranhados. Os totais mensais e anuais respeitam as regras de qualidade da Climatologia.</p></div><div id="rx-period" class="rx-period">A carregar série…</div></header>
+<section id="rx-featured" class="rx-featured"></section>
+<section class="rx-main"><div class="rx-main-head"><div><p class="eyebrow">Recordes absolutos</p><h2 id="rx-category-title">Temperatura</h2></div><div id="rx-categories" class="rx-categories"></div></div><div id="rx-record-grid" class="rx-record-grid"></div></section>
+<section class="rx-split"><div class="rx-panel"><div class="rx-panel-head"><div><p class="eyebrow">Calendário</p><h2>Recordes por mês</h2></div><select id="rx-month"></select></div><div id="rx-month-grid" class="rx-record-grid compact"></div></div>
+<div class="rx-panel"><div class="rx-panel-head"><div><p class="eyebrow">Períodos completos</p><h2>Meses e anos</h2></div><select id="rx-period-kind"><option value="monthly">Mensais</option><option value="annual">Anuais</option></select></div><div id="rx-period-grid" class="rx-record-grid compact"></div></div></section>
+<section class="rx-panel rx-rankings-panel"><div class="rx-panel-head"><div><p class="eyebrow">Top 10</p><h2>Rankings</h2></div><select id="rx-ranking"></select></div><div id="rx-ranking-list" class="rx-ranking-list"></div></section>
+<section class="rx-split"><div class="rx-panel"><p class="eyebrow">Persistência</p><h2>Sequências e ondas</h2><div id="rx-streaks" class="rx-streaks"></div></div>
+<div class="rx-panel"><p class="eyebrow">Arquivo</p><h2>Relatórios e fontes</h2><div class="rx-archive-links">
+<a href="/noaareports.htm"><b>Relatórios NOAA</b><span>relatórios mensais e anuais gerados pelo Cumulus →</span></a>
+<a href="/climate/boletins/"><b>Boletins climatológicos</b><span>leitura mensal e anual do Climate Analyzer →</span></a>
+<a href="/records.htm"><b>Recordes técnicos Cumulus</b><span>página original do Cumulus MX →</span></a>
+</div></div></section>
+<section id="rx-recent-panel" class="rx-panel"><p class="eyebrow">Série atual</p><h2>Recordes absolutos ocorridos este ano</h2><div id="rx-recent" class="rx-recent"></div></section>
+<section class="rx-method"><details><summary>Metodologia e qualidade</summary><div id="rx-quality"></div></details></section>
+<footer><span>Estação Meteorológica de Ranhados · Mêda</span><span>Recordes calculados automaticamente a partir do Cumulus MX</span></footer>
+</main><script src="records.js" defer></script></body></html>

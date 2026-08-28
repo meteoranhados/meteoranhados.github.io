@@ -258,7 +258,8 @@ function verificationMeta(){
   temperature:{label:'Temperatura',unit:'°C',dec:1},
   humidity:{label:'Humidade',unit:'%',dec:0},
   pressure:{label:'Pressão',unit:' hPa',dec:1},
-  wind:{label:'Vento',unit:' km/h',dec:1}
+  wind:{label:'Vento',unit:' km/h',dec:1},
+  precipitation:{label:'Precipitação horária',unit:' mm',dec:1}
  }[v];
 }
 function renderVerification(){
@@ -282,7 +283,7 @@ function renderVerification(){
  const obs=rows.map(r=>({ms:r.target_utc_ms,v:Number(r.observed[variable])})),fc=rows.map(r=>({ms:r.target_utc_ms,v:Number(r[model][variable])}));
  s+=`<path d="${linePath(obs,x,y)}" fill="none" stroke="#193f52" stroke-width="2.8"/><path d="${linePath(fc,x,y)}" fill="none" stroke="#c55448" stroke-width="2.3" stroke-dasharray="6 4"/>`;
  s+=`<text x="${m.l}" y="13" font-size="9" fill="#193f52">● Observado</text><text x="${m.l+90}" y="13" font-size="9" fill="#c55448">┄ Previsto ~24 h antes</text></svg>`;
- host.innerHTML=s;note.textContent=`${meta.label} · ${model==='best_match'?'Best Match':model.toUpperCase()} · arquivo próprio da Estação Meteorológica de Ranhados.`;
+ host.innerHTML=s;note.textContent=`${meta.label} · ${model==='best_match'?'Best Match':model.toUpperCase()} · arquivo próprio da Estação Meteorológica de Ranhados.${variable==='precipitation'?' A precipitação prevista e observada representa o total da hora precedente.':''}`;
 }
 async function loadVerification(){
  try{verification=await getJson('forecast-verification.json')}catch(e){verification={available:false,collecting:true,archive_records:0,matched_samples:0,message:'O arquivo de verificação ainda está a ser criado.'}}
