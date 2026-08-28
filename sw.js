@@ -1,10 +1,10 @@
-const VERSION='2.2.0';
+const VERSION='2.3.0';
 const STATIC_CACHE=`meteo-ranhados-static-${VERSION}`;
 const DATA_CACHE=`meteo-ranhados-data-${VERSION}`;
 const STATIC_SHELL=[
   '/agora/','/previsao/','/radar/','/graficos/','/climate/','/observatorio/','/camera/','/offline.html',
   '/manifest.webmanifest','/icons/icon-192.png','/icons/icon-512.png','/icons/maskable-512.png',
-  '/integration/ranhados-shell.css','/integration/ranhados-shell.js',
+  '/integration/ranhados-shell.css','/integration/ranhados-shell.js','/identity/ranhados-mark.svg','/identity/ranhados-signature.svg','/identity/barragem-ranhados.svg',
   '/agora/agora.css','/agora/agora.js','/previsao/forecast.css','/previsao/forecast.js',
   '/graficos/graphs.css','/graficos/graphs.js'
 ];
@@ -25,6 +25,6 @@ self.addEventListener('fetch',event=>{
   if(u.pathname.endsWith('.mp4'))return;
   if(u.pathname==='/camera/latest.jpg'){event.respondWith(networkFirst(req));return}
   if(req.mode==='navigate'){event.respondWith((async()=>{try{const r=await fetch(req);if(r.ok){const c=await caches.open(STATIC_CACHE);await c.put(normalized(req),r.clone())}return r}catch(e){const c=await caches.open(STATIC_CACHE);return await c.match(normalized(req))||await c.match('/agora/')||await c.match('/offline.html')}})());return}
-  if(/\.(?:css|js|png|svg|ico|webmanifest)$/.test(u.pathname)){event.respondWith(staleWhileRevalidate(req));return}
+  if(/\.(?:css|js|png|jpe?g|svg|ico|webmanifest)$/.test(u.pathname)){event.respondWith(staleWhileRevalidate(req));return}
 });
 self.addEventListener('message',event=>{if(event.data==='SKIP_WAITING')self.skipWaiting()});
