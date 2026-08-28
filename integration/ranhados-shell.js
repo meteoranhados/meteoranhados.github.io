@@ -22,7 +22,8 @@
   const uniqueTypes=rows=>{const seen=new Set(),out=[];rows.forEach(w=>{const k=norm(w.type);if(!seen.has(k)){seen.add(k);out.push(w.type)}});return out};
   async function run(){
     try{
-      const r=await fetch('/climate/ipma_warnings.json',{cache:'no-store'});if(!r.ok)return;
+      if(!navigator.onLine){host.className='ranhados-ipma-warning';host.replaceChildren();return}
+      const r=await fetch('/api/v1/warnings.json',{cache:'no-store'});if(!r.ok)return;
       const d=await r.json(),now=new Date();
       const rows=(d.warnings||[]).filter(w=>LEVEL[w.level]&&(!dt(w.endTime)||dt(w.endTime)>=now));
       if(!rows.length){host.className='ranhados-ipma-warning';host.replaceChildren();return}
@@ -48,12 +49,50 @@
   async function runStationStatus(){
     const el=document.getElementById('ranhados-station-status');if(!el)return;
     try{
-      const r=await fetch('/estado/status.json',{cache:'no-store'});if(!r.ok)return;
+      const r=await fetch('/api/v1/status.json',{cache:'no-store'});if(!r.ok)return;
       const d=await r.json(),name={ok:'Estação OK',attention:'Atenção',critical:'Problema'}[d.overall]||'Estado';
       el.className=`ranhados-shell__status is-${d.overall||'unknown'}`;
       const label=el.childNodes[el.childNodes.length-1];if(label)label.textContent=name;
       el.title=`Estado técnico · gerado ${d.generated_utc||''}`;
     }catch(e){}
   }
-  run();setInterval(run,300000);runStationStatus();setInterval(runStationStatus,300000);
+  function setupConnectivity(){
+    const banner=document.getElementById('ranhados-offline-banner');if(!banner)return;
+    const update=()=>{banner.hidden=navigator.onLine;if(navigator.onLine){run();runStationStatus()}};
+    addEventListener('online',update);addEventListener('offline',update);update();
+  }
+  function setupMoreSheet(){
+    const toggle=document.getElementById('ranhados-more-toggle'),sheet=document.getElementById('ranhados-more-sheet');if(!toggle||!sheet)return;
+    const set=open=>{sheet.hidden=!open;toggle.setAttribute('aria-expanded',String(open));document.body.classList.toggle('ranhados-chart-lock',open)};
+    toggle.addEventListener('click',()=>set(sheet.hidden));sheet.querySelectorAll('[data-rh-more-close]').forEach(x=>x.addEventListener('click',()=>set(false)));addEventListener('keydown',e=>{if(e.key==='Escape'&&!sheet.hidden)set(false)});
+  }
+  function setupInstall(){
+    let promptEvent=null;const buttons=[...document.querySelectorAll('[data-rh-install]')],help=document.getElementById('ranhados-install-help'),helpText=document.getElementById('ranhados-install-help-text');
+    const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;if(standalone)return;
+    const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    const show=()=>buttons.forEach(b=>b.hidden=false);
+    addEventListener('beforeinstallprompt',e=>{e.preventDefault();promptEvent=e;show()});
+    if(isIOS)show();
+    buttons.forEach(b=>b.addEventListener('click',async()=>{
+      if(promptEvent){promptEvent.prompt();await promptEvent.userChoice;promptEvent=null;buttons.forEach(x=>x.hidden=true);return}
+      if(help&&helpText){helpText.textContent=isIOS?'No Safari, toque em Partilhar e escolha “Adicionar ao ecrã principal”.':'Abra o menu do browser e escolha “Instalar aplicação” ou “Adicionar ao ecrã principal”.';help.hidden=false}
+    }));
+    document.querySelectorAll('[data-rh-install-close]').forEach(b=>b.addEventListener('click',()=>{if(help)help.hidden=true}));
+    if(help)help.addEventListener('click',e=>{if(e.target===help)help.hidden=true});
+  }
+  function setupServiceWorker(){
+    if(!('serviceWorker' in navigator))return;
+    navigator.serviceWorker.register('/sw.js',{scope:'/'}).then(reg=>{
+      const toast=document.getElementById('ranhados-update-toast'),btn=toast?.querySelector('button');
+      const notify=()=>{if(reg.waiting&&navigator.serviceWorker.controller&&toast){toast.hidden=false;if(btn)btn.onclick=()=>reg.waiting.postMessage('SKIP_WAITING')}};
+      notify();reg.addEventListener('updatefound',()=>{const w=reg.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed')notify()})});
+      navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload());
+    }).catch(()=>{});
+  }
+  function setupChartExpand(){
+    const selector='.gx-chart,.gx-verify-chart,.fx-chart,.fx-model-chart,.ox-chart,.recent-chart,.climate-chart,.chart-wrap';
+    document.querySelectorAll(selector).forEach(chart=>{if(chart.dataset.rhExpand)return;chart.dataset.rhExpand='1';if(getComputedStyle(chart).position==='static')chart.style.position='relative';const b=document.createElement('button');b.type='button';b.className='ranhados-chart-expand';b.setAttribute('aria-label','Expandir gráfico');b.textContent='⛶';b.onclick=()=>{const on=chart.classList.toggle('ranhados-chart-fullscreen');document.body.classList.toggle('ranhados-chart-lock',on);b.textContent=on?'×':'⛶';b.setAttribute('aria-label',on?'Fechar gráfico':'Expandir gráfico')};chart.append(b)});
+  }
+  addEventListener('keydown',e=>{if(e.key==='Escape'){const c=document.querySelector('.ranhados-chart-fullscreen');if(c){c.classList.remove('ranhados-chart-fullscreen');document.body.classList.remove('ranhados-chart-lock')}}});
+  run();setInterval(run,300000);runStationStatus();setInterval(runStationStatus,300000);setupConnectivity();setupMoreSheet();setupInstall();setupServiceWorker();setupChartExpand();setInterval(setupChartExpand,1800);
 })();
