@@ -1,14 +1,14 @@
 {
-  "engine_version": "1.6.0",
-  "generated_utc": "2026-08-28T08:31:04+00:00",
+  "engine_version": "1.6.1",
+  "generated_utc": "2026-08-28T08:47:56+00:00",
   "station": "Ranhados",
   "reference_period": "1991-2020",
   "source_last_closed_day": "2026-08-27",
   "live": {
     "date": "2026-08-28",
     "tmin": 11.0,
-    "tmax": 15.2,
-    "tmean": 11.8,
+    "tmax": 16.7,
+    "tmean": 11.9,
     "rain": 0.0,
     "provisional": true,
     "source": "Cumulus MX Local API"
@@ -28,6 +28,24 @@
     "last_date": null,
     "days_needed_for_confirmation": 6,
     "provisional": false
+  },
+  "current_dry_spell": {
+    "threshold_mm": 1.0,
+    "definition": "dia seco: precipitação < 1 mm",
+    "current_streak_days": 0,
+    "current_streak_start": null,
+    "max_streak_days": 81,
+    "max_streak_start": "2023-06-13",
+    "max_streak_end": "2023-09-01"
+  },
+  "current_year_dry_spell": {
+    "threshold_mm": 1.0,
+    "definition": "dia seco: precipitação < 1 mm",
+    "current_streak_days": 0,
+    "current_streak_start": null,
+    "max_streak_days": 66,
+    "max_streak_start": "2026-06-18",
+    "max_streak_end": "2026-08-22"
   },
   "current_month": {
     "start": "2026-08-01",
@@ -124,6 +142,15 @@
         "start": "2026-08-18",
         "end": "2026-08-27"
       }
+    },
+    "dry_spell": {
+      "threshold_mm": 1.0,
+      "definition": "dia seco: precipitação < 1 mm",
+      "current_streak_days": 0,
+      "current_streak_start": null,
+      "max_streak_days": 22,
+      "max_streak_start": "2026-08-01",
+      "max_streak_end": "2026-08-22"
     },
     "year": 2026,
     "month": 8,
@@ -260,6 +287,15 @@
         "start": "2026-01-27",
         "end": "2026-02-05"
       }
+    },
+    "dry_spell": {
+      "threshold_mm": 1.0,
+      "definition": "dia seco: precipitação < 1 mm",
+      "current_streak_days": 0,
+      "current_streak_start": null,
+      "max_streak_days": 66,
+      "max_streak_start": "2026-06-18",
+      "max_streak_end": "2026-08-22"
     },
     "temperature_normal_observed_dates": {
       "tmax_mean_c": 19.13,
@@ -435,6 +471,15 @@
         "start": "2026-01-27",
         "end": "2026-02-05"
       }
+    },
+    "dry_spell": {
+      "threshold_mm": 1.0,
+      "definition": "dia seco: precipitação < 1 mm",
+      "current_streak_days": 0,
+      "current_streak_start": null,
+      "max_streak_days": 66,
+      "max_streak_start": "2026-06-18",
+      "max_streak_end": "2026-08-22"
     },
     "hydrological_year": "2025/26",
     "start_year": 2025,

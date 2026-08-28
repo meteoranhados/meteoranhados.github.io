@@ -38,13 +38,13 @@ const CATS={
    ['solar','Radiação',' W/m²',0],['solar_max','Potencial teórico',' W/m²',0],['uv','Índice UV','',1,'right']
  ],daily:[['solar_max_day','Máximo solar diário',' W/m²',0],['uv_max_day','UV máximo','',1,'right'],['sunshine_hours','Horas de sol',' h',1,'right']]},
  agro:{icon:'agro',label:'Agro / sazonal',title:'Indicadores agroclimáticos',desc:'ET, horas de sol, graus-dia e acumulação de frio. Disponível nos resumos diários.',interval:[],
- daily:[['et_mm','ET',' mm',2],['sunshine_hours','Horas de sol',' h',1],['heating_degree_days','Graus-dia aquecimento','',1,'right'],['cooling_degree_days','Graus-dia arrefecimento','',1,'right'],['chill_hours_cumulative','Chill hours acumuladas',' h',1,'right']]}
+ daily:[['et_mm','Evapotranspiração (ET)',' mm',2],['sunshine_hours','Horas de sol',' h',1],['heating_degree_days','Graus-dia aquecimento','',1,'right'],['cooling_degree_days','Graus-dia arrefecimento','',1,'right'],['chill_hours_daily','Horas de frio diárias',' h',1,'right'],['chill_hours_cumulative','Horas de frio — acumulado da época',' h',1,'right']]}
 };
 const COMPARES={
  '':'Nenhuma',
  hum:'Humidade',pressure:'Pressão',wind_avg:'Vento médio',dew:'Ponto de orvalho',rain_mm:'Precipitação',solar:'Radiação solar'
 };
-let manifest=null,currentData=null,period='24h',category='temp',activeKeys=new Set(),compareKey='',lastSvg='';
+let manifest=null,currentData=null,period='24h',category='temp',activeKeys=new Set(),compareKey='',lastSvg='',verification=null;
 
 async function getJson(url){const r=await fetch(url+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(`${url}: ${r.status}`);return r.json()}
 function rowsForDailyPeriod(rows,p){
@@ -67,13 +67,42 @@ function catSeries(){
 }
 function available(s){return (currentData?.samples||[]).some(r=>r[s[0]]!==null&&r[s[0]]!==undefined)}
 function setupSeries(reset=false){
- const s=catSeries();
+ const s=catSeries(),avail=s.filter(available),valid=new Set(avail.map(x=>x[0]));
+ activeKeys=new Set([...activeKeys].filter(k=>valid.has(k)));
  if(reset||!activeKeys.size){
    activeKeys=new Set();
-   s.filter(available).slice(0,category==='temp'?3:2).forEach(x=>activeKeys.add(x[0]));
+   const daily=currentData?.kind==='daily';
+   const defaults=daily?{
+     temp:['tmin','tmean','tmax'],hum:['hum_min','hum_mid','hum_max'],press:['press_min','press_mid','press_max'],
+     rain:['rain_mm'],wind:['wind_avg_max','wind_gust_max'],solar:['solar_max_day'],agro:['et_mm']
+   }:{
+     temp:['temp','dew'],hum:['hum'],press:['pressure'],rain:['rain_mm','rain_cumulative'],
+     wind:['wind_avg','wind_gust'],solar:['solar','solar_max'],agro:[]
+   };
+   (defaults[category]||[]).filter(k=>valid.has(k)).forEach(k=>activeKeys.add(k));
+   if(!activeKeys.size&&avail.length)activeKeys.add(avail[0][0]);
  }
  $('#gx-series').innerHTML=s.map(x=>`<button type="button" data-key="${x[0]}" class="${activeKeys.has(x[0])?'is-on':''} ${available(x)?'':'is-unavailable'}">${x[1]}</button>`).join('');
- $('#gx-series').querySelectorAll('button:not(.is-unavailable)').forEach(b=>b.onclick=()=>{const k=b.dataset.key;if(activeKeys.has(k)){if(activeKeys.size>1)activeKeys.delete(k)}else activeKeys.add(k);render()});
+ $('#gx-series').querySelectorAll('button:not(.is-unavailable)').forEach(b=>b.onclick=()=>{
+   const k=b.dataset.key,def=s.find(x=>x[0]===k);
+   if(activeKeys.has(k)){
+     // Never allow a graph state with no valid indicator selected.
+     if(activeKeys.size>1)activeKeys.delete(k);
+   }else{
+     const selected=s.filter(x=>activeKeys.has(x[0])),primaryUnit=selected[0]?.[2]||def?.[2]||'';
+     const units=new Set(selected.map(x=>x[2]).filter(Boolean));
+     const newUnit=def?.[2]||'';
+     if(newUnit&&!units.has(newUnit)&&units.size>=2){
+       // Keep the primary axis and replace the previous secondary-unit family.
+       selected.filter(x=>x[2]!==primaryUnit).forEach(x=>activeKeys.delete(x[0]));
+     }
+     if(compareKey&&newUnit&&newUnit!==primaryUnit){
+       compareKey='';$('#gx-compare').value='';
+     }
+     activeKeys.add(k);
+   }
+   render();
+ });
 }
 function setupCompare(){
  const sel=$('#gx-compare'),daily=currentData?.kind==='daily';
@@ -84,8 +113,8 @@ function setupCompare(){
    const key=daily?map[o.value]:o.value;
    o.disabled=!(currentData?.samples||[]).some(r=>r[key]!=null);
  });
- if(sel.selectedOptions[0]?.disabled)sel.value='';
- compareKey=sel.value;
+ if(sel.querySelector(`option[value="${compareKey}"]`)?.disabled)compareKey='';
+ sel.value=compareKey;
 }
 function valMeta(key){
  for(const k of Object.keys(CATS))for(const mode of ['interval','daily'])for(const s of CATS[k][mode])if(s[0]===key)return s;
@@ -112,7 +141,6 @@ function renderStats(){
  if(category==='rain'){const rain=rows.map(r=>Number(r.rain_mm||0));cards=[['Total',`${fmt(rain.reduce((a,b)=>a+b,0),1)} mm`],['Maior intervalo',`${fmt(Math.max(0,...rain),1)} mm`],['Intensidade máx.',`${fmt(Math.max(0,...rows.map(r=>Number(r.rain_rate||0))),1)} mm/h`],['Dias/pontos com chuva',String(rain.filter(x=>x>0).length)]]}
  if(category==='wind')cards[4]=['Direção',windDir([...rows].reverse().find(r=>(r.wind_bearing??r.dom_wind_bearing)!=null)?.wind_bearing??[...rows].reverse().find(r=>r.dom_wind_bearing!=null)?.dom_wind_bearing)];
  else if(category==='solar')cards[4]=['UV máximo',fmt(Math.max(0,...rows.map(r=>Number(r.uv??r.uv_max_day??0))),1)];
- else cards[4]=['Amostras',String(rows.length)];
  $('#gx-stats').innerHTML=cards.map(c=>`<div class="gx-stat"><span>${c[0]}</span><b>${c[1]}</b></div>`).join('');
 }
 function renderAnalysis(){
@@ -148,7 +176,12 @@ function renderAnalysis(){
  }else{
    const et=rows.reduce((a,r)=>a+Number(r.et_mm||0),0),sun=rows.reduce((a,r)=>a+Number(r.sunshine_hours||0),0),hdd=rows.reduce((a,r)=>a+Number(r.heating_degree_days||0),0),cdd=rows.reduce((a,r)=>a+Number(r.cooling_degree_days||0),0);
    items=[['ET total',`${fmt(et,1)} mm`],['Horas de sol',`${fmt(sun,1)} h`],['Graus-dia aquecimento',fmt(hdd,1)],['Graus-dia arrefecimento',fmt(cdd,1)]];
-   secondary='<p>Os indicadores agro/sazonais vêm do resumo diário do Cumulus. Chill hours são mostradas como acumulação sazonal quando existe uma série homogénea.</p>';
+   secondary=`<div class="gx-definitions">
+     <div class="gx-definition"><b>Evapotranspiração (ET)</b><p>Estimativa da água transferida do solo e da vegetação para a atmosfera. É expressa em milímetros, tal como a precipitação.</p></div>
+     <div class="gx-definition"><b>Graus-dia de aquecimento</b><p>Acumulam, ao longo do tempo, o défice de temperatura abaixo da temperatura-base configurada no Cumulus. Quanto maior o valor, maior foi a necessidade térmica de aquecimento.</p></div>
+     <div class="gx-definition"><b>Graus-dia de arrefecimento</b><p>Acumulam o excedente térmico acima da temperatura-base configurada. São um indicador da necessidade de arrefecimento.</p></div>
+     <div class="gx-definition"><b>Horas de frio (Chill Hours)</b><p>Horas que cumprem o intervalo de frio configurado no Cumulus. O acumulado reinicia no início da época definido na configuração e é especialmente útil em fruticultura.</p></div>
+   </div>`;
  }
  $('#gx-analysis').innerHTML=items.map(x=>`<div class="gx-analysis-item"><span>${x[0]}</span><b>${x[1]}</b></div>`).join('');
  $('#gx-secondary').innerHTML=secondary;
@@ -156,32 +189,52 @@ function renderAnalysis(){
 }
 function linePath(points,x,y){return points.map((p,i)=>`${i?'L':'M'} ${x(p.ms).toFixed(1)} ${y(p.v).toFixed(1)}`).join(' ')}
 function renderChart(){
- const host=$('#gx-chart'),tip=$('#gx-tooltip'),rows=currentData?.samples||[],defs=catSeries().filter(s=>activeKeys.has(s[0])&&available(s));
- if(!currentData?.available||!rows.length||!defs.length){lastSvg='';host.innerHTML='<div class="gx-empty">Sem dados suficientes para esta combinação de variável e período.</div><div id="gx-tooltip" class="gx-tooltip"></div>';return}
- const cmp=compareActualKey(),cmpMeta=cmp?valMeta(compareKey):null,W=1120,H=420,m={l:60,r:cmp?64:22,t:23,b:47};
+ const host=$('#gx-chart'),rows=currentData?.samples||[],defs=catSeries().filter(s=>activeKeys.has(s[0])&&available(s));
+ if(!currentData?.available||!rows.length||!defs.length){lastSvg='';host.innerHTML='<div class="gx-empty">Ainda não há dados válidos para esta combinação. Foi mantido automaticamente pelo menos um indicador disponível.</div><div id="gx-tooltip" class="gx-tooltip"></div>';return}
+ const primaryUnit=defs[0][2]||'',cmp=compareActualKey(),cmpMeta=cmp?valMeta(compareKey):null,cmpUnit=cmpMeta?.[2]||'';
+ const leftDefs=defs.filter(d=>(d[2]||'')===primaryUnit);
+ let rightDefs=defs.filter(d=>(d[2]||'')!==primaryUnit);
+ // A user comparison owns the secondary axis. Avoid mixing unrelated units.
+ if(cmp&&cmpUnit&&rightDefs.length&&rightDefs[0][2]!==cmpUnit)rightDefs=[];
+ const W=1120,H=420,m={l:72,r:(rightDefs.length||cmp&&cmpUnit!==primaryUnit)?76:25,t:23,b:49};
  const times=rows.map(r=>Number(r.time_ms)).filter(Number.isFinite),minT=Math.min(...times),maxT=Math.max(...times),x=t=>m.l+(t-minT)/(maxT-minT||1)*(W-m.l-m.r);
- const leftDefs=defs.filter(d=>d[4]!=='right'),rightDefs=defs.filter(d=>d[4]==='right');
  const leftVals=[],rightVals=[];
  leftDefs.forEach(d=>rows.forEach(r=>{if(Number.isFinite(Number(r[d[0]])))leftVals.push(Number(r[d[0]]))}));
  rightDefs.forEach(d=>rows.forEach(r=>{if(Number.isFinite(Number(r[d[0]])))rightVals.push(Number(r[d[0]]))}));
- if(cmp)rows.forEach(r=>{if(Number.isFinite(Number(r[cmp])))rightVals.push(Number(r[cmp]))});
- if(!leftVals.length&&rightVals.length){leftVals.push(...rightVals);rightVals.length=0}
- const range=vals=>{let mn=Math.min(...vals),mx=Math.max(...vals);if(!Number.isFinite(mn)||!Number.isFinite(mx)){mn=0;mx=1}let pad=(mx-mn)*.10||1; if(mn>=0&&mn-pad<0)mn=0;else mn-=pad;mx+=pad;return[mn,mx]};
+ if(cmp)rows.forEach(r=>{if(Number.isFinite(Number(r[cmp])))(cmpUnit===primaryUnit?leftVals:rightVals).push(Number(r[cmp]))});
+ const range=vals=>{let mn=Math.min(...vals),mx=Math.max(...vals);if(!Number.isFinite(mn)||!Number.isFinite(mx)){mn=0;mx=1}let pad=(mx-mn)*.10||1;if(mn>=0&&mn-pad<0)mn=0;else mn-=pad;mx+=pad;return[mn,mx]};
  const [lmin,lmax]=range(leftVals),[rmin,rmax]=rightVals.length?range(rightVals):[0,1],yL=v=>m.t+(lmax-v)/(lmax-lmin)*(H-m.t-m.b),yR=v=>m.t+(rmax-v)/(rmax-rmin)*(H-m.t-m.b);
+ const unitText=u=>(u||'').trim();
  let s=`<svg id="gx-svg" viewBox="0 0 ${W} ${H}" role="img">`;
- for(let i=0;i<=4;i++){const lv=lmin+(lmax-lmin)*i/4,yy=yL(lv);s+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e7edef"/><text x="${m.l-7}" y="${yy+4}" text-anchor="end" font-size="9" fill="#71828b">${fmt(lv,1)}</text>`;if(rightVals.length){const rv=rmin+(rmax-rmin)*i/4;s+=`<text x="${W-m.r+7}" y="${yy+4}" font-size="9" fill="#8a7686">${fmt(rv,1)}</text>`}}
- const ticks=period==='24h'?6:period==='7d'?7:period==='30d'?6:period==='90d'?6:period==='year'?6:7;
- for(let i=0;i<=ticks;i++){const t=minT+(maxT-minT)*i/ticks,xx=x(t),label=period==='24h'?new Intl.DateTimeFormat('pt-PT',{hour:'2-digit',minute:'2-digit'}).format(new Date(t)):dateFmt(t,period==='all');s+=`<text x="${xx}" y="${H-18}" text-anchor="middle" font-size="9" fill="#72828b">${label}</text>`}
- const barDefs=defs.filter(d=>d[4]==='bar'),lineDefs=defs.filter(d=>d[4]!=='bar');
- barDefs.forEach((d,di)=>{const points=rows.filter(r=>Number.isFinite(Number(r[d[0]]))),bw=Math.max(1,Math.min(18,(W-m.l-m.r)/(points.length+3)*.72));points.forEach(r=>{const v=Number(r[d[0]]),yy=yL(v),zero=yL(Math.max(0,lmin));s+=`<rect x="${x(r.time_ms)-bw/2}" y="${Math.min(yy,zero)}" width="${bw}" height="${Math.max(1,Math.abs(zero-yy))}" fill="${COLORS[di%COLORS.length]}" opacity=".62" rx="1"/>`})});
- lineDefs.forEach((d,di)=>{const yy=d[4]==='right'?yR:yL,pts=rows.filter(r=>Number.isFinite(Number(r[d[0]]))).map(r=>({ms:Number(r.time_ms),v:Number(r[d[0]])}));if(pts.length)s+=`<path d="${linePath(pts,x,yy)}" fill="none" stroke="${COLORS[(di+barDefs.length)%COLORS.length]}" stroke-width="${di===0?2.6:1.8}" ${d[4]==='right'?'stroke-dasharray="6 4"':''}/>`});
- if(cmp){const pts=rows.filter(r=>Number.isFinite(Number(r[cmp]))).map(r=>({ms:Number(r.time_ms),v:Number(r[cmp])}));if(pts.length)s+=`<path d="${linePath(pts,x,yR)}" fill="none" stroke="#924d72" stroke-width="2.1" stroke-dasharray="3 4"/>`}
+ for(let i=0;i<=4;i++){
+   const lv=lmin+(lmax-lmin)*i/4,yy=yL(lv);
+   s+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e7edef"/><text x="${m.l-8}" y="${yy+4}" text-anchor="end" font-size="9" fill="#71828b">${fmt(lv,primaryUnit==='%'?0:1)}</text>`;
+   if(rightVals.length){const rv=rmin+(rmax-rmin)*i/4;s+=`<text x="${W-m.r+8}" y="${yy+4}" font-size="9" fill="#8a7686">${fmt(rv,1)}</text>`}
+ }
+ if(unitText(primaryUnit))s+=`<text class="gx-axis-unit" x="15" y="${(m.t+H-m.b)/2}" text-anchor="middle" transform="rotate(-90 15 ${(m.t+H-m.b)/2})">${unitText(primaryUnit)}</text>`;
+ const rightUnit=cmp&&cmpUnit!==primaryUnit?cmpUnit:(rightDefs[0]?.[2]||'');
+ if(rightVals.length&&unitText(rightUnit))s+=`<text class="gx-axis-unit" x="${W-13}" y="${(m.t+H-m.b)/2}" text-anchor="middle" transform="rotate(90 ${W-13} ${(m.t+H-m.b)/2})">${unitText(rightUnit)}</text>`;
+ const mobile=window.innerWidth<760;
+ const tickMap=mobile?{'24h':6,'7d':7,'30d':7,'90d':6,'year':6,'all':6}:{'24h':12,'7d':14,'30d':15,'90d':10,'year':12,'all':10};
+ const ticks=tickMap[period]||8;
+ const labelFor=t=>{
+   const d=new Date(t);
+   if(period==='24h')return new Intl.DateTimeFormat('pt-PT',{hour:'2-digit',minute:'2-digit'}).format(d);
+   if(period==='7d')return new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit'}).format(d).replace(',',' ');
+   if(period==='all')return new Intl.DateTimeFormat('pt-PT',{month:'2-digit',year:'2-digit'}).format(d);
+   return new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit'}).format(d);
+ };
+ for(let i=0;i<=ticks;i++){const t=minT+(maxT-minT)*i/ticks,xx=x(t);s+=`<text x="${xx}" y="${H-18}" text-anchor="middle" font-size="${mobile?8:8.5}" fill="#72828b">${labelFor(t)}</text>`}
+ const allDefs=[...leftDefs,...rightDefs],barDefs=allDefs.filter(d=>d[4]==='bar'),lineDefs=allDefs.filter(d=>d[4]!=='bar');
+ barDefs.forEach((d,di)=>{const yy=(d[2]||'')===primaryUnit?yL:yR,points=rows.filter(r=>Number.isFinite(Number(r[d[0]]))),bw=Math.max(1,Math.min(18,(W-m.l-m.r)/(points.length+3)*.72));points.forEach(r=>{const v=Number(r[d[0]]),yv=yy(v),zero=yy(Math.max(0,(d[2]||'')===primaryUnit?lmin:rmin));s+=`<rect x="${x(r.time_ms)-bw/2}" y="${Math.min(yv,zero)}" width="${bw}" height="${Math.max(1,Math.abs(zero-yv))}" fill="${COLORS[di%COLORS.length]}" opacity=".62" rx="1"/>`})});
+ lineDefs.forEach((d,di)=>{const yy=(d[2]||'')===primaryUnit?yL:yR,pts=rows.filter(r=>Number.isFinite(Number(r[d[0]]))).map(r=>({ms:Number(r.time_ms),v:Number(r[d[0]])}));if(pts.length)s+=`<path d="${linePath(pts,x,yy)}" fill="none" stroke="${COLORS[(di+barDefs.length)%COLORS.length]}" stroke-width="${di===0?2.6:1.8}" ${(d[2]||'')!==primaryUnit?'stroke-dasharray="6 4"':''}/>`});
+ if(cmp){const yy=cmpUnit===primaryUnit?yL:yR,pts=rows.filter(r=>Number.isFinite(Number(r[cmp]))).map(r=>({ms:Number(r.time_ms),v:Number(r[cmp])}));if(pts.length)s+=`<path d="${linePath(pts,x,yy)}" fill="none" stroke="#924d72" stroke-width="2.1" stroke-dasharray="3 4"/>`}
  s+=`<rect id="gx-hit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/><line id="gx-cross" x1="0" y1="${m.t}" x2="0" y2="${H-m.b}" stroke="#6c7d85" stroke-dasharray="3 4" visibility="hidden"/></svg>`;
  lastSvg=s;host.innerHTML=s+'<div id="gx-tooltip" class="gx-tooltip"></div>';
  const svg=$('#gx-svg'),hit=$('#gx-hit'),cross=$('#gx-cross'),tooltip=$('#gx-tooltip');
- hit.addEventListener('mousemove',ev=>{const rect=svg.getBoundingClientRect(),vx=(ev.clientX-rect.left)/rect.width*W,target=minT+(vx-m.l)/(W-m.l-m.r)*(maxT-minT),nearest=rows.reduce((a,b)=>Math.abs(b.time_ms-target)<Math.abs(a.time_ms-target)?b:a,rows[0]),xx=x(nearest.time_ms);cross.setAttribute('x1',xx);cross.setAttribute('x2',xx);cross.setAttribute('visibility','visible');const items=defs.filter(d=>nearest[d[0]]!=null).map(d=>`<div class="gx-tooltip-row"><span>${d[1]}</span><strong>${fmt(nearest[d[0]],d[3])}${d[2]}</strong></div>`);if(cmp&&nearest[cmp]!=null)items.push(`<div class="gx-tooltip-row"><span>${COMPARES[compareKey]}</span><strong>${fmt(nearest[cmp],cmpMeta[3])}${cmpMeta[2]}</strong></div>`);tooltip.innerHTML=`<b>${currentData.kind==='daily'?dateFmt(nearest.time_ms,true):dateTimeFmt(nearest.time_ms)}</b>${items.join('')}`;tooltip.style.display='block';tooltip.style.left=Math.min(rect.width-170,Math.max(5,ev.clientX-rect.left+12))+'px';tooltip.style.top=Math.max(8,ev.clientY-rect.top-30)+'px'});
+ hit.addEventListener('mousemove',ev=>{const rect=svg.getBoundingClientRect(),vx=(ev.clientX-rect.left)/rect.width*W,target=minT+(vx-m.l)/(W-m.l-m.r)*(maxT-minT),nearest=rows.reduce((a,b)=>Math.abs(b.time_ms-target)<Math.abs(a.time_ms-target)?b:a,rows[0]),xx=x(nearest.time_ms);cross.setAttribute('x1',xx);cross.setAttribute('x2',xx);cross.setAttribute('visibility','visible');const items=allDefs.filter(d=>nearest[d[0]]!=null).map(d=>`<div class="gx-tooltip-row"><span>${d[1]}</span><strong>${fmt(nearest[d[0]],d[3])}${d[2]}</strong></div>`);if(cmp&&nearest[cmp]!=null)items.push(`<div class="gx-tooltip-row"><span>${COMPARES[compareKey]}</span><strong>${fmt(nearest[cmp],cmpMeta[3])}${cmpMeta[2]}</strong></div>`);tooltip.innerHTML=`<b>${currentData.kind==='daily'?dateFmt(nearest.time_ms,true):dateTimeFmt(nearest.time_ms)}</b>${items.join('')}`;tooltip.style.display='block';tooltip.style.left=Math.min(rect.width-170,Math.max(5,ev.clientX-rect.left+12))+'px';tooltip.style.top=Math.max(8,ev.clientY-rect.top-30)+'px'});
  hit.addEventListener('mouseleave',()=>{cross.setAttribute('visibility','hidden');tooltip.style.display='none'});
- const legend=defs.map((d,i)=>d[1]).join(' · ')+(cmp?` · comparação: ${COMPARES[compareKey]}`:'');
+ const legend=allDefs.map(d=>d[1]).join(' · ')+(cmp?` · comparação: ${COMPARES[compareKey]}`:'');
  $('#gx-chart-note').textContent=`${legend}. ${currentData.kind==='daily'?'Um ponto por dia.':`Resolução publicada: ${currentData.bucket_minutes} min.`}`;
 }
 function render(){
@@ -197,17 +250,78 @@ function exportCSV(){
  rows.forEach(r=>lines.push([new Date(r.time_ms).toISOString(),...keys.slice(1).map(k=>r[k]??'')].join(';')));
  download(`ranhados-${category}-${period}.csv`,lines.join('\n'),'text/csv;charset=utf-8');
 }
+
+
+function verificationMeta(){
+ const v=$('#gx-verify-variable')?.value||'temperature';
+ return {
+  temperature:{label:'Temperatura',unit:'°C',dec:1},
+  humidity:{label:'Humidade',unit:'%',dec:0},
+  pressure:{label:'Pressão',unit:' hPa',dec:1},
+  wind:{label:'Vento',unit:' km/h',dec:1}
+ }[v];
+}
+function renderVerification(){
+ const host=$('#gx-verify-chart'),stats=$('#gx-verify-stats'),note=$('#gx-verify-note');
+ if(!verification){host.innerHTML='<div class="gx-empty">A carregar arquivo de previsões…</div>';return}
+ if(!verification.available){
+   stats.innerHTML=`<div class="gx-stat"><span>Previsões arquivadas</span><b>${verification.archive_records||0}</b></div><div class="gx-stat"><span>Já comparáveis</span><b>${verification.matched_samples||0}</b></div>`;
+   host.innerHTML=`<div class="gx-empty">${verification.message||'A recolher histórico de previsões.'}</div>`;
+   note.textContent='Este histórico não pode ser reconstruído a partir das previsões atuais; começa a acumular automaticamente com a v1.6.1.';
+   return;
+ }
+ const model=$('#gx-verify-model').value,variable=$('#gx-verify-variable').value,meta=verificationMeta(),rows=(verification.samples||[]).filter(r=>r.observed?.[variable]!=null&&r[model]?.[variable]!=null);
+ if(rows.length<2){host.innerHTML='<div class="gx-empty">Ainda não existem pontos suficientes para esta variável/modelo.</div>';stats.innerHTML='';return}
+ const err=rows.map(r=>Number(r[model][variable])-Number(r.observed[variable])),mae=err.reduce((a,b)=>a+Math.abs(b),0)/err.length,bias=err.reduce((a,b)=>a+b,0)/err.length;
+ stats.innerHTML=`<div class="gx-stat"><span>Erro absoluto médio</span><b>${fmt(mae,meta.dec)}${meta.unit}</b></div><div class="gx-stat"><span>Viés médio</span><b>${bias>0?'+':''}${fmt(bias,meta.dec)}${meta.unit}</b></div><div class="gx-stat"><span>Pontos comparados</span><b>${rows.length}</b></div><div class="gx-stat"><span>Antecedência</span><b>≈24 h</b></div>`;
+ const W=1120,H=350,m={l:72,r:24,t:22,b:45},times=rows.map(r=>r.target_utc_ms),minT=Math.min(...times),maxT=Math.max(...times),vals=rows.flatMap(r=>[Number(r.observed[variable]),Number(r[model][variable])]),mn=Math.min(...vals),mx=Math.max(...vals),pad=(mx-mn)*.12||1,ymin=mn-pad,ymax=mx+pad,x=t=>m.l+(t-minT)/(maxT-minT||1)*(W-m.l-m.r),y=v=>m.t+(ymax-v)/(ymax-ymin)*(H-m.t-m.b);
+ let s=`<svg viewBox="0 0 ${W} ${H}">`;
+ for(let i=0;i<=4;i++){const v=ymin+(ymax-ymin)*i/4,yy=y(v);s+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e7edef"/><text x="${m.l-8}" y="${yy+4}" text-anchor="end" font-size="9" fill="#71828b">${fmt(v,meta.dec)}</text>`}
+ s+=`<text class="gx-axis-unit" x="15" y="${(m.t+H-m.b)/2}" text-anchor="middle" transform="rotate(-90 15 ${(m.t+H-m.b)/2})">${meta.unit.trim()}</text>`;
+ const ticks=Math.min(12,Math.max(4,rows.length-1));for(let i=0;i<=ticks;i++){const t=minT+(maxT-minT)*i/ticks,xx=x(t);s+=`<text x="${xx}" y="${H-17}" text-anchor="middle" font-size="8.5" fill="#72828b">${new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit'}).format(new Date(t))}</text>`}
+ const obs=rows.map(r=>({ms:r.target_utc_ms,v:Number(r.observed[variable])})),fc=rows.map(r=>({ms:r.target_utc_ms,v:Number(r[model][variable])}));
+ s+=`<path d="${linePath(obs,x,y)}" fill="none" stroke="#193f52" stroke-width="2.8"/><path d="${linePath(fc,x,y)}" fill="none" stroke="#c55448" stroke-width="2.3" stroke-dasharray="6 4"/>`;
+ s+=`<text x="${m.l}" y="13" font-size="9" fill="#193f52">● Observado</text><text x="${m.l+90}" y="13" font-size="9" fill="#c55448">┄ Previsto ~24 h antes</text></svg>`;
+ host.innerHTML=s;note.textContent=`${meta.label} · ${model==='best_match'?'Best Match':model.toUpperCase()} · arquivo próprio da Estação Meteorológica de Ranhados.`;
+}
+async function loadVerification(){
+ try{verification=await getJson('forecast-verification.json')}catch(e){verification={available:false,collecting:true,archive_records:0,matched_samples:0,message:'O arquivo de verificação ainda está a ser criado.'}}
+ renderVerification();
+}
+
+
+function exportPNG(){
+ const svg=document.querySelector('#gx-svg');if(!svg)return;
+ const clone=svg.cloneNode(true);
+ clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+ clone.setAttribute('width','1400');clone.setAttribute('height','525');
+ const cross=clone.querySelector('#gx-cross');if(cross)cross.setAttribute('visibility','hidden');
+ const xml=new XMLSerializer().serializeToString(clone),blob=new Blob([xml],{type:'image/svg+xml;charset=utf-8'}),url=URL.createObjectURL(blob),img=new Image();
+ img.onload=()=>{const canvas=document.createElement('canvas');canvas.width=1400;canvas.height=525;const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);URL.revokeObjectURL(url);canvas.toBlob(b=>{if(!b)return;const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`ranhados-${category}-${period}.png`;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},100)},'image/png')};
+ img.src=url;
+}
+
 function initUI(){
  $('#gx-categories').innerHTML=Object.entries(CATS).map(([k,c])=>`<button class="gx-category" data-cat="${k}" type="button">${icon(c.icon)}<span>${c.label}</span></button>`).join('');
  document.querySelectorAll('.gx-category').forEach(b=>b.onclick=()=>{category=b.dataset.cat;activeKeys=new Set();if(category==='agro'&&['24h','7d','30d'].includes(period)){loadPeriod('90d');return}render()});
- document.querySelectorAll('#gx-periods button').forEach(b=>b.onclick=()=>{const p=b.dataset.period;if(category==='agro'&&['24h','7d','30d'].includes(p)){category='temp';activeKeys=new Set()}loadPeriod(p)});
- $('#gx-compare').onchange=e=>{compareKey=e.target.value;renderChart()};
+ document.querySelectorAll('#gx-periods button').forEach(b=>b.onclick=()=>{const p=b.dataset.period;activeKeys=new Set();compareKey='';if(category==='agro'&&['24h','7d','30d'].includes(p))category='temp';loadPeriod(p)});
+ $('#gx-compare').onchange=e=>{
+   compareKey=e.target.value;
+   if(compareKey){
+     const defs=catSeries().filter(s=>activeKeys.has(s[0])&&available(s)),primaryUnit=defs[0]?.[2]||'',cmpUnit=valMeta(compareKey)[2]||'';
+     if(cmpUnit&&cmpUnit!==primaryUnit)activeKeys=new Set(defs.filter(d=>(d[2]||'')===primaryUnit).map(d=>d[0]));
+   }
+   render();
+ };
  $('#gx-export-csv').onclick=exportCSV;
- $('#gx-export-svg').onclick=()=>{if(lastSvg)download(`ranhados-${category}-${period}.svg`,lastSvg,'image/svg+xml')};
+ $('#gx-export-png').onclick=exportPNG;
+ $('#gx-verify-model').onchange=renderVerification;
+ $('#gx-verify-variable').onchange=renderVerification;
 }
 async function init(){
  initUI();
  try{manifest=await getJson('manifest.json')}catch(e){manifest={period_labels:{'24h':'24 horas','7d':'7 dias','30d':'30 dias','90d':'90 dias',year:'Este ano',all:'Toda a série'}}}
  await loadPeriod('24h');
+ await loadVerification();
 }
 init();

@@ -329,9 +329,11 @@ function renderMonthContext(){
     ['Dias em onda de calor',x.heatwave_days,heatActive?'onda ativa':''],
     ['Dias em onda de frio',x.coldwave_days,coldActive?'onda ativa':''],
     ['Maior chuva diária',maxRain?`${fmt(maxRain.value_mm,1)} mm`:'—',maxRain?.date?dateShort(new Date(maxRain.date+'T12:00')):''],
+    ['Dias secos seguidos',climate?.current_dry_spell?.current_streak_days??'—',`P < ${fmt(climate?.current_dry_spell?.threshold_mm??1,1)} mm/dia`],
+    ['Maior sequência seca mês',cm?.dry_spell?.max_streak_days??'—',cm?.dry_spell?.max_streak_start?`${dateShort(new Date(cm.dry_spell.max_streak_start+'T12:00'))}–${dateShort(new Date(cm.dry_spell.max_streak_end+'T12:00'))}`:''],
     ['Graus-dia aquecimento',x.heating_degree_days!=null?fmt(x.heating_degree_days,1):'—','dias fechados'],
     ['Graus-dia arrefecimento',x.cooling_degree_days!=null?fmt(x.cooling_degree_days,1):'—','dias fechados'],
-    ['Chill hours da época',d.chillhours!=null?`${fmt(d.chillhours,1)} h`:'—','acumulado sazonal Cumulus']
+    ['Horas de frio da época',d.chillhours!=null?`${fmt(d.chillhours,1)} h`:'—','Chill Hours · acumulado sazonal Cumulus']
   ];
   $('#month-indices').innerHTML=idx.map(v=>monthIndex(v[0],v[1],v[2])).join('');
   const miss=cm.missing_day_count||0;

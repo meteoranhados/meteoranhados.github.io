@@ -57,7 +57,7 @@
           </select>
         </label>
         <button id="gx-export-csv" type="button">CSV</button>
-        <button id="gx-export-svg" type="button">SVG</button>
+        <button id="gx-export-png" type="button">PNG</button>
       </div>
     </div>
 
@@ -80,6 +80,37 @@
       <h2 id="gx-secondary-title">Detalhe meteorológico</h2>
       <div id="gx-secondary" class="gx-secondary"></div>
     </div>
+  </section>
+
+
+  <section class="gx-verify-panel">
+    <div class="gx-main-head">
+      <div>
+        <p class="eyebrow">Verificação da previsão</p>
+        <h2>O que foi previsto × o que aconteceu</h2>
+        <p>Compara a previsão arquivada aproximadamente 24 horas antes com a observação real da estação. O histórico começa a ser construído a partir desta versão.</p>
+      </div>
+      <div class="gx-actions">
+        <label>Modelo
+          <select id="gx-verify-model">
+            <option value="best_match">Best Match</option>
+            <option value="ecmwf">ECMWF</option>
+            <option value="gfs">GFS</option>
+          </select>
+        </label>
+        <label>Variável
+          <select id="gx-verify-variable">
+            <option value="temperature">Temperatura</option>
+            <option value="humidity">Humidade</option>
+            <option value="pressure">Pressão</option>
+            <option value="wind">Vento</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div id="gx-verify-stats" class="gx-stats gx-verify-stats"></div>
+    <div id="gx-verify-chart" class="gx-chart gx-verify-chart"></div>
+    <p id="gx-verify-note" class="gx-chart-note"></p>
   </section>
 
   <section class="gx-help">
