@@ -64,9 +64,18 @@ function renderBridge(){
  const o=b.offsets||{};$('#fx-bridge').innerHTML=`<p style="font-size:10px;color:#6c7d85">${b.method}</p><div class="fx-bridge-grid"><div class="fx-mini"><span>Temperatura agora</span><b>${o.temperature_2m>=0?'+':''}${fmt(o.temperature_2m,1)} °C</b></div><div class="fx-mini"><span>Humidade agora</span><b>${o.relative_humidity_2m>=0?'+':''}${fmt(o.relative_humidity_2m,0)} p.p.</b></div><div class="fx-mini"><span>Pressão agora</span><b>${o.pressure_msl>=0?'+':''}${fmt(o.pressure_msl,1)} hPa</b></div></div><p style="font-size:8px;color:#7d8b93">A correção desvanece até zero; não é um novo modelo meteorológico.</p>`;
 }
 function renderAgreement(){
- const e=dailyRows(forecast?.models?.ecmwf),g=dailyRows(forecast?.models?.gfs),n=Math.min(e.length,g.length,14);let td=0,ed=0,gd=0;for(let i=0;i<n;i++){if(e[i]?.temperature_2m_max!=null&&g[i]?.temperature_2m_max!=null)td=Math.max(td,Math.abs(e[i].temperature_2m_max-g[i].temperature_2m_max));if(i<3){ed+=Number(e[i]?.precipitation_sum||0);gd+=Number(g[i]?.precipitation_sum||0)}}const rd=Math.abs(ed-gd),ta=agreementLabel(td,'temp'),ra=agreementLabel(rd,'rain');$('#fx-agreement').innerHTML=`<div class="fx-agree-grid"><div class="fx-mini"><span>Temperatura</span><b><i class="fx-agreement ${ta[1]}">${ta[0]}</i></b><small>maior Δ Tmax ${fmt(td,1)} °C</small></div><div class="fx-mini"><span>Chuva 3 dias</span><b><i class="fx-agreement ${ra[1]}">${ra[0]}</i></b><small>diferença ${fmt(rd,1)} mm</small></div><div class="fx-mini"><span>Acumulados 3 dias</span><b>${fmt(ed,1)} / ${fmt(gd,1)} mm</b><small>ECMWF / GFS</small></div></div>`;
+ const e=dailyRows(forecast?.models?.ecmwf),g=dailyRows(forecast?.models?.gfs),host=$('#fx-agreement');
+ if(!e.length||!g.length){host.innerHTML='<p class="fx-note">Comparação de modelos indisponível.</p>';return}
+ const horizons=[1,2,3,5,7],cards=horizons.map(day=>{
+   const i=day-1;if(i>=e.length||i>=g.length)return'';
+   const dt=(e[i]?.temperature_2m_max!=null&&g[i]?.temperature_2m_max!=null)?Math.abs(Number(e[i].temperature_2m_max)-Number(g[i].temperature_2m_max)):null;
+   let ep=0,gp=0,validP=false;for(let k=0;k<=i&&k<e.length&&k<g.length;k++){if(e[k]?.precipitation_sum!=null||g[k]?.precipitation_sum!=null)validP=true;ep+=Number(e[k]?.precipitation_sum||0);gp+=Number(g[k]?.precipitation_sum||0)}
+   const dp=validP?Math.abs(ep-gp):null,ts=dt==null?['Sem dado','medium']:agreementLabel(dt,'temp'),ps=dp==null?['Sem dado','medium']:agreementLabel(dp,'rain');
+   const rank=(x)=>x==='high'?2:x==='medium'?1:0,cls=rank(ts[1])>=rank(ps[1])?ts[1]:ps[1],label=cls==='good'?'Bom acordo':cls==='medium'?'Acordo moderado':'Divergência elevada';
+   return `<div class="fx-horizon-card"><span>D+${day}</span><b><i class="fx-agreement ${cls}">${label}</i></b><small>Δ Tmax <strong>${fmt(dt,1)} °C</strong></small><small>Δ chuva acum. <strong>${fmt(dp,1)} mm</strong></small></div>`;
+ }).join('');
+ host.innerHTML=`<div class="fx-horizon-grid">${cards}</div><p class="fx-note" style="margin-top:8px">A chuva é a diferença entre acumulados desde hoje até ao horizonte indicado. Concordância não é sinónimo de certeza.</p>`;
 }
-function ensembleRows(){const h=forecast?.ensemble?.hourly||{},t=h.time||[];return t.map((time,i)=>{const r={time};Object.keys(h).forEach(k=>{if(k!=='time'&&Array.isArray(h[k]))r[k]=h[k][i]});return r}).filter(r=>new Date(r.time).getTime()>=Date.now()-3600000)}
 function renderEnsemble(){
  const host=$('#fx-ensemble-chart'),statsHost=$('#fx-ensemble-stats'),ens=forecast?.ensemble;
  if(!ens?.available){statsHost.innerHTML='';host.innerHTML='<p style="padding:30px;color:#6c7d85">Ensemble temporariamente indisponível; a previsão determinística continua operacional.</p>';return}
@@ -103,9 +112,18 @@ function renderHourly(){
  const rows=future72().slice(0,24);$('#fx-hourly-table').innerHTML=`<table><thead><tr><th>Hora</th><th>Tempo</th><th>Temperatura</th><th>Humidade</th><th>Chuva</th><th>Prob.</th><th>Vento</th><th>Rajada</th><th>Pressão</th><th>Nuvens</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${dtFmt(r.time)}</td><td>${weatherSymbol(r.weather_code)}</td><td>${fmt(r.temperature_2m,1)} °C</td><td>${fmt(r.relative_humidity_2m,0)}%</td><td>${fmt(r.precipitation,1)} mm</td><td>${fmt(r.precipitation_probability,0)}%</td><td>${windDir(r.wind_direction_10m)} ${fmt(r.wind_speed_10m,0)}</td><td>${fmt(r.wind_gusts_10m,0)} km/h</td><td>${fmt(r.pressure_msl,0)} hPa</td><td>${fmt(r.cloud_cover,0)}%</td></tr>`).join('')}</tbody></table>`;
 }
 function renderVerification(){
- if(!verification){$('#fx-verification').innerHTML='<p>Histórico de verificação ainda indisponível.</p>';return}
- if(!verification.available){$('#fx-verification').innerHTML=`<p style="font-size:10px;color:#6c7d85">${verification.message||'A recolher histórico.'}</p><div class="fx-stats"><div class="fx-stat"><span>Arquivadas</span><b>${verification.archive_records||0}</b></div><div class="fx-stat"><span>Comparáveis</span><b>${verification.matched_samples||0}</b></div></div>`;return}
- const rows=verification.samples||[],vars=[['temperature','Temperatura','°C'],['humidity','Humidade','%'],['wind','Vento',' km/h'],['precipitation','Chuva',' mm']];$('#fx-verification').innerHTML=`<div class="fx-stats">${vars.map(([k,l,u])=>{const pairs=rows.filter(r=>r.observed?.[k]!=null&&r.best_match?.[k]!=null),mae=pairs.length?pairs.reduce((a,r)=>a+Math.abs(Number(r.best_match[k])-Number(r.observed[k])),0)/pairs.length:null;return `<div class="fx-stat"><span>${l} · MAE</span><b>${fmt(mae,k==='humidity'?0:1)}${u}</b><small>${pairs.length} pontos</small></div>`}).join('')}</div>`;
+ const host=$('#fx-verification'),lead=$('#fx-verification-lead')?.value||'24';
+ if(!verification){host.innerHTML='<p>Histórico de verificação ainda indisponível.</p>';return}
+ const block=verification.summary?.[lead];
+ if(!verification.available||!block||!block.samples){
+   host.innerHTML=`<p style="font-size:10px;color:#6c7d85">${verification.message||'A recolher histórico.'}</p><div class="fx-stats"><div class="fx-stat"><span>Arquivadas</span><b>${verification.archive_records||0}</b></div><div class="fx-stat"><span>Comparáveis</span><b>${block?.samples||0}</b></div><div class="fx-stat"><span>Horizonte</span><b>${lead==='24'?'24 h':lead==='48'?'48 h':lead==='72'?'72 h':lead==='120'?'5 dias':'7 dias'}</b></div></div>`;return
+ }
+ const vars=[['temperature','Temperatura','°C'],['humidity','Humidade','%'],['wind','Vento','km/h'],['precipitation','Chuva','mm']],mods=[['best_match','Best Match'],['ecmwf','ECMWF'],['gfs','GFS']];
+ const rows=vars.map(([key,label,unit])=>{
+   const cells=mods.map(([mk])=>{const m=block.models?.[mk]?.[key];return `<td>${m?.mae!=null?`${fmt(m.mae,key==='humidity'?0:1)} ${unit}`:'—'}<small>${m?.samples||0} n</small></td>`}).join('');
+   return `<tr><th>${label}</th>${cells}</tr>`;
+ }).join('');
+ host.innerHTML=`<div class="fx-verification-head"><div><span>Amostras neste horizonte</span><b>${block.samples}</b></div><div><span>Métrica</span><b>MAE · menor é melhor</b></div></div><div class="fx-verification-table"><table><thead><tr><th>Variável</th>${mods.map(([,l])=>`<th>${l}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 async function init(){
  [forecast,current,verification]=await Promise.all([getJson('/api/v1/forecast.json'),getJson('/api/v1/current.json').catch(()=>null),getJson('/api/v1/forecast-verification.json').catch(()=>null)]);
@@ -113,5 +131,6 @@ async function init(){
  renderDays();renderTabs();renderMeteogram();renderBridge();renderAgreement();renderEnsemble();renderUsefulDetails();renderAgro();renderModelChart();renderHourly();renderVerification();
  $('#fx-model-var').onchange=renderModelChart;
  $('#fx-ensemble-var').onchange=renderEnsemble;
+ $('#fx-verification-lead').onchange=renderVerification;
 }
 init();
