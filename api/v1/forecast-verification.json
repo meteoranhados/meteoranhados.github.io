@@ -1,7 +1,7 @@
 {
   "available": true,
   "collecting": false,
-  "generated_utc": "2026-08-29T19:50:16+00:00",
+  "generated_utc": "2026-08-29T20:05:20+00:00",
   "lead_target_hours": [
     24,
     48,
@@ -10,47 +10,47 @@
     168
   ],
   "archive_records": 48,
-  "pending_records": 37,
-  "matched_samples": 11,
+  "pending_records": 36,
+  "matched_samples": 12,
   "message": null,
   "summary": {
     "24": {
       "label": "1 dia",
-      "samples": 11,
+      "samples": 12,
       "models": {
         "best_match": {
           "temperature": {
-            "samples": 11,
-            "mae": 0.824,
-            "bias": -0.782,
-            "rmse": 1.057
+            "samples": 12,
+            "mae": 0.803,
+            "bias": -0.765,
+            "rmse": 1.026
           },
           "humidity": {
-            "samples": 11,
-            "mae": 3.275,
-            "bias": -1.294,
-            "rmse": 4.264
+            "samples": 12,
+            "mae": 3.225,
+            "bias": -1.408,
+            "rmse": 4.155
           },
           "pressure": {
-            "samples": 11,
-            "mae": 1.788,
-            "bias": -1.788,
-            "rmse": 1.823
+            "samples": 12,
+            "mae": 1.757,
+            "bias": -1.757,
+            "rmse": 1.793
           },
           "wind": {
-            "samples": 11,
-            "mae": 5.233,
-            "bias": 3.818,
-            "rmse": 5.89
+            "samples": 12,
+            "mae": 5.024,
+            "bias": 3.727,
+            "rmse": 5.694
           },
           "wind_gust": {
-            "samples": 11,
-            "mae": 10.645,
-            "bias": 9.645,
-            "rmse": 12.756
+            "samples": 12,
+            "mae": 11.3,
+            "bias": 10.383,
+            "rmse": 13.33
           },
           "precipitation": {
-            "samples": 11,
+            "samples": 12,
             "mae": 0.0,
             "bias": 0.0,
             "rmse": 0.0
@@ -58,37 +58,37 @@
         },
         "ecmwf": {
           "temperature": {
-            "samples": 11,
-            "mae": 1.573,
-            "bias": -1.573,
-            "rmse": 1.697
+            "samples": 12,
+            "mae": 1.615,
+            "bias": -1.615,
+            "rmse": 1.732
           },
           "humidity": {
-            "samples": 11,
-            "mae": 2.815,
-            "bias": -0.748,
-            "rmse": 3.952
+            "samples": 12,
+            "mae": 2.775,
+            "bias": -0.492,
+            "rmse": 3.843
           },
           "pressure": {
-            "samples": 11,
-            "mae": 1.943,
-            "bias": -1.943,
-            "rmse": 1.986
+            "samples": 12,
+            "mae": 1.941,
+            "bias": -1.941,
+            "rmse": 1.981
           },
           "wind": {
-            "samples": 11,
-            "mae": 6.242,
-            "bias": 4.573,
-            "rmse": 7.444
+            "samples": 12,
+            "mae": 6.308,
+            "bias": 4.778,
+            "rmse": 7.41
           },
           "wind_gust": {
-            "samples": 11,
-            "mae": 10.018,
-            "bias": 9.873,
-            "rmse": 13.268
+            "samples": 12,
+            "mae": 10.333,
+            "bias": 10.2,
+            "rmse": 13.314
           },
           "precipitation": {
-            "samples": 11,
+            "samples": 12,
             "mae": 0.0,
             "bias": 0.0,
             "rmse": 0.0
@@ -96,37 +96,37 @@
         },
         "gfs": {
           "temperature": {
-            "samples": 11,
-            "mae": 1.227,
-            "bias": 1.055,
-            "rmse": 1.456
+            "samples": 12,
+            "mae": 1.207,
+            "bias": 0.885,
+            "rmse": 1.423
           },
           "humidity": {
-            "samples": 11,
-            "mae": 16.93,
-            "bias": -16.93,
-            "rmse": 18.276
+            "samples": 12,
+            "mae": 15.992,
+            "bias": -15.992,
+            "rmse": 17.575
           },
           "pressure": {
-            "samples": 11,
-            "mae": 4.334,
-            "bias": -4.334,
-            "rmse": 4.398
+            "samples": 12,
+            "mae": 4.241,
+            "bias": -4.241,
+            "rmse": 4.312
           },
           "wind": {
-            "samples": 11,
-            "mae": 6.507,
-            "bias": 6.136,
-            "rmse": 7.679
+            "samples": 12,
+            "mae": 6.293,
+            "bias": 5.953,
+            "rmse": 7.439
           },
           "wind_gust": {
-            "samples": 11,
-            "mae": 4.373,
-            "bias": -0.791,
-            "rmse": 5.933
+            "samples": 12,
+            "mae": 4.2,
+            "bias": -0.533,
+            "rmse": 5.719
           },
           "precipitation": {
-            "samples": 11,
+            "samples": 12,
             "mae": 0.0,
             "bias": 0.0,
             "rmse": 0.0
@@ -1108,6 +1108,51 @@
         "pressure": 1017.4,
         "wind": 15.7,
         "wind_gust": 26.6,
+        "precipitation": 0.0
+      }
+    },
+    {
+      "target_utc_ms": 1788033600000,
+      "target_local": "2026-08-29T21:00",
+      "issued_utc": "2026-08-28T19:45:26+00:00",
+      "lead_hours": 24.24,
+      "lead_target_hours": 24,
+      "observed": {
+        "temperature": 19.08,
+        "humidity": 80.67,
+        "pressure": 1021.92,
+        "wind": 4.17,
+        "wind_gust": 11.0,
+        "precipitation": 0.0
+      },
+      "best_match": {
+        "target_utc_ms": 1788033600000,
+        "target_local": "2026-08-29T21:00",
+        "temperature": 18.5,
+        "humidity": 78.0,
+        "pressure": 1020.5,
+        "wind": 6.9,
+        "wind_gust": 29.5,
+        "precipitation": 0.0
+      },
+      "ecmwf": {
+        "target_utc_ms": 1788033600000,
+        "target_local": "2026-08-29T21:00",
+        "temperature": 17.0,
+        "humidity": 83.0,
+        "pressure": 1020.0,
+        "wind": 11.2,
+        "wind_gust": 24.8,
+        "precipitation": 0.0
+      },
+      "gfs": {
+        "target_utc_ms": 1788033600000,
+        "target_local": "2026-08-29T21:00",
+        "temperature": 18.1,
+        "humidity": 75.0,
+        "pressure": 1018.7,
+        "wind": 8.1,
+        "wind_gust": 13.3,
         "precipitation": 0.0
       }
     }
