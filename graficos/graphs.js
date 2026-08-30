@@ -44,7 +44,7 @@ const COMPARES={
  '':'Nenhuma',
  hum:'Humidade',pressure:'Pressão',wind_avg:'Vento médio',dew:'Ponto de orvalho',rain_mm:'Precipitação',solar:'Radiação solar'
 };
-let manifest=null,currentData=null,period='24h',category='temp',activeKeys=new Set(),compareKey='',lastSvg='',verification=null;
+let manifest=null,currentData=null,period='24h',category='temp',activeKeys=new Set(),compareKey='',lastSvg='';
 
 async function getJson(url){const r=await fetch(url+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(`${url}: ${r.status}`);return r.json()}
 function rowsForDailyPeriod(rows,p){
@@ -252,44 +252,6 @@ function exportCSV(){
 }
 
 
-function verificationMeta(){
- const v=$('#gx-verify-variable')?.value||'temperature';
- return {
-  temperature:{label:'Temperatura',unit:'°C',dec:1},
-  humidity:{label:'Humidade',unit:'%',dec:0},
-  pressure:{label:'Pressão',unit:' hPa',dec:1},
-  wind:{label:'Vento',unit:' km/h',dec:1},
-  precipitation:{label:'Precipitação horária',unit:' mm',dec:1}
- }[v];
-}
-function renderVerification(){
- const host=$('#gx-verify-chart'),stats=$('#gx-verify-stats'),note=$('#gx-verify-note');
- if(!verification){host.innerHTML='<div class="gx-empty">A carregar arquivo de previsões…</div>';return}
- if(!verification.available){
-   stats.innerHTML=`<div class="gx-stat"><span>Previsões arquivadas</span><b>${verification.archive_records||0}</b></div><div class="gx-stat"><span>Já comparáveis</span><b>${verification.matched_samples||0}</b></div>`;
-   host.innerHTML=`<div class="gx-empty">${verification.message||'A recolher histórico de previsões.'}</div>`;
-   note.textContent='Este histórico não pode ser reconstruído a partir das previsões atuais; começa a acumular automaticamente com a v1.6.1.';
-   return;
- }
- const model=$('#gx-verify-model').value,variable=$('#gx-verify-variable').value,meta=verificationMeta(),rows=(verification.samples||[]).filter(r=>r.observed?.[variable]!=null&&r[model]?.[variable]!=null);
- if(rows.length<2){host.innerHTML='<div class="gx-empty">Ainda não existem pontos suficientes para esta variável/modelo.</div>';stats.innerHTML='';return}
- const err=rows.map(r=>Number(r[model][variable])-Number(r.observed[variable])),mae=err.reduce((a,b)=>a+Math.abs(b),0)/err.length,bias=err.reduce((a,b)=>a+b,0)/err.length;
- stats.innerHTML=`<div class="gx-stat"><span>Erro absoluto médio</span><b>${fmt(mae,meta.dec)}${meta.unit}</b></div><div class="gx-stat"><span>Viés médio</span><b>${bias>0?'+':''}${fmt(bias,meta.dec)}${meta.unit}</b></div><div class="gx-stat"><span>Pontos comparados</span><b>${rows.length}</b></div><div class="gx-stat"><span>Antecedência</span><b>≈24 h</b></div>`;
- const W=1120,H=350,m={l:72,r:24,t:22,b:45},times=rows.map(r=>r.target_utc_ms),minT=Math.min(...times),maxT=Math.max(...times),vals=rows.flatMap(r=>[Number(r.observed[variable]),Number(r[model][variable])]),mn=Math.min(...vals),mx=Math.max(...vals),pad=(mx-mn)*.12||1,ymin=mn-pad,ymax=mx+pad,x=t=>m.l+(t-minT)/(maxT-minT||1)*(W-m.l-m.r),y=v=>m.t+(ymax-v)/(ymax-ymin)*(H-m.t-m.b);
- let s=`<svg viewBox="0 0 ${W} ${H}">`;
- for(let i=0;i<=4;i++){const v=ymin+(ymax-ymin)*i/4,yy=y(v);s+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e7edef"/><text x="${m.l-8}" y="${yy+4}" text-anchor="end" font-size="9" fill="#71828b">${fmt(v,meta.dec)}</text>`}
- s+=`<text class="gx-axis-unit" x="15" y="${(m.t+H-m.b)/2}" text-anchor="middle" transform="rotate(-90 15 ${(m.t+H-m.b)/2})">${meta.unit.trim()}</text>`;
- const ticks=Math.min(12,Math.max(4,rows.length-1));for(let i=0;i<=ticks;i++){const t=minT+(maxT-minT)*i/ticks,xx=x(t);s+=`<text x="${xx}" y="${H-17}" text-anchor="middle" font-size="8.5" fill="#72828b">${new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit'}).format(new Date(t))}</text>`}
- const obs=rows.map(r=>({ms:r.target_utc_ms,v:Number(r.observed[variable])})),fc=rows.map(r=>({ms:r.target_utc_ms,v:Number(r[model][variable])}));
- s+=`<path d="${linePath(obs,x,y)}" fill="none" stroke="#193f52" stroke-width="2.8"/><path d="${linePath(fc,x,y)}" fill="none" stroke="#c55448" stroke-width="2.3" stroke-dasharray="6 4"/>`;
- s+=`<text x="${m.l}" y="13" font-size="9" fill="#193f52">● Observado</text><text x="${m.l+90}" y="13" font-size="9" fill="#c55448">┄ Previsto ~24 h antes</text><line id="gx-vcross" x1="0" y1="${m.t}" x2="0" y2="${H-m.b}" stroke="#6c7d85" stroke-dasharray="3 4" visibility="hidden"/><rect id="gx-vhit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg>`;
- host.innerHTML=s+'<div class="gx-tooltip" id="gx-vtip"></div>';const svg=host.querySelector('svg'),hit=host.querySelector('#gx-vhit'),cross=host.querySelector('#gx-vcross'),tip=host.querySelector('#gx-vtip');hit.addEventListener('mousemove',ev=>{const rect=svg.getBoundingClientRect(),vx=(ev.clientX-rect.left)/rect.width*W,target=minT+(vx-m.l)/(W-m.l-m.r)*(maxT-minT),r=rows.reduce((a,b)=>Math.abs(b.target_utc_ms-target)<Math.abs(a.target_utc_ms-target)?b:a,rows[0]),xx=x(r.target_utc_ms),ob=Number(r.observed[variable]),fcv=Number(r[model][variable]),er=fcv-ob;cross.setAttribute('x1',xx);cross.setAttribute('x2',xx);cross.setAttribute('visibility','visible');tip.innerHTML=`<b>${dateTimeFmt(r.target_utc_ms)}</b><div class="gx-tooltip-row"><span>Observado</span><strong>${fmt(ob,meta.dec)}${meta.unit}</strong></div><div class="gx-tooltip-row"><span>Previsto</span><strong>${fmt(fcv,meta.dec)}${meta.unit}</strong></div><div class="gx-tooltip-row"><span>Erro</span><strong>${er>0?'+':''}${fmt(er,meta.dec)}${meta.unit}</strong></div>`;tip.style.display='block';tip.style.left=Math.min(rect.width-175,Math.max(5,ev.clientX-rect.left+12))+'px';tip.style.top=Math.max(8,ev.clientY-rect.top-35)+'px'});hit.addEventListener('mouseleave',()=>{cross.setAttribute('visibility','hidden');tip.style.display='none'});note.textContent=`${meta.label} · ${model==='best_match'?'Best Match':model.toUpperCase()} · passe o rato para comparar cada ponto.${variable==='precipitation'?' A precipitação prevista e observada representa o total da hora precedente.':''}`;
-}
-async function loadVerification(){
- try{verification=await getJson('forecast-verification.json')}catch(e){verification={available:false,collecting:true,archive_records:0,matched_samples:0,message:'O arquivo de verificação ainda está a ser criado.'}}
- renderVerification();
-}
-
 
 function exportPNG(){
  const svg=document.querySelector('#gx-svg');if(!svg)return;
@@ -316,13 +278,10 @@ function initUI(){
  };
  $('#gx-export-csv').onclick=exportCSV;
  $('#gx-export-png').onclick=exportPNG;
- $('#gx-verify-model').onchange=renderVerification;
- $('#gx-verify-variable').onchange=renderVerification;
 }
 async function init(){
  initUI();
  try{manifest=await getJson('manifest.json')}catch(e){manifest={period_labels:{'24h':'24 horas','7d':'7 dias','30d':'30 dias','90d':'90 dias',year:'Este ano',all:'Toda a série'}}}
  await loadPeriod('24h');
- await loadVerification();
 }
 init();
