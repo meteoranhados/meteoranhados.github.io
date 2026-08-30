@@ -1,0 +1,13 @@
+:root{--mr-ink:#18313e;--mr-muted:#667982;--mr-line:#dbe6ea;--mr-paper:#f2f6f7;--mr-panel:#fff;--mr-accent:#246b86;--mr-dark:#153d4d;--mr-radius:15px;--mr-shadow:0 7px 24px rgba(22,55,69,.035)}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+:is(.now-page,.fx-page,.gx-page,.cx-page,.ox-page,.rx-page,.sx-page,.dx-page,.rr-page){font-size:13px;line-height:1.45}
+:is(.now-page,.fx-page,.gx-page,.cx-page,.ox-page,.rx-page,.sx-page,.dx-page,.rr-page) p{line-height:1.5}
+:is(.now-page,.fx-page,.gx-page,.cx-page,.ox-page,.rx-page,.sx-page,.dx-page,.rr-page) .eyebrow{font-size:10px!important;line-height:1.25}
+:is(.now-page,.fx-page,.gx-page,.cx-page,.ox-page,.rx-page,.sx-page,.dx-page,.rr-page) :is(select,button,input){font-size:11px;min-height:32px}
+:is(.now-page,.fx-page,.gx-page,.cx-page,.ox-page,.rx-page,.sx-page,.dx-page,.rr-page) :is(.updated,.method,.ox-note,.fx-note,.gx-chart-note,.month-quality-note,.rr-note,.dx-copy,.sx-copy){font-size:10.5px!important}
+:is(.fx-chart,.fx-model-chart,.gx-chart,.ox-chart,.recent-chart,.timeline-chart,.climate-chart,.chart-wrap) svg text{font-size:10px!important}
+:is(.fx-chart,.fx-model-chart,.gx-chart,.ox-chart,.recent-chart,.timeline-chart,.climate-chart,.chart-wrap) svg text[class*="axis"]{font-size:10.5px!important}
+:is(.fx-tooltip,.gx-tooltip,.ox-skill-tooltip){font-size:11px!important;line-height:1.35;box-shadow:0 10px 28px rgba(21,51,64,.16)!important}
+.mr-empty{padding:18px;border:1px dashed #d9e4e8;border-radius:11px;background:#f8fafb;color:#6b7c84;font-size:11px;line-height:1.45}
+.mr-empty strong{display:block;color:#355563;font-size:12px;margin-bottom:3px}
+@media(max-width:760px){:is(.now-page,.fx-page,.gx-page,.cx-page,.ox-page,.rx-page,.sx-page,.dx-page,.rr-page){font-size:13px}:is(.now-page,.fx-page,.gx-page,.cx-page,.ox-page,.rx-page,.sx-page,.dx-page,.rr-page) :is(select,button,input){font-size:12px;min-height:36px}:is(.fx-chart,.fx-model-chart,.gx-chart,.ox-chart,.recent-chart,.timeline-chart,.climate-chart,.chart-wrap) svg text{font-size:10.5px!important}}
