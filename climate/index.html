@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Climatologia — Ranhados</title>
-  <link rel="stylesheet" href="climate.css">
+  <link rel="stylesheet" href="climate.v27.css">
 <meta name="theme-color" content="#17475b">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="/identity/ranhados-mark.svg" type="image/svg+xml">
@@ -138,13 +138,17 @@
       <div class="panel"><div class="chart-title"><div><h2>Períodos quentes subcríticos</h2><p class="method">3–5 dias consecutivos acima do limiar.</p></div><div class="controls"><label>Ordenar<select id="near-heat-sort"><option value="recent">Mais recentes</option><option value="long">Mais longos</option><option value="intense">Mais intensos</option></select></label></div></div><div id="near-heat"></div><button id="near-heat-toggle" class="more-btn" type="button">Ver todos</button></div>
       <div class="panel"><div class="chart-title"><div><h2>Períodos frios subcríticos</h2><p class="method">3–5 dias consecutivos abaixo do limiar.</p></div><div class="controls"><label>Ordenar<select id="near-cold-sort"><option value="recent">Mais recentes</option><option value="long">Mais longos</option><option value="intense">Mais intensos</option></select></label></div></div><div id="near-cold"></div><button id="near-cold-toggle" class="more-btn" type="button">Ver todos</button></div>
     </div>
-    <div class="panel record-panel"><div class="chart-title"><div><h2>Recordes climatológicos por mês</h2><p class="method">Seleção orientada para leitura pública. <a class="inline-link" href="../records.htm">Ver todos os recordes técnicos do Cumulus →</a></p></div><div class="controls"><label>Mês<select id="record-month"></select></label></div></div><div id="record-month-detail"></div></div>
+    <div class="climate-record-shortcut"><div><p class="section-kicker">Arquivo de extremos</p><h2>Recordes e rankings têm uma área própria</h2><p>Ondas e contexto climatológico ficam aqui; a exploração completa de recordes, rankings e sequências está centralizada em Recordes.</p></div><a href="/recordes/">Abrir Recordes →</a></div>
+<details class="climate-secondary-records"><summary>Mostrar também recordes mensais e Top 5 nesta página</summary><div class="climate-secondary-records__body">
+<div class="panel record-panel"><div class="chart-title"><div><h2>Recordes climatológicos por mês</h2><p class="method">Seleção orientada para leitura pública. <a class="inline-link" href="../records.htm">Ver todos os recordes técnicos do Cumulus →</a></p></div><div class="controls"><label>Mês<select id="record-month"></select></label></div></div><div id="record-month-detail"></div></div>
     <div class="panel rank-filter-panel"><div class="chart-title"><div><p class="section-kicker">Rankings</p><h2>Comparar meses equivalentes</h2><p class="method">Veja o ranking global ou compare apenas janeiros, fevereiros, agostos, etc.</p></div><div class="controls"><label>Período<select id="rank-month-filter"><option value="all">Todos os meses</option></select></label></div></div></div>
     <div class="rank-grid">
       <div class="panel rank-panel warm-rank"><div class="rank-title"><span>Calor</span><h2 id="rank-warm-title">Top 5 — meses mais quentes</h2></div><div id="rank-warm"></div></div>
       <div class="panel rank-panel cold-rank"><div class="rank-title"><span>Frio</span><h2 id="rank-cold-title">Top 5 — meses mais frios</h2></div><div id="rank-cold"></div></div>
       <div class="panel rank-panel wet-rank"><div class="rank-title"><span>Chuva</span><h2 id="rank-wet-title">Top 5 — meses mais chuvosos</h2></div><div id="rank-wet"></div></div>
       <div class="panel rank-panel dry-rank"><div class="rank-title"><span>Secura</span><h2 id="rank-dry-title">Top 5 — meses mais secos</h2></div><div id="rank-dry"></div></div>
+
+</div></details>
     </div>
   </section>
 
@@ -173,6 +177,6 @@
     <span>Climatologia calculada automaticamente a partir da série da estação · referência 1991–2020</span>
   </footer>
 </main>
-<script src="climate.js"></script>
+<script src="climate.v27.js"></script>
 </body>
 </html>

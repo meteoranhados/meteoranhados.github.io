@@ -2,7 +2,7 @@
 <html lang="pt">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Previsão meteorológica detalhada para Ranhados, Mêda, com Best Match, ECMWF e GFS.">
-<title>Previsão — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="forecast.css"><meta name="theme-color" content="#17475b">
+<title>Previsão — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="forecast.v27.css"><meta name="theme-color" content="#17475b">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="/identity/ranhados-mark.svg" type="image/svg+xml">
 <meta name="application-name" content="Meteo Ranhados">
@@ -36,13 +36,14 @@
 
 <section id="fx-days" class="fx-days"></section>
 
-<section class="fx-panel fx-radar-panel"><div class="fx-panel-head"><div><p class="eyebrow">Observação remota</p><h2>Radar de precipitação</h2><p class="fx-note">Últimas imagens observadas; Ranhados está marcado no centro da área.</p></div><a class="fx-more" href="/radar/">Abrir radar em grande →</a></div><iframe class="fx-radar-frame" src="/radar/?embed=1" title="Radar de precipitação em torno de Ranhados" loading="lazy"></iframe></section>
-
 <section class="fx-main">
 <div class="fx-main-head"><div><p class="eyebrow">Próximas 72 horas</p><h2>Meteograma</h2><p id="fx-meteo-desc">Evolução horária da previsão principal.</p></div><div id="fx-tabs" class="fx-tabs"></div></div>
 <div id="fx-meteo-stats" class="fx-stats"></div><div id="fx-chart" class="fx-chart"></div><p id="fx-chart-note" class="fx-note"></p>
 </section>
+<section class="fx-panel fx-radar-panel"><div class="fx-panel-head"><div><p class="eyebrow">Observação remota</p><h2>Radar de precipitação</h2><p class="fx-note">Últimas imagens observadas; Ranhados está marcado no centro da área.</p></div><a class="fx-more" href="/radar/">Abrir radar em grande →</a></div><iframe class="fx-radar-frame" src="/radar/?embed=1" title="Radar de precipitação em torno de Ranhados" loading="lazy"></iframe></section>
 
+
+<details class="fx-advanced"><summary><div><span>Análise avançada da previsão</span><small>Ponte local, acordo de modelos, ensemble, atmosfera/solo e agrometeorologia</small></div><b>Explorar</b></summary><div class="fx-advanced-body">
 <section class="fx-split">
 <div class="fx-panel"><div class="fx-panel-head"><div><p class="eyebrow">Modelo × estação</p><h2>Ponte local</h2></div></div><div id="fx-bridge"></div></div>
 <div class="fx-panel"><div class="fx-panel-head"><div><p class="eyebrow">Acordo entre modelos</p><h2>ECMWF × GFS por horizonte</h2><p class="fx-note">Diferença entre os dois modelos em D+1, D+2, D+3, D+5 e D+7.</p></div></div><div id="fx-agreement"></div></div>
@@ -66,6 +67,8 @@
 <div id="fx-model-chart" class="fx-model-chart"></div>
 </section>
 
+</div></details>
+
 <section class="fx-panel">
 <div class="fx-panel-head"><div><p class="eyebrow">Hora a hora</p><h2>Próximas 24 horas</h2></div></div>
 <div id="fx-hourly-table" class="fx-hourly-table"></div>
@@ -79,4 +82,4 @@
 <p>A concordância entre dois modelos não é sinónimo de certeza. A verificação histórica da estação é a ferramenta adequada para avaliar desempenho real.</p>
 </div></details></section>
 <footer><span>Estação Meteorológica de Ranhados · Mêda</span><span>Previsão: Open-Meteo · Best Match / ECMWF / GFS</span></footer>
-</main><script src="forecast.js" defer></script></body></html>
+</main><script src="forecast.v27.js" defer></script></body></html>

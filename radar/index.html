@@ -2,8 +2,8 @@
 <html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Radar de precipitação observado em torno da Estação Meteorológica de Ranhados.">
 <title>Radar — Estação Meteorológica de Ranhados</title><script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('rr-embed')</script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="radar.css"><meta name="theme-color" content="#17475b">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="radar.v27.css"><meta name="theme-color" content="#17475b">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="/identity/ranhados-mark.svg" type="image/svg+xml">
 <meta name="application-name" content="Meteo Ranhados">
@@ -34,6 +34,6 @@
 <div id="ranhados-update-toast" class="ranhados-update-toast" hidden>Nova versão disponível <button type="button">Atualizar</button></div>
 <!-- RANHADOS_GLOBAL_SHELL_END --><main id="main-content" class="rr-page">
 <header class="rr-hero"><div><p class="eyebrow">Precipitação observada</p><h1>Radar</h1><p>Últimas imagens de radar em torno de Ranhados. A estação está marcada no mapa; o radar é observado, não uma previsão futura.</p></div><div id="rr-status" class="rr-status">A carregar radar…</div></header>
-<section class="rr-panel"><div class="rr-head"><div><p class="eyebrow">Últimas imagens</p><h2>Radar de precipitação</h2></div><div class="rr-controls"><button id="rr-prev" type="button" aria-label="Imagem anterior">←</button><button id="rr-play" type="button">▶ Animar</button><button id="rr-next" type="button" aria-label="Imagem seguinte">→</button></div></div><div id="rr-map" class="rr-map"></div><div class="rr-timeline"><input id="rr-range" type="range" min="0" max="0" value="0"><b id="rr-time">—</b></div><p class="rr-note">São mostradas imagens passadas do Weather Maps API. Em 2026 o endpoint público já não fornece nowcast futuro. Fonte radar: <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>. Mapa base © OpenStreetMap contributors.</p></section>
+<section class="rr-panel"><div class="rr-head"><div><p class="eyebrow">Últimas imagens</p><h2>Radar de precipitação</h2></div><div class="rr-controls"><button id="rr-prev" type="button" aria-label="Imagem anterior">←</button><button id="rr-play" type="button">▶ Animar</button><button id="rr-next" type="button" aria-label="Imagem seguinte">→</button></div></div><div id="rr-map" class="rr-map"></div><div class="rr-timeline"><input id="rr-range" type="range" min="0" max="0" value="0"><b id="rr-time">—</b></div><div class="rr-legend"><span>Leitura das cores:</span><b>menos intensa</b><i></i><strong>mais intensa</strong><small>A paleta pertence ao RainViewer; cores mais intensas correspondem a maior refletividade/precipitação.</small></div><p class="rr-note">São mostradas imagens passadas do Weather Maps API. Em 2026 o endpoint público já não fornece nowcast futuro. Fonte radar: <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>. Mapa base © OpenStreetMap contributors.</p></section>
 <footer><span>Estação Meteorológica de Ranhados · 40.99643, −7.32928</span><span>Radar com atualização automática</span></footer>
-</main><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="radar.js" defer></script></body></html>
+</main><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script><script src="radar.v27.js" defer></script></body></html>

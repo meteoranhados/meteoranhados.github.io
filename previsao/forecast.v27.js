@@ -1,0 +1,134 @@
+
+const $=q=>document.querySelector(q);
+const fmt=(v,d=1)=>v===null||v===undefined||!Number.isFinite(Number(v))?'—':Number(v).toLocaleString('pt-PT',{minimumFractionDigits:d,maximumFractionDigits:d});
+const dayFmt=s=>new Intl.DateTimeFormat('pt-PT',{weekday:'short',day:'2-digit',month:'2-digit'}).format(new Date(s+'T12:00:00'));
+const dtFmt=s=>new Intl.DateTimeFormat('pt-PT',{weekday:'short',day:'2-digit',hour:'2-digit'}).format(new Date(s));
+const timeFmt=s=>new Intl.DateTimeFormat('pt-PT',{hour:'2-digit',minute:'2-digit'}).format(new Date(s));
+const COLORS=['#245f77','#c55348','#65916e','#8070a1','#bd8b2d','#4f92b0'];
+let forecast=null,current=null,verification=null,tab='temperature';
+
+async function getJson(u){const r=await fetch(u+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(`${u}:${r.status}`);return r.json()}
+function weatherSymbol(code){code=Number(code);if(code===0)return'☀️';if([1,2].includes(code))return'🌤️';if(code===3)return'☁️';if([45,48].includes(code))return'🌫️';if([51,53,55,56,57].includes(code))return'🌦️';if([61,63,65,66,67,80,81,82].includes(code))return'🌧️';if([71,73,75,77,85,86].includes(code))return'🌨️';if([95,96,99].includes(code))return'⛈️';return'☁️'}
+function windDir(deg){if(deg==null)return'—';return['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][Math.round(Number(deg)/22.5)%16]}
+function hourlyRows(model){const h=model?.hourly||{},t=h.time||[];return t.map((time,i)=>{const r={time};Object.keys(h).forEach(k=>{if(k!=='time'&&Array.isArray(h[k]))r[k]=h[k][i]});return r})}
+function dailyRows(model){const d=model?.daily||{},t=d.time||[];return t.map((time,i)=>{const r={time};Object.keys(d).forEach(k=>{if(k!=='time'&&Array.isArray(d[k]))r[k]=d[k][i]});return r})}
+function ensembleRows(){const h=forecast?.ensemble?.hourly||{},t=h.time||[];return t.map((time,i)=>{const r={time};Object.keys(h).forEach(k=>{if(k!=='time'&&Array.isArray(h[k]))r[k]=h[k][i]});return r}).filter(r=>new Date(r.time).getTime()>=Date.now()-3600000)}
+function safeRender(label,fn,selector){try{fn()}catch(err){console.error(`[Meteo Ranhados] ${label}`,err);const host=selector?$(selector):null;if(host)host.innerHTML=`<div class="fx-empty"><strong>${label}</strong><span>Este módulo não ficou disponível nesta atualização. Os restantes conteúdos continuam ativos.</span></div>`}}
+function future72(){const rows=hourlyRows(forecast?.primary),now=Date.now()-3600000;return rows.filter(r=>new Date(r.time).getTime()>=now).slice(0,72)}
+function renderDays(){
+ const rows=dailyRows(forecast?.primary).slice(0,14);
+ $('#fx-days').innerHTML=rows.map((r,i)=>`<article class="fx-day ${i===0?'today':''} ${i>=7?'is-long-range':i>=4?'is-mid-range':'is-near-range'}"><b>${i===0?'Hoje':dayFmt(r.time).split(',')[0]}</b><span class="date">${dayFmt(r.time).replace(/^[^,]+,\s*/,'')}</span><div class="symbol">${weatherSymbol(r.weather_code)}</div><span class="temp">${fmt(r.temperature_2m_max,0)}° <small style="display:inline">${fmt(r.temperature_2m_min,0)}°</small></span><small>🌧 ${fmt(r.precipitation_probability_max,0)}% · ${fmt(r.precipitation_sum,1)} mm</small><small>💨 ${windDir(r.wind_direction_10m_dominant)} · ${fmt(r.wind_gusts_10m_max,0)} km/h</small><small>UV ${fmt(r.uv_index_max,0)}</small></article>`).join('');
+}
+const TABS={
+ temperature:{label:'Temperatura',unit:'°C',series:[['temperature_2m','Temperatura'],['dew_point_2m','Ponto de orvalho'],['apparent_temperature','Aparente']]},
+ rain:{label:'Precipitação',unit:'mm',series:[['precipitation','Precipitação']]},
+ wind:{label:'Vento',unit:'km/h',series:[['wind_speed_10m','Vento'],['wind_gusts_10m','Rajada']]},
+ humidity:{label:'Humidade / nuvens',unit:'%',series:[['relative_humidity_2m','Humidade'],['cloud_cover','Nuvens']]},
+ pressure:{label:'Pressão',unit:'hPa',series:[['pressure_msl','Pressão']]},
+ solar:{label:'Solar / UV',unit:'W/m²',series:[['shortwave_radiation','Radiação']]}
+};
+function stats(vals){const v=vals.filter(Number.isFinite);return{min:v.length?Math.min(...v):null,max:v.length?Math.max(...v):null,avg:v.length?v.reduce((a,b)=>a+b,0)/v.length:null,sum:v.reduce((a,b)=>a+b,0)}}
+function renderTabs(){$('#fx-tabs').innerHTML=Object.entries(TABS).map(([k,v])=>`<button class="fx-tab ${k===tab?'is-active':''}" data-tab="${k}">${v.label}</button>`).join('');document.querySelectorAll('.fx-tab').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;renderTabs();renderMeteogram()})}
+function svgLine(points,x,y){return points.map((p,i)=>`${i?'L':'M'} ${x(p.t).toFixed(1)} ${y(p.v).toFixed(1)}`).join(' ')}
+function renderMeteogram(){
+ const rows=future72(),cfg=TABS[tab],chart=$('#fx-chart'),statsHost=$('#fx-meteo-stats'),note=$('#fx-chart-note');
+ if(rows.length<2){chart.innerHTML='<div class="fx-empty"><strong>Meteograma indisponível</strong><span>Não existem horas suficientes na previsão principal.</span></div>';statsHost.innerHTML='';return}
+ const W=1120,H=400,m={l:70,r:25,t:22,b:48},times=rows.map(r=>new Date(r.time).getTime()),minT=Math.min(...times),maxT=Math.max(...times),x=t=>m.l+(t-minT)/(maxT-minT||1)*(W-m.l-m.r);
+ let defs=cfg.series.filter(d=>rows.some(r=>r[d[0]]!=null)),values=defs.flatMap(d=>rows.map(r=>Number(r[d[0]])).filter(Number.isFinite));if(tab==='rain')values=rows.map(r=>Number(r.precipitation||0));
+ let mn=Math.min(...values),mx=Math.max(...values);if(!Number.isFinite(mn)||!Number.isFinite(mx)){mn=0;mx=1}let pad=(mx-mn)*.12||1;if(mn>=0&&mn-pad<0)mn=0;else mn-=pad;mx+=pad;const y=v=>m.t+(mx-v)/(mx-mn||1)*(H-m.t-m.b);
+ let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${cfg.label} nas próximas 72 horas">`;
+ for(let i=0;i<=4;i++){const v=mn+(mx-mn)*i/4,yy=y(v);svg+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" class="fx-grid-line"/><text x="${m.l-8}" y="${yy+4}" text-anchor="end" class="fx-axis-text">${fmt(v,tab==='humidity'?0:1)}</text>`}
+ svg+=`<text x="15" y="${H/2}" text-anchor="middle" transform="rotate(-90 15 ${H/2})" class="fx-axis-title">${cfg.unit}</text>`;
+ rows.forEach((r,i)=>{const d=new Date(r.time),hour=d.getHours(),xx=x(d.getTime());if(hour===0)svg+=`<line x1="${xx}" y1="${m.t}" x2="${xx}" y2="${H-m.b}" class="fx-day-separator"/>`;if(i===0||hour%6===0){const label=hour===0?new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit'}).format(d):new Intl.DateTimeFormat('pt-PT',{hour:'2-digit'}).format(d);svg+=`<text x="${xx}" y="${H-17}" text-anchor="middle" class="fx-axis-text">${label}</text>`}});
+ if(tab==='rain'){const bw=Math.max(3,(W-m.l-m.r)/rows.length*.7),zero=y(0);rows.forEach(r=>{const v=Number(r.precipitation||0),yy=y(v);svg+=`<rect x="${x(new Date(r.time).getTime())-bw/2}" y="${yy}" width="${bw}" height="${Math.max(1,zero-yy)}" class="fx-rain-bar" rx="1"/>`});const yp=v=>m.t+(100-v)/100*(H-m.t-m.b),pts=rows.filter(r=>r.precipitation_probability!=null).map(r=>({t:new Date(r.time).getTime(),v:Number(r.precipitation_probability)}));if(pts.length)svg+=`<path d="${svgLine(pts,x,yp)}" class="fx-prob-line"/>`}
+ else{defs.forEach((d,i)=>{const pts=rows.filter(r=>r[d[0]]!=null).map(r=>({t:new Date(r.time).getTime(),v:Number(r[d[0]])}));if(pts.length)svg+=`<path d="${svgLine(pts,x,y)}" class="fx-series fx-series-${i}" ${i>0?'stroke-dasharray="5 4"':''}/>`});if(tab==='temperature'&&forecast?.local_bridge?.available){const a=forecast.local_bridge.hourly?.temperature_2m||[],all=forecast.primary?.hourly?.time||[],pts=[];all.forEach((t,i)=>{if(a[i]!=null&&new Date(t).getTime()>=minT&&new Date(t).getTime()<=maxT)pts.push({t:new Date(t).getTime(),v:Number(a[i])})});if(pts.length)svg+=`<path d="${svgLine(pts,x,y)}" class="fx-bridge-line"/>`}}
+ svg+=`<line id="fx-cross" x1="0" y1="${m.t}" x2="0" y2="${H-m.b}" class="fx-cross" visibility="hidden"/><g id="fx-hover-dots"></g><rect id="fx-hit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg>`;
+ chart.innerHTML=svg+'<div id="fx-tip" class="fx-tooltip fx-tooltip-snap"></div>';
+ const svgEl=chart.querySelector('svg'),hit=chart.querySelector('#fx-hit'),cross=chart.querySelector('#fx-cross'),dots=chart.querySelector('#fx-hover-dots'),tip=chart.querySelector('#fx-tip');
+ hit.addEventListener('pointermove',ev=>{const rect=svgEl.getBoundingClientRect(),plotLeft=m.l/W*rect.width,plotRight=(W-m.r)/W*rect.width,px=Math.max(plotLeft,Math.min(plotRight,ev.clientX-rect.left)),vx=px/rect.width*W,target=minT+(vx-m.l)/(W-m.l-m.r)*(maxT-minT);let idx=Math.round((target-minT)/(maxT-minT||1)*(rows.length-1));idx=Math.max(0,Math.min(rows.length-1,idx));const r=rows[idx],xx=x(new Date(r.time).getTime());cross.setAttribute('x1',xx);cross.setAttribute('x2',xx);cross.setAttribute('visibility','visible');let lines='',dotSvg='';
+   if(tab==='rain'){lines+=`<div><span>Precipitação</span><b>${fmt(r.precipitation,1)} mm</b></div><div><span>Probabilidade</span><b>${fmt(r.precipitation_probability,0)}%</b></div>`;const v=Number(r.precipitation||0);if(Number.isFinite(v))dotSvg+=`<circle cx="${xx}" cy="${y(v)}" r="5" class="fx-hover-dot"/>`}
+   else{defs.forEach((d,i)=>{const v=Number(r[d[0]]);if(Number.isFinite(v)){lines+=`<div><span>${d[1]}</span><b>${fmt(v,tab==='humidity'?0:1)} ${cfg.unit}</b></div>`;dotSvg+=`<circle cx="${xx}" cy="${y(v)}" r="4.5" class="fx-hover-dot fx-hover-dot-${i}"/>`}});if(tab==='temperature'&&forecast?.local_bridge?.available){const all=forecast.primary?.hourly?.time||[],j=all.indexOf(r.time),v=Number(forecast.local_bridge.hourly?.temperature_2m?.[j]);if(Number.isFinite(v)){lines+=`<div><span>Ponte local</span><b>${fmt(v,1)} °C</b></div>`;dotSvg+=`<circle cx="${xx}" cy="${y(v)}" r="4" class="fx-hover-dot fx-hover-dot-bridge"/>`}}}
+   dots.innerHTML=dotSvg;tip.innerHTML=`<strong>${new Intl.DateTimeFormat('pt-PT',{weekday:'short',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(r.time))}</strong>${lines}`;tip.style.display='block';const crossPx=xx/W*rect.width,tw=tip.offsetWidth||190;tip.style.left=(crossPx+tw+22<rect.width?crossPx+12:crossPx-tw-12)+'px';tip.style.top='10px'});
+ hit.addEventListener('pointerleave',()=>{cross.setAttribute('visibility','hidden');dots.innerHTML='';tip.style.display='none'});
+ let cards=[];
+ if(tab==='temperature'){const st=stats(rows.map(r=>Number(r.temperature_2m))),ap=rows.map(r=>Number(r.apparent_temperature)).filter(Number.isFinite);cards=[['Mínima 72 h',`${fmt(st.min,1)} °C`],['Máxima 72 h',`${fmt(st.max,1)} °C`],['Média',`${fmt(st.avg,1)} °C`],['Maior aparente',ap.length?`${fmt(Math.max(...ap),1)} °C`:'—']]}
+ if(tab==='rain'){const p=rows.map(r=>Number(r.precipitation||0)),pr=rows.map(r=>Number(r.precipitation_probability)).filter(Number.isFinite);cards=[['Total 72 h',`${fmt(p.reduce((a,b)=>a+b,0),1)} mm`],['Maior hora',`${fmt(Math.max(...p),1)} mm`],['Prob. máxima',pr.length?`${fmt(Math.max(...pr),0)}%`:'—'],['Horas com chuva',String(p.filter(x=>x>.05).length)]]}
+ if(tab==='wind'){const w=stats(rows.map(r=>Number(r.wind_speed_10m))),g=stats(rows.map(r=>Number(r.wind_gusts_10m)));cards=[['Vento médio',`${fmt(w.avg,1)} km/h`],['Vento máximo',`${fmt(w.max,1)} km/h`],['Rajada máxima',`${fmt(g.max,1)} km/h`],['Direção agora',windDir(rows[0]?.wind_direction_10m)]]}
+ if(tab==='humidity'){const h=stats(rows.map(r=>Number(r.relative_humidity_2m))),c=stats(rows.map(r=>Number(r.cloud_cover)));cards=[['Humidade mínima',`${fmt(h.min,0)}%`],['Humidade máxima',`${fmt(h.max,0)}%`],['Nuvens médias',`${fmt(c.avg,0)}%`],['Nuvens máximas',`${fmt(c.max,0)}%`]]}
+ if(tab==='pressure'){const p=stats(rows.map(r=>Number(r.pressure_msl)));cards=[['Pressão mínima',`${fmt(p.min,0)} hPa`],['Pressão máxima',`${fmt(p.max,0)} hPa`],['Média',`${fmt(p.avg,0)} hPa`],['Amplitude',`${fmt((p.max??0)-(p.min??0),0)} hPa`]]}
+ if(tab==='solar'){const st=stats(rows.map(r=>Number(r.shortwave_radiation))),uv=rows.map(r=>Number(r.uv_index)).filter(Number.isFinite);cards=[['Radiação máxima',`${fmt(st.max,0)} W/m²`],['Radiação média',`${fmt(st.avg,0)} W/m²`],['UV máximo',uv.length?fmt(Math.max(...uv),1):'—'],['Janela','72 h']]}
+ statsHost.innerHTML=cards.map(c=>`<div class="fx-stat"><span>${c[0]}</span><b>${c[1]}</b></div>`).join('');note.textContent=`${cfg.label} · previsão horária Best Match${tab==='temperature'&&forecast?.local_bridge?.available?' · linha verde: ajuste local de curto prazo':''}. Passe o rato: a leitura encaixa na hora prevista mais próxima.`;
+}
+function agreementLabel(v,type){if(type==='temp'){if(v<1.5)return['Bom acordo','good'];if(v<3)return['Divergência moderada','medium'];return['Divergência elevada','high']}if(v<2)return['Bom acordo','good'];if(v<7)return['Divergência moderada','medium'];return['Divergência elevada','high']}
+function renderBridge(){
+ const b=forecast?.local_bridge;if(!b?.available){$('#fx-bridge').innerHTML='<p>A ponte local não está disponível nesta atualização.</p>';return}
+ const o=b.offsets||{};$('#fx-bridge').innerHTML=`<p style="font-size:10px;color:#6c7d85">${b.method}</p><div class="fx-bridge-grid"><div class="fx-mini"><span>Temperatura agora</span><b>${o.temperature_2m>=0?'+':''}${fmt(o.temperature_2m,1)} °C</b></div><div class="fx-mini"><span>Humidade agora</span><b>${o.relative_humidity_2m>=0?'+':''}${fmt(o.relative_humidity_2m,0)} p.p.</b></div><div class="fx-mini"><span>Pressão agora</span><b>${o.pressure_msl>=0?'+':''}${fmt(o.pressure_msl,1)} hPa</b></div></div><p style="font-size:8px;color:#7d8b93">A correção desvanece até zero; não é um novo modelo meteorológico.</p>`;
+}
+function renderAgreement(){
+ const e=dailyRows(forecast?.models?.ecmwf),g=dailyRows(forecast?.models?.gfs),host=$('#fx-agreement');
+ if(!e.length||!g.length){host.innerHTML='<p class="fx-note">Comparação de modelos indisponível.</p>';return}
+ const horizons=[1,2,3,5,7],cards=horizons.map(day=>{
+   const i=day-1;if(i>=e.length||i>=g.length)return'';
+   const dt=(e[i]?.temperature_2m_max!=null&&g[i]?.temperature_2m_max!=null)?Math.abs(Number(e[i].temperature_2m_max)-Number(g[i].temperature_2m_max)):null;
+   let ep=0,gp=0,validP=false;for(let k=0;k<=i&&k<e.length&&k<g.length;k++){if(e[k]?.precipitation_sum!=null||g[k]?.precipitation_sum!=null)validP=true;ep+=Number(e[k]?.precipitation_sum||0);gp+=Number(g[k]?.precipitation_sum||0)}
+   const dp=validP?Math.abs(ep-gp):null,ts=dt==null?['Sem dado','medium']:agreementLabel(dt,'temp'),ps=dp==null?['Sem dado','medium']:agreementLabel(dp,'rain');
+   const rank=(x)=>x==='high'?2:x==='medium'?1:0,cls=rank(ts[1])>=rank(ps[1])?ts[1]:ps[1],label=cls==='good'?'Bom acordo':cls==='medium'?'Acordo moderado':'Divergência elevada';
+   return `<div class="fx-horizon-card"><span>D+${day}</span><b><i class="fx-agreement ${cls}">${label}</i></b><small>Δ Tmax <strong>${fmt(dt,1)} °C</strong></small><small>Δ chuva acum. <strong>${fmt(dp,1)} mm</strong></small></div>`;
+ }).join('');
+ host.innerHTML=`<div class="fx-horizon-grid">${cards}</div><p class="fx-note" style="margin-top:8px">A chuva é a diferença entre acumulados desde hoje até ao horizonte indicado. Concordância não é sinónimo de certeza.</p>`;
+}
+function renderEnsemble(){
+ const host=$('#fx-ensemble-chart'),statsHost=$('#fx-ensemble-stats'),ens=forecast?.ensemble;
+ if(!ens?.available){statsHost.innerHTML='';host.classList.add('is-empty');host.innerHTML='<div class="fx-empty"><strong>Ensemble temporariamente indisponível</strong><span>A previsão Best Match, ECMWF e GFS continua operacional.</span></div>';return}else host.classList.remove('is-empty')
+ const kind=$('#fx-ensemble-var').value,rows=ensembleRows().slice(0,336),cfg={temperature:['temperature_2m','temperature_2m_spread','°C'],precipitation:['precipitation','precipitation_spread','mm'],wind:['wind_speed_10m','wind_speed_10m_spread','km/h']}[kind],meanKey=cfg[0],spreadKey=cfg[1],vals=rows.filter(r=>r[meanKey]!=null&&r[spreadKey]!=null);
+ if(vals.length<2){statsHost.innerHTML='';host.classList.add('is-empty');host.innerHTML='<div class="fx-empty"><strong>Sem dispersão suficiente</strong><span>O endpoint ensemble não devolveu spread suficiente para esta variável.</span></div>';return}else host.classList.remove('is-empty')
+ const meanSpread=vals.reduce((a,r)=>a+Number(r[spreadKey]),0)/vals.length,maxSpread=Math.max(...vals.map(r=>Number(r[spreadKey]))),s24=vals.filter(r=>new Date(r.time).getTime()<Date.now()+24*3600000),s72=vals.filter(r=>new Date(r.time).getTime()<Date.now()+72*3600000),avg=a=>a.length?a.reduce((s,r)=>s+Number(r[spreadKey]),0)/a.length:null;
+ statsHost.innerHTML=`<div class="fx-stat"><span>Spread médio 24 h</span><b>${fmt(avg(s24),2)} ${cfg[2]}</b></div><div class="fx-stat"><span>Spread médio 72 h</span><b>${fmt(avg(s72),2)} ${cfg[2]}</b></div><div class="fx-stat"><span>Spread médio 7 dias</span><b>${fmt(meanSpread,2)} ${cfg[2]}</b></div><div class="fx-stat"><span>Spread máximo</span><b>${fmt(maxSpread,2)} ${cfg[2]}</b></div>`;
+ const W=1100,H=350,m={l:65,r:22,t:22,b:42},times=vals.map(r=>new Date(r.time).getTime()),minT=Math.min(...times),maxT=Math.max(...times),lo=vals.map(r=>Number(r[meanKey])-Number(r[spreadKey])),hi=vals.map(r=>Number(r[meanKey])+Number(r[spreadKey])),all=[...lo,...hi],mn=Math.min(...all),mx=Math.max(...all),pad=(mx-mn)*.08||1,ymin=kind==='precipitation'?Math.max(0,mn):mn-pad,ymax=mx+pad,x=t=>m.l+(t-minT)/(maxT-minT||1)*(W-m.l-m.r),y=v=>m.t+(ymax-v)/(ymax-ymin||1)*(H-m.t-m.b);
+ let svg=`<svg viewBox="0 0 ${W} ${H}">`;for(let i=0;i<=4;i++){const v=ymin+(ymax-ymin)*i/4,yy=y(v);svg+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e7edef"/><text x="${m.l-8}" y="${yy+4}" text-anchor="end" font-size="9" fill="#72828b">${fmt(v,1)}</text>`}svg+=`<text x="15" y="${H/2}" transform="rotate(-90 15 ${H/2})" text-anchor="middle" font-size="10" fill="#687a83">${cfg[2]}</text>`;
+ const upper=vals.map((r,i)=>`${i?'L':'M'} ${x(new Date(r.time).getTime())} ${y(Number(r[meanKey])+Number(r[spreadKey]))}`).join(' '),lower=[...vals].reverse().map(r=>`L ${x(new Date(r.time).getTime())} ${y(Number(r[meanKey])-Number(r[spreadKey]))}`).join(' ');svg+=`<path d="${upper} ${lower} Z" fill="#2f7d9e" opacity=".14"/><path d="${vals.map((r,i)=>`${i?'L':'M'} ${x(new Date(r.time).getTime())} ${y(Number(r[meanKey]))}`).join(' ')}" fill="none" stroke="#2f7d9e" stroke-width="2.5"/>`;
+ for(let i=0;i<=8;i++){const t=minT+(maxT-minT)*i/8;svg+=`<text x="${x(t)}" y="${H-16}" text-anchor="middle" font-size="8" fill="#72828b">${new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit'}).format(new Date(t))}</text>`}svg+='</svg>';host.innerHTML=svg;
+}
+function renderUsefulDetails(){
+ const rows=future72().slice(0,24),vis=rows.map(x=>Number(x.visibility)).filter(Number.isFinite),cape=rows.map(x=>Number(x.cape)).filter(Number.isFinite),freeze=rows.find(x=>x.freezing_level_height!=null)?.freezing_level_height,vpd=rows.find(x=>x.vapour_pressure_deficit!=null)?.vapour_pressure_deficit,etVals=rows.map(x=>Number(x.et0_fao_evapotranspiration)).filter(Number.isFinite),soil=rows.find(x=>x.soil_moisture_0_to_1cm!=null)?.soil_moisture_0_to_1cm,items=[];
+ if(vis.length)items.push(['Visibilidade mínima',`${fmt(Math.min(...vis)/1000,1)} km`,'24 h']);if(freeze!=null)items.push(['Nível 0 °C',`${fmt(freeze,0)} m`,'altitude prevista']);if(cape.length)items.push(['CAPE máximo',`${fmt(Math.max(...cape),0)} J/kg`,'energia convectiva']);if(vpd!=null)items.push(['VPD',`${fmt(vpd,2)} kPa`,'défice de pressão de vapor']);if(etVals.length)items.push(['ET₀ 24 h',`${fmt(etVals.reduce((a,b)=>a+b,0),2)} mm`,'referência FAO-56']);if(soil!=null)items.push(['Humidade solo 0–1 cm',`${fmt(soil,3)} m³/m³`,'valor modelado']);
+ $('#fx-details').innerHTML=items.length?items.map(x=>`<div class="fx-detail"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join(''):'<div class="fx-empty fx-empty-inline"><strong>Sem variáveis adicionais nesta execução</strong><span>Este bloco só mostra parâmetros efetivamente devolvidos pelo modelo.</span></div>';
+}
+function renderAgro(){
+ const daily=dailyRows(forecast?.primary).slice(0,7),hour=future72(),rain=daily.reduce((a,r)=>a+Number(r.precipitation_sum||0),0),etVals=daily.map(r=>Number(r.et0_fao_evapotranspiration)).filter(Number.isFinite),et=etVals.reduce((a,b)=>a+b,0),vpdVals=hour.map(r=>Number(r.vapour_pressure_deficit)).filter(Number.isFinite),mins=daily.slice(0,3).map(r=>Number(r.temperature_2m_min)).filter(Number.isFinite),min3=mins.length?Math.min(...mins):null,soil=hour.find(r=>r.soil_moisture_0_to_1cm!=null)?.soil_moisture_0_to_1cm,items=[['Chuva 7 dias',`${fmt(rain,1)} mm`,'previsão']];
+ if(etVals.length){const balance=rain-et;items.push(['ET₀ 7 dias',`${fmt(et,1)} mm`,'FAO-56'],['Balanço simples',`${balance>=0?'+':''}${fmt(balance,1)} mm`,'chuva − ET₀'])}if(vpdVals.length)items.push(['VPD máximo 72 h',`${fmt(Math.max(...vpdVals),2)} kPa`,'stress atmosférico']);if(min3!=null)items.push(['Frio 3 noites',`${fmt(min3,1)} °C`,min3<=1?'atenção a frio/geada':'sem sinal térmico forte']);if(soil!=null)items.push(['Humidade solo superficial',`${fmt(soil,3)} m³/m³`,'valor modelado']);
+ $('#fx-agro').innerHTML=items.map(x=>`<div class="fx-agro-card"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join('');
+}
+function renderModelChart(){
+ const kind=$('#fx-model-var').value,e=dailyRows(forecast?.models?.ecmwf).slice(0,14),g=dailyRows(forecast?.models?.gfs).slice(0,14),p=dailyRows(forecast?.primary).slice(0,14),n=Math.min(e.length,g.length,p.length);if(!n){$('#fx-model-chart').innerHTML='';return}
+ const W=1100,H=350,m={l:62,r:22,t:22,b:42},keys=kind==='temperature'?['temperature_2m_max','°C']:['precipitation_sum','mm'],all=[...e,...g,...p].slice(0,n*3).map(r=>Number(r[keys[0]])).filter(Number.isFinite),mn=Math.min(...all),mx=Math.max(...all),pad=(mx-mn)*.12||1,ymin=Math.max(0,kind==='precipitation'?mn:mn-pad),ymax=mx+pad,x=i=>m.l+i/(Math.max(1,n-1))*(W-m.l-m.r),y=v=>m.t+(ymax-v)/(ymax-ymin||1)*(H-m.t-m.b);
+ let s=`<svg viewBox="0 0 ${W} ${H}">`;for(let i=0;i<=4;i++){const v=ymin+(ymax-ymin)*i/4,yy=y(v);s+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#e7edef"/><text x="${m.l-8}" y="${yy+4}" text-anchor="end" font-size="9" fill="#72828b">${fmt(v,1)}</text>`}s+=`<text x="15" y="${H/2}" transform="rotate(-90 15 ${H/2})" text-anchor="middle" font-size="10" fill="#687a83">${keys[1]}</text>`;
+ const line=(rows,key,color,dash='')=>{const pts=rows.slice(0,n).map((r,i)=>({x:x(i),y:y(Number(r[key]))})).filter(p=>Number.isFinite(p.y));if(pts.length)s+=`<path d="${pts.map((p,i)=>`${i?'L':'M'} ${p.x} ${p.y}`).join(' ')}" fill="none" stroke="${color}" stroke-width="2.3" ${dash?`stroke-dasharray="${dash}"`:''}/>`};
+ line(p,keys[0],'#245f77');line(e,keys[0],'#65916e','6 4');line(g,keys[0],'#c55348','4 4');[['Best Match',p,'#245f77'],['ECMWF',e,'#65916e'],['GFS',g,'#c55348']].forEach(([lab,rows,col])=>rows.slice(0,n).forEach((r,i)=>{const v=Number(r[keys[0]]);if(Number.isFinite(v))s+=`<circle cx="${x(i)}" cy="${y(v)}" r="3.2" fill="${col}"><title>${lab} · ${r.time}: ${fmt(v,1)} ${keys[1]}</title></circle>`}));
+ for(let i=0;i<n;i++)s+=`<text x="${x(i)}" y="${H-15}" text-anchor="middle" font-size="8" fill="#72828b">${new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'2-digit'}).format(new Date(p[i].time+'T12:00'))}</text>`;
+ s+=`<text x="${m.l}" y="13" font-size="9" fill="#245f77">● Best Match</text><text x="${m.l+90}" y="13" font-size="9" fill="#65916e">● ECMWF</text><text x="${m.l+158}" y="13" font-size="9" fill="#c55348">● GFS</text></svg>`;$('#fx-model-chart').innerHTML=s;
+}
+function renderHourly(){
+ const rows=future72().slice(0,24);$('#fx-hourly-table').innerHTML=`<table><thead><tr><th>Hora</th><th>Tempo</th><th>Temperatura</th><th>Humidade</th><th>Chuva</th><th>Prob.</th><th>Vento</th><th>Rajada</th><th>Pressão</th><th>Nuvens</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${dtFmt(r.time)}</td><td>${weatherSymbol(r.weather_code)}</td><td>${fmt(r.temperature_2m,1)} °C</td><td>${fmt(r.relative_humidity_2m,0)}%</td><td>${fmt(r.precipitation,1)} mm</td><td>${fmt(r.precipitation_probability,0)}%</td><td>${windDir(r.wind_direction_10m)} ${fmt(r.wind_speed_10m,0)}</td><td>${fmt(r.wind_gusts_10m,0)} km/h</td><td>${fmt(r.pressure_msl,0)} hPa</td><td>${fmt(r.cloud_cover,0)}%</td></tr>`).join('')}</tbody></table>`;
+}
+function renderVerification(){
+ const host=$('#fx-verification'),lead=$('#fx-verification-lead')?.value||'24';
+ if(!verification){host.innerHTML='<p>Histórico de verificação ainda indisponível.</p>';return}
+ const block=verification.summary?.[lead];
+ if(!verification.available||!block||!block.samples){
+   host.innerHTML=`<p style="font-size:10px;color:#6c7d85">${verification.message||'A recolher histórico.'}</p><div class="fx-stats"><div class="fx-stat"><span>Arquivadas</span><b>${verification.archive_records||0}</b></div><div class="fx-stat"><span>Comparáveis</span><b>${block?.samples||0}</b></div><div class="fx-stat"><span>Horizonte</span><b>${lead==='24'?'24 h':lead==='48'?'48 h':lead==='72'?'72 h':lead==='120'?'5 dias':'7 dias'}</b></div></div>`;return
+ }
+ const vars=[['temperature','Temperatura','°C'],['humidity','Humidade','%'],['wind','Vento','km/h'],['precipitation','Chuva','mm']],mods=[['best_match','Best Match'],['ecmwf','ECMWF'],['gfs','GFS']];
+ const rows=vars.map(([key,label,unit])=>{
+   const cells=mods.map(([mk])=>{const m=block.models?.[mk]?.[key];return `<td>${m?.mae!=null?`${fmt(m.mae,key==='humidity'?0:1)} ${unit}`:'—'}<small>${m?.samples||0} n</small></td>`}).join('');
+   return `<tr><th>${label}</th>${cells}</tr>`;
+ }).join('');
+ host.innerHTML=`<div class="fx-verification-head"><div><span>Amostras neste horizonte</span><b>${block.samples}</b></div><div><span>Métrica</span><b>MAE · menor é melhor</b></div></div><div class="fx-verification-table"><table><thead><tr><th>Variável</th>${mods.map(([,l])=>`<th>${l}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+async function init(){
+ [forecast,current]=await Promise.all([getJson('/api/v1/forecast.json'),getJson('/api/v1/current.json').catch(()=>null)]);
+ $('#fx-status').textContent=`${forecast.source||'Open-Meteo'} · ${forecast.stale?'cache':'atualizada'} · 40.99643, −7.32928`;
+ [['Resumo 14 dias',renderDays,'#fx-days'],['Abas do meteograma',renderTabs,'#fx-tabs'],['Meteograma',renderMeteogram,'#fx-chart'],['Ponte local',renderBridge,'#fx-bridge'],['Acordo entre modelos',renderAgreement,'#fx-agreement'],['Ensemble ECMWF',renderEnsemble,'#fx-ensemble-chart'],['Atmosfera e solo',renderUsefulDetails,'#fx-details'],['Agrometeorologia',renderAgro,'#fx-agro'],['Modelos nos próximos dias',renderModelChart,'#fx-model-chart'],['Próximas 24 horas',renderHourly,'#fx-hourly-table']].forEach(j=>safeRender(j[0],j[1],j[2]));
+ $('#fx-model-var').onchange=()=>safeRender('Modelos nos próximos dias',renderModelChart,'#fx-model-chart');$('#fx-ensemble-var').onchange=()=>safeRender('Ensemble ECMWF',renderEnsemble,'#fx-ensemble-chart');
+}
+init();

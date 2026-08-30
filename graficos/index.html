@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Explorador de dados meteorológicos da Estação Meteorológica de Ranhados.">
   <title>Gráficos — Estação Meteorológica de Ranhados</title>
-  <link rel="stylesheet" href="graphs.css">
+  <link rel="stylesheet" href="graphs.v27.css">
 <meta name="theme-color" content="#17475b">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="/identity/ranhados-mark.svg" type="image/svg+xml">
@@ -54,9 +54,10 @@
       <button data-period="30d">30 dias</button>
       <button data-period="90d">90 dias</button>
       <button data-period="year">Este ano</button>
-      <button data-period="all">Toda a série</button>
+      <button data-period="all">Toda a série</button><button data-period="custom">Personalizado</button>
     </div>
   </section>
+  <section id="gx-custom-range" class="gx-custom-range" hidden><label>Desde<input id="gx-from" type="date"></label><label>Até<input id="gx-to" type="date"></label><button id="gx-apply-range" type="button">Aplicar período</button></section>
 
   <section class="gx-main">
     <div class="gx-main-head">
@@ -113,6 +114,6 @@
     <span>Motor de dados: Cumulus MX + Climate Analyzer</span>
   </footer>
 </main>
-<script src="graphs.js" defer></script>
+<script src="graphs.v27.js" defer></script>
 </body>
 </html>
