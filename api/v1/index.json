@@ -1,7 +1,7 @@
 {
   "api_version": "v1",
-  "engine_version": "2.5.0",
-  "generated_utc": "2026-08-30T06:51:50+00:00",
+  "engine_version": "2.6.0",
+  "generated_utc": "2026-08-30T06:58:07+00:00",
   "station": "Estação Meteorológica de Ranhados · Mêda",
   "format": "JSON UTF-8",
   "endpoints": [
@@ -129,6 +129,12 @@
       "name": "forecast-skill",
       "path": "/api/v1/forecast-skill.json",
       "description": "Desempenho histórico D+1…D+7 por modelo",
+      "available": true
+    },
+    {
+      "name": "local-model",
+      "path": "/api/v1/local-model.json",
+      "description": "Meteo Ranhados Lab — calibração local experimental",
       "available": true
     },
     {
