@@ -1,4 +1,4 @@
-const VERSION='2.7.0';
+const VERSION='2.8.0';
 const STATIC_CACHE=`meteo-ranhados-static-${VERSION}`;
 const DATA_CACHE=`meteo-ranhados-data-${VERSION}`;
 const STATIC_SHELL=[
@@ -6,7 +6,7 @@ const STATIC_SHELL=[
   '/manifest.webmanifest','/icons/icon-192.png','/icons/icon-512.png','/icons/maskable-512.png',
   '/integration/site-core.v27.css','/integration/ranhados-shell.v27.css','/integration/ranhados-shell.v27.js','/identity/ranhados-mark.svg','/identity/ranhados-signature.svg','/identity/barragem-ranhados.svg',
   '/agora/agora.v27.css','/agora/agora.v27.js','/previsao/forecast.v27.css','/previsao/forecast.v27.js',
-  '/graficos/graphs.v27.css','/graficos/graphs.v27.js','/observatorio/observatory.v27.css','/observatorio/observatory.v27.js'
+  '/graficos/graphs.v27.css','/graficos/graphs.v27.js','/observatorio/observatory.v28.css','/observatorio/observatory.v28.js'
 ];
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{const c=await caches.open(STATIC_CACHE);await Promise.allSettled(STATIC_SHELL.map(async u=>{const r=await fetch(u,{cache:'reload'});if(r.ok)await c.put(u,r)}));self.skipWaiting()})());
