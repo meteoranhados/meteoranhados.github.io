@@ -455,6 +455,6 @@ async function init(){
   }
   $('#timeline-variable').addEventListener('change',renderTimeline);$('#local-bridge-toggle').addEventListener('change',renderTimeline);
   setInterval(async()=>{try{current=await getJson('/api/v1/current.json');renderCurrent();renderMonthContext();renderTodayHistory()}catch(e){}},60000);
-  setInterval(()=>{const img=$('#camera-img');if(img)img.src='/camera/latest.jpg?t='+Date.now()},300000);
+  setInterval(()=>{const img=$('#camera-img');if(!img)return;const base=window.RANHADOS_PUBLIC_CONFIG?.camera_tracking_url||'';if(base){try{const u=new URL(base,location.href);u.searchParams.set('source','agora');u.searchParams.set('event','refresh');u.searchParams.set('t',Date.now());img.src=u.toString()}catch(e){img.src=base}}else img.src='/camera/latest.jpg?t='+Date.now()},300000);
 }
 init();
