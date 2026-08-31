@@ -3,12 +3,23 @@
   "source": "IPMA, I.P.",
   "area_id": "GDA",
   "area_name": "Distrito da Guarda",
-  "warnings": [],
+  "warnings": [
+    {
+      "type": "Tempo Quente",
+      "level": "yellow",
+      "text": "Valores elevados da temperatura máxima.",
+      "startTime": "2026-09-03T09:00:00",
+      "endTime": "2026-09-03T18:00:00",
+      "area_id": "GDA",
+      "area_name": "Distrito da Guarda",
+      "status": "future"
+    }
+  ],
   "active_count": 0,
-  "future_count": 0,
-  "highest_level": null,
+  "future_count": 1,
+  "highest_level": "yellow",
   "source_url": "https://api.ipma.pt/open-data/forecast/warnings/warnings_www.json",
-  "generated_utc": "2026-08-31T19:30:37+00:00",
-  "last_success_utc": "2026-08-31T19:30:37+00:00",
+  "generated_utc": "2026-08-31T19:40:41+00:00",
+  "last_success_utc": "2026-08-31T19:40:41+00:00",
   "stale": false
 }
