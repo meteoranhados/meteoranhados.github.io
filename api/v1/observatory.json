@@ -1,9 +1,9 @@
 {
   "available": true,
   "version": "2.9.1",
-  "generated_utc": "2026-08-31T17:19:40+00:00",
+  "generated_utc": "2026-08-31T23:01:18+00:00",
   "series_start": "2022-01-01",
-  "series_end": "2026-08-30",
+  "series_end": "2026-08-31",
   "reference_period": "1991-2020",
   "daily": [
     {
@@ -31754,6 +31754,25 @@
       "uv_max": 8.0,
       "sunshine_hours": 7.7,
       "et": 3.69
+    },
+    {
+      "date": "2026-08-31",
+      "year": 2026,
+      "month": 8,
+      "tmin": 11.0,
+      "tmean": 18.4,
+      "tmax": 26.5,
+      "rain": 0.0,
+      "hum_mid": 60.5,
+      "press_mid": 1022.4,
+      "press_range": 2.8,
+      "wind_gust": 18.0,
+      "wind_run": 110.0,
+      "wind_bearing": 318.0,
+      "solar_max": 881.0,
+      "uv_max": 8.0,
+      "sunshine_hours": 9.5,
+      "et": 3.64
     }
   ],
   "monthly": [
@@ -32806,15 +32825,15 @@
       "year": 2026,
       "month": 8,
       "month_name": "Agosto",
-      "complete": false,
+      "complete": true,
       "coverage_pct": 100.0,
       "missing_days": 0,
-      "temperature_valid": false,
-      "precipitation_valid": false,
-      "tmean": null,
-      "temp_anomaly": null,
-      "precip_mm": null,
-      "precip_pct_normal": null,
+      "temperature_valid": true,
+      "precipitation_valid": true,
+      "tmean": 21.84,
+      "temp_anomaly": 0.75,
+      "precip_mm": 43.7,
+      "precip_pct_normal": 508.1,
       "hot30": 16,
       "hot35": 5,
       "tropical": 2,
@@ -32902,10 +32921,10 @@
       "missing_days": 0,
       "temperature_valid": false,
       "precipitation_valid": false,
-      "tmean": 15.07,
-      "temp_anomaly": 1.88,
+      "tmean": 15.08,
+      "temp_anomaly": 1.86,
       "precip_mm": 775.5,
-      "precip_pct_normal": 230.1,
+      "precip_pct_normal": 229.9,
       "hot30": 54,
       "hot35": 11,
       "tropical": 6,
@@ -32988,10 +33007,10 @@
     {
       "month": 8,
       "month_name": "Agosto",
-      "station_tmean": 23.28,
-      "station_precip": 3.6,
-      "n_temp": 4,
-      "n_precip": 4,
+      "station_tmean": 22.99,
+      "station_precip": 11.62,
+      "n_temp": 5,
+      "n_precip": 5,
       "normal_tmean": 21.09,
       "normal_precip": 8.6
     },
@@ -33089,7 +33108,7 @@
       "y": "wind_gust",
       "x_unit": "hPa",
       "y_unit": "km/h",
-      "r": -0.434
+      "r": -0.435
     }
   ],
   "wind_sectors": [
@@ -33165,7 +33184,7 @@
     },
     {
       "direction": "NW",
-      "count": 230,
+      "count": 231,
       "pct": 13.8
     },
     {
@@ -33205,8 +33224,8 @@
     },
     {
       "year": 2026,
-      "present": 242,
-      "expected": 242,
+      "present": 243,
+      "expected": 243,
       "coverage_pct": 100.0,
       "missing": 0
     }
@@ -33219,7 +33238,7 @@
     "warning": "A série é curta. Estes declives são apenas descrições da série da estação e não devem ser interpretados como tendência climática."
   },
   "quality": {
-    "valid_days": 1671,
+    "valid_days": 1672,
     "missing_day_count": 32,
     "invalid_row_count": 0,
     "duplicate_count": 0
