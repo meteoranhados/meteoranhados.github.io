@@ -66,9 +66,22 @@
     const set=open=>{sheet.hidden=!open;toggle.setAttribute('aria-expanded',String(open));document.body.classList.toggle('ranhados-chart-lock',open)};
     toggle.addEventListener('click',()=>set(sheet.hidden));sheet.querySelectorAll('[data-rh-more-close]').forEach(x=>x.addEventListener('click',()=>set(false)));addEventListener('keydown',e=>{if(e.key==='Escape'&&!sheet.hidden)set(false)});
   }
+  async function setupExternalPlatforms(){
+    if(document.querySelector('.ranhados-external-footer'))return;
+    try{
+      const r=await fetch('/external-platforms.json',{cache:'no-store'});if(!r.ok)return;
+      const d=await r.json(),rows=(d.platforms||[]).filter(x=>x&&x.enabled!==false&&/^https:\/\//i.test(x.url||''));if(!rows.length)return;
+      const foot=document.createElement('footer');foot.className='ranhados-external-footer';
+      const inner=document.createElement('div');inner.className='ranhados-external-footer__inner';
+      const label=document.createElement('a');label.className='ranhados-external-footer__label';label.href='/estacao/';label.textContent='A estação noutras plataformas';
+      const nav=document.createElement('nav');nav.className='ranhados-external-footer__links';nav.setAttribute('aria-label','Plataformas meteorológicas externas');
+      rows.forEach(x=>{const a=document.createElement('a');a.href=x.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=x.name+' ↗';nav.append(a)});
+      inner.append(label,nav);foot.append(inner);(document.querySelector('main')?.parentNode||document.body).append(foot);
+    }catch(e){}
+  }
   function setupServiceWorker(){
     if(!('serviceWorker' in navigator))return;
-    navigator.serviceWorker.register('/sw.js',{scope:'/'}).then(reg=>{
+    navigator.serviceWorker.register('/sw.js?v=2.9.2',{scope:'/'}).then(reg=>{reg.update().catch(()=>{});
       const toast=document.getElementById('ranhados-update-toast'),btn=toast?.querySelector('button');
       const notify=()=>{if(reg.waiting&&navigator.serviceWorker.controller&&toast){toast.hidden=false;if(btn)btn.onclick=()=>reg.waiting.postMessage('SKIP_WAITING')}};
       notify();reg.addEventListener('updatefound',()=>{const w=reg.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed')notify()})});
@@ -80,5 +93,5 @@
     document.querySelectorAll(selector).forEach(chart=>{if(chart.dataset.rhExpand)return;chart.dataset.rhExpand='1';if(getComputedStyle(chart).position==='static')chart.style.position='relative';const b=document.createElement('button');b.type='button';b.className='ranhados-chart-expand';b.setAttribute('aria-label','Expandir gráfico');b.textContent='⛶';b.onclick=()=>{const on=chart.classList.toggle('ranhados-chart-fullscreen');document.body.classList.toggle('ranhados-chart-lock',on);b.textContent=on?'×':'⛶';b.setAttribute('aria-label',on?'Fechar gráfico':'Expandir gráfico')};chart.append(b)});
   }
   addEventListener('keydown',e=>{if(e.key==='Escape'){const c=document.querySelector('.ranhados-chart-fullscreen');if(c){c.classList.remove('ranhados-chart-fullscreen');document.body.classList.remove('ranhados-chart-lock')}}});
-  run();setInterval(run,300000);runStationStatus();setInterval(runStationStatus,300000);setupConnectivity();setupMoreSheet();setupServiceWorker();setupChartExpand();setInterval(setupChartExpand,1800);
+  run();setInterval(run,300000);runStationStatus();setInterval(runStationStatus,300000);setupConnectivity();setupMoreSheet();setupExternalPlatforms();setupServiceWorker();setupChartExpand();setInterval(setupChartExpand,1800);
 })();
