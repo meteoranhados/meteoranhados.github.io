@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-01T15:09:43+00:00",
+  "generated_utc": "2026-09-01T23:01:05+00:00",
   "seasons": [
     {
       "start": "2022-01-01",
@@ -2187,6 +2187,104 @@
       "full_start": "2026-06-01",
       "full_end": "2026-08-31",
       "calendar_period_complete": true
+    },
+    {
+      "start": "2026-09-01",
+      "end": "2026-09-01",
+      "days_expected": 1,
+      "days_available": 1,
+      "coverage_pct": 100.0,
+      "missing_day_count": 0,
+      "missing_days": [],
+      "complete": true,
+      "comparison_eligible": true,
+      "observed": {
+        "tmax_mean_c": 28.8,
+        "tmean_c": 20.2,
+        "tmin_mean_c": 14.1,
+        "precip_mm": 0.0,
+        "tropical_nights": 0,
+        "frost_days": 0,
+        "tmin_le_0": 0,
+        "tmax_ge_25": 1,
+        "tmax_ge_30": 0,
+        "tmax_gt_35": 0,
+        "tmax_ge_40": 0,
+        "rain_days": 0,
+        "rain_gt_10": 0,
+        "rain_gt_20": 0,
+        "rain_gt_30": 0,
+        "heatwave_days": 0,
+        "coldwave_days": 0,
+        "et_mm": 3.77,
+        "sunshine_hours": 8.5,
+        "heating_degree_days": 1.2,
+        "cooling_degree_days": 3.1,
+        "chill_hours_season_end": 1420.9
+      },
+      "normal_1991_2020_same_period": {
+        "tmax_mean_c": 24.15,
+        "tmean_c": 17.63,
+        "tmin_mean_c": 11.1,
+        "precip_mm": 1.06,
+        "tropical_nights": 0.0,
+        "cold_hours": 0.39,
+        "frost_days": 0.0,
+        "tmax_gt_35": 0.01,
+        "rain_days": 0.14,
+        "rain_gt_10": 0.04,
+        "rain_gt_20": 0.01,
+        "rain_gt_30": 0.0
+      },
+      "anomaly": {
+        "tmax_c": 4.65,
+        "tmean_c": 2.57,
+        "tmin_c": 3.0,
+        "precip_mm": -1.06,
+        "precip_pct_normal": 0.0
+      },
+      "quadrant_simple": "quente / seco",
+      "extremes": {
+        "tmax_absolute": {
+          "value_c": 28.8,
+          "date": "2026-09-01"
+        },
+        "tmin_absolute": {
+          "value_c": 14.1,
+          "date": "2026-09-01"
+        },
+        "max_daily_precip": {
+          "value_mm": 0.0,
+          "date": "2026-09-01"
+        }
+      },
+      "rolling_precip_max": {
+        "1": {
+          "window_days": 1,
+          "precip_mm": 0.0,
+          "start": "2026-09-01",
+          "end": "2026-09-01"
+        },
+        "3": null,
+        "5": null,
+        "10": null
+      },
+      "dry_spell": {
+        "threshold_mm": 1.0,
+        "definition": "dia seco: precipitação < 1 mm",
+        "current_streak_days": 1,
+        "current_streak_start": "2026-09-01",
+        "max_streak_days": 1,
+        "max_streak_start": "2026-09-01",
+        "max_streak_end": "2026-09-01"
+      },
+      "season_key": "autumn",
+      "season_name": "Outono",
+      "season_year": 2026,
+      "label": "Outono 2026",
+      "full_start": "2026-09-01",
+      "full_end": "2026-11-30",
+      "calendar_period_complete": false
     }
   ]
 }
