@@ -1,0 +1,43 @@
+{
+  "version": "2.9.2",
+  "generated_utc": "2026-09-01T13:22:24+00:00",
+  "station": {
+    "name": "Estação Meteorológica de Ranhados",
+    "latitude": 41.0,
+    "longitude": -7.33,
+    "altitude_m": 755
+  },
+  "platforms": [
+    {
+      "id": "wunderground",
+      "name": "Weather Underground",
+      "short": "WU",
+      "url": "https://www.wunderground.com/dashboard/pws/IRANHA1",
+      "action": "Ver estação",
+      "description": "Perfil público da estação de Ranhados na rede Weather Underground.",
+      "kind": "station",
+      "enabled": true
+    },
+    {
+      "id": "weathercloud",
+      "name": "Weathercloud",
+      "short": "WC",
+      "url": "https://app.weathercloud.net/map?lat=41.0&lon=-7.33&zoom=10&layer=device",
+      "action": "Ver no mapa",
+      "description": "Rede Weathercloud centrada na área de Ranhados. Troque pelo endereço direto da estação quando o tiver.",
+      "kind": "map",
+      "enabled": true
+    },
+    {
+      "id": "windy",
+      "name": "Windy",
+      "short": "W",
+      "url": "https://www.windy.com/station/pws-O40rsvED?gfs,41.001,-7.321,13,p:wind,m:eN3afXn",
+      "action": "Ver no Windy",
+      "description": "Perfil público da estação de Ranhados na rede Windy.",
+      "kind": "map",
+      "enabled": true
+    }
+  ],
+  "note": "Lista pública e extensível. Para alterar ou acrescentar serviços, edite /DATA/AppData/climate-analyzer/external-platforms.json."
+}
