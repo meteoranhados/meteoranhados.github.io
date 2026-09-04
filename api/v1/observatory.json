@@ -1,9 +1,9 @@
 {
   "available": true,
   "version": "2.9.2",
-  "generated_utc": "2026-09-03T23:01:18+00:00",
+  "generated_utc": "2026-09-04T23:01:21+00:00",
   "series_start": "2022-01-01",
-  "series_end": "2026-09-03",
+  "series_end": "2026-09-04",
   "reference_period": "1991-2020",
   "daily": [
     {
@@ -31830,6 +31830,25 @@
       "uv_max": 7.0,
       "sunshine_hours": 9.4,
       "et": 4.2
+    },
+    {
+      "date": "2026-09-04",
+      "year": 2026,
+      "month": 9,
+      "tmin": 22.0,
+      "tmean": 28.1,
+      "tmax": 33.7,
+      "rain": 0.0,
+      "hum_mid": 38.5,
+      "press_mid": 1024.55,
+      "press_range": 2.5,
+      "wind_gust": 20.0,
+      "wind_run": 88.3,
+      "wind_bearing": 260.0,
+      "solar_max": 677.0,
+      "uv_max": 6.0,
+      "sunshine_hours": 2.0,
+      "et": 3.43
     }
   ],
   "monthly": [
@@ -32910,9 +32929,9 @@
       "temp_anomaly": null,
       "precip_mm": null,
       "precip_pct_normal": null,
-      "hot30": 2,
+      "hot30": 3,
       "hot35": 1,
-      "tropical": 0,
+      "tropical": 1,
       "frost": 0,
       "rain_days": 0
     }
@@ -32997,13 +33016,13 @@
       "missing_days": 0,
       "temperature_valid": false,
       "precipitation_valid": false,
-      "tmean": 15.18,
-      "temp_anomaly": 1.91,
+      "tmean": 15.23,
+      "temp_anomaly": 1.94,
       "precip_mm": 775.5,
-      "precip_pct_normal": 227.8,
-      "hot30": 56,
+      "precip_pct_normal": 227.1,
+      "hot30": 57,
       "hot35": 12,
-      "tropical": 6,
+      "tropical": 7,
       "frost": 5,
       "rain_days": 61,
       "dry_spell_max": 66
@@ -33139,7 +33158,7 @@
       "y": "hum_mid",
       "x_unit": "°C",
       "y_unit": "%",
-      "r": -0.74
+      "r": -0.741
     },
     {
       "id": "temp_pressure",
@@ -33148,7 +33167,7 @@
       "y": "press_mid",
       "x_unit": "°C",
       "y_unit": "hPa",
-      "r": -0.049
+      "r": -0.048
     },
     {
       "id": "rain_pressure",
@@ -33166,7 +33185,7 @@
       "y": "solar_max",
       "x_unit": "°C",
       "y_unit": "W/m²",
-      "r": 0.542
+      "r": 0.541
     },
     {
       "id": "temp_sunshine",
@@ -33250,7 +33269,7 @@
     },
     {
       "direction": "W",
-      "count": 212,
+      "count": 213,
       "pct": 12.7
     },
     {
@@ -33261,12 +33280,12 @@
     {
       "direction": "NW",
       "count": 232,
-      "pct": 13.9
+      "pct": 13.8
     },
     {
       "direction": "NNW",
       "count": 93,
-      "pct": 5.6
+      "pct": 5.5
     }
   ],
   "quality_years": [
@@ -33300,8 +33319,8 @@
     },
     {
       "year": 2026,
-      "present": 246,
-      "expected": 246,
+      "present": 247,
+      "expected": 247,
       "coverage_pct": 100.0,
       "missing": 0
     }
@@ -33314,7 +33333,7 @@
     "warning": "A série é curta. Estes declives são apenas descrições da série da estação e não devem ser interpretados como tendência climática."
   },
   "quality": {
-    "valid_days": 1675,
+    "valid_days": 1676,
     "missing_day_count": 32,
     "invalid_row_count": 0,
     "duplicate_count": 0
