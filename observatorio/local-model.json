@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260903-712",
   "version": "2.9.2",
-  "generated_utc": "2026-09-04T09:05:04+00:00",
+  "generated_utc": "2026-09-04T09:35:14+00:00",
   "trained_through": "2026-09-03",
   "training_samples_by_lead": {
     "1": 712,
@@ -87935,21 +87935,21 @@
         ]
       },
       "tmin": {
-        "value": 15.09,
+        "value": 15.38,
         "interval80": [
-          12.21,
-          17.96
+          12.5,
+          18.25
         ],
         "empirical_mae": 1.73,
-        "model_spread": 4.5,
+        "model_spread": 4.0,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 13.0,
+            "raw": 14.3,
             "bias": -0.048,
-            "corrected": 13.05,
+            "corrected": 14.35,
             "mae_context": 2.135,
             "n": 17,
             "context_bucket": "full:SON|dry|mixed|calm|normal"
@@ -87977,21 +87977,21 @@
         ]
       },
       "tmean": {
-        "value": 19.87,
+        "value": 20.05,
         "interval80": [
-          17.49,
-          22.24
+          17.68,
+          22.43
         ],
         "empirical_mae": 1.38,
-        "model_spread": 2.72,
+        "model_spread": 2.71,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 18.74,
+            "raw": 19.38,
             "bias": -0.184,
-            "corrected": 18.92,
+            "corrected": 19.56,
             "mae_context": 1.481,
             "n": 17,
             "context_bucket": "full:SON|dry|mixed|calm|normal"
@@ -88058,7 +88058,7 @@
         "cloud": "mixed",
         "wind": "calm",
         "humidity": "normal",
-        "pressure": "high",
+        "pressure": "normal",
         "raw_precip_mean": 0.0,
         "rain_vote": 0.0
       },
@@ -143401,5 +143401,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-04T09:05:04+00:00"
+  "forecast_updated_utc": "2026-09-04T09:35:14+00:00"
 }
