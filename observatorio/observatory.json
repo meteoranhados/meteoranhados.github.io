@@ -1,9 +1,9 @@
 {
   "available": true,
   "version": "2.9.2",
-  "generated_utc": "2026-09-04T23:01:21+00:00",
+  "generated_utc": "2026-09-05T23:01:29+00:00",
   "series_start": "2022-01-01",
-  "series_end": "2026-09-04",
+  "series_end": "2026-09-05",
   "reference_period": "1991-2020",
   "daily": [
     {
@@ -31849,6 +31849,25 @@
       "uv_max": 6.0,
       "sunshine_hours": 2.0,
       "et": 3.43
+    },
+    {
+      "date": "2026-09-05",
+      "year": 2026,
+      "month": 9,
+      "tmin": 21.5,
+      "tmean": 26.7,
+      "tmax": 31.8,
+      "rain": 0.0,
+      "hum_mid": 44.0,
+      "press_mid": 1023.2,
+      "press_range": 2.6,
+      "wind_gust": 46.0,
+      "wind_run": 160.1,
+      "wind_bearing": 143.0,
+      "solar_max": 882.0,
+      "uv_max": 8.0,
+      "sunshine_hours": 5.4,
+      "et": 4.35
     }
   ],
   "monthly": [
@@ -32929,9 +32948,9 @@
       "temp_anomaly": null,
       "precip_mm": null,
       "precip_pct_normal": null,
-      "hot30": 3,
+      "hot30": 4,
       "hot35": 1,
-      "tropical": 1,
+      "tropical": 2,
       "frost": 0,
       "rain_days": 0
     }
@@ -33016,13 +33035,13 @@
       "missing_days": 0,
       "temperature_valid": false,
       "precipitation_valid": false,
-      "tmean": 15.23,
-      "temp_anomaly": 1.94,
+      "tmean": 15.28,
+      "temp_anomaly": 1.97,
       "precip_mm": 775.5,
-      "precip_pct_normal": 227.1,
-      "hot30": 57,
+      "precip_pct_normal": 226.3,
+      "hot30": 58,
       "hot35": 12,
-      "tropical": 7,
+      "tropical": 8,
       "frost": 5,
       "rain_days": 61,
       "dry_spell_max": 66
@@ -33167,7 +33186,7 @@
       "y": "press_mid",
       "x_unit": "°C",
       "y_unit": "hPa",
-      "r": -0.048
+      "r": -0.047
     },
     {
       "id": "rain_pressure",
@@ -33176,7 +33195,7 @@
       "y": "rain",
       "x_unit": "hPa",
       "y_unit": "mm",
-      "r": -0.43
+      "r": -0.431
     },
     {
       "id": "temp_solar",
@@ -33203,7 +33222,7 @@
       "y": "wind_gust",
       "x_unit": "hPa",
       "y_unit": "km/h",
-      "r": -0.434
+      "r": -0.432
     }
   ],
   "wind_sectors": [
@@ -33239,8 +33258,8 @@
     },
     {
       "direction": "SE",
-      "count": 47,
-      "pct": 2.8
+      "count": 48,
+      "pct": 2.9
     },
     {
       "direction": "SSE",
@@ -33319,8 +33338,8 @@
     },
     {
       "year": 2026,
-      "present": 247,
-      "expected": 247,
+      "present": 248,
+      "expected": 248,
       "coverage_pct": 100.0,
       "missing": 0
     }
@@ -33333,7 +33352,7 @@
     "warning": "A série é curta. Estes declives são apenas descrições da série da estação e não devem ser interpretados como tendência climática."
   },
   "quality": {
-    "valid_days": 1676,
+    "valid_days": 1677,
     "missing_day_count": 32,
     "invalid_row_count": 0,
     "duplicate_count": 0
