@@ -1,6 +1,6 @@
 {
   "version": "2.9.2",
-  "generated_utc": "2026-09-06T09:19:46+00:00",
+  "generated_utc": "2026-09-06T09:49:56+00:00",
   "archive_started_utc": "2026-08-31T06:46:22+00:00",
   "retention_days": 730,
   "method": "arquivo prospetivo exato da saída MRL; uma emissão representativa por versão/alvo/horizonte",
@@ -1784,11 +1784,11 @@
     {
       "model_id": "MRL-20260905-712",
       "trained_through": "2026-09-05",
-      "issued_utc": "2026-09-06T09:19:46+00:00",
-      "issued_utc_ms": 1788686386000,
+      "issued_utc": "2026-09-06T09:49:56+00:00",
+      "issued_utc_ms": 1788688196000,
       "target_date": "2026-09-07",
       "lead_days": 1,
-      "lead_hours_actual": 25.67,
+      "lead_hours_actual": 25.17,
       "scenario_label": "sinal seco · céu pouco nublado · vento fraco",
       "scenario": {
         "season": "SON",
@@ -1803,26 +1803,26 @@
       },
       "meteo_ranhados": {
         "tmax": {
-          "value": 32.86,
+          "value": 32.72,
           "interval80": [
-            31.3,
-            34.42
+            31.16,
+            34.28
           ],
           "confidence": "moderate"
         },
         "tmin": {
-          "value": 17.54,
+          "value": 17.52,
           "interval80": [
-            16.02,
-            19.07
+            15.99,
+            19.04
           ],
           "confidence": "moderate"
         },
         "tmean": {
-          "value": 23.93,
+          "value": 23.82,
           "interval80": [
-            23.1,
-            24.77
+            22.99,
+            24.66
           ],
           "confidence": "moderate"
         },
@@ -1838,9 +1838,9 @@
       },
       "models": {
         "best_match": {
-          "tmax": 31.8,
-          "tmin": 17.7,
-          "tmean": 23.8,
+          "tmax": 31.4,
+          "tmin": 17.6,
+          "tmean": 23.58,
           "precip": 0.0
         },
         "ecmwf": {
@@ -2184,64 +2184,64 @@
     {
       "model_id": "MRL-20260905-712",
       "trained_through": "2026-09-05",
-      "issued_utc": "2026-09-06T09:19:46+00:00",
-      "issued_utc_ms": 1788686386000,
+      "issued_utc": "2026-09-06T09:49:56+00:00",
+      "issued_utc_ms": 1788688196000,
       "target_date": "2026-09-08",
       "lead_days": 2,
-      "lead_hours_actual": 49.67,
-      "scenario_label": "chuva incerta · nebulosidade variável · vento moderado",
+      "lead_hours_actual": 49.17,
+      "scenario_label": "sinal de chuva · nebulosidade variável · vento moderado",
       "scenario": {
         "season": "SON",
         "month": 9,
-        "rain_signal": "trace",
+        "rain_signal": "rain",
         "cloud": "mixed",
         "wind": "breezy",
         "humidity": "normal",
         "pressure": "high",
-        "raw_precip_mean": 0.533,
-        "rain_vote": 0.333
+        "raw_precip_mean": 1.433,
+        "rain_vote": 0.667
       },
       "meteo_ranhados": {
         "tmax": {
-          "value": 27.19,
+          "value": 26.88,
           "interval80": [
-            25.54,
-            28.83
+            25.07,
+            28.69
           ],
           "confidence": "low"
         },
         "tmin": {
-          "value": 15.85,
+          "value": 15.45,
           "interval80": [
-            14.26,
-            17.43
+            14.04,
+            16.85
           ],
           "confidence": "low"
         },
         "tmean": {
-          "value": 20.58,
+          "value": 20.31,
           "interval80": [
-            19.59,
-            21.58
+            19.24,
+            21.38
           ],
           "confidence": "low"
         },
         "precip": {
-          "expected_mm": 0.45,
-          "probability_pct": 21.1,
+          "expected_mm": 3.06,
+          "probability_pct": 64.4,
           "conditional_range80_mm": [
-            1.79,
-            11.6
+            1.1,
+            8.41
           ],
-          "confidence": "moderate"
+          "confidence": "low"
         }
       },
       "models": {
         "best_match": {
-          "tmax": 26.4,
-          "tmin": 16.0,
-          "tmean": 20.55,
-          "precip": 0.1
+          "tmax": 27.1,
+          "tmin": 15.9,
+          "tmean": 20.33,
+          "precip": 2.8
         },
         "ecmwf": {
           "tmax": 26.8,
@@ -2504,11 +2504,11 @@
     {
       "model_id": "MRL-20260905-712",
       "trained_through": "2026-09-05",
-      "issued_utc": "2026-09-06T09:19:46+00:00",
-      "issued_utc_ms": 1788686386000,
+      "issued_utc": "2026-09-06T09:49:56+00:00",
+      "issued_utc_ms": 1788688196000,
       "target_date": "2026-09-09",
       "lead_days": 3,
-      "lead_hours_actual": 73.67,
+      "lead_hours_actual": 73.17,
       "scenario_label": "chuva incerta · nebulosidade variável · vento moderado",
       "scenario": {
         "season": "SON",
@@ -2518,50 +2518,50 @@
         "wind": "breezy",
         "humidity": "normal",
         "pressure": "normal",
-        "raw_precip_mean": 0.6,
+        "raw_precip_mean": 0.667,
         "rain_vote": 0.333
       },
       "meteo_ranhados": {
         "tmax": {
-          "value": 24.68,
+          "value": 23.74,
           "interval80": [
-            23.14,
-            26.22
+            22.2,
+            25.29
           ],
           "confidence": "low"
         },
         "tmin": {
-          "value": 14.21,
+          "value": 14.29,
           "interval80": [
-            12.73,
-            15.68
+            12.81,
+            15.77
           ],
           "confidence": "low"
         },
         "tmean": {
-          "value": 19.27,
+          "value": 18.93,
           "interval80": [
-            18.23,
-            20.32
+            17.89,
+            19.98
           ],
           "confidence": "low"
         },
         "precip": {
-          "expected_mm": 0.58,
+          "expected_mm": 0.64,
           "probability_pct": 24.1,
           "conditional_range80_mm": [
-            1.45,
-            4.0
+            1.62,
+            4.44
           ],
           "confidence": "low"
         }
       },
       "models": {
         "best_match": {
-          "tmax": 24.3,
-          "tmin": 13.6,
-          "tmean": 19.17,
-          "precip": 0.0
+          "tmax": 22.8,
+          "tmin": 13.8,
+          "tmean": 18.56,
+          "precip": 0.2
         },
         "ecmwf": {
           "tmax": 25.3,
@@ -2904,11 +2904,11 @@
     {
       "model_id": "MRL-20260905-712",
       "trained_through": "2026-09-05",
-      "issued_utc": "2026-09-06T09:19:46+00:00",
-      "issued_utc_ms": 1788686386000,
+      "issued_utc": "2026-09-06T09:49:56+00:00",
+      "issued_utc_ms": 1788688196000,
       "target_date": "2026-09-11",
       "lead_days": 5,
-      "lead_hours_actual": 121.67,
+      "lead_hours_actual": 121.17,
       "scenario_label": "sinal seco · céu pouco nublado · vento moderado",
       "scenario": {
         "season": "SON",
@@ -2931,18 +2931,18 @@
           "confidence": "low"
         },
         "tmin": {
-          "value": 17.31,
+          "value": 17.1,
           "interval80": [
-            14.67,
-            19.96
+            14.45,
+            19.75
           ],
           "confidence": "low"
         },
         "tmean": {
-          "value": 23.4,
+          "value": 23.3,
           "interval80": [
-            21.19,
-            25.62
+            21.08,
+            25.51
           ],
           "confidence": "low"
         },
@@ -2959,8 +2959,8 @@
       "models": {
         "best_match": {
           "tmax": 28.6,
-          "tmin": 16.9,
-          "tmean": 22.48,
+          "tmin": 16.1,
+          "tmean": 22.11,
           "precip": 0.0
         },
         "ecmwf": {
@@ -3144,11 +3144,11 @@
     {
       "model_id": "MRL-20260905-712",
       "trained_through": "2026-09-05",
-      "issued_utc": "2026-09-06T09:19:46+00:00",
-      "issued_utc_ms": 1788686386000,
+      "issued_utc": "2026-09-06T09:49:56+00:00",
+      "issued_utc_ms": 1788688196000,
       "target_date": "2026-09-13",
       "lead_days": 7,
-      "lead_hours_actual": 169.67,
+      "lead_hours_actual": 169.17,
       "scenario_label": "sinal seco · céu pouco nublado · vento fraco",
       "scenario": {
         "season": "SON",
