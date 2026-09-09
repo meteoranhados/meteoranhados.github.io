@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260908-712",
   "version": "2.9.2",
-  "generated_utc": "2026-09-09T05:33:37+00:00",
+  "generated_utc": "2026-09-09T06:03:48+00:00",
   "trained_through": "2026-09-08",
   "training_samples_by_lead": {
     "1": 712,
@@ -87374,24 +87374,24 @@
   "current": {
     "1": {
       "tmax": {
-        "value": 25.54,
+        "value": 25.98,
         "interval80": [
-          24.03,
-          27.06
+          24.53,
+          27.42
         ],
-        "empirical_mae": 0.93,
-        "model_spread": 2.62,
-        "confidence": "moderate",
+        "empirical_mae": 0.87,
+        "model_spread": 2.67,
+        "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
             "raw": 23.5,
-            "bias": -0.605,
-            "corrected": 24.11,
-            "mae_context": 0.928,
-            "n": 109,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": -0.761,
+            "corrected": 24.26,
+            "mae_context": 1.067,
+            "n": 13,
+            "context_bucket": "full:SON|dry|mixed|calm|normal"
           },
           {
             "model": "ecmwf",
@@ -87407,33 +87407,33 @@
             "model": "gfs",
             "label": "GFS",
             "raw": 26.3,
-            "bias": -0.431,
-            "corrected": 26.73,
-            "mae_context": 0.865,
-            "n": 109,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": -0.634,
+            "corrected": 26.93,
+            "mae_context": 0.718,
+            "n": 13,
+            "context_bucket": "full:SON|dry|mixed|calm|normal"
           }
         ]
       },
       "tmin": {
-        "value": 11.68,
+        "value": 11.62,
         "interval80": [
-          9.94,
-          13.41
+          10.11,
+          13.12
         ],
-        "empirical_mae": 1.04,
-        "model_spread": 1.49,
-        "confidence": "moderate",
+        "empirical_mae": 1.02,
+        "model_spread": 1.51,
+        "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
             "raw": 11.8,
-            "bias": 0.926,
-            "corrected": 10.87,
-            "mae_context": 1.124,
-            "n": 109,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": 1.228,
+            "corrected": 10.57,
+            "mae_context": 1.338,
+            "n": 13,
+            "context_bucket": "full:SON|dry|mixed|calm|normal"
           },
           {
             "model": "ecmwf",
@@ -87449,33 +87449,33 @@
             "model": "gfs",
             "label": "GFS",
             "raw": 12.2,
-            "bias": -0.158,
-            "corrected": 12.36,
-            "mae_context": 0.978,
-            "n": 109,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": 0.124,
+            "corrected": 12.08,
+            "mae_context": 0.875,
+            "n": 13,
+            "context_bucket": "full:SON|dry|mixed|calm|normal"
           }
         ]
       },
       "tmean": {
-        "value": 18.08,
+        "value": 18.58,
         "interval80": [
-          17.24,
-          18.91
+          17.89,
+          19.27
         ],
-        "empirical_mae": 0.51,
-        "model_spread": 2.28,
-        "confidence": "moderate",
+        "empirical_mae": 0.42,
+        "model_spread": 2.3,
+        "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 17.4,
-            "bias": 0.157,
-            "corrected": 17.24,
-            "mae_context": 0.429,
-            "n": 109,
-            "context_bucket": "season_rain:SON|dry"
+            "raw": 17.32,
+            "bias": 0.286,
+            "corrected": 17.03,
+            "mae_context": 0.516,
+            "n": 13,
+            "context_bucket": "full:SON|dry|mixed|calm|normal"
           },
           {
             "model": "ecmwf",
@@ -87491,27 +87491,27 @@
             "model": "gfs",
             "label": "GFS",
             "raw": 19.16,
-            "bias": -0.355,
-            "corrected": 19.52,
-            "mae_context": 0.614,
-            "n": 109,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": -0.17,
+            "corrected": 19.33,
+            "mae_context": 0.336,
+            "n": 13,
+            "context_bucket": "full:SON|dry|mixed|calm|normal"
           }
         ]
       },
       "precip": {
-        "probability_pct": 1.7,
+        "probability_pct": 1.0,
         "expected_mm": 0.0,
         "conditional_mm": 0.0,
         "conditional_range80_mm": [
-          1.8,
-          4.6
+          0.0,
+          0.0
         ],
-        "confidence": "high",
+        "confidence": "low",
         "raw_model_mean_mm": 0.0,
         "raw_model_spread_mm": 0.0,
-        "n_context": 109,
-        "context_bucket": "season_rain:SON|dry",
+        "n_context": 13,
+        "context_bucket": "full:SON|dry|mixed|calm|normal",
         "models": [
           {
             "model": "best_match",
@@ -87538,7 +87538,7 @@
         "rain_signal": "dry",
         "cloud": "mixed",
         "wind": "calm",
-        "humidity": "dry",
+        "humidity": "normal",
         "pressure": "normal",
         "raw_precip_mean": 0.0,
         "rain_vote": 0.0
@@ -143787,5 +143787,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-09T05:33:37+00:00"
+  "forecast_updated_utc": "2026-09-09T06:03:48+00:00"
 }
