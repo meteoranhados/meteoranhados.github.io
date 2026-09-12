@@ -2,7 +2,7 @@
 <html lang="pt">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Previsão meteorológica detalhada para Ranhados, Mêda, com Best Match, ECMWF e GFS.">
-<title>Previsão — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="forecast.v27.css"><!-- RANHADOS_PUBLIC_CONFIG -->
+<title>Previsão — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="forecast.v30.css"><!-- RANHADOS_PUBLIC_CONFIG -->
 <script>window.RANHADOS_PUBLIC_CONFIG={"camera_tracking_url":"https://meteo-ranhados-camera.rodrigues-mb.workers.dev/camera/live.jpg","analytics_enabled":true,"camera_tracking_enabled":true};</script>
 <!-- CLOUDFLARE_WEB_ANALYTICS -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;1002874013464f368b95f2fe60a5875d&quot;}"></script>
@@ -37,6 +37,12 @@
 <div id="ranhados-update-toast" class="ranhados-update-toast" hidden>Nova versão disponível <button type="button">Atualizar</button></div>
 <!-- RANHADOS_GLOBAL_SHELL_END --><main id="main-content" class="fx-page">
 <header class="fx-hero"><div><p class="eyebrow">Ranhados · Mêda · 755 m</p><h1>Previsão</h1><p>Previsão horária e até 14 dias por coordenadas. Best Match é a linha principal; ECMWF e GFS são mostrados separadamente para perceber a dispersão entre modelos.</p></div><div id="fx-status" class="fx-status">A carregar…</div></header>
+
+<section class="fx-brief" aria-labelledby="fx-brief-title">
+<div class="fx-panel-head"><div><p class="eyebrow">Leitura rápida</p><h2 id="fx-brief-title">O essencial da previsão</h2><p class="fx-note">Resumo automático com confiança baseada na concordância entre modelos e dispersão do ensemble.</p></div><a class="fx-more" href="/observatorio/?view=forecast">Ver desempenho histórico →</a></div>
+<div id="fx-brief-cards" class="fx-brief-cards"></div>
+<div id="fx-change" class="fx-change"></div>
+</section>
 
 <section id="fx-days" class="fx-days"></section>
 
@@ -86,4 +92,4 @@
 <p>A concordância entre dois modelos não é sinónimo de certeza. A verificação histórica da estação é a ferramenta adequada para avaliar desempenho real.</p>
 </div></details></section>
 <footer><span>Estação Meteorológica de Ranhados · Mêda</span><span>Previsão: Open-Meteo · Best Match / ECMWF / GFS</span></footer>
-</main><script src="forecast.v27.js" defer></script></body></html>
+</main><script src="weather-icons.v30.js" defer></script><script src="forecast.v30.js" defer></script></body></html>

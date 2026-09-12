@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Observatório meteorológico e climatológico da Estação Meteorológica de Ranhados.">
-<title>Observatório — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="observatory.v28.css"><!-- RANHADOS_PUBLIC_CONFIG -->
+<title>Observatório — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="observatory.v30.css"><!-- RANHADOS_PUBLIC_CONFIG -->
 <script>window.RANHADOS_PUBLIC_CONFIG={"camera_tracking_url":"https://meteo-ranhados-camera.rodrigues-mb.workers.dev/camera/live.jpg","analytics_enabled":true,"camera_tracking_enabled":true};</script>
 <!-- CLOUDFLARE_WEB_ANALYTICS -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;1002874013464f368b95f2fe60a5875d&quot;}"></script>
@@ -57,6 +57,7 @@
 
 <section id="ox-forecast" class="ox-view" hidden>
 <div class="ox-panel ox-lab-intro"><div><p class="eyebrow">Laboratório da previsão</p><h2>O que os modelos sabem sobre Ranhados?</h2><p>Esta área concentra toda a validação previsão × observado: desempenho histórico, evolução de uma previsão concreta e arquivo exato do que este site publicou.</p></div><div id="ox-lab-summary" class="ox-lab-summary"></div></div>
+<div id="ox-forecast-overview" class="ox-forecast-overview"></div>
 <div class="ox-panel ox-local-model" style="margin-top:12px">
 <div class="ox-head"><div><p class="eyebrow">Meteo Ranhados Lab · experimental</p><h2>Calibração local adaptativa</h2><p>Aprende com a diferença entre modelos e estação, separa cenários meteorológicos e valida-se em dados posteriores aos usados no ajuste. Não substitui a previsão pública.</p></div><div id="ox-local-status" class="ox-local-status">A carregar…</div></div>
 <div id="ox-local-meta" class="ox-stats"></div>
@@ -64,6 +65,7 @@
 <div id="ox-local-current" class="ox-local-current"></div>
 <p class="ox-note">Temperatura: combinação corrigida de Best Match/ECMWF/GFS. Chuva: probabilidade local + quantidade condicionada. “Confiança” é operacional e baseada em amostra, erro local e divergência; não é uma garantia.</p>
 </div>
+<details class="ox-forecast-advanced"><summary><div><span>Análise histórica detalhada</span><small>Validação, skill por horizonte, casos individuais, erro mensal e metodologia</small></div><b>Explorar</b></summary><div class="ox-forecast-advanced-body">
 <div class="ox-split" style="margin-top:12px">
  <div class="ox-panel"><div class="ox-head"><div><p class="eyebrow">Prova fora da amostra</p><h2>Melhora mesmo?</h2><p>Comparação cronológica com Best Match em dados que não participaram no ajuste.</p></div><select id="ox-local-validation-var"><option value="tmax">T máxima</option><option value="tmin">T mínima</option><option value="tmean">T média</option><option value="precip">Precipitação</option></select></div><div id="ox-local-validation" class="ox-local-validation"></div></div>
  <div class="ox-panel"><p class="eyebrow">Cenários reconhecidos</p><h2>Com que situações aprende?</h2><div id="ox-local-scenarios" class="ox-local-scenarios"></div><p class="ox-note">Os cenários são definidos a partir da própria previsão, para evitar usar informação futura na calibração.</p></div>
@@ -74,6 +76,7 @@
 <div class="ox-panel ox-case-panel" style="margin-top:12px"><div class="ox-head"><div><p class="eyebrow">Previsão × realidade</p><h2>Como convergiu o MRL e o modelo original?</h2><p>O mesmo gráfico compara Meteo Ranhados, um modelo de referência e o valor observado. Pode usar backtest fora da amostra ou o arquivo exato do que o MRL publicou.</p></div><div class="ox-case-controls"><select id="ox-case-source"><option value="backtest">Backtest MRL</option><option value="published">MRL publicado</option></select><select id="ox-case-model"><option value="best_match">Best Match</option><option value="ecmwf">ECMWF</option><option value="gfs">GFS</option></select><select id="ox-case-variable"><option value="tmax">T máxima</option><option value="tmin">T mínima</option><option value="tmean">T média</option><option value="precip">Precipitação</option></select><select id="ox-case-date"></select></div></div><div id="ox-case-legend" class="ox-case-legend"><span class="mrl">Meteo Ranhados</span><span class="base">Modelo selecionado</span><span class="obs">Observado</span></div><div id="ox-case-stats" class="ox-stats"></div><div id="ox-case-chart" class="ox-chart large"></div><p id="ox-case-note" class="ox-note"></p></div>
 <div class="ox-split" style="margin-top:12px"><div class="ox-panel"><div class="ox-head"><div><p class="eyebrow">Evolução no tempo</p><h2>Erro mês a mês</h2></div><div class="ox-skill-controls"><select id="ox-skill-model"><option value="best_match">Best Match</option><option value="ecmwf">ECMWF</option><option value="gfs">GFS</option></select><select id="ox-skill-lead"><option value="1">D+1</option><option value="2">D+2</option><option value="3">D+3</option><option value="5">D+5</option><option value="7">D+7</option></select></div></div><div id="ox-skill-monthly" class="ox-chart"></div></div><div class="ox-panel"><p class="eyebrow">Arquivo próprio</p><h2>O que este site publicou</h2><div id="ox-own-archive" class="ox-copy"></div><p class="ox-note">Aqui são os valores realmente guardados pela Meteo Ranhados, não uma reconstrução posterior.</p></div></div>
 <div class="ox-panel" style="margin-top:12px"><p class="eyebrow">Metodologia</p><h2>Como interpretar</h2><div id="ox-skill-method" class="ox-copy"></div></div>
+</div></details>
 </section>
 
 <section id="ox-wind" class="ox-view" hidden>
@@ -86,4 +89,4 @@
 </section>
 
 <footer><span>Observatório de Ranhados · análise automática</span><span>Normal de referência: 1991–2020 · série local da estação</span></footer>
-</main><script src="observatory.v28.js" defer></script></body></html>
+</main><script src="observatory.v30.js" defer></script></body></html>

@@ -71,13 +71,13 @@
     const foot=document.createElement('footer');foot.className='ranhados-external-footer';
     const inner=document.createElement('div');inner.className='ranhados-external-footer__inner';
     const meta=document.createElement('div');meta.className='ranhados-external-footer__meta';
-    const version=document.createElement('span');version.className='ranhados-external-footer__version';version.textContent='Meteo Ranhados v2.9.3 · 10/09/2026';
+    const version=document.createElement('span');version.className='ranhados-external-footer__version';version.textContent='Meteo Ranhados v3.0.0 · 12/09/2026';
     const label=document.createElement('a');label.className='ranhados-external-footer__label';label.href='/estacao/';label.textContent='A estação noutras plataformas';
     meta.append(version,label);
     const nav=document.createElement('nav');nav.className='ranhados-external-footer__links';nav.setAttribute('aria-label','Plataformas meteorológicas externas');
     inner.append(meta,nav);foot.append(inner);(document.querySelector('main')?.parentNode||document.body).append(foot);
     try{
-      const r=await fetch('/site-meta.json',{cache:'no-store'});if(r.ok){const m=await r.json();const d=m.release_date?new Date(m.release_date+'T12:00:00'):null;const ds=d&&!Number.isNaN(d.getTime())?d.toLocaleDateString('pt-PT'):'10/09/2026';version.textContent=`Meteo Ranhados v${m.version||'2.9.3'} · ${ds}`}
+      const r=await fetch('/site-meta.json',{cache:'no-store'});if(r.ok){const m=await r.json();const d=m.release_date?new Date(m.release_date+'T12:00:00'):null;const ds=d&&!Number.isNaN(d.getTime())?d.toLocaleDateString('pt-PT'):'12/09/2026';const gd=m.generated_utc?new Date(m.generated_utc):null,gs=gd&&!Number.isNaN(gd.getTime())?gd.toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'';version.textContent=`Meteo Ranhados v${m.version||'3.0.0'} · ${ds}${gs?' · gerado '+gs:''}`}
     }catch(e){}
     try{
       const r=await fetch('/external-platforms.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);
@@ -88,7 +88,7 @@
   }
   function setupServiceWorker(){
     if(!('serviceWorker' in navigator))return;
-    navigator.serviceWorker.register('/sw.js?v=2.9.3',{scope:'/'}).then(reg=>{reg.update().catch(()=>{});
+    navigator.serviceWorker.register('/sw.js?v=3.0.0',{scope:'/'}).then(reg=>{reg.update().catch(()=>{});
       const toast=document.getElementById('ranhados-update-toast'),btn=toast?.querySelector('button');
       const notify=()=>{if(reg.waiting&&navigator.serviceWorker.controller&&toast){toast.hidden=false;if(btn)btn.onclick=()=>reg.waiting.postMessage('SKIP_WAITING')}};
       notify();reg.addEventListener('updatefound',()=>{const w=reg.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed')notify()})});
