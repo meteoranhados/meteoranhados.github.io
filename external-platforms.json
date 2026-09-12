@@ -1,6 +1,6 @@
 {
-  "version": "2.9.2",
-  "generated_utc": "2026-09-11T23:01:26+00:00",
+  "version": "2.9.3",
+  "generated_utc": "2026-09-12T11:48:39+00:00",
   "station": {
     "name": "Estação Meteorológica de Ranhados",
     "latitude": 41.0,
@@ -22,9 +22,9 @@
       "id": "weathercloud",
       "name": "Weathercloud",
       "short": "WC",
-      "url": "https://app.weathercloud.net/map?lat=41.0&lon=-7.33&zoom=10&layer=device",
+      "url": "https://app.weathercloud.net/d6768680765#profile",
       "action": "Ver no mapa",
-      "description": "Rede Weathercloud centrada na área de Ranhados. Pode ser substituído pelo perfil direto da estação.",
+      "description": "Perfil público da estação de Ranhados na rede Weathercloud.",
       "kind": "map",
       "enabled": true
     },
@@ -32,10 +32,20 @@
       "id": "windy",
       "name": "Windy",
       "short": "W",
-      "url": "https://www.windy.com/41.000/-7.330",
+      "url": "https://www.windy.com/station/pws-O40rsvED?gfs,41.001,-7.321,13,p:wind,m:eN3afXn",
       "action": "Ver no Windy",
-      "description": "Mapa e previsão Windy centrados nas coordenadas da estação.",
+      "description": "Perfil público da estação de Ranhados na rede Windy.",
       "kind": "map",
+      "enabled": true
+    },
+    {
+      "id": "meteoclimatic",
+      "name": "Meteoclimatic",
+      "short": "M",
+      "url": "https://www.meteoclimatic.net/perfil/PTCEN1000000006430A",
+      "action": "Ver Meteoclimatic",
+      "description": "Perfil público da estação de Ranhados na rede Meteoclimatic.",
+      "kind": "station",
       "enabled": true
     }
   ],
