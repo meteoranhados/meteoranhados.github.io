@@ -1,11 +1,11 @@
-const VERSION='3.0.2';
+const VERSION='3.0.3';
 const STATIC_CACHE=`meteo-ranhados-static-${VERSION}`;
 const DATA_CACHE=`meteo-ranhados-data-${VERSION}`;
 const STATIC_SHELL=[
   '/agora/','/previsao/','/radar/','/graficos/','/climate/','/observatorio/','/camera/','/estacao/','/contacto/','/offline.html',
   '/manifest.webmanifest','/icons/icon-192.png','/icons/icon-512.png','/icons/maskable-512.png',
   '/integration/site-core.v27.css','/integration/ranhados-shell.v27.css','/integration/ranhados-shell.v27.js','/identity/ranhados-mark.svg','/identity/ranhados-signature.svg','/identity/barragem-ranhados.svg',
-  '/agora/agora.v30.css','/agora/weather-icons.v30.js','/agora/agora.v30.js','/previsao/forecast.v301.css','/previsao/weather-icons.v301.js','/previsao/forecast.v302.js',
+  '/agora/agora.v30.css','/agora/weather-icons.v30.js','/agora/agora.v30.js','/previsao/forecast.v301.css','/previsao/weather-icons.v301.js','/previsao/forecast.v303.js',
   '/graficos/graphs.v27.css','/graficos/graphs.v27.js','/observatorio/observatory.v301.css','/observatorio/observatory.v301.js','/contacto/contact.v301.css','/contacto/contact.v301.js','/estacao/station.v292.css','/estacao/station.v292.js','/external-platforms.json','/contact-public.json'
 ];
 self.addEventListener('install',event=>{
