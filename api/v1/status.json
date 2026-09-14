@@ -1,11 +1,11 @@
 {
   "version": "3.0.3",
-  "generated_utc": "2026-09-13T23:54:52+00:00",
-  "overall": "ok",
+  "generated_utc": "2026-09-14T00:06:16+00:00",
+  "overall": "critical",
   "station": {
     "available": true,
     "source": "Cumulus MX Local API",
-    "current_generated_utc": "2026-09-13T23:54:52+00:00",
+    "current_generated_utc": "2026-09-14T00:06:16+00:00",
     "cumulus_version": "5.1.5",
     "cumulus_build": "5012",
     "program_uptime": "7 days 16 hours",
@@ -20,7 +20,7 @@
       "battery_low": false,
       "data_spike": false,
       "sensor_contact_lost": false,
-      "error": false,
+      "error": true,
       "high_wind_gust": false,
       "high_wind_speed": false,
       "high_rain_today": false,
@@ -41,19 +41,19 @@
   "forecast": {
     "available": true,
     "stale": false,
-    "last_success_utc": "2026-09-13T23:31:32+00:00",
+    "last_success_utc": "2026-09-14T00:02:13+00:00",
     "ensemble_available": true
   },
   "ipma": {
     "available": true,
-    "stale": true,
+    "stale": false,
     "warning_count": 0,
-    "generated_utc": "2026-09-13T23:51:52+00:00"
+    "generated_utc": "2026-09-14T00:02:15+00:00"
   },
   "graphs": {
     "available": true,
     "stale": false,
-    "last_ms": 1789342800000,
+    "last_ms": 1789344000000,
     "sample_count": 145
   },
   "laboratory": {
@@ -61,7 +61,7 @@
     "model_id": "MRL-20260913-712",
     "validation_improvement_pct": 11.5,
     "verification_available": true,
-    "verification_samples": 1431,
+    "verification_samples": 1436,
     "mrl_archive_records": 0,
     "mrl_verified": 0,
     "mrl_pending": 0
