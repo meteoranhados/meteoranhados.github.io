@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260916-712",
   "version": "3.0.4",
-  "generated_utc": "2026-09-19T21:11:00+00:00",
+  "generated_utc": "2026-09-19T21:41:14+00:00",
   "trained_through": "2026-09-16",
   "training_samples_by_lead": {
     "1": 712,
@@ -87893,21 +87893,21 @@
     },
     "5": {
       "tmax": {
-        "value": 33.28,
+        "value": 33.38,
         "interval80": [
-          30.67,
-          35.89
+          30.77,
+          35.98
         ],
         "empirical_mae": 1.61,
-        "model_spread": 1.27,
+        "model_spread": 1.59,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 33.0,
+            "raw": 33.4,
             "bias": -0.592,
-            "corrected": 33.59,
+            "corrected": 33.99,
             "mae_context": 1.914,
             "n": 99,
             "context_bucket": "season_rain:SON|dry"
@@ -87977,21 +87977,21 @@
         ]
       },
       "tmean": {
-        "value": 24.52,
+        "value": 24.5,
         "interval80": [
-          22.55,
-          26.49
+          22.53,
+          26.47
         ],
         "empirical_mae": 1.21,
-        "model_spread": 1.32,
+        "model_spread": 1.25,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 24.9,
+            "raw": 24.83,
             "bias": -0.281,
-            "corrected": 25.18,
+            "corrected": 25.11,
             "mae_context": 1.415,
             "n": 99,
             "context_bucket": "season_rain:SON|dry"
@@ -88058,7 +88058,7 @@
         "cloud": "clear",
         "wind": "calm",
         "humidity": "dry",
-        "pressure": "normal",
+        "pressure": "high",
         "raw_precip_mean": 0.0,
         "rain_vote": 0.0
       },
@@ -143830,5 +143830,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-19T21:11:00+00:00"
+  "forecast_updated_utc": "2026-09-19T21:41:14+00:00"
 }
