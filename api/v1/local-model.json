@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260921-714",
   "version": "3.0.4",
-  "generated_utc": "2026-09-22T05:34:16+00:00",
+  "generated_utc": "2026-09-22T06:04:31+00:00",
   "trained_through": "2026-09-21",
   "training_samples_by_lead": {
     "1": 714,
@@ -87967,10 +87967,10 @@
         ]
       },
       "tmin": {
-        "value": 18.2,
+        "value": 18.18,
         "interval80": [
-          16.73,
-          19.67
+          16.71,
+          19.64
         ],
         "empirical_mae": 0.98,
         "model_spread": 1.39,
@@ -87979,9 +87979,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 20.0,
+            "raw": 19.8,
             "bias": 1.573,
-            "corrected": 18.43,
+            "corrected": 18.23,
             "mae_context": 1.661,
             "n": 12,
             "context_bucket": "full:SON|dry|clear|calm|dry"
@@ -88009,10 +88009,10 @@
         ]
       },
       "tmean": {
-        "value": 24.91,
+        "value": 24.87,
         "interval80": [
-          24.08,
-          25.74
+          24.04,
+          25.7
         ],
         "empirical_mae": 0.54,
         "model_spread": 0.52,
@@ -88021,9 +88021,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 25.51,
+            "raw": 25.42,
             "bias": 0.488,
-            "corrected": 25.02,
+            "corrected": 24.93,
             "mae_context": 0.498,
             "n": 12,
             "context_bucket": "full:SON|dry|clear|calm|dry"
@@ -88090,7 +88090,7 @@
         "cloud": "clear",
         "wind": "calm",
         "humidity": "dry",
-        "pressure": "normal",
+        "pressure": "high",
         "raw_precip_mean": 0.0,
         "rain_vote": 0.0
       },
@@ -144547,5 +144547,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-22T05:34:16+00:00"
+  "forecast_updated_utc": "2026-09-22T06:04:31+00:00"
 }
