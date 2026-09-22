@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260921-714",
   "version": "3.0.4",
-  "generated_utc": "2026-09-22T18:23:45+00:00",
+  "generated_utc": "2026-09-22T18:53:59+00:00",
   "trained_through": "2026-09-21",
   "training_samples_by_lead": {
     "1": 714,
@@ -88744,27 +88744,27 @@
       },
       "precip": {
         "probability_pct": 58.0,
-        "expected_mm": 3.87,
-        "conditional_mm": 6.67,
+        "expected_mm": 7.72,
+        "conditional_mm": 13.31,
         "conditional_range80_mm": [
-          2.75,
-          11.15
+          5.48,
+          22.26
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 1.67,
-        "raw_model_spread_mm": 2.6,
+        "raw_model_mean_mm": 3.33,
+        "raw_model_spread_mm": 7.12,
         "n_context": 23,
         "context_bucket": "season_rain:SON|rain",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 0.1
+            "raw": 0.08
           },
           {
             "model": "ecmwf",
             "label": "ECMWF IFS",
-            "raw": 2.2
+            "raw": 7.2
           },
           {
             "model": "gfs",
@@ -88783,7 +88783,7 @@
         "wind": "breezy",
         "humidity": "normal",
         "pressure": "normal",
-        "raw_precip_mean": 1.667,
+        "raw_precip_mean": 3.327,
         "rain_vote": 0.667
       },
       "scenario_label": "sinal de chuva · céu muito nublado · vento moderado"
@@ -144547,5 +144547,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-22T18:23:45+00:00"
+  "forecast_updated_utc": "2026-09-22T18:53:59+00:00"
 }
