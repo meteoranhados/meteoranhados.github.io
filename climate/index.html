@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Climatologia — Ranhados</title>
-  <link rel="stylesheet" href="climate.v303.css">
+  <link rel="stylesheet" href="climate.v305.css">
 <!-- RANHADOS_PUBLIC_CONFIG -->
 <script>window.RANHADOS_PUBLIC_CONFIG={"camera_tracking_url":"https://meteo-ranhados-camera.rodrigues-mb.workers.dev/camera/live.jpg","analytics_enabled":true,"camera_tracking_enabled":true};</script>
 <!-- CLOUDFLARE_WEB_ANALYTICS -->
@@ -173,7 +173,7 @@
     <div class="section-heading method-heading"><p class="section-kicker">Metodologia</p><h2>Como são calculados e validados os indicadores</h2><p>Critérios de completude, definições e limitações da série.</p></div>
     <div class="panel"><h2>Qualidade dos dados</h2><div id="quality" class="quality-grid"></div><p id="live-note" class="method"></p></div>
     <div class="panel"><h2>Regras de completude</h2><p class="method"><strong>Temperatura mensal:</strong> mantém a regra estrita: máximo de 5 falhas no total e 3 consecutivas. <strong>Temperatura anual:</strong> usa uma regra própria de cobertura ≥95%; com falhas, o ano continua visível com contorno de ressalva e a normal térmica usa apenas as mesmas datas observadas. <strong>Precipitação:</strong> continua conservadora — não se estima chuva em dias em falta.</p></div>
-    <div class="panel"><h2>Definições dos índices</h2><p class="method"><strong>Limiar de 35 °C e chuva forte:</strong> o site apresenta apenas Tmax &gt;35 °C e P &gt;10/&gt;20/&gt;30 mm, para coincidir exatamente com a normal 1991–2020 fornecida para Ranhados.</p><div id="definitions-table" class="table-wrap"></div><p class="method">O IPMA apresenta atualmente duas convenções diferentes para o limiar de 0 °C: as fichas climatológicas 1991–2020 usam TN &lt; 0 °C, enquanto a legenda do mapa dinâmico apresenta MNDTN0 como TN ≤ 0 °C. O motor calcula as duas e só compara com a normal quando a definição coincide.</p></div>
+    <div class="panel"><h2>Definições dos índices</h2><p class="method"><strong>Ondas de calor/frio:</strong> o estado oficial da sequência usa apenas dias já fechados no dayfile. O dia atual é mostrado apenas como informação provisória e nunca interrompe nem zera uma sequência já fechada. Uma onda só é confirmada ao atingir os 6 dias consecutivos definidos.</p><p class="method"><strong>Limiar de 35 °C e chuva forte:</strong> o site apresenta apenas Tmax &gt;35 °C e P &gt;10/&gt;20/&gt;30 mm, para coincidir exatamente com a normal 1991–2020 fornecida para Ranhados.</p><div id="definitions-table" class="table-wrap"></div><p class="method">O IPMA apresenta atualmente duas convenções diferentes para o limiar de 0 °C: as fichas climatológicas 1991–2020 usam TN &lt; 0 °C, enquanto a legenda do mapa dinâmico apresenta MNDTN0 como TN ≤ 0 °C. O motor calcula as duas e só compara com a normal quando a definição coincide.</p></div>
     <div class="panel"><h2>Leitura da série</h2><p class="method">A média/referência da estação é curta (desde 2022). Serve para contexto local e comparação operacional com o mesmo período, não para inferir por si só uma tendência climática de longo prazo.</p><p class="method"><strong>Ano hidrológico:</strong> 1 de outubro–30 de setembro. Nas comparações com o ano em curso, todos os anos anteriores são cortados no mesmo dia do ciclo. Qualquer falha diária de precipitação é assinalada como ressalva.</p><p class="method"><strong>Vento:</strong> a análise detalhada reconhece tanto <code>YYYYMMlog.txt</code> como nomes mensais antigos e deduplica ficheiros do mesmo mês. A rosa usa a velocidade mais recente e a direção atual; quando esta não existe, usa a direção média. Não existe normal 1991–2020 de vento. <strong>Avisos:</strong> a navegação global consulta a API oficial do IPMA e apresenta apenas avisos amarelos, laranja ou vermelhos da área GDA (distrito da Guarda).</p></div>
   </section>
   <footer class="climate-footer">
@@ -181,6 +181,6 @@
     <span>Climatologia calculada automaticamente a partir da série da estação · referência 1991–2020</span>
   </footer>
 </main>
-<script src="climate.v303.js"></script>
+<script src="climate.v305.js"></script>
 </body>
 </html>

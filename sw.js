@@ -1,4 +1,4 @@
-const VERSION='3.0.4';
+const VERSION='3.0.5';
 const STATIC_CACHE=`meteo-ranhados-static-${VERSION}`;
 const DATA_CACHE=`meteo-ranhados-data-${VERSION}`;
 const STATIC_SHELL=[
@@ -6,7 +6,7 @@ const STATIC_SHELL=[
   '/manifest.webmanifest','/icons/icon-192.png','/icons/icon-512.png','/icons/maskable-512.png',
   '/integration/site-core.v27.css','/integration/ranhados-shell.v27.css','/integration/ranhados-shell.v27.js','/identity/ranhados-mark.svg','/identity/ranhados-signature.svg','/identity/barragem-ranhados.svg',
   '/agora/agora.v30.css','/agora/weather-icons.v30.js','/agora/agora.v30.js','/previsao/forecast.v301.css','/previsao/weather-icons.v301.js','/previsao/forecast.v303.js',
-  '/graficos/graphs.v27.css','/graficos/graphs.v27.js','/observatorio/observatory.v301.css','/observatorio/observatory.v301.js','/contacto/contact.v304.css','/contacto/contact.v304.js','/estacao/station.v292.css','/estacao/station.v292.js','/external-platforms.json','/contact-public.json'
+  '/graficos/graphs.v27.css','/graficos/graphs.v27.js','/climate/climate.v305.css','/climate/climate.v305.js','/observatorio/observatory.v301.css','/observatorio/observatory.v301.js','/contacto/contact.v304.css','/contacto/contact.v304.js','/estacao/station.v292.css','/estacao/station.v292.js','/external-platforms.json','/contact-public.json'
 ];
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{const c=await caches.open(STATIC_CACHE);await Promise.allSettled(STATIC_SHELL.map(async u=>{const r=await fetch(u,{cache:'reload'});if(r.ok)await c.put(u,r)}));self.skipWaiting()})());
