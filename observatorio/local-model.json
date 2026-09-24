@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260923-716",
   "version": "3.0.6",
-  "generated_utc": "2026-09-24T09:13:33+00:00",
+  "generated_utc": "2026-09-24T09:43:48+00:00",
   "trained_through": "2026-09-23",
   "training_samples_by_lead": {
     "1": 716,
@@ -88598,21 +88598,21 @@
         ]
       },
       "tmin": {
-        "value": 15.15,
+        "value": 15.22,
         "interval80": [
-          12.56,
-          17.75
+          12.62,
+          17.81
         ],
         "empirical_mae": 1.69,
-        "model_spread": 2.16,
+        "model_spread": 1.96,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 14.5,
+            "raw": 14.7,
             "bias": 0.319,
-            "corrected": 14.18,
+            "corrected": 14.38,
             "mae_context": 1.753,
             "n": 36,
             "context_bucket": "season_rain:SON|rain"
@@ -88640,21 +88640,21 @@
         ]
       },
       "tmean": {
-        "value": 18.06,
+        "value": 18.03,
         "interval80": [
-          16.0,
-          20.12
+          15.96,
+          20.09
         ],
         "empirical_mae": 1.26,
-        "model_spread": 0.3,
+        "model_spread": 0.43,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 18.17,
+            "raw": 18.01,
             "bias": 0.215,
-            "corrected": 17.96,
+            "corrected": 17.8,
             "mae_context": 1.566,
             "n": 36,
             "context_bucket": "season_rain:SON|rain"
@@ -144659,5 +144659,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-24T09:13:33+00:00"
+  "forecast_updated_utc": "2026-09-24T09:43:48+00:00"
 }
