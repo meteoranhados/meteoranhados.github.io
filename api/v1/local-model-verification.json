@@ -1,9 +1,221 @@
 {
-  "version": "3.0.5",
-  "generated_utc": "2026-09-24T07:35:32+00:00",
+  "version": "3.0.6",
+  "generated_utc": "2026-09-24T07:42:48+00:00",
   "archive_started_utc": "2026-08-31T06:46:22+00:00",
   "retention_days": 730,
   "method": "arquivo prospetivo exato da saída MRL; uma emissão representativa por versão/alvo/horizonte",
+  "summary": {
+    "records": 130,
+    "verified": 107,
+    "pending": 23,
+    "by_lead": {
+      "1": {
+        "records": 24,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 0.778,
+            "samples": 24,
+            "models": {
+              "best_match": 0.917,
+              "ecmwf": 0.996,
+              "gfs": 0.829
+            }
+          },
+          "tmin": {
+            "mrl_mae": 1.003,
+            "samples": 24,
+            "models": {
+              "best_match": 1.379,
+              "ecmwf": 0.958,
+              "gfs": 0.888
+            }
+          },
+          "tmean": {
+            "mrl_mae": 0.433,
+            "samples": 24,
+            "models": {
+              "best_match": 0.436,
+              "ecmwf": 0.503,
+              "gfs": 0.488
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.07,
+            "samples": 24,
+            "models": {
+              "best_match": 0.088,
+              "ecmwf": 0.071,
+              "gfs": 0.254
+            }
+          }
+        }
+      },
+      "2": {
+        "records": 23,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 1.075,
+            "samples": 23,
+            "models": {
+              "best_match": 0.983,
+              "ecmwf": 1.03,
+              "gfs": 0.93
+            }
+          },
+          "tmin": {
+            "mrl_mae": 0.98,
+            "samples": 23,
+            "models": {
+              "best_match": 1.478,
+              "ecmwf": 1.013,
+              "gfs": 0.961
+            }
+          },
+          "tmean": {
+            "mrl_mae": 0.604,
+            "samples": 23,
+            "models": {
+              "best_match": 0.64,
+              "ecmwf": 0.592,
+              "gfs": 0.592
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.089,
+            "samples": 23,
+            "models": {
+              "best_match": 0.052,
+              "ecmwf": 0.187,
+              "gfs": 0.157
+            }
+          }
+        }
+      },
+      "3": {
+        "records": 22,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 1.057,
+            "samples": 22,
+            "models": {
+              "best_match": 0.986,
+              "ecmwf": 1.036,
+              "gfs": 1.209
+            }
+          },
+          "tmin": {
+            "mrl_mae": 0.9,
+            "samples": 22,
+            "models": {
+              "best_match": 1.482,
+              "ecmwf": 1.018,
+              "gfs": 0.968
+            }
+          },
+          "tmean": {
+            "mrl_mae": 0.537,
+            "samples": 22,
+            "models": {
+              "best_match": 0.711,
+              "ecmwf": 0.685,
+              "gfs": 0.615
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.247,
+            "samples": 22,
+            "models": {
+              "best_match": 0.182,
+              "ecmwf": 0.232,
+              "gfs": 0.255
+            }
+          }
+        }
+      },
+      "5": {
+        "records": 20,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 1.731,
+            "samples": 20,
+            "models": {
+              "best_match": 1.91,
+              "ecmwf": 1.805,
+              "gfs": 1.0
+            }
+          },
+          "tmin": {
+            "mrl_mae": 1.459,
+            "samples": 20,
+            "models": {
+              "best_match": 1.04,
+              "ecmwf": 1.585,
+              "gfs": 1.41
+            }
+          },
+          "tmean": {
+            "mrl_mae": 1.291,
+            "samples": 20,
+            "models": {
+              "best_match": 1.284,
+              "ecmwf": 1.571,
+              "gfs": 0.976
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.34,
+            "samples": 20,
+            "models": {
+              "best_match": 0.243,
+              "ecmwf": 0.36,
+              "gfs": 0.195
+            }
+          }
+        }
+      },
+      "7": {
+        "records": 18,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 2.451,
+            "samples": 18,
+            "models": {
+              "best_match": 2.828,
+              "ecmwf": 2.828,
+              "gfs": 2.267
+            }
+          },
+          "tmin": {
+            "mrl_mae": 1.997,
+            "samples": 18,
+            "models": {
+              "best_match": 2.178,
+              "ecmwf": 1.644,
+              "gfs": 1.844
+            }
+          },
+          "tmean": {
+            "mrl_mae": 1.766,
+            "samples": 18,
+            "models": {
+              "best_match": 1.693,
+              "ecmwf": 2.121,
+              "gfs": 1.851
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.184,
+            "samples": 18,
+            "models": {
+              "best_match": 0.183,
+              "ecmwf": 0.183,
+              "gfs": 0.217
+            }
+          }
+        }
+      }
+    }
+  },
   "records": [
     {
       "model_id": "MRL-20260830-712",
@@ -12467,7 +12679,7 @@
       "observed": null,
       "errors": null,
       "verified": false,
-      "frozen": false
+      "frozen": true
     },
     {
       "model_id": "MRL-20260922-715",
@@ -12867,7 +13079,7 @@
       "observed": null,
       "errors": null,
       "verified": false,
-      "frozen": false
+      "frozen": true
     },
     {
       "model_id": "MRL-20260922-715",
@@ -13187,7 +13399,7 @@
       "observed": null,
       "errors": null,
       "verified": false,
-      "frozen": false
+      "frozen": true
     },
     {
       "model_id": "MRL-20260921-714",
@@ -13587,7 +13799,7 @@
       "observed": null,
       "errors": null,
       "verified": false,
-      "frozen": false
+      "frozen": true
     },
     {
       "model_id": "MRL-20260921-714",
@@ -13827,7 +14039,7 @@
       "observed": null,
       "errors": null,
       "verified": false,
-      "frozen": false
+      "frozen": true
     }
   ]
 }
