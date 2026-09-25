@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260924-717",
   "version": "3.0.6",
-  "generated_utc": "2026-09-25T09:06:10+00:00",
+  "generated_utc": "2026-09-25T09:36:25+00:00",
   "trained_through": "2026-09-24",
   "training_samples_by_lead": {
     "1": 717,
@@ -89135,10 +89135,10 @@
         ]
       },
       "tmean": {
-        "value": 16.01,
+        "value": 16.05,
         "interval80": [
-          14.21,
-          17.82
+          14.25,
+          17.86
         ],
         "empirical_mae": 1.13,
         "model_spread": 2.52,
@@ -89147,9 +89147,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 17.18,
+            "raw": 17.31,
             "bias": 0.995,
-            "corrected": 16.18,
+            "corrected": 16.31,
             "mae_context": 1.142,
             "n": 21,
             "context_bucket": "rain_cloud:wet|overcast"
@@ -89178,22 +89178,22 @@
       },
       "precip": {
         "probability_pct": 85.1,
-        "expected_mm": 13.51,
-        "conditional_mm": 15.87,
+        "expected_mm": 18.48,
+        "conditional_mm": 21.71,
         "conditional_range80_mm": [
-          6.75,
-          27.3
+          9.24,
+          37.35
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 11.41,
-        "raw_model_spread_mm": 31.13,
+        "raw_model_mean_mm": 15.61,
+        "raw_model_spread_mm": 43.73,
         "n_context": 21,
         "context_bucket": "rain_cloud:wet|overcast",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 31.13
+            "raw": 43.73
           },
           {
             "model": "ecmwf",
@@ -89217,7 +89217,7 @@
         "wind": "breezy",
         "humidity": "humid",
         "pressure": "normal",
-        "raw_precip_mean": 11.41,
+        "raw_precip_mean": 15.61,
         "rain_vote": 0.667
       },
       "scenario_label": "chuva significativa · céu muito nublado · vento moderado"
@@ -145154,5 +145154,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-25T09:06:10+00:00"
+  "forecast_updated_utc": "2026-09-25T09:36:25+00:00"
 }
