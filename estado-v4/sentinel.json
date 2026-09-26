@@ -1,17 +1,17 @@
 {
-  "generated_utc": "2026-09-26T12:33:17+00:00",
+  "generated_utc": "2026-09-26T12:43:27+00:00",
   "status": "normal",
   "health_score": 100,
   "station": {
-    "temperature": 23.7,
-    "humidity": 38.0,
-    "dewpoint": 8.6,
-    "pressure": 1022.1,
+    "temperature": 25.1,
+    "humidity": 37.0,
+    "dewpoint": 9.4,
+    "pressure": 1022.0,
     "wind_avg": 4.0,
-    "wind_gust": 7.0,
+    "wind_gust": 9.0,
     "rain_rate": 0.0,
     "rain_today": 0.0,
-    "solar": 576.0,
+    "solar": 609.0,
     "uv": 5.0,
     "alarms": {
       "DataStopped": false,
@@ -30,8 +30,8 @@
     }
   },
   "external_temperature_context": {
-    "ipma_median_temperature_c": 19.4,
-    "difference_c": 4.3,
+    "ipma_median_temperature_c": 21.5,
+    "difference_c": 3.6,
     "stations": 6
   },
   "issues": [],
@@ -46,34 +46,6 @@
     "nearby_station_count": 6
   },
   "nearby_ipma": [
-    {
-      "station_id": "1210663",
-      "station_name": "Moimenta da Beira",
-      "observed_utc": "2026-09-26T09:00:00",
-      "latitude": 40.9833,
-      "longitude": -7.6,
-      "distance_km": 22.8,
-      "temperature": 17.7,
-      "humidity": 55.0,
-      "pressure": null,
-      "wind_kmh": 4.0,
-      "rain_accum": 0.0,
-      "radiation": 458.1,
-      "raw": {
-        "intensidadeVentoKM": 4.0,
-        "temperatura": 17.7,
-        "idEstacao": 1210663,
-        "pressao": -99.0,
-        "humidade": 55.0,
-        "localEstacao": "Moimenta da Beira",
-        "precAcumulada": 0.0,
-        "idDireccVento": 5,
-        "radiacao": 458.1,
-        "time": "2026-09-26T09:00:00",
-        "intensidadeVento": 1.1,
-        "descDirVento": "S"
-      }
-    },
     {
       "station_id": "1210663",
       "station_name": "Moimenta da Beira",
@@ -131,30 +103,30 @@
       }
     },
     {
-      "station_id": "1210666",
-      "station_name": "Trancoso, Bandarra",
-      "observed_utc": "2026-09-26T09:00:00",
-      "latitude": 40.7833,
-      "longitude": -7.3667,
-      "distance_km": 23.9,
-      "temperature": 17.5,
-      "humidity": 52.0,
+      "station_id": "1210663",
+      "station_name": "Moimenta da Beira",
+      "observed_utc": "2026-09-26T12:00:00",
+      "latitude": 40.9833,
+      "longitude": -7.6,
+      "distance_km": 22.8,
+      "temperature": 26.2,
+      "humidity": 29.0,
       "pressure": null,
-      "wind_kmh": 10.4,
+      "wind_kmh": 7.6,
       "rain_accum": 0.0,
-      "radiation": 1233.4,
+      "radiation": 2434.1,
       "raw": {
-        "intensidadeVentoKM": 10.4,
-        "temperatura": 17.5,
-        "idEstacao": 1210666,
+        "intensidadeVentoKM": 7.6,
+        "temperatura": 26.2,
+        "idEstacao": 1210663,
         "pressao": -99.0,
-        "humidade": 52.0,
-        "localEstacao": "Trancoso, Bandarra",
+        "humidade": 29.0,
+        "localEstacao": "Moimenta da Beira",
         "precAcumulada": 0.0,
         "idDireccVento": 2,
-        "radiacao": 1233.4,
-        "time": "2026-09-26T09:00:00",
-        "intensidadeVento": 2.9,
+        "radiacao": 2434.1,
+        "time": "2026-09-26T12:00:00",
+        "intensidadeVento": 2.1,
         "descDirVento": "NE"
       }
     },
@@ -213,6 +185,34 @@
         "intensidadeVento": 2.6,
         "descDirVento": "NE"
       }
+    },
+    {
+      "station_id": "1210666",
+      "station_name": "Trancoso, Bandarra",
+      "observed_utc": "2026-09-26T12:00:00",
+      "latitude": 40.7833,
+      "longitude": -7.3667,
+      "distance_km": 23.9,
+      "temperature": 22.2,
+      "humidity": 36.0,
+      "pressure": null,
+      "wind_kmh": 7.2,
+      "rain_accum": 0.0,
+      "radiation": 2250.0,
+      "raw": {
+        "intensidadeVentoKM": 7.2,
+        "temperatura": 22.2,
+        "idEstacao": 1210666,
+        "pressao": -99.0,
+        "humidade": 36.0,
+        "localEstacao": "Trancoso, Bandarra",
+        "precAcumulada": 0.0,
+        "idDireccVento": 2,
+        "radiacao": 2250.0,
+        "time": "2026-09-26T12:00:00",
+        "intensidadeVento": 2.0,
+        "descDirVento": "NE"
+      }
     }
   ],
   "database": {
@@ -220,9 +220,9 @@
     "persistent_mount_active": true,
     "warning": null,
     "rows": {
-      "local_observations": 238,
-      "ipma_observations": 12,
-      "forecast_daily": 1134,
+      "local_observations": 249,
+      "ipma_observations": 14,
+      "forecast_daily": 1260,
       "sentinel_events": 0
     },
     "forecast_rows_written_this_refresh": 126,
