@@ -1,0 +1,23 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow"><meta name="description" content="Previsão experimental multi-modelo da Estação Meteorológica de Ranhados.">
+<title>Previsão v4 — Meteo Ranhados</title><link rel="stylesheet" href="forecast-v4.alpha1.css"></head><body>
+<main class="v4-page">
+<header class="v4-hero"><div><p class="eyebrow">Meteo Ranhados · laboratório v4</p><h1>Previsão multi-modelo</h1><p class="lede">Uma leitura única do que os principais modelos dizem para Ranhados — sem esconder a divergência.</p></div><div class="hero-meta"><span id="v4-updated">A carregar…</span><b>Experimental · não substitui ainda a previsão atual</b></div></header>
+
+<section class="v4-band">
+<div><span>Consensus Base</span><strong>Mediana transparente</strong><small>Benchmark antes do modelo de aprendizagem.</small></div>
+<div><span>Modelos independentes</span><strong id="v4-model-count">—</strong><small>IFS · AIFS · ICON · ARPEGE · UKMO · GFS · GEM</small></div>
+<div><span>Best Match</span><strong>Benchmark</strong><small>Mostrado à parte; não é a “verdade” do sistema.</small></div>
+</section>
+
+<section><div class="section-head"><div><p class="eyebrow dark">Leitura rápida</p><h2>Próximos dias</h2></div><p>Valores centrais do consenso e amplitude entre modelos.</p></div><div id="v4-days" class="day-grid"></div></section>
+
+<section class="panel"><div class="section-head"><div><p class="eyebrow dark">Concordância</p><h2>O que os modelos estão realmente a dizer</h2></div><select id="v4-day-select" aria-label="Escolher dia"></select></div>
+<div id="v4-selected-summary" class="selected-summary"></div>
+<div class="table-wrap"><table><thead><tr><th>Modelo</th><th>Tmax</th><th>Tmin</th><th>Chuva</th><th>Prob. chuva</th><th>Rajada</th></tr></thead><tbody id="v4-model-table"></tbody></table></div></section>
+
+<section class="two-col">
+<article class="panel"><p class="eyebrow dark">Interpretação</p><h2>Como ler o Consensus</h2><div id="v4-method"></div></article>
+<article class="panel"><p class="eyebrow dark">Disponibilidade</p><h2>Estado das fontes</h2><div id="v4-source-status"></div></article>
+</section>
+</main><script src="forecast-v4.alpha1.js" defer></script></body></html>

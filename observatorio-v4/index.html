@@ -1,0 +1,24 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow"><meta name="description" content="Verificação multi-modelo experimental da Estação Meteorológica de Ranhados.">
+<title>Observatório v4 — Meteo Ranhados</title><link rel="stylesheet" href="observatory-v4.alpha1.css"></head><body>
+<main class="ov4-page">
+<header class="ov4-hero"><div><p class="eyebrow">Meteo Ranhados · laboratório v4</p><h1>Observatório da previsão</h1><p>Em vez de perguntar “qual é o melhor modelo?”, medimos quanto erra cada um em Ranhados, por variável e horizonte.</p></div><div class="hero-meta"><span id="ov4-period">—</span><b>Experimental · arquivo histórico em reconstrução</b></div></header>
+
+<section class="ov4-band"><div><span>Modelos comparados</span><b id="ov4-count">—</b></div><div><span>Horizontes</span><b>D+1 · D+2 · D+3 · D+5 · D+7</b></div><div><span>Baseline local</span><b>Consensus Base</b></div></section>
+
+<section class="panel">
+<div class="toolbar"><div><p class="eyebrow dark">Desempenho</p><h2>Erro por horizonte</h2></div><div class="controls"><label>Variável<select id="ov4-var"><option value="tmax">Tmax</option><option value="tmin">Tmin</option><option value="tmean">Tmédia</option><option value="precip">Precipitação</option></select></label><label>Métrica<select id="ov4-metric"><option value="mae">MAE</option><option value="rmse">RMSE</option><option value="bias">Viés</option></select></label></div></div>
+<div id="ov4-grid" class="skill-grid"></div>
+</section>
+
+<section class="panel">
+<div class="toolbar"><div><p class="eyebrow dark">Leitura detalhada</p><h2>Comparação num horizonte</h2></div><label class="lead-label">Horizonte<select id="ov4-lead"></select></label></div>
+<div class="table-wrap"><table><thead><tr><th>Modelo</th><th>MAE</th><th>RMSE</th><th>Viés</th><th>Casos</th></tr></thead><tbody id="ov4-table"></tbody></table></div>
+<p id="ov4-note" class="note"></p>
+</section>
+
+<section class="two-col">
+<article class="panel"><p class="eyebrow dark">Cobertura</p><h2>O que está realmente comparável</h2><div id="ov4-coverage"></div></article>
+<article class="panel"><p class="eyebrow dark">Método</p><h2>Regras da auditoria</h2><div id="ov4-method"></div></article>
+</section>
+</main><script src="observatory-v4.alpha1.js" defer></script></body></html>
