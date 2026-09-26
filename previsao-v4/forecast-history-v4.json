@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-26T13:34:55+00:00",
+  "generated_utc": "2026-09-26T13:48:27+00:00",
   "retention_days": 14,
   "snapshots": [
     {
@@ -9853,7 +9853,7 @@
       ]
     },
     {
-      "issued_utc": "2026-09-26T13:34:55+00:00",
+      "issued_utc": "2026-09-26T13:48:27+00:00",
       "hour_bucket": "2026-09-26T13",
       "models": {
         "best_match": [
@@ -11118,6 +11118,43 @@
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 7,
+            "models_with_tmin": 7,
+            "models_with_precip": 7,
+            "models_with_pop": 5,
+            "models_with_gust": 6,
+            "models_with_weather_code": 7,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 26.5,
             "p25": 25.15,
@@ -11125,14 +11162,16 @@
             "min": 24.9,
             "max": 29.0,
             "spread": 4.1,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 7
           },
           "temperature_2m_min": {
             "median": 13.2,
             "p25": 10.9,
             "p75": 13.95,
             "min": 9.2,
-            "max": 14.5
+            "max": 14.5,
+            "models_used": 7
           },
           "precipitation_sum": {
             "median": 0.0,
@@ -11141,19 +11180,22 @@
             "min": 0.0,
             "max": 0.0,
             "wet_model_vote_pct": 0.0,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 7,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 0.0,
             "min": 0,
-            "max": 3
+            "max": 3,
+            "models_used": 5
           },
           "wind_gusts_10m_max": {
             "median": 19.25,
             "p25": 12.88,
             "p75": 19.4,
             "min": 9.4,
-            "max": 26.3
+            "max": 26.3,
+            "models_used": 6
           },
           "weather_code": 3
         },
@@ -11169,6 +11211,43 @@
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 7,
+            "models_with_tmin": 7,
+            "models_with_precip": 7,
+            "models_with_pop": 5,
+            "models_with_gust": 6,
+            "models_with_weather_code": 7,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 26.6,
             "p25": 26.1,
@@ -11176,14 +11255,16 @@
             "min": 25.5,
             "max": 27.5,
             "spread": 2.0,
-            "agreement": "moderado"
+            "agreement": "moderado",
+            "models_used": 7
           },
           "temperature_2m_min": {
             "median": 16.1,
             "p25": 13.25,
             "p75": 16.6,
             "min": 12.5,
-            "max": 18.3
+            "max": 18.3,
+            "models_used": 7
           },
           "precipitation_sum": {
             "median": 0.0,
@@ -11192,19 +11273,22 @@
             "min": 0.0,
             "max": 0.0,
             "wet_model_vote_pct": 0.0,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 7,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 8.0,
             "min": 1,
-            "max": 16
+            "max": 16,
+            "models_used": 5
           },
           "wind_gusts_10m_max": {
             "median": 25.55,
             "p25": 24.8,
             "p75": 26.53,
             "min": 13.3,
-            "max": 29.9
+            "max": 29.9,
+            "models_used": 6
           },
           "weather_code": 3
         },
@@ -11220,6 +11304,43 @@
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 7,
+            "models_with_tmin": 7,
+            "models_with_precip": 7,
+            "models_with_pop": 5,
+            "models_with_gust": 6,
+            "models_with_weather_code": 7,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 23.2,
             "p25": 22.95,
@@ -11227,14 +11348,16 @@
             "min": 20.8,
             "max": 24.9,
             "spread": 4.1,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 7
           },
           "temperature_2m_min": {
             "median": 13.6,
             "p25": 12.6,
             "p75": 14.1,
             "min": 11.7,
-            "max": 16.8
+            "max": 16.8,
+            "models_used": 7
           },
           "precipitation_sum": {
             "median": 0.6,
@@ -11243,19 +11366,22 @@
             "min": 0.0,
             "max": 2.8,
             "wet_model_vote_pct": 28.6,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 7,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 59.0,
             "min": 24,
-            "max": 69
+            "max": 69,
+            "models_used": 5
           },
           "wind_gusts_10m_max": {
             "median": 32.55,
             "p25": 29.08,
             "p75": 34.23,
             "min": 24.8,
-            "max": 43.2
+            "max": 43.2,
+            "models_used": 6
           },
           "weather_code": 51
         },
@@ -11271,6 +11397,43 @@
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 7,
+            "models_with_tmin": 7,
+            "models_with_precip": 7,
+            "models_with_pop": 5,
+            "models_with_gust": 6,
+            "models_with_weather_code": 7,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "arpege",
+              "ukmo",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 20.9,
             "p25": 20.25,
@@ -11278,14 +11441,16 @@
             "min": 17.2,
             "max": 22.5,
             "spread": 5.3,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 7
           },
           "temperature_2m_min": {
             "median": 14.0,
             "p25": 13.9,
             "p75": 14.55,
             "min": 13.3,
-            "max": 16.4
+            "max": 16.4,
+            "models_used": 7
           },
           "precipitation_sum": {
             "median": 1.3,
@@ -11294,34 +11459,70 @@
             "min": 0.0,
             "max": 4.9,
             "wet_model_vote_pct": 57.1,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 7,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 44.0,
             "min": 28,
-            "max": 86
+            "max": 86,
+            "models_used": 5
           },
           "wind_gusts_10m_max": {
             "median": 50.2,
             "p25": 45.05,
             "p75": 55.65,
             "min": 40.3,
-            "max": 63.4
+            "max": 63.4,
+            "models_used": 6
           },
           "weather_code": 51
         },
         {
           "date": "2026-09-30",
-          "models_available": 7,
+          "models_available": 6,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
             "icon",
-            "arpege",
             "ukmo",
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 6,
+            "models_with_tmin": 6,
+            "models_with_precip": 6,
+            "models_with_pop": 5,
+            "models_with_gust": 5,
+            "models_with_weather_code": 6,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 20.9,
             "p25": 20.62,
@@ -11329,14 +11530,16 @@
             "min": 19.1,
             "max": 22.3,
             "spread": 3.2,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 6
           },
           "temperature_2m_min": {
             "median": 12.55,
             "p25": 12.1,
             "p75": 12.85,
             "min": 10.3,
-            "max": 13.5
+            "max": 13.5,
+            "models_used": 6
           },
           "precipitation_sum": {
             "median": 2.85,
@@ -11345,34 +11548,70 @@
             "min": 0.2,
             "max": 10.5,
             "wet_model_vote_pct": 66.7,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 6,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 82.0,
             "min": 59,
-            "max": 90
+            "max": 90,
+            "models_used": 5
           },
           "wind_gusts_10m_max": {
             "median": 51.1,
             "p25": 37.1,
             "p75": 54.0,
             "min": 30.2,
-            "max": 54.4
+            "max": 54.4,
+            "models_used": 5
           },
           "weather_code": 53
         },
         {
           "date": "2026-10-01",
-          "models_available": 7,
+          "models_available": 6,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
             "icon",
-            "arpege",
             "ukmo",
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 6,
+            "models_with_tmin": 6,
+            "models_with_precip": 6,
+            "models_with_pop": 5,
+            "models_with_gust": 5,
+            "models_with_weather_code": 6,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 21.15,
             "p25": 20.0,
@@ -11380,14 +11619,16 @@
             "min": 19.1,
             "max": 22.8,
             "spread": 3.7,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 6
           },
           "temperature_2m_min": {
             "median": 9.15,
             "p25": 8.53,
             "p75": 10.0,
             "min": 6.7,
-            "max": 10.4
+            "max": 10.4,
+            "models_used": 6
           },
           "precipitation_sum": {
             "median": 0.0,
@@ -11396,34 +11637,70 @@
             "min": 0.0,
             "max": 0.4,
             "wet_model_vote_pct": 0.0,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 6,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 5.0,
             "min": 1,
-            "max": 17
+            "max": 17,
+            "models_used": 5
           },
           "wind_gusts_10m_max": {
             "median": 22.3,
             "p25": 13.7,
             "p75": 22.3,
             "min": 11.9,
-            "max": 37.4
+            "max": 37.4,
+            "models_used": 5
           },
           "weather_code": 1
         },
         {
           "date": "2026-10-02",
-          "models_available": 7,
+          "models_available": 6,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
             "icon",
-            "arpege",
             "ukmo",
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 6,
+            "models_with_tmin": 6,
+            "models_with_precip": 6,
+            "models_with_pop": 5,
+            "models_with_gust": 5,
+            "models_with_weather_code": 6,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "icon",
+              "ukmo",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 21.85,
             "p25": 20.18,
@@ -11431,14 +11708,16 @@
             "min": 18.0,
             "max": 24.6,
             "spread": 6.6,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 6
           },
           "temperature_2m_min": {
             "median": 12.1,
             "p25": 10.43,
             "p75": 12.73,
             "min": 7.7,
-            "max": 12.8
+            "max": 12.8,
+            "models_used": 6
           },
           "precipitation_sum": {
             "median": 0.3,
@@ -11447,34 +11726,62 @@
             "min": 0.0,
             "max": 1.7,
             "wet_model_vote_pct": 33.3,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 6,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 14.0,
             "min": 0,
-            "max": 18
+            "max": 18,
+            "models_used": 5
           },
           "wind_gusts_10m_max": {
             "median": 22.0,
             "p25": 16.6,
             "p75": 26.3,
             "min": 9.7,
-            "max": 36.7
+            "max": 36.7,
+            "models_used": 5
           },
           "weather_code": 51
         },
         {
           "date": "2026-10-03",
-          "models_available": 7,
+          "models_available": 4,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
-            "icon",
-            "arpege",
-            "ukmo",
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 4,
+            "models_with_tmin": 4,
+            "models_with_precip": 4,
+            "models_with_pop": 4,
+            "models_with_gust": 3,
+            "models_with_weather_code": 4,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 20.35,
             "p25": 18.72,
@@ -11482,14 +11789,16 @@
             "min": 16.7,
             "max": 25.2,
             "spread": 8.5,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 4
           },
           "temperature_2m_min": {
             "median": 14.45,
             "p25": 14.28,
             "p75": 14.55,
             "min": 13.9,
-            "max": 14.7
+            "max": 14.7,
+            "models_used": 4
           },
           "precipitation_sum": {
             "median": 7.05,
@@ -11498,34 +11807,62 @@
             "min": 0.0,
             "max": 21.1,
             "wet_model_vote_pct": 75.0,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 4,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 28.0,
             "min": 10,
-            "max": 39
+            "max": 39,
+            "models_used": 4
           },
           "wind_gusts_10m_max": {
             "median": 18.0,
             "p25": 14.05,
             "p75": 23.6,
             "min": 10.1,
-            "max": 29.2
+            "max": 29.2,
+            "models_used": 3
           },
           "weather_code": 3
         },
         {
           "date": "2026-10-04",
-          "models_available": 7,
+          "models_available": 4,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
-            "icon",
-            "arpege",
-            "ukmo",
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 4,
+            "models_with_tmin": 4,
+            "models_with_precip": 4,
+            "models_with_pop": 4,
+            "models_with_gust": 3,
+            "models_with_weather_code": 4,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 20.6,
             "p25": 20.35,
@@ -11533,14 +11870,16 @@
             "min": 19.9,
             "max": 24.9,
             "spread": 5.0,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 4
           },
           "temperature_2m_min": {
             "median": 13.7,
             "p25": 13.55,
             "p75": 13.85,
             "min": 13.4,
-            "max": 14.0
+            "max": 14.0,
+            "models_used": 4
           },
           "precipitation_sum": {
             "median": 6.0,
@@ -11549,34 +11888,62 @@
             "min": 3.1,
             "max": 10.9,
             "wet_model_vote_pct": 100.0,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 4,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 22.5,
             "min": 19,
-            "max": 31
+            "max": 31,
+            "models_used": 4
           },
           "wind_gusts_10m_max": {
             "median": 26.6,
             "p25": 22.3,
             "p75": 32.75,
             "min": 18.0,
-            "max": 38.9
+            "max": 38.9,
+            "models_used": 3
           },
           "weather_code": 53
         },
         {
           "date": "2026-10-05",
-          "models_available": 7,
+          "models_available": 4,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
-            "icon",
-            "arpege",
-            "ukmo",
             "gfs",
             "gem"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 4,
+            "models_with_tmin": 4,
+            "models_with_precip": 4,
+            "models_with_pop": 4,
+            "models_with_gust": 3,
+            "models_with_weather_code": 4,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs",
+              "gem"
+            ]
+          },
           "temperature_2m_max": {
             "median": 19.55,
             "p25": 18.32,
@@ -11584,14 +11951,16 @@
             "min": 18.1,
             "max": 24.2,
             "spread": 6.1,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 4
           },
           "temperature_2m_min": {
             "median": 14.05,
             "p25": 13.75,
             "p75": 14.12,
             "min": 13.0,
-            "max": 14.2
+            "max": 14.2,
+            "models_used": 4
           },
           "precipitation_sum": {
             "median": 10.25,
@@ -11600,34 +11969,58 @@
             "min": 0.2,
             "max": 14.2,
             "wet_model_vote_pct": 75.0,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 4,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 26.5,
             "min": 19,
-            "max": 35
+            "max": 35,
+            "models_used": 4
           },
           "wind_gusts_10m_max": {
             "median": 22.0,
             "p25": 16.2,
             "p75": 30.6,
             "min": 10.4,
-            "max": 39.2
+            "max": 39.2,
+            "models_used": 3
           },
           "weather_code": 51
         },
         {
           "date": "2026-10-06",
-          "models_available": 7,
+          "models_available": 3,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
-            "icon",
-            "arpege",
-            "ukmo",
-            "gfs",
-            "gem"
+            "gfs"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 3,
+            "models_with_tmin": 3,
+            "models_with_precip": 3,
+            "models_with_pop": 3,
+            "models_with_gust": 2,
+            "models_with_weather_code": 3,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ]
+          },
           "temperature_2m_max": {
             "median": 20.4,
             "p25": 19.25,
@@ -11635,14 +12028,16 @@
             "min": 18.1,
             "max": 24.5,
             "spread": 6.4,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 3
           },
           "temperature_2m_min": {
             "median": 13.6,
             "p25": 13.55,
             "p75": 14.75,
             "min": 13.5,
-            "max": 15.9
+            "max": 15.9,
+            "models_used": 3
           },
           "precipitation_sum": {
             "median": 3.8,
@@ -11651,34 +12046,58 @@
             "min": 1.2,
             "max": 8.0,
             "wet_model_vote_pct": 100.0,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 3,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 19.0,
             "min": 12,
-            "max": 31
+            "max": 31,
+            "models_used": 3
           },
           "wind_gusts_10m_max": {
             "median": 14.4,
             "p25": 11.5,
             "p75": 17.3,
             "min": 8.6,
-            "max": 20.2
+            "max": 20.2,
+            "models_used": 2
           },
           "weather_code": 53
         },
         {
           "date": "2026-10-07",
-          "models_available": 7,
+          "models_available": 3,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
-            "icon",
-            "arpege",
-            "ukmo",
-            "gfs",
-            "gem"
+            "gfs"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 3,
+            "models_with_tmin": 3,
+            "models_with_precip": 3,
+            "models_with_pop": 3,
+            "models_with_gust": 2,
+            "models_with_weather_code": 3,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ]
+          },
           "temperature_2m_max": {
             "median": 20.9,
             "p25": 20.45,
@@ -11686,14 +12105,16 @@
             "min": 20.0,
             "max": 25.6,
             "spread": 5.6,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 3
           },
           "temperature_2m_min": {
             "median": 13.6,
             "p25": 12.2,
             "p75": 14.05,
             "min": 10.8,
-            "max": 14.5
+            "max": 14.5,
+            "models_used": 3
           },
           "precipitation_sum": {
             "median": 0.0,
@@ -11702,34 +12123,58 @@
             "min": 0.0,
             "max": 2.9,
             "wet_model_vote_pct": 33.3,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 3,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 28.0,
             "min": 14,
-            "max": 33
+            "max": 33,
+            "models_used": 3
           },
           "wind_gusts_10m_max": {
             "median": 19.45,
             "p25": 17.48,
             "p75": 21.42,
             "min": 15.5,
-            "max": 23.4
+            "max": 23.4,
+            "models_used": 2
           },
           "weather_code": 3
         },
         {
           "date": "2026-10-08",
-          "models_available": 7,
+          "models_available": 3,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
-            "icon",
-            "arpege",
-            "ukmo",
-            "gfs",
-            "gem"
+            "gfs"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 3,
+            "models_with_tmin": 3,
+            "models_with_precip": 3,
+            "models_with_pop": 3,
+            "models_with_gust": 2,
+            "models_with_weather_code": 3,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ]
+          },
           "temperature_2m_max": {
             "median": 20.5,
             "p25": 20.15,
@@ -11737,14 +12182,16 @@
             "min": 19.8,
             "max": 23.8,
             "spread": 4.0,
-            "agreement": "baixo"
+            "agreement": "baixo",
+            "models_used": 3
           },
           "temperature_2m_min": {
             "median": 11.6,
             "p25": 11.15,
             "p75": 13.1,
             "min": 10.7,
-            "max": 14.6
+            "max": 14.6,
+            "models_used": 3
           },
           "precipitation_sum": {
             "median": 0.0,
@@ -11753,34 +12200,58 @@
             "min": 0.0,
             "max": 2.3,
             "wet_model_vote_pct": 33.3,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 3,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 18.0,
             "min": 17,
-            "max": 24
+            "max": 24,
+            "models_used": 3
           },
           "wind_gusts_10m_max": {
             "median": 32.4,
             "p25": 25.75,
             "p75": 39.05,
             "min": 19.1,
-            "max": 45.7
+            "max": 45.7,
+            "models_used": 2
           },
           "weather_code": 2
         },
         {
           "date": "2026-10-09",
-          "models_available": 7,
+          "models_available": 3,
           "model_keys": [
             "ecmwf_ifs",
             "ecmwf_aifs",
-            "icon",
-            "arpege",
-            "ukmo",
-            "gfs",
-            "gem"
+            "gfs"
           ],
+          "coverage": {
+            "models_total_independent": 7,
+            "models_with_any_row": 7,
+            "models_with_tmax": 3,
+            "models_with_tmin": 3,
+            "models_with_precip": 3,
+            "models_with_pop": 3,
+            "models_with_gust": 2,
+            "models_with_weather_code": 3,
+            "model_keys_with_tmax": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_tmin": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ],
+            "model_keys_with_precip": [
+              "ecmwf_ifs",
+              "ecmwf_aifs",
+              "gfs"
+            ]
+          },
           "temperature_2m_max": {
             "median": 19.7,
             "p25": 18.9,
@@ -11788,14 +12259,16 @@
             "min": 18.1,
             "max": 21.0,
             "spread": 2.9,
-            "agreement": "moderado"
+            "agreement": "moderado",
+            "models_used": 3
           },
           "temperature_2m_min": {
             "median": 13.1,
             "p25": 12.0,
             "p75": 13.9,
             "min": 10.9,
-            "max": 14.7
+            "max": 14.7,
+            "models_used": 3
           },
           "precipitation_sum": {
             "median": 0.0,
@@ -11804,19 +12277,22 @@
             "min": 0.0,
             "max": 7.9,
             "wet_model_vote_pct": 33.3,
-            "note": "Percentagem de modelos com >=1 mm; não é uma probabilidade calibrada."
+            "models_used": 3,
+            "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
           },
           "precipitation_probability_max": {
             "median": 23.0,
             "min": 22,
-            "max": 30
+            "max": 30,
+            "models_used": 3
           },
           "wind_gusts_10m_max": {
             "median": 38.15,
             "p25": 27.88,
             "p75": 48.43,
             "min": 17.6,
-            "max": 58.7
+            "max": 58.7,
+            "models_used": 2
           },
           "weather_code": 53
         }

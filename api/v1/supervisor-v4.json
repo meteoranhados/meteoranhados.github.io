@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-09-26T13:44:00+00:00",
-  "schema": "supervisor-v4-alpha3",
+  "generated_utc": "2026-09-26T13:54:55+00:00",
+  "schema": "supervisor-v4-alpha4",
   "recommendations": [
     {
       "id": "bias-ecmwf_aifs-tmax-d1",
@@ -230,9 +230,9 @@
           "persistent_mount_active": true,
           "warning": null,
           "rows": {
-            "local_observations": 309,
-            "ipma_observations": 16,
-            "forecast_daily": 1638,
+            "local_observations": 319,
+            "ipma_observations": 22,
+            "forecast_daily": 1764,
             "sentinel_events": 0
           },
           "forecast_rows_written_this_refresh": 126,
@@ -247,8 +247,8 @@
       "id": "ipma-coverage",
       "category": "data-quality",
       "level": "ok",
-      "title": "Referência IPMA disponível",
-      "text": "6 estações IPMA próximas podem servir como contexto externo, sem serem tratadas como verdade local absoluta.",
+      "title": "Referência IPMA regional disponível",
+      "text": "6 referências IPMA regionais e únicas estão disponíveis. Servem apenas de contexto: distância, relevo, exposição e altitude impedem tratá-las como verdade local de Ranhados.",
       "evidence": {
         "nearby_station_count": 6
       },
@@ -271,16 +271,110 @@
       ]
     },
     {
-      "id": "gpu-container",
-      "category": "vision",
-      "level": "future",
-      "title": "GPU do host ainda não exposta ao container",
-      "text": "Isto não afeta previsão, SQLite ou Sentinel. Será necessário apenas quando avançarmos para Camera AI/OpenVINO.",
+      "id": "skill-candidate-tmax-d1",
+      "category": "ml",
+      "level": "review",
+      "title": "Ponderação por skill não melhora tmax D+1",
+      "text": "No holdout cronológico, o candidato piora o MAE em 3.6% face à mediana. Não usar esta combinação como produção.",
       "evidence": {
-        "recommended_device": "/dev/dri/renderD128"
+        "variable": "tmax",
+        "lead_days": 1,
+        "improvement_pct": -3.6,
+        "validation_cases": 92
       },
       "targets": [
-        "estado"
+        "observatorio"
+      ]
+    },
+    {
+      "id": "skill-candidate-tmax-d2",
+      "category": "ml",
+      "level": "review",
+      "title": "Ponderação por skill não melhora tmax D+2",
+      "text": "No holdout cronológico, o candidato piora o MAE em 8.6% face à mediana. Não usar esta combinação como produção.",
+      "evidence": {
+        "variable": "tmax",
+        "lead_days": 2,
+        "improvement_pct": -8.6,
+        "validation_cases": 103
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "skill-candidate-tmax-d3",
+      "category": "ml",
+      "level": "review",
+      "title": "Ponderação por skill não melhora tmax D+3",
+      "text": "No holdout cronológico, o candidato piora o MAE em 5.6% face à mediana. Não usar esta combinação como produção.",
+      "evidence": {
+        "variable": "tmax",
+        "lead_days": 3,
+        "improvement_pct": -5.6,
+        "validation_cases": 92
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "skill-candidate-tmax-d7",
+      "category": "ml",
+      "level": "review",
+      "title": "Ponderação por skill não melhora tmax D+7",
+      "text": "No holdout cronológico, o candidato piora o MAE em 4.9% face à mediana. Não usar esta combinação como produção.",
+      "evidence": {
+        "variable": "tmax",
+        "lead_days": 7,
+        "improvement_pct": -4.9,
+        "validation_cases": 103
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "skill-candidate-tmin-d5",
+      "category": "ml",
+      "level": "candidate",
+      "title": "Consensus Skill candidato melhora tmin D+5",
+      "text": "No holdout cronológico, a correção de viés + ponderação por skill melhora o MAE em 35.3% face à mediana nos mesmos casos. IC bootstrap 95% da melhoria: 24.7% a 44.3% quando disponível. É apenas candidato estatístico; requer validação adicional antes de qualquer uso público.",
+      "evidence": {
+        "variable": "tmin",
+        "lead_days": 5,
+        "improvement_pct": 35.3,
+        "improvement_ci_95pct": [
+          24.7,
+          44.3
+        ],
+        "validation_cases": 86,
+        "models": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "ukmo",
+          "gfs",
+          "gem"
+        ]
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "camera-ai",
+      "category": "vision",
+      "level": "future",
+      "title": "Camera AI ainda sem resultado válido",
+      "text": "O serviço Vision é independente do Climate Analyzer. A ausência de GPU dentro do Climate Analyzer é esperada; iniciar/validar o container meteo-ranhados-vision quando conveniente.",
+      "evidence": {
+        "recommended_device": "/dev/dri/renderD128",
+        "camera_available": false
+      },
+      "targets": [
+        "estado",
+        "camera"
       ]
     }
   ],

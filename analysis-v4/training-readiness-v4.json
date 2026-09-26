@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-26T13:44:00+00:00",
+  "generated_utc": "2026-09-26T13:54:55+00:00",
   "status": "candidate_experiments_possible",
   "ready_combinations": 15,
   "total_combinations": 15,
   "requirements": {
-    "minimum_cases_per_model_proxy": 120,
+    "minimum_exact_common_cases": 120,
     "minimum_models": 3,
     "validation": "chronological holdout; candidate must beat Consensus Base and current production on independent cases",
     "automatic_promotion": false
@@ -13,128 +13,297 @@
     {
       "variable": "tmax",
       "lead_days": 1,
-      "minimum_model_samples": 332,
+      "exact_common_cases": 305,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-01",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmax",
       "lead_days": 2,
-      "minimum_model_samples": 342,
+      "exact_common_cases": 342,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-02",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmax",
       "lead_days": 3,
-      "minimum_model_samples": 331,
+      "exact_common_cases": 305,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-03",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmax",
       "lead_days": 5,
-      "minimum_model_samples": 313,
+      "exact_common_cases": 284,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 6
+      "models_with_exact_coverage": 6,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-05",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmax",
       "lead_days": 7,
-      "minimum_model_samples": 352,
+      "exact_common_cases": 340,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 4
+      "models_with_exact_coverage": 4,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-07",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmin",
       "lead_days": 1,
-      "minimum_model_samples": 332,
+      "exact_common_cases": 305,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-01",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmin",
       "lead_days": 2,
-      "minimum_model_samples": 342,
+      "exact_common_cases": 342,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-02",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmin",
       "lead_days": 3,
-      "minimum_model_samples": 331,
+      "exact_common_cases": 305,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-03",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmin",
       "lead_days": 5,
-      "minimum_model_samples": 313,
+      "exact_common_cases": 284,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 6
+      "models_with_exact_coverage": 6,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-05",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "tmin",
       "lead_days": 7,
-      "minimum_model_samples": 352,
+      "exact_common_cases": 340,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 4
+      "models_with_exact_coverage": 4,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-07",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "precip",
       "lead_days": 1,
-      "minimum_model_samples": 324,
+      "exact_common_cases": 300,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-01",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "precip",
       "lead_days": 2,
-      "minimum_model_samples": 331,
+      "exact_common_cases": 298,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-02",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "precip",
       "lead_days": 3,
-      "minimum_model_samples": 314,
+      "exact_common_cases": 289,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 7
+      "models_with_exact_coverage": 7,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "arpege",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-03",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "precip",
       "lead_days": 5,
-      "minimum_model_samples": 306,
+      "exact_common_cases": 282,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 6
+      "models_with_exact_coverage": 6,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "icon",
+        "ukmo",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-05",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     },
     {
       "variable": "precip",
       "lead_days": 7,
-      "minimum_model_samples": 352,
+      "exact_common_cases": 340,
       "target_cases": 120,
       "ready_for_candidate_experiment": true,
-      "models_with_samples": 4
+      "models_with_exact_coverage": 4,
+      "common_model_keys": [
+        "ecmwf_ifs",
+        "ecmwf_aifs",
+        "gfs",
+        "gem"
+      ],
+      "common_period_start": "2025-10-07",
+      "common_period_end": "2026-09-25",
+      "method": "Interseção real dos dias em que todos os modelos listados e a observação têm valor para esta variável/horizonte."
     }
   ],
   "infrastructure": {
     "database_persistent": true,
     "forecast_v4_available": true,
     "sentinel_status": "normal",
-    "gpu_visible_in_container": false
+    "climate_analyzer_gpu_visible": false,
+    "climate_analyzer_gpu_required": false
   }
 }

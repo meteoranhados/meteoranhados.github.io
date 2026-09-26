@@ -1,0 +1,821 @@
+{
+  "generated_utc": "2026-09-26T13:48:49+00:00",
+  "schema": "consensus-skill-candidate-v4-alpha4",
+  "name": "Ranhados Consensus Skill Candidate",
+  "status": "experimental_not_production",
+  "automatic_promotion": false,
+  "validation": "chronological 70/30 holdout; weights and bias corrections learned only on the first 70% of exact common cases",
+  "variables": {
+    "tmax": {
+      "1": {
+        "available": true,
+        "exact_common_cases": 305,
+        "train_cases": 213,
+        "validation_cases": 92,
+        "period_start": "2025-10-01",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "arpege",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 20.6,
+            "training_mae": 0.902,
+            "training_bias": -0.325,
+            "training_samples": 213
+          },
+          {
+            "model_key": "icon",
+            "weight_pct": 20.4,
+            "training_mae": 0.906,
+            "training_bias": -0.443,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 15.9,
+            "training_mae": 1.026,
+            "training_bias": -0.192,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 12.3,
+            "training_mae": 1.168,
+            "training_bias": -0.755,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 11.7,
+            "training_mae": 1.196,
+            "training_bias": -0.466,
+            "training_samples": 213
+          },
+          {
+            "model_key": "arpege",
+            "weight_pct": 11.4,
+            "training_mae": 1.212,
+            "training_bias": -0.628,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 7.8,
+            "training_mae": 1.462,
+            "training_bias": -1.365,
+            "training_samples": 213
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 92,
+          "mae": 0.754,
+          "bias": 0.378,
+          "rmse": 1.123
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 92,
+          "mae": 0.728,
+          "bias": -0.089,
+          "rmse": 1.074
+        },
+        "mae_improvement_pct": -3.6,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -17.2,
+          8.4
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      },
+      "2": {
+        "available": true,
+        "exact_common_cases": 342,
+        "train_cases": 239,
+        "validation_cases": 103,
+        "period_start": "2025-10-02",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "arpege",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 24.1,
+            "training_mae": 0.905,
+            "training_bias": -0.295,
+            "training_samples": 239
+          },
+          {
+            "model_key": "icon",
+            "weight_pct": 17.5,
+            "training_mae": 1.062,
+            "training_bias": -0.439,
+            "training_samples": 239
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 13.9,
+            "training_mae": 1.192,
+            "training_bias": -0.225,
+            "training_samples": 239
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 12.5,
+            "training_mae": 1.257,
+            "training_bias": -0.77,
+            "training_samples": 239
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 12.1,
+            "training_mae": 1.277,
+            "training_bias": -0.648,
+            "training_samples": 239
+          },
+          {
+            "model_key": "arpege",
+            "weight_pct": 11.5,
+            "training_mae": 1.31,
+            "training_bias": -0.467,
+            "training_samples": 239
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 8.6,
+            "training_mae": 1.516,
+            "training_bias": -1.354,
+            "training_samples": 239
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 103,
+          "mae": 0.834,
+          "bias": 0.462,
+          "rmse": 1.188
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 103,
+          "mae": 0.768,
+          "bias": -0.02,
+          "rmse": 1.128
+        },
+        "mae_improvement_pct": -8.6,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -23.4,
+          3.0
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      },
+      "3": {
+        "available": true,
+        "exact_common_cases": 305,
+        "train_cases": 213,
+        "validation_cases": 92,
+        "period_start": "2025-10-03",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "arpege",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 22.1,
+            "training_mae": 1.041,
+            "training_bias": -0.26,
+            "training_samples": 213
+          },
+          {
+            "model_key": "icon",
+            "weight_pct": 19.0,
+            "training_mae": 1.122,
+            "training_bias": -0.508,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 13.9,
+            "training_mae": 1.314,
+            "training_bias": -0.509,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 12.8,
+            "training_mae": 1.365,
+            "training_bias": -0.636,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 12.2,
+            "training_mae": 1.4,
+            "training_bias": -0.81,
+            "training_samples": 213
+          },
+          {
+            "model_key": "arpege",
+            "weight_pct": 10.9,
+            "training_mae": 1.48,
+            "training_bias": -0.596,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 9.1,
+            "training_mae": 1.618,
+            "training_bias": -1.509,
+            "training_samples": 213
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 92,
+          "mae": 1.053,
+          "bias": 0.624,
+          "rmse": 1.445
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 92,
+          "mae": 0.997,
+          "bias": 0.032,
+          "rmse": 1.38
+        },
+        "mae_improvement_pct": -5.6,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -18.4,
+          6.2
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      },
+      "5": {
+        "available": true,
+        "exact_common_cases": 284,
+        "train_cases": 198,
+        "validation_cases": 86,
+        "period_start": "2025-10-05",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 25.9,
+            "training_mae": 1.26,
+            "training_bias": -0.184,
+            "training_samples": 198
+          },
+          {
+            "model_key": "icon",
+            "weight_pct": 18.5,
+            "training_mae": 1.488,
+            "training_bias": -0.391,
+            "training_samples": 198
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 14.7,
+            "training_mae": 1.669,
+            "training_bias": -0.293,
+            "training_samples": 198
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 13.8,
+            "training_mae": 1.722,
+            "training_bias": -0.863,
+            "training_samples": 198
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 13.8,
+            "training_mae": 1.727,
+            "training_bias": -1.41,
+            "training_samples": 198
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 13.3,
+            "training_mae": 1.759,
+            "training_bias": -0.542,
+            "training_samples": 198
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 86,
+          "mae": 1.298,
+          "bias": 0.313,
+          "rmse": 1.719
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 86,
+          "mae": 1.308,
+          "bias": -0.283,
+          "rmse": 1.688
+        },
+        "mae_improvement_pct": 0.8,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -9.9,
+          10.9
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      },
+      "7": {
+        "available": true,
+        "exact_common_cases": 340,
+        "train_cases": 237,
+        "validation_cases": 103,
+        "period_start": "2025-10-07",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 29.6,
+            "training_mae": 1.965,
+            "training_bias": -1.333,
+            "training_samples": 237
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 25.9,
+            "training_mae": 2.099,
+            "training_bias": -0.501,
+            "training_samples": 237
+          },
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 24.1,
+            "training_mae": 2.178,
+            "training_bias": -1.129,
+            "training_samples": 237
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 20.4,
+            "training_mae": 2.366,
+            "training_bias": -0.811,
+            "training_samples": 237
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 103,
+          "mae": 2.047,
+          "bias": 1.041,
+          "rmse": 2.797
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 103,
+          "mae": 1.951,
+          "bias": 0.064,
+          "rmse": 2.7
+        },
+        "mae_improvement_pct": -4.9,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -14.9,
+          4.8
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      }
+    },
+    "tmin": {
+      "1": {
+        "available": true,
+        "exact_common_cases": 305,
+        "train_cases": 213,
+        "validation_cases": 92,
+        "period_start": "2025-10-01",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "arpege",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "icon",
+            "weight_pct": 22.8,
+            "training_mae": 0.984,
+            "training_bias": 0.641,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 20.9,
+            "training_mae": 1.027,
+            "training_bias": -0.572,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 20.2,
+            "training_mae": 1.044,
+            "training_bias": -0.489,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 15.5,
+            "training_mae": 1.193,
+            "training_bias": -0.476,
+            "training_samples": 213
+          },
+          {
+            "model_key": "arpege",
+            "weight_pct": 11.8,
+            "training_mae": 1.369,
+            "training_bias": -0.086,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 5.4,
+            "training_mae": 2.024,
+            "training_bias": -1.625,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 3.5,
+            "training_mae": 2.517,
+            "training_bias": -2.283,
+            "training_samples": 213
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 92,
+          "mae": 0.762,
+          "bias": 0.216,
+          "rmse": 0.968
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 92,
+          "mae": 0.883,
+          "bias": -0.493,
+          "rmse": 1.104
+        },
+        "mae_improvement_pct": 13.7,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -2.6,
+          28.1
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      },
+      "2": {
+        "available": true,
+        "exact_common_cases": 342,
+        "train_cases": 239,
+        "validation_cases": 103,
+        "period_start": "2025-10-02",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "arpege",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "icon",
+            "weight_pct": 23.8,
+            "training_mae": 1.043,
+            "training_bias": 0.591,
+            "training_samples": 239
+          },
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 20.5,
+            "training_mae": 1.124,
+            "training_bias": -0.573,
+            "training_samples": 239
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 18.3,
+            "training_mae": 1.192,
+            "training_bias": -0.712,
+            "training_samples": 239
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 16.7,
+            "training_mae": 1.245,
+            "training_bias": -0.592,
+            "training_samples": 239
+          },
+          {
+            "model_key": "arpege",
+            "weight_pct": 12.1,
+            "training_mae": 1.462,
+            "training_bias": 0.015,
+            "training_samples": 239
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 5.2,
+            "training_mae": 2.236,
+            "training_bias": -1.823,
+            "training_samples": 239
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 3.3,
+            "training_mae": 2.791,
+            "training_bias": -2.59,
+            "training_samples": 239
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 103,
+          "mae": 0.837,
+          "bias": 0.438,
+          "rmse": 1.087
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 103,
+          "mae": 0.893,
+          "bias": -0.404,
+          "rmse": 1.116
+        },
+        "mae_improvement_pct": 6.3,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -13.5,
+          21.8
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      },
+      "3": {
+        "available": true,
+        "exact_common_cases": 305,
+        "train_cases": 213,
+        "validation_cases": 92,
+        "period_start": "2025-10-03",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "arpege",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "icon",
+            "weight_pct": 22.8,
+            "training_mae": 1.142,
+            "training_bias": 0.549,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 20.3,
+            "training_mae": 1.211,
+            "training_bias": -0.531,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 18.6,
+            "training_mae": 1.266,
+            "training_bias": -0.611,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 16.8,
+            "training_mae": 1.33,
+            "training_bias": -0.68,
+            "training_samples": 213
+          },
+          {
+            "model_key": "arpege",
+            "weight_pct": 10.1,
+            "training_mae": 1.715,
+            "training_bias": -0.1,
+            "training_samples": 213
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 7.5,
+            "training_mae": 1.988,
+            "training_bias": -1.403,
+            "training_samples": 213
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 3.8,
+            "training_mae": 2.783,
+            "training_bias": -2.45,
+            "training_samples": 213
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 92,
+          "mae": 0.805,
+          "bias": 0.291,
+          "rmse": 1.023
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 92,
+          "mae": 0.816,
+          "bias": -0.442,
+          "rmse": 1.075
+        },
+        "mae_improvement_pct": 1.3,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -21.1,
+          18.5
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      },
+      "5": {
+        "available": true,
+        "exact_common_cases": 284,
+        "train_cases": 198,
+        "validation_cases": 86,
+        "period_start": "2025-10-05",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "icon",
+          "ukmo",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 21.3,
+            "training_mae": 1.668,
+            "training_bias": -0.896,
+            "training_samples": 198
+          },
+          {
+            "model_key": "icon",
+            "weight_pct": 20.9,
+            "training_mae": 1.682,
+            "training_bias": 0.101,
+            "training_samples": 198
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 20.6,
+            "training_mae": 1.697,
+            "training_bias": -0.95,
+            "training_samples": 198
+          },
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 20.1,
+            "training_mae": 1.716,
+            "training_bias": -0.86,
+            "training_samples": 198
+          },
+          {
+            "model_key": "ukmo",
+            "weight_pct": 10.7,
+            "training_mae": 2.348,
+            "training_bias": -1.627,
+            "training_samples": 198
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 6.4,
+            "training_mae": 3.041,
+            "training_bias": -2.445,
+            "training_samples": 198
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 86,
+          "mae": 1.057,
+          "bias": -0.275,
+          "rmse": 1.387
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 86,
+          "mae": 1.634,
+          "bias": -1.425,
+          "rmse": 2.01
+        },
+        "mae_improvement_pct": 35.3,
+        "mae_improvement_bootstrap_95pct_ci": [
+          24.7,
+          44.3
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": true
+      },
+      "7": {
+        "available": true,
+        "exact_common_cases": 340,
+        "train_cases": 237,
+        "validation_cases": 103,
+        "period_start": "2025-10-07",
+        "period_end": "2026-09-25",
+        "model_keys": [
+          "ecmwf_ifs",
+          "ecmwf_aifs",
+          "gfs",
+          "gem"
+        ],
+        "trained_weights": [
+          {
+            "model_key": "ecmwf_ifs",
+            "weight_pct": 33.3,
+            "training_mae": 1.997,
+            "training_bias": -0.853,
+            "training_samples": 237
+          },
+          {
+            "model_key": "ecmwf_aifs",
+            "weight_pct": 31.4,
+            "training_mae": 2.057,
+            "training_bias": -0.942,
+            "training_samples": 237
+          },
+          {
+            "model_key": "gfs",
+            "weight_pct": 24.8,
+            "training_mae": 2.315,
+            "training_bias": -1.439,
+            "training_samples": 237
+          },
+          {
+            "model_key": "gem",
+            "weight_pct": 10.5,
+            "training_mae": 3.557,
+            "training_bias": -3.026,
+            "training_samples": 237
+          }
+        ],
+        "candidate_metrics": {
+          "samples": 103,
+          "mae": 1.738,
+          "bias": 0.619,
+          "rmse": 2.301
+        },
+        "baseline_same_cases_metrics": {
+          "samples": 103,
+          "mae": 1.91,
+          "bias": -1.007,
+          "rmse": 2.435
+        },
+        "mae_improvement_pct": 9.0,
+        "mae_improvement_bootstrap_95pct_ci": [
+          -6.7,
+          23.3
+        ],
+        "review_threshold_improvement_pct": 2.0,
+        "eligible_for_review": false
+      }
+    }
+  },
+  "note_precipitation": "Precipitação fica fora deste candidato; será tratada como ocorrência probabilística + quantidade condicional."
+}
