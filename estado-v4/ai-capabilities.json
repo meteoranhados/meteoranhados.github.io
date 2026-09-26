@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-09-26T08:39:38+00:00",
+  "database": {
+    "path": "/meteo-ai/meteo.db",
+    "persistent_mount_active": true,
+    "warning": null
+  },
+  "gpu": {
+    "render_device_visible_in_container": false,
+    "card_device_visible_in_container": false,
+    "recommended_future_device": "/dev/dri/renderD128",
+    "note": "O host pode ter GPU disponível mesmo que o container ainda não tenha /dev/dri montado."
+  },
+  "ml": {
+    "status": "not_installed_yet",
+    "phase": "data_foundation",
+    "next": "Dataset auditável -> baseline -> candidate ML -> chronological validation -> manual promotion."
+  }
+}
