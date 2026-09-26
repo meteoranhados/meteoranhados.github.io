@@ -1,17 +1,17 @@
 {
-  "generated_utc": "2026-09-26T13:01:36+00:00",
+  "generated_utc": "2026-09-26T13:03:39+00:00",
   "status": "normal",
   "health_score": 100,
   "station": {
-    "temperature": 25.2,
+    "temperature": 25.5,
     "humidity": 35.0,
-    "dewpoint": 8.7,
-    "pressure": 1021.9,
-    "wind_avg": 4.0,
-    "wind_gust": 11.0,
+    "dewpoint": 8.9,
+    "pressure": 1022.0,
+    "wind_avg": 3.0,
+    "wind_gust": 9.0,
     "rain_rate": 0.0,
     "rain_today": 0.0,
-    "solar": 595.0,
+    "solar": 589.0,
     "uv": 5.0,
     "alarms": {
       "DataStopped": false,
@@ -31,17 +31,17 @@
   },
   "external_temperature_context": {
     "ipma_median_temperature_c": 21.5,
-    "difference_c": 3.7,
+    "difference_c": 4.0,
     "stations": 6
   },
   "issues": [],
   "rules_version": "sentinel-alpha2",
   "interpretation": "O Sentinel sinaliza incoerências e contexto; não declara avaria apenas por divergência face ao IPMA.",
-  "version": "4.0.0-alpha2",
+  "version": "4.0.0-alpha3",
   "source_context": {
     "local": "Cumulus MX",
     "external": "IPMA observações de superfície",
-    "ipma_cached": true,
+    "ipma_cached": false,
     "ipma_error": null,
     "nearby_station_count": 6
   },
@@ -220,9 +220,9 @@
     "persistent_mount_active": true,
     "warning": null,
     "rows": {
-      "local_observations": 267,
+      "local_observations": 269,
       "ipma_observations": 14,
-      "forecast_daily": 1260,
+      "forecast_daily": 1386,
       "sentinel_events": 0
     },
     "forecast_rows_written_this_refresh": 126,

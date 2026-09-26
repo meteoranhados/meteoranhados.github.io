@@ -1,0 +1,290 @@
+{
+  "generated_utc": "2026-09-26T13:03:39+00:00",
+  "schema": "supervisor-v4-alpha3",
+  "recommendations": [
+    {
+      "id": "bias-ecmwf_aifs-tmax-d1",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
+      "text": "tmax D+1: viés negativo de 1.35 °C em 366 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ecmwf_aifs",
+        "model": "ECMWF AIFS 0,25°",
+        "lead_days": 1,
+        "variable": "tmax",
+        "bias": -1.351,
+        "samples": 366
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ecmwf_aifs-tmax-d2",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
+      "text": "tmax D+2: viés negativo de 1.41 °C em 366 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ecmwf_aifs",
+        "model": "ECMWF AIFS 0,25°",
+        "lead_days": 2,
+        "variable": "tmax",
+        "bias": -1.405,
+        "samples": 366
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ecmwf_aifs-tmax-d3",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
+      "text": "tmax D+3: viés negativo de 1.45 °C em 366 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ecmwf_aifs",
+        "model": "ECMWF AIFS 0,25°",
+        "lead_days": 3,
+        "variable": "tmax",
+        "bias": -1.453,
+        "samples": 366
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ecmwf_aifs-tmax-d5",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
+      "text": "tmax D+5: viés negativo de 1.36 °C em 352 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ecmwf_aifs",
+        "model": "ECMWF AIFS 0,25°",
+        "lead_days": 5,
+        "variable": "tmax",
+        "bias": -1.358,
+        "samples": 352
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ecmwf_aifs-tmax-d7",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
+      "text": "tmax D+7: viés negativo de 1.35 °C em 352 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ecmwf_aifs",
+        "model": "ECMWF AIFS 0,25°",
+        "lead_days": 7,
+        "variable": "tmax",
+        "bias": -1.355,
+        "samples": 352
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ukmo-tmin-d1",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — UKMO Global 10 km",
+      "text": "tmin D+1: viés negativo de 1.94 °C em 332 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ukmo",
+        "model": "UKMO Global 10 km",
+        "lead_days": 1,
+        "variable": "tmin",
+        "bias": -1.935,
+        "samples": 332
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-gem-tmin-d1",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — CMC GEM",
+      "text": "tmin D+1: viés negativo de 2.53 °C em 361 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "gem",
+        "model": "CMC GEM",
+        "lead_days": 1,
+        "variable": "tmin",
+        "bias": -2.528,
+        "samples": 361
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ukmo-tmin-d2",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — UKMO Global 10 km",
+      "text": "tmin D+2: viés negativo de 2.10 °C em 366 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ukmo",
+        "model": "UKMO Global 10 km",
+        "lead_days": 2,
+        "variable": "tmin",
+        "bias": -2.102,
+        "samples": 366
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-gem-tmin-d2",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — CMC GEM",
+      "text": "tmin D+2: viés negativo de 2.66 °C em 366 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "gem",
+        "model": "CMC GEM",
+        "lead_days": 2,
+        "variable": "tmin",
+        "bias": -2.657,
+        "samples": 366
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ukmo-tmin-d3",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — UKMO Global 10 km",
+      "text": "tmin D+3: viés negativo de 1.84 °C em 331 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ukmo",
+        "model": "UKMO Global 10 km",
+        "lead_days": 3,
+        "variable": "tmin",
+        "bias": -1.836,
+        "samples": 331
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-gem-tmin-d3",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — CMC GEM",
+      "text": "tmin D+3: viés negativo de 2.67 °C em 361 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "gem",
+        "model": "CMC GEM",
+        "lead_days": 3,
+        "variable": "tmin",
+        "bias": -2.667,
+        "samples": 361
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "bias-ukmo-tmin-d5",
+      "category": "model-supervision",
+      "level": "review",
+      "title": "Viés persistente a investigar — UKMO Global 10 km",
+      "text": "tmin D+5: viés negativo de 2.17 °C em 313 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "evidence": {
+        "model_key": "ukmo",
+        "model": "UKMO Global 10 km",
+        "lead_days": 5,
+        "variable": "tmin",
+        "bias": -2.173,
+        "samples": 313
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "database-persistence",
+      "category": "infrastructure",
+      "level": "ok",
+      "title": "Arquivo persistente ativo",
+      "text": "A base SQLite está em armazenamento persistente e pode acumular observações/previsões para treino e auditoria.",
+      "evidence": {
+        "database": {
+          "path": "/meteo-ai/meteo.db",
+          "persistent_mount_active": true,
+          "warning": null,
+          "rows": {
+            "local_observations": 269,
+            "ipma_observations": 14,
+            "forecast_daily": 1386,
+            "sentinel_events": 0
+          },
+          "forecast_rows_written_this_refresh": 126,
+          "ipma_rows_written_this_refresh": 6
+        }
+      },
+      "targets": [
+        "estado"
+      ]
+    },
+    {
+      "id": "ipma-coverage",
+      "category": "data-quality",
+      "level": "ok",
+      "title": "Referência IPMA disponível",
+      "text": "6 estações IPMA próximas podem servir como contexto externo, sem serem tratadas como verdade local absoluta.",
+      "evidence": {
+        "nearby_station_count": 6
+      },
+      "targets": [
+        "estado"
+      ]
+    },
+    {
+      "id": "ml-readiness",
+      "category": "ml",
+      "level": "candidate",
+      "title": "Já existem combinações elegíveis para experiências ML",
+      "text": "15 de 15 combinações variável/horizonte atingem o limiar experimental. O próximo passo é treinar candidatos com validação cronológica, sem os promover automaticamente.",
+      "evidence": {
+        "readiness": 15,
+        "total": 15
+      },
+      "targets": [
+        "observatorio"
+      ]
+    },
+    {
+      "id": "gpu-container",
+      "category": "vision",
+      "level": "future",
+      "title": "GPU do host ainda não exposta ao container",
+      "text": "Isto não afeta previsão, SQLite ou Sentinel. Será necessário apenas quando avançarmos para Camera AI/OpenVINO.",
+      "evidence": {
+        "recommended_device": "/dev/dri/renderD128"
+      },
+      "targets": [
+        "estado"
+      ]
+    }
+  ],
+  "automatic_code_changes": false,
+  "automatic_model_promotion": false,
+  "workflow": "sugestão -> teste/backtest -> relatório -> aprovação -> produção"
+}

@@ -1,7 +1,7 @@
 {
   "api_version": "v1",
-  "engine_version": "4.0.0-alpha2",
-  "generated_utc": "2026-09-26T13:01:36+00:00",
+  "engine_version": "4.0.0-alpha3",
+  "generated_utc": "2026-09-26T13:03:39+00:00",
   "station": "Estação Meteorológica de Ranhados · Mêda",
   "format": "JSON UTF-8",
   "endpoints": [
@@ -159,6 +159,24 @@
       "name": "ai-capabilities",
       "path": "/api/v1/ai-capabilities.json",
       "description": "Capacidades locais para base de dados, ML e GPU",
+      "available": true
+    },
+    {
+      "name": "analysis-v4",
+      "path": "/api/v1/analysis-v4.json",
+      "description": "Análise transversal baseada nos dados validados do site",
+      "available": true
+    },
+    {
+      "name": "supervisor-v4",
+      "path": "/api/v1/supervisor-v4.json",
+      "description": "Sugestões auditáveis do supervisor para modelos, dados e infraestrutura",
+      "available": true
+    },
+    {
+      "name": "training-readiness-v4",
+      "path": "/api/v1/training-readiness-v4.json",
+      "description": "Prontidão do dataset para experiências de Consensus ML",
       "available": true
     },
     {
