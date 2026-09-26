@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-26T14:35:26+00:00",
+  "generated_utc": "2026-09-26T14:45:30+00:00",
   "schema": "supervisor-v4-alpha4",
   "recommendations": [
     {
@@ -221,18 +221,18 @@
     {
       "id": "database-persistence",
       "category": "infrastructure",
-      "level": "ok",
-      "title": "Arquivo persistente ativo",
-      "text": "A base SQLite está em armazenamento persistente e pode acumular observações/previsões para treino e auditoria.",
+      "level": "action",
+      "title": "Ativar persistência da base de IA",
+      "text": "A base está a usar armazenamento temporário. Montar /DATA/AppData/meteo-ranhados-ai em /meteo-ai antes de usar o arquivo para aprendizagem.",
       "evidence": {
         "database": {
-          "path": "/meteo-ai/meteo.db",
-          "persistent_mount_active": true,
-          "warning": null,
+          "path": "/tmp/meteo-ranhados-ai/meteo.db",
+          "persistent_mount_active": false,
+          "warning": "FileNotFoundError: [Errno 2] No such file or directory: '/meteo-ai/.write-test'",
           "rows": {
-            "local_observations": 360,
-            "ipma_observations": 22,
-            "forecast_daily": 1890,
+            "local_observations": 4,
+            "ipma_observations": 6,
+            "forecast_daily": 126,
             "sentinel_events": 0
           },
           "forecast_rows_written_this_refresh": 126,
