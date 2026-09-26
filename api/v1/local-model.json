@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20260925-718",
   "version": "3.0.6",
-  "generated_utc": "2026-09-26T05:34:14+00:00",
+  "generated_utc": "2026-09-26T06:04:29+00:00",
   "trained_through": "2026-09-25",
   "training_samples_by_lead": {
     "1": 718,
@@ -88630,21 +88630,21 @@
         ]
       },
       "tmin": {
-        "value": 16.62,
+        "value": 16.64,
         "interval80": [
-          15.1,
-          18.14
+          15.12,
+          18.16
         ],
         "empirical_mae": 0.97,
-        "model_spread": 0.63,
+        "model_spread": 0.53,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 17.2,
+            "raw": 17.3,
             "bias": 0.953,
-            "corrected": 16.25,
+            "corrected": 16.35,
             "mae_context": 1.18,
             "n": 115,
             "context_bucket": "season_rain:SON|dry"
@@ -145210,5 +145210,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-09-26T05:34:14+00:00"
+  "forecast_updated_utc": "2026-09-26T06:04:29+00:00"
 }
