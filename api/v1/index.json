@@ -1,7 +1,7 @@
 {
   "api_version": "v1",
-  "engine_version": "4.0.0-alpha1",
-  "generated_utc": "2026-09-26T08:38:15+00:00",
+  "engine_version": "4.0.0-alpha2",
+  "generated_utc": "2026-09-26T08:40:03+00:00",
   "station": "Estação Meteorológica de Ranhados · Mêda",
   "format": "JSON UTF-8",
   "endpoints": [
@@ -141,6 +141,24 @@
       "name": "forecast-skill-v4",
       "path": "/api/v1/forecast-skill-v4.json",
       "description": "Verificação experimental multi-modelo v4 por horizonte",
+      "available": true
+    },
+    {
+      "name": "sentinel",
+      "path": "/api/v1/sentinel.json",
+      "description": "Sentinel v4: saúde dos sensores e contexto IPMA",
+      "available": true
+    },
+    {
+      "name": "sentinel-history",
+      "path": "/api/v1/sentinel-history.json",
+      "description": "Histórico recente dos sinais do Sentinel",
+      "available": true
+    },
+    {
+      "name": "ai-capabilities",
+      "path": "/api/v1/ai-capabilities.json",
+      "description": "Capacidades locais para base de dados, ML e GPU",
       "available": true
     },
     {
