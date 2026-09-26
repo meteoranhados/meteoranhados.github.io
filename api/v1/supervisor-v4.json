@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-26T22:59:21+00:00",
+  "generated_utc": "2026-09-26T23:10:35+00:00",
   "schema": "supervisor-v4-alpha4",
   "recommendations": [
     {
@@ -13,7 +13,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 1,
         "variable": "tmax",
-        "bias": -1.351,
+        "bias": -1.352,
         "samples": 366
       },
       "targets": [
@@ -25,13 +25,13 @@
       "category": "model-supervision",
       "level": "review",
       "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
-      "text": "tmax D+2: viés negativo de 1.41 °C em 366 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "text": "tmax D+2: viés negativo de 1.40 °C em 366 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
       "evidence": {
         "model_key": "ecmwf_aifs",
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 2,
         "variable": "tmax",
-        "bias": -1.405,
+        "bias": -1.403,
         "samples": 366
       },
       "targets": [
@@ -49,7 +49,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 3,
         "variable": "tmax",
-        "bias": -1.453,
+        "bias": -1.451,
         "samples": 366
       },
       "targets": [
@@ -61,13 +61,13 @@
       "category": "model-supervision",
       "level": "review",
       "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
-      "text": "tmax D+5: viés negativo de 1.36 °C em 352 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "text": "tmax D+5: viés negativo de 1.35 °C em 352 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
       "evidence": {
         "model_key": "ecmwf_aifs",
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 5,
         "variable": "tmax",
-        "bias": -1.358,
+        "bias": -1.353,
         "samples": 352
       },
       "targets": [
@@ -79,13 +79,13 @@
       "category": "model-supervision",
       "level": "review",
       "title": "Viés persistente a investigar — ECMWF AIFS 0,25°",
-      "text": "tmax D+7: viés negativo de 1.35 °C em 352 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "text": "tmax D+7: viés negativo de 1.36 °C em 352 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
       "evidence": {
         "model_key": "ecmwf_aifs",
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 7,
         "variable": "tmax",
-        "bias": -1.355,
+        "bias": -1.356,
         "samples": 352
       },
       "targets": [
@@ -115,13 +115,13 @@
       "category": "model-supervision",
       "level": "review",
       "title": "Viés persistente a investigar — CMC GEM",
-      "text": "tmin D+1: viés negativo de 2.53 °C em 361 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "text": "tmin D+1: viés negativo de 2.52 °C em 361 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
       "evidence": {
         "model_key": "gem",
         "model": "CMC GEM",
         "lead_days": 1,
         "variable": "tmin",
-        "bias": -2.528,
+        "bias": -2.524,
         "samples": 361
       },
       "targets": [
@@ -139,7 +139,7 @@
         "model": "UKMO Global 10 km",
         "lead_days": 2,
         "variable": "tmin",
-        "bias": -2.102,
+        "bias": -2.104,
         "samples": 366
       },
       "targets": [
@@ -157,7 +157,7 @@
         "model": "CMC GEM",
         "lead_days": 2,
         "variable": "tmin",
-        "bias": -2.657,
+        "bias": -2.656,
         "samples": 366
       },
       "targets": [
@@ -169,13 +169,13 @@
       "category": "model-supervision",
       "level": "review",
       "title": "Viés persistente a investigar — UKMO Global 10 km",
-      "text": "tmin D+3: viés negativo de 1.84 °C em 331 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "text": "tmin D+3: viés negativo de 1.83 °C em 331 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
       "evidence": {
         "model_key": "ukmo",
         "model": "UKMO Global 10 km",
         "lead_days": 3,
         "variable": "tmin",
-        "bias": -1.836,
+        "bias": -1.833,
         "samples": 331
       },
       "targets": [
@@ -187,13 +187,13 @@
       "category": "model-supervision",
       "level": "review",
       "title": "Viés persistente a investigar — CMC GEM",
-      "text": "tmin D+3: viés negativo de 2.67 °C em 361 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "text": "tmin D+3: viés negativo de 2.66 °C em 361 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
       "evidence": {
         "model_key": "gem",
         "model": "CMC GEM",
         "lead_days": 3,
         "variable": "tmin",
-        "bias": -2.667,
+        "bias": -2.662,
         "samples": 361
       },
       "targets": [
@@ -205,13 +205,13 @@
       "category": "model-supervision",
       "level": "review",
       "title": "Viés persistente a investigar — UKMO Global 10 km",
-      "text": "tmin D+5: viés negativo de 2.17 °C em 313 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
+      "text": "tmin D+5: viés negativo de 2.18 °C em 313 casos. Pode justificar uma variável/correção específica no futuro modelo candidato.",
       "evidence": {
         "model_key": "ukmo",
         "model": "UKMO Global 10 km",
         "lead_days": 5,
         "variable": "tmin",
-        "bias": -2.173,
+        "bias": -2.176,
         "samples": 313
       },
       "targets": [
@@ -230,9 +230,9 @@
           "persistent_mount_active": false,
           "warning": "FileNotFoundError: [Errno 2] No such file or directory: '/meteo-ai/.write-test'",
           "rows": {
-            "local_observations": 509,
+            "local_observations": 519,
             "ipma_observations": 54,
-            "forecast_daily": 2268,
+            "forecast_daily": 2394,
             "sentinel_events": 0
           },
           "forecast_rows_written_this_refresh": 126,
@@ -275,11 +275,11 @@
       "category": "ml",
       "level": "review",
       "title": "Ponderação por skill não melhora tmax D+1",
-      "text": "No holdout cronológico, o candidato piora o MAE em 3.6% face à mediana. Não usar esta combinação como produção.",
+      "text": "No holdout cronológico, o candidato piora o MAE em 2.0% face à mediana. Não usar esta combinação como produção.",
       "evidence": {
         "variable": "tmax",
         "lead_days": 1,
-        "improvement_pct": -3.6,
+        "improvement_pct": -2.0,
         "validation_cases": 92
       },
       "targets": [
@@ -291,11 +291,11 @@
       "category": "ml",
       "level": "review",
       "title": "Ponderação por skill não melhora tmax D+2",
-      "text": "No holdout cronológico, o candidato piora o MAE em 8.6% face à mediana. Não usar esta combinação como produção.",
+      "text": "No holdout cronológico, o candidato piora o MAE em 8.2% face à mediana. Não usar esta combinação como produção.",
       "evidence": {
         "variable": "tmax",
         "lead_days": 2,
-        "improvement_pct": -8.6,
+        "improvement_pct": -8.2,
         "validation_cases": 103
       },
       "targets": [
@@ -307,11 +307,11 @@
       "category": "ml",
       "level": "review",
       "title": "Ponderação por skill não melhora tmax D+3",
-      "text": "No holdout cronológico, o candidato piora o MAE em 5.6% face à mediana. Não usar esta combinação como produção.",
+      "text": "No holdout cronológico, o candidato piora o MAE em 6.8% face à mediana. Não usar esta combinação como produção.",
       "evidence": {
         "variable": "tmax",
         "lead_days": 3,
-        "improvement_pct": -5.6,
+        "improvement_pct": -6.8,
         "validation_cases": 92
       },
       "targets": [
@@ -323,11 +323,11 @@
       "category": "ml",
       "level": "review",
       "title": "Ponderação por skill não melhora tmax D+7",
-      "text": "No holdout cronológico, o candidato piora o MAE em 4.9% face à mediana. Não usar esta combinação como produção.",
+      "text": "No holdout cronológico, o candidato piora o MAE em 5.2% face à mediana. Não usar esta combinação como produção.",
       "evidence": {
         "variable": "tmax",
         "lead_days": 7,
-        "improvement_pct": -4.9,
+        "improvement_pct": -5.2,
         "validation_cases": 103
       },
       "targets": [
@@ -339,14 +339,14 @@
       "category": "ml",
       "level": "candidate",
       "title": "Consensus Skill candidato melhora tmin D+5",
-      "text": "No holdout cronológico, a correção de viés + ponderação por skill melhora o MAE em 35.3% face à mediana nos mesmos casos. IC bootstrap 95% da melhoria: 24.7% a 44.3% quando disponível. É apenas candidato estatístico; requer validação adicional antes de qualquer uso público.",
+      "text": "No holdout cronológico, a correção de viés + ponderação por skill melhora o MAE em 36.3% face à mediana nos mesmos casos. IC bootstrap 95% da melhoria: 26.9% a 45.3% quando disponível. É apenas candidato estatístico; requer validação adicional antes de qualquer uso público.",
       "evidence": {
         "variable": "tmin",
         "lead_days": 5,
-        "improvement_pct": 35.3,
+        "improvement_pct": 36.3,
         "improvement_ci_95pct": [
-          24.7,
-          44.3
+          26.9,
+          45.3
         ],
         "validation_cases": 86,
         "models": [

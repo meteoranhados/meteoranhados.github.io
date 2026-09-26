@@ -1,36 +1,19 @@
 {
-  "generated_utc": "2026-09-26T22:59:21+00:00",
+  "generated_utc": "2026-09-26T23:10:35+00:00",
   "schema": "analysis-v4-alpha4",
   "mode": "evidence_first_deterministic",
-  "last_closed_day": "2026-09-25",
+  "last_closed_day": "2026-09-26",
   "current_available": true,
   "findings": [
-    {
-      "id": "heat-sequence",
-      "category": "climate",
-      "level": "important",
-      "title": "Onda de calor ativa",
-      "text": "6 dias consecutivos qualificativos.",
-      "evidence": {
-        "start": "2026-09-20",
-        "last_date": "2026-09-25",
-        "streak": 6,
-        "days_needed": 0
-      },
-      "targets": [
-        "climatologia",
-        "agora"
-      ]
-    },
     {
       "id": "month-temperature",
       "category": "climate",
       "level": "notable",
       "title": "Temperatura do mês em contexto",
-      "text": "Até ao último dia fechado, a temperatura média do mês está 4.76 °C acima da normal do mesmo período.",
+      "text": "Até ao último dia fechado, a temperatura média do mês está 4.68 °C acima da normal do mesmo período.",
       "evidence": {
-        "anomaly_tmean_c": 4.76,
-        "last_closed_day": "2026-09-25",
+        "anomaly_tmean_c": 4.68,
+        "last_closed_day": "2026-09-26",
         "coverage_pct": 100.0
       },
       "targets": [
@@ -45,28 +28,11 @@
       "title": "Precipitação do mês",
       "text": "A precipitação acumulada no mês corresponde a 12% da normal do mesmo período.",
       "evidence": {
-        "precip_pct_normal": 12.4,
+        "precip_pct_normal": 11.9,
         "precip_mm": 3.3
       },
       "targets": [
         "climatologia"
-      ]
-    },
-    {
-      "id": "forecast-agreement-d1",
-      "category": "forecast",
-      "level": "notable",
-      "title": "Concordância dos modelos para o próximo dia",
-      "text": "A amplitude entre modelos para a Tmax é 3.6 °C; acordo classificado como baixo.",
-      "evidence": {
-        "date": "2026-09-26",
-        "spread_c": 3.6,
-        "agreement": "baixo",
-        "models_available": 7
-      },
-      "targets": [
-        "previsao",
-        "observatorio"
       ]
     },
     {
@@ -77,15 +43,10 @@
       "text": "A maior alteração da Tmax do Consensus face à referência de ~14 h é -5.0 °C para 2026-10-08.",
       "evidence": {
         "comparison": {
-          "reference_hours": 14.2,
+          "reference_hours": 14.3,
           "old_issued_utc": "2026-09-26T08:41:34+00:00",
-          "latest_issued_utc": "2026-09-26T22:54:18+00:00",
+          "latest_issued_utc": "2026-09-26T23:00:53+00:00",
           "days": [
-            {
-              "date": "2026-09-26",
-              "tmax_change_c": 0.0,
-              "precip_change_mm": 0.0
-            },
             {
               "date": "2026-09-27",
               "tmax_change_c": -0.6,
@@ -181,15 +142,10 @@
       "text": "A maior alteração da mediana de precipitação é -6.5 mm para 2026-10-05.",
       "evidence": {
         "comparison": {
-          "reference_hours": 14.2,
+          "reference_hours": 14.3,
           "old_issued_utc": "2026-09-26T08:41:34+00:00",
-          "latest_issued_utc": "2026-09-26T22:54:18+00:00",
+          "latest_issued_utc": "2026-09-26T23:00:53+00:00",
           "days": [
-            {
-              "date": "2026-09-26",
-              "tmax_change_c": 0.0,
-              "precip_change_mm": 0.0
-            },
             {
               "date": "2026-09-27",
               "tmax_change_c": -0.6,
@@ -278,13 +234,30 @@
       ]
     },
     {
+      "id": "forecast-agreement-d1",
+      "category": "forecast",
+      "level": "info",
+      "title": "Concordância dos modelos para o próximo dia",
+      "text": "A amplitude entre modelos para a Tmax é 2.3 °C; acordo classificado como moderado.",
+      "evidence": {
+        "date": "2026-09-27",
+        "spread_c": 2.3,
+        "agreement": "moderado",
+        "models_available": 7
+      },
+      "targets": [
+        "previsao",
+        "observatorio"
+      ]
+    },
+    {
       "id": "forecast-rain-vote-d1",
       "category": "forecast",
       "level": "info",
       "title": "Convergência sobre precipitação",
       "text": "0% dos modelos independentes indicam pelo menos 1 mm no próximo dia.",
       "evidence": {
-        "date": "2026-09-26",
+        "date": "2026-09-27",
         "wet_model_vote_pct": 0.0,
         "note": "Percentagem dos modelos com valor de precipitação disponível e >=1 mm; não é uma probabilidade calibrada."
       },
@@ -297,14 +270,14 @@
       "category": "verification",
       "level": "info",
       "title": "Menor MAE observado em tmax D+1",
-      "text": "Ranhados Consensus Base apresenta MAE 0.83 °C em 366 casos elegíveis nesta janela.",
+      "text": "Ranhados Consensus Base apresenta MAE 0.82 °C em 366 casos elegíveis nesta janela.",
       "evidence": {
         "variable": "tmax",
         "lead_days": 1,
         "key": "consensus_base",
         "label": "Ranhados Consensus Base",
-        "mae": 0.827,
-        "bias": -0.418,
+        "mae": 0.824,
+        "bias": -0.415,
         "samples": 366,
         "warning": "A comparação depende da cobertura; consultar número de casos e período comum."
       },
@@ -324,7 +297,7 @@
         "key": "consensus_base",
         "label": "Ranhados Consensus Base",
         "mae": 0.996,
-        "bias": -0.582,
+        "bias": -0.578,
         "samples": 366,
         "warning": "A comparação depende da cobertura; consultar número de casos e período comum."
       },
@@ -368,15 +341,10 @@
     }
   ],
   "forecast_change": {
-    "reference_hours": 14.2,
+    "reference_hours": 14.3,
     "old_issued_utc": "2026-09-26T08:41:34+00:00",
-    "latest_issued_utc": "2026-09-26T22:54:18+00:00",
+    "latest_issued_utc": "2026-09-26T23:00:53+00:00",
     "days": [
-      {
-        "date": "2026-09-26",
-        "tmax_change_c": 0.0,
-        "precip_change_mm": 0.0
-      },
       {
         "date": "2026-09-27",
         "tmax_change_c": -0.6,
@@ -463,58 +431,58 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 0.827,
-            "bias": -0.418,
+            "mae": 0.824,
+            "bias": -0.415,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 0.827,
-              "bias": -0.418,
+              "mae": 0.824,
+              "bias": -0.415,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
               "mae": 0.863,
-              "bias": -0.304,
-              "samples": 344
+              "bias": -0.306,
+              "samples": 345
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 0.893,
-              "bias": -0.342,
+              "mae": 0.889,
+              "bias": -0.339,
               "samples": 366
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 0.893,
-              "bias": -0.342,
+              "mae": 0.889,
+              "bias": -0.339,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 1.043,
+              "mae": 1.044,
               "bias": -0.036,
               "samples": 332
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.102,
-              "bias": -0.416,
+              "mae": 1.103,
+              "bias": -0.409,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.117,
-              "bias": -0.171,
+              "mae": 1.112,
+              "bias": -0.16,
               "samples": 366
             },
             {
@@ -527,8 +495,8 @@
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.515,
-              "bias": -1.351,
+              "mae": 1.516,
+              "bias": -1.352,
               "samples": 366
             }
           ]
@@ -538,72 +506,72 @@
           "lowest_mae": {
             "key": "ecmwf_ifs",
             "label": "ECMWF IFS HRES 9 km",
-            "mae": 0.879,
-            "bias": -0.259,
-            "samples": 342
+            "mae": 0.878,
+            "bias": -0.256,
+            "samples": 343
           },
           "ranking": [
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 0.879,
-              "bias": -0.259,
-              "samples": 342
+              "mae": 0.878,
+              "bias": -0.256,
+              "samples": 343
             },
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 0.907,
-              "bias": -0.404,
+              "mae": 0.903,
+              "bias": -0.396,
               "samples": 366
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 1.028,
-              "bias": -0.327,
+              "mae": 1.026,
+              "bias": -0.321,
               "samples": 366
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 1.028,
-              "bias": -0.327,
+              "mae": 1.026,
+              "bias": -0.321,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
               "mae": 1.181,
-              "bias": -0.046,
+              "bias": -0.045,
               "samples": 366
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.189,
-              "bias": -0.39,
+              "mae": 1.188,
+              "bias": -0.385,
               "samples": 366
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 1.242,
-              "bias": -0.614,
+              "mae": 1.238,
+              "bias": -0.61,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.299,
-              "bias": -0.05,
+              "mae": 1.294,
+              "bias": -0.04,
               "samples": 363
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.625,
-              "bias": -1.405,
+              "mae": 1.623,
+              "bias": -1.403,
               "samples": 366
             }
           ]
@@ -613,72 +581,72 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 1.037,
-            "bias": -0.424,
+            "mae": 1.033,
+            "bias": -0.416,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 1.037,
-              "bias": -0.424,
+              "mae": 1.033,
+              "bias": -0.416,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 1.047,
-              "bias": -0.168,
-              "samples": 340
+              "mae": 1.046,
+              "bias": -0.165,
+              "samples": 341
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 1.113,
-              "bias": -0.307,
+              "mae": 1.114,
+              "bias": -0.299,
               "samples": 366
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 1.113,
-              "bias": -0.307,
+              "mae": 1.114,
+              "bias": -0.299,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 1.327,
-              "bias": -0.273,
+              "mae": 1.324,
+              "bias": -0.27,
               "samples": 331
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 1.368,
-              "bias": -0.536,
+              "mae": 1.364,
+              "bias": -0.53,
               "samples": 361
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.396,
-              "bias": -0.264,
+              "mae": 1.4,
+              "bias": -0.258,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.434,
-              "bias": 0.049,
+              "mae": 1.43,
+              "bias": 0.061,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.692,
-              "bias": -1.453,
+              "mae": 1.69,
+              "bias": -1.451,
               "samples": 366
             }
           ]
@@ -688,65 +656,65 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 1.345,
-            "bias": -0.472,
+            "mae": 1.341,
+            "bias": -0.467,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 1.345,
-              "bias": -0.472,
+              "mae": 1.341,
+              "bias": -0.467,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 1.386,
-              "bias": -0.157,
-              "samples": 336
+              "mae": 1.387,
+              "bias": -0.152,
+              "samples": 337
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 1.651,
-              "bias": -0.495,
+              "mae": 1.654,
+              "bias": -0.483,
               "samples": 362
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 1.656,
-              "bias": -0.497,
+              "mae": 1.659,
+              "bias": -0.485,
               "samples": 366
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 1.669,
-              "bias": -0.593,
+              "mae": 1.663,
+              "bias": -0.587,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 1.719,
-              "bias": -0.047,
+              "mae": 1.722,
+              "bias": -0.05,
               "samples": 313
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
               "mae": 1.797,
-              "bias": -0.094,
+              "bias": -0.087,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.834,
-              "bias": -1.358,
+              "mae": 1.829,
+              "bias": -1.353,
               "samples": 352
             }
           ]
@@ -756,51 +724,51 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 1.9,
-            "bias": -0.628,
+            "mae": 1.894,
+            "bias": -0.621,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 1.9,
-              "bias": -0.628,
+              "mae": 1.894,
+              "bias": -0.621,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 2.115,
-              "bias": -1.355,
+              "mae": 2.116,
+              "bias": -1.356,
               "samples": 352
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 2.217,
-              "bias": -0.794,
+              "mae": 2.213,
+              "bias": -0.791,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 2.229,
-              "bias": -0.823,
-              "samples": 354
+              "mae": 2.225,
+              "bias": -0.824,
+              "samples": 355
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 2.313,
-              "bias": 0.25,
+              "mae": 2.312,
+              "bias": 0.261,
               "samples": 366
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 2.35,
-              "bias": -0.504,
+              "mae": 2.347,
+              "bias": -0.495,
               "samples": 366
             }
           ]
@@ -813,7 +781,7 @@
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
             "mae": 0.996,
-            "bias": -0.582,
+            "bias": -0.578,
             "samples": 366
           },
           "ranking": [
@@ -821,15 +789,15 @@
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
               "mae": 0.996,
-              "bias": -0.582,
+              "bias": -0.578,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 1.014,
-              "bias": -0.329,
-              "samples": 344
+              "mae": 1.015,
+              "bias": -0.324,
+              "samples": 345
             },
             {
               "key": "best_match",
@@ -848,22 +816,22 @@
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.102,
-              "bias": -0.69,
+              "mae": 1.104,
+              "bias": -0.687,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.305,
-              "bias": -0.784,
+              "mae": 1.308,
+              "bias": -0.787,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.597,
-              "bias": 0.642,
+              "mae": 1.605,
+              "bias": 0.65,
               "samples": 366
             },
             {
@@ -876,8 +844,8 @@
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 2.682,
-              "bias": -2.528,
+              "mae": 2.678,
+              "bias": -2.524,
               "samples": 361
             }
           ]
@@ -887,72 +855,72 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 1.057,
-            "bias": -0.608,
+            "mae": 1.058,
+            "bias": -0.604,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 1.057,
-              "bias": -0.608,
+              "mae": 1.058,
+              "bias": -0.604,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 1.073,
-              "bias": -0.331,
-              "samples": 342
+              "mae": 1.075,
+              "bias": -0.324,
+              "samples": 343
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 1.084,
-              "bias": 0.677,
+              "mae": 1.082,
+              "bias": 0.675,
               "samples": 366
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 1.084,
-              "bias": 0.677,
+              "mae": 1.082,
+              "bias": 0.675,
               "samples": 366
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.207,
-              "bias": -0.666,
+              "mae": 1.209,
+              "bias": -0.663,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.327,
-              "bias": -0.819,
+              "mae": 1.33,
+              "bias": -0.823,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.824,
-              "bias": 0.796,
+              "mae": 1.832,
+              "bias": 0.803,
               "samples": 363
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 2.384,
-              "bias": -2.102,
+              "mae": 2.386,
+              "bias": -2.104,
               "samples": 366
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 2.809,
-              "bias": -2.657,
+              "mae": 2.808,
+              "bias": -2.656,
               "samples": 366
             }
           ]
@@ -962,24 +930,24 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 1.082,
-            "bias": -0.601,
+            "mae": 1.085,
+            "bias": -0.597,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 1.082,
-              "bias": -0.601,
+              "mae": 1.085,
+              "bias": -0.597,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 1.11,
-              "bias": -0.31,
-              "samples": 340
+              "mae": 1.111,
+              "bias": -0.305,
+              "samples": 341
             },
             {
               "key": "best_match",
@@ -998,36 +966,36 @@
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.328,
-              "bias": -0.718,
+              "mae": 1.33,
+              "bias": -0.716,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.386,
-              "bias": -0.872,
+              "mae": 1.388,
+              "bias": -0.874,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.976,
-              "bias": 0.841,
+              "mae": 1.981,
+              "bias": 0.846,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 2.278,
-              "bias": -1.836,
+              "mae": 2.274,
+              "bias": -1.833,
               "samples": 331
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 2.893,
-              "bias": -2.667,
+              "mae": 2.888,
+              "bias": -2.662,
               "samples": 361
             }
           ]
@@ -1037,17 +1005,17 @@
           "lowest_mae": {
             "key": "ecmwf_ifs",
             "label": "ECMWF IFS HRES 9 km",
-            "mae": 1.607,
-            "bias": -0.54,
-            "samples": 336
+            "mae": 1.605,
+            "bias": -0.535,
+            "samples": 337
           },
           "ranking": [
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 1.607,
-              "bias": -0.54,
-              "samples": 336
+              "mae": 1.605,
+              "bias": -0.535,
+              "samples": 337
             },
             {
               "key": "consensus_base",
@@ -1059,43 +1027,43 @@
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.63,
-              "bias": -0.857,
+              "mae": 1.629,
+              "bias": -0.856,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.632,
-              "bias": -0.99,
+              "mae": 1.635,
+              "bias": -0.993,
               "samples": 352
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 1.683,
-              "bias": -0.243,
+              "mae": 1.686,
+              "bias": -0.24,
               "samples": 362
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 1.708,
-              "bias": -0.284,
+              "mae": 1.711,
+              "bias": -0.281,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 2.654,
-              "bias": -2.173,
+              "mae": 2.657,
+              "bias": -2.176,
               "samples": 313
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 3.012,
-              "bias": -2.624,
+              "mae": 3.001,
+              "bias": -2.613,
               "samples": 366
             }
           ]
@@ -1105,51 +1073,51 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 1.964,
-            "bias": -1.305,
+            "mae": 1.963,
+            "bias": -1.307,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 1.964,
-              "bias": -1.305,
+              "mae": 1.963,
+              "bias": -1.307,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
               "mae": 1.991,
-              "bias": -1.002,
+              "bias": -1.01,
               "samples": 352
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 2.002,
-              "bias": -0.425,
+              "mae": 2.004,
+              "bias": -0.423,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 2.035,
-              "bias": -0.455,
-              "samples": 354
+              "mae": 2.033,
+              "bias": -0.45,
+              "samples": 355
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 2.231,
-              "bias": -1.191,
+              "mae": 2.232,
+              "bias": -1.19,
               "samples": 366
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 3.468,
-              "bias": -2.949,
+              "mae": 3.458,
+              "bias": -2.94,
               "samples": 366
             }
           ]
@@ -1161,72 +1129,72 @@
           "lowest_mae": {
             "key": "best_match",
             "label": "Best Match",
-            "mae": 0.535,
-            "bias": 0.206,
+            "mae": 0.536,
+            "bias": 0.208,
             "samples": 366
           },
           "ranking": [
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 0.535,
-              "bias": 0.206,
+              "mae": 0.536,
+              "bias": 0.208,
               "samples": 366
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 0.535,
-              "bias": 0.206,
+              "mae": 0.536,
+              "bias": 0.208,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 0.631,
-              "bias": -0.302,
-              "samples": 344
+              "mae": 0.63,
+              "bias": -0.3,
+              "samples": 345
             },
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 0.699,
-              "bias": -0.461,
+              "mae": 0.697,
+              "bias": -0.457,
               "samples": 366
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 0.826,
-              "bias": -0.641,
+              "mae": 0.825,
+              "bias": -0.635,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 0.852,
+              "mae": 0.853,
               "bias": -0.537,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.185,
-              "bias": 0.218,
+              "mae": 1.188,
+              "bias": 0.226,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 1.203,
-              "bias": -0.923,
+              "mae": 1.201,
+              "bias": -0.921,
               "samples": 332
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 1.573,
-              "bias": -1.347,
+              "mae": 1.571,
+              "bias": -1.345,
               "samples": 361
             }
           ]
@@ -1236,44 +1204,44 @@
           "lowest_mae": {
             "key": "best_match",
             "label": "Best Match",
-            "mae": 0.642,
-            "bias": 0.221,
+            "mae": 0.644,
+            "bias": 0.223,
             "samples": 366
           },
           "ranking": [
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 0.642,
-              "bias": 0.221,
+              "mae": 0.644,
+              "bias": 0.223,
               "samples": 366
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 0.642,
-              "bias": 0.221,
+              "mae": 0.644,
+              "bias": 0.223,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 0.687,
-              "bias": -0.267,
-              "samples": 342
+              "mae": 0.688,
+              "bias": -0.264,
+              "samples": 343
             },
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 0.746,
-              "bias": -0.472,
+              "mae": 0.745,
+              "bias": -0.467,
               "samples": 366
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
               "mae": 0.865,
-              "bias": -0.603,
+              "bias": -0.599,
               "samples": 366
             },
             {
@@ -1286,22 +1254,22 @@
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 1.291,
-              "bias": -1.014,
+              "mae": 1.289,
+              "bias": -1.012,
               "samples": 366
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.364,
-              "bias": 0.352,
+              "mae": 1.369,
+              "bias": 0.361,
               "samples": 363
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 1.62,
-              "bias": -1.468,
+              "mae": 1.617,
+              "bias": -1.465,
               "samples": 366
             }
           ]
@@ -1311,72 +1279,72 @@
           "lowest_mae": {
             "key": "best_match",
             "label": "Best Match",
-            "mae": 0.728,
-            "bias": 0.216,
+            "mae": 0.732,
+            "bias": 0.22,
             "samples": 366
           },
           "ranking": [
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 0.728,
-              "bias": 0.216,
+              "mae": 0.732,
+              "bias": 0.22,
               "samples": 366
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 0.728,
-              "bias": 0.216,
+              "mae": 0.732,
+              "bias": 0.22,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 0.772,
-              "bias": -0.21,
-              "samples": 340
+              "mae": 0.773,
+              "bias": -0.207,
+              "samples": 341
             },
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
               "mae": 0.803,
-              "bias": -0.421,
+              "bias": -0.415,
               "samples": 366
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 0.965,
-              "bias": -0.605,
+              "mae": 0.964,
+              "bias": -0.604,
               "samples": 366
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.018,
-              "bias": -0.554,
+              "mae": 1.02,
+              "bias": -0.55,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 1.418,
-              "bias": -1.049,
+              "mae": 1.413,
+              "bias": -1.044,
               "samples": 331
             },
             {
               "key": "arpege",
               "label": "ARPEGE Europe",
-              "mae": 1.534,
-              "bias": 0.442,
+              "mae": 1.538,
+              "bias": 0.45,
               "samples": 366
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 1.725,
-              "bias": -1.417,
+              "mae": 1.719,
+              "bias": -1.411,
               "samples": 361
             }
           ]
@@ -1386,65 +1354,65 @@
           "lowest_mae": {
             "key": "consensus_base",
             "label": "Ranhados Consensus Base",
-            "mae": 1.122,
-            "bias": -0.628,
+            "mae": 1.119,
+            "bias": -0.624,
             "samples": 366
           },
           "ranking": [
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
-              "mae": 1.122,
-              "bias": -0.628,
+              "mae": 1.119,
+              "bias": -0.624,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
               "mae": 1.132,
-              "bias": -0.227,
-              "samples": 336
+              "bias": -0.224,
+              "samples": 337
             },
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.193,
-              "bias": -0.634,
+              "mae": 1.191,
+              "bias": -0.632,
               "samples": 352
             },
             {
               "key": "icon",
               "label": "DWD ICON",
-              "mae": 1.262,
-              "bias": -0.223,
+              "mae": 1.265,
+              "bias": -0.217,
               "samples": 362
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 1.272,
-              "bias": -0.243,
+              "mae": 1.275,
+              "bias": -0.236,
               "samples": 366
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.342,
-              "bias": -0.439,
+              "mae": 1.34,
+              "bias": -0.435,
               "samples": 366
             },
             {
               "key": "ukmo",
               "label": "UKMO Global 10 km",
-              "mae": 1.636,
-              "bias": -1.091,
+              "mae": 1.637,
+              "bias": -1.092,
               "samples": 313
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 1.835,
-              "bias": -1.416,
+              "mae": 1.826,
+              "bias": -1.408,
               "samples": 366
             }
           ]
@@ -1454,51 +1422,51 @@
           "lowest_mae": {
             "key": "ecmwf_aifs",
             "label": "ECMWF AIFS 0,25°",
-            "mae": 1.543,
-            "bias": -0.648,
+            "mae": 1.541,
+            "bias": -0.651,
             "samples": 352
           },
           "ranking": [
             {
               "key": "ecmwf_aifs",
               "label": "ECMWF AIFS 0,25°",
-              "mae": 1.543,
-              "bias": -0.648,
+              "mae": 1.541,
+              "bias": -0.651,
               "samples": 352
             },
             {
               "key": "consensus_base",
               "label": "Ranhados Consensus Base",
               "mae": 1.591,
-              "bias": -0.74,
+              "bias": -0.736,
               "samples": 366
             },
             {
               "key": "best_match",
               "label": "Best Match",
-              "mae": 1.72,
-              "bias": -0.255,
+              "mae": 1.721,
+              "bias": -0.25,
               "samples": 366
             },
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 1.744,
-              "bias": -0.273,
-              "samples": 354
+              "mae": 1.743,
+              "bias": -0.269,
+              "samples": 355
             },
             {
               "key": "gfs",
               "label": "NOAA GFS",
-              "mae": 1.867,
-              "bias": -0.503,
+              "mae": 1.868,
+              "bias": -0.498,
               "samples": 366
             },
             {
               "key": "gem",
               "label": "CMC GEM",
-              "mae": 2.328,
-              "bias": -1.561,
+              "mae": 2.318,
+              "bias": -1.55,
               "samples": 366
             }
           ]
@@ -1567,9 +1535,9 @@
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 2.492,
-              "bias": -1.452,
-              "samples": 344
+              "mae": 2.485,
+              "bias": -1.448,
+              "samples": 345
             },
             {
               "key": "ukmo",
@@ -1635,9 +1603,9 @@
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 2.339,
-              "bias": -1.29,
-              "samples": 331
+              "mae": 2.332,
+              "bias": -1.286,
+              "samples": 332
             },
             {
               "key": "gem",
@@ -1689,9 +1657,9 @@
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 2.351,
-              "bias": -1.433,
-              "samples": 329
+              "mae": 2.344,
+              "bias": -1.428,
+              "samples": 330
             },
             {
               "key": "arpege",
@@ -1778,9 +1746,9 @@
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 2.914,
-              "bias": -1.577,
-              "samples": 336
+              "mae": 2.905,
+              "bias": -1.573,
+              "samples": 337
             },
             {
               "key": "gfs",
@@ -1846,9 +1814,9 @@
             {
               "key": "ecmwf_ifs",
               "label": "ECMWF IFS HRES 9 km",
-              "mae": 3.346,
-              "bias": -1.373,
-              "samples": 354
+              "mae": 3.336,
+              "bias": -1.369,
+              "samples": 355
             }
           ]
         }
@@ -1860,7 +1828,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 1,
         "variable": "tmax",
-        "bias": -1.351,
+        "bias": -1.352,
         "samples": 366
       },
       {
@@ -1868,7 +1836,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 2,
         "variable": "tmax",
-        "bias": -1.405,
+        "bias": -1.403,
         "samples": 366
       },
       {
@@ -1876,7 +1844,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 3,
         "variable": "tmax",
-        "bias": -1.453,
+        "bias": -1.451,
         "samples": 366
       },
       {
@@ -1884,7 +1852,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 5,
         "variable": "tmax",
-        "bias": -1.358,
+        "bias": -1.353,
         "samples": 352
       },
       {
@@ -1892,7 +1860,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 7,
         "variable": "tmax",
-        "bias": -1.355,
+        "bias": -1.356,
         "samples": 352
       },
       {
@@ -1908,7 +1876,7 @@
         "model": "CMC GEM",
         "lead_days": 1,
         "variable": "tmin",
-        "bias": -2.528,
+        "bias": -2.524,
         "samples": 361
       },
       {
@@ -1916,7 +1884,7 @@
         "model": "UKMO Global 10 km",
         "lead_days": 2,
         "variable": "tmin",
-        "bias": -2.102,
+        "bias": -2.104,
         "samples": 366
       },
       {
@@ -1924,7 +1892,7 @@
         "model": "CMC GEM",
         "lead_days": 2,
         "variable": "tmin",
-        "bias": -2.657,
+        "bias": -2.656,
         "samples": 366
       },
       {
@@ -1932,7 +1900,7 @@
         "model": "UKMO Global 10 km",
         "lead_days": 3,
         "variable": "tmin",
-        "bias": -1.836,
+        "bias": -1.833,
         "samples": 331
       },
       {
@@ -1940,7 +1908,7 @@
         "model": "CMC GEM",
         "lead_days": 3,
         "variable": "tmin",
-        "bias": -2.667,
+        "bias": -2.662,
         "samples": 361
       },
       {
@@ -1948,7 +1916,7 @@
         "model": "UKMO Global 10 km",
         "lead_days": 5,
         "variable": "tmin",
-        "bias": -2.173,
+        "bias": -2.176,
         "samples": 313
       },
       {
@@ -1956,7 +1924,7 @@
         "model": "CMC GEM",
         "lead_days": 5,
         "variable": "tmin",
-        "bias": -2.624,
+        "bias": -2.613,
         "samples": 366
       },
       {
@@ -1972,7 +1940,7 @@
         "model": "ECMWF AIFS 0,25°",
         "lead_days": 7,
         "variable": "tmin",
-        "bias": -1.002,
+        "bias": -1.01,
         "samples": 352
       },
       {
@@ -1980,7 +1948,7 @@
         "model": "NOAA GFS",
         "lead_days": 7,
         "variable": "tmin",
-        "bias": -1.191,
+        "bias": -1.19,
         "samples": 366
       },
       {
@@ -1988,7 +1956,7 @@
         "model": "CMC GEM",
         "lead_days": 7,
         "variable": "tmin",
-        "bias": -2.949,
+        "bias": -2.94,
         "samples": 366
       },
       {
@@ -1996,7 +1964,7 @@
         "model": "Ranhados Consensus Base",
         "lead_days": 7,
         "variable": "tmin",
-        "bias": -1.305,
+        "bias": -1.307,
         "samples": 366
       },
       {
@@ -2004,7 +1972,7 @@
         "model": "CMC GEM",
         "lead_days": 1,
         "variable": "tmean",
-        "bias": -1.347,
+        "bias": -1.345,
         "samples": 361
       },
       {
@@ -2012,7 +1980,7 @@
         "model": "UKMO Global 10 km",
         "lead_days": 2,
         "variable": "tmean",
-        "bias": -1.014,
+        "bias": -1.012,
         "samples": 366
       },
       {
@@ -2020,7 +1988,7 @@
         "model": "CMC GEM",
         "lead_days": 2,
         "variable": "tmean",
-        "bias": -1.468,
+        "bias": -1.465,
         "samples": 366
       },
       {
@@ -2028,7 +1996,7 @@
         "model": "UKMO Global 10 km",
         "lead_days": 3,
         "variable": "tmean",
-        "bias": -1.049,
+        "bias": -1.044,
         "samples": 331
       },
       {
@@ -2036,7 +2004,7 @@
         "model": "CMC GEM",
         "lead_days": 3,
         "variable": "tmean",
-        "bias": -1.417,
+        "bias": -1.411,
         "samples": 361
       },
       {
@@ -2044,7 +2012,7 @@
         "model": "UKMO Global 10 km",
         "lead_days": 5,
         "variable": "tmean",
-        "bias": -1.091,
+        "bias": -1.092,
         "samples": 313
       },
       {
@@ -2052,7 +2020,7 @@
         "model": "CMC GEM",
         "lead_days": 5,
         "variable": "tmean",
-        "bias": -1.416,
+        "bias": -1.408,
         "samples": 366
       },
       {
@@ -2060,7 +2028,7 @@
         "model": "CMC GEM",
         "lead_days": 7,
         "variable": "tmean",
-        "bias": -1.561,
+        "bias": -1.55,
         "samples": 366
       },
       {

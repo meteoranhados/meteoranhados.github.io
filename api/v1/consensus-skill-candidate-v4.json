@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-26T13:48:49+00:00",
+  "generated_utc": "2026-09-26T23:01:28+00:00",
   "schema": "consensus-skill-candidate-v4-alpha4",
   "name": "Ranhados Consensus Skill Candidate",
   "status": "experimental_not_production",
@@ -9,11 +9,11 @@
     "tmax": {
       "1": {
         "available": true,
-        "exact_common_cases": 305,
-        "train_cases": 213,
+        "exact_common_cases": 306,
+        "train_cases": 214,
         "validation_cases": 92,
         "period_start": "2025-10-01",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -27,80 +27,80 @@
           {
             "model_key": "ecmwf_ifs",
             "weight_pct": 20.6,
-            "training_mae": 0.902,
-            "training_bias": -0.325,
-            "training_samples": 213
+            "training_mae": 0.899,
+            "training_bias": -0.324,
+            "training_samples": 214
           },
           {
             "model_key": "icon",
             "weight_pct": 20.4,
-            "training_mae": 0.906,
-            "training_bias": -0.443,
-            "training_samples": 213
+            "training_mae": 0.905,
+            "training_bias": -0.444,
+            "training_samples": 214
           },
           {
             "model_key": "ukmo",
             "weight_pct": 15.9,
-            "training_mae": 1.026,
-            "training_bias": -0.192,
-            "training_samples": 213
+            "training_mae": 1.023,
+            "training_bias": -0.193,
+            "training_samples": 214
           },
           {
             "model_key": "gfs",
-            "weight_pct": 12.3,
+            "weight_pct": 12.2,
             "training_mae": 1.168,
-            "training_bias": -0.755,
-            "training_samples": 213
+            "training_bias": -0.746,
+            "training_samples": 214
           },
           {
             "model_key": "gem",
             "weight_pct": 11.7,
-            "training_mae": 1.196,
-            "training_bias": -0.466,
-            "training_samples": 213
+            "training_mae": 1.192,
+            "training_bias": -0.462,
+            "training_samples": 214
           },
           {
             "model_key": "arpege",
-            "weight_pct": 11.4,
+            "weight_pct": 11.3,
             "training_mae": 1.212,
-            "training_bias": -0.628,
-            "training_samples": 213
+            "training_bias": -0.62,
+            "training_samples": 214
           },
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 7.8,
-            "training_mae": 1.462,
-            "training_bias": -1.365,
-            "training_samples": 213
+            "training_mae": 1.464,
+            "training_bias": -1.367,
+            "training_samples": 214
           }
         ],
         "candidate_metrics": {
           "samples": 92,
-          "mae": 0.754,
-          "bias": 0.378,
-          "rmse": 1.123
+          "mae": 0.751,
+          "bias": 0.369,
+          "rmse": 1.122
         },
         "baseline_same_cases_metrics": {
           "samples": 92,
-          "mae": 0.728,
-          "bias": -0.089,
-          "rmse": 1.074
+          "mae": 0.736,
+          "bias": -0.097,
+          "rmse": 1.078
         },
-        "mae_improvement_pct": -3.6,
+        "mae_improvement_pct": -2.0,
         "mae_improvement_bootstrap_95pct_ci": [
-          -17.2,
-          8.4
+          -15.7,
+          8.9
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": false
       },
       "2": {
         "available": true,
-        "exact_common_cases": 342,
-        "train_cases": 239,
+        "exact_common_cases": 343,
+        "train_cases": 240,
         "validation_cases": 103,
         "period_start": "2025-10-02",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -113,69 +113,69 @@
         "trained_weights": [
           {
             "model_key": "ecmwf_ifs",
-            "weight_pct": 24.1,
-            "training_mae": 0.905,
-            "training_bias": -0.295,
-            "training_samples": 239
+            "weight_pct": 23.9,
+            "training_mae": 0.908,
+            "training_bias": -0.302,
+            "training_samples": 240
           },
           {
             "model_key": "icon",
-            "weight_pct": 17.5,
-            "training_mae": 1.062,
-            "training_bias": -0.439,
-            "training_samples": 239
+            "weight_pct": 17.6,
+            "training_mae": 1.059,
+            "training_bias": -0.436,
+            "training_samples": 240
           },
           {
             "model_key": "ukmo",
-            "weight_pct": 13.9,
-            "training_mae": 1.192,
-            "training_bias": -0.225,
-            "training_samples": 239
+            "weight_pct": 13.8,
+            "training_mae": 1.194,
+            "training_bias": -0.217,
+            "training_samples": 240
           },
           {
             "model_key": "gfs",
             "weight_pct": 12.5,
-            "training_mae": 1.257,
+            "training_mae": 1.255,
             "training_bias": -0.77,
-            "training_samples": 239
+            "training_samples": 240
           },
           {
             "model_key": "gem",
             "weight_pct": 12.1,
-            "training_mae": 1.277,
-            "training_bias": -0.648,
-            "training_samples": 239
+            "training_mae": 1.275,
+            "training_bias": -0.642,
+            "training_samples": 240
           },
           {
             "model_key": "arpege",
             "weight_pct": 11.5,
-            "training_mae": 1.31,
-            "training_bias": -0.467,
-            "training_samples": 239
+            "training_mae": 1.312,
+            "training_bias": -0.457,
+            "training_samples": 240
           },
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 8.6,
-            "training_mae": 1.516,
-            "training_bias": -1.354,
-            "training_samples": 239
+            "training_mae": 1.517,
+            "training_bias": -1.356,
+            "training_samples": 240
           }
         ],
         "candidate_metrics": {
           "samples": 103,
-          "mae": 0.834,
+          "mae": 0.835,
           "bias": 0.462,
           "rmse": 1.188
         },
         "baseline_same_cases_metrics": {
           "samples": 103,
-          "mae": 0.768,
-          "bias": -0.02,
-          "rmse": 1.128
+          "mae": 0.772,
+          "bias": -0.017,
+          "rmse": 1.13
         },
-        "mae_improvement_pct": -8.6,
+        "mae_improvement_pct": -8.2,
         "mae_improvement_bootstrap_95pct_ci": [
-          -23.4,
+          -22.3,
           3.0
         ],
         "review_threshold_improvement_pct": 2.0,
@@ -183,11 +183,11 @@
       },
       "3": {
         "available": true,
-        "exact_common_cases": 305,
-        "train_cases": 213,
+        "exact_common_cases": 306,
+        "train_cases": 214,
         "validation_cases": 92,
         "period_start": "2025-10-03",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -200,81 +200,81 @@
         "trained_weights": [
           {
             "model_key": "ecmwf_ifs",
-            "weight_pct": 22.1,
-            "training_mae": 1.041,
-            "training_bias": -0.26,
-            "training_samples": 213
+            "weight_pct": 22.2,
+            "training_mae": 1.04,
+            "training_bias": -0.263,
+            "training_samples": 214
           },
           {
             "model_key": "icon",
             "weight_pct": 19.0,
-            "training_mae": 1.122,
-            "training_bias": -0.508,
-            "training_samples": 213
+            "training_mae": 1.124,
+            "training_bias": -0.513,
+            "training_samples": 214
           },
           {
             "model_key": "ukmo",
             "weight_pct": 13.9,
-            "training_mae": 1.314,
-            "training_bias": -0.509,
-            "training_samples": 213
+            "training_mae": 1.312,
+            "training_bias": -0.503,
+            "training_samples": 214
           },
           {
             "model_key": "gem",
             "weight_pct": 12.8,
-            "training_mae": 1.365,
-            "training_bias": -0.636,
-            "training_samples": 213
+            "training_mae": 1.369,
+            "training_bias": -0.643,
+            "training_samples": 214
           },
           {
             "model_key": "gfs",
             "weight_pct": 12.2,
-            "training_mae": 1.4,
-            "training_bias": -0.81,
-            "training_samples": 213
+            "training_mae": 1.399,
+            "training_bias": -0.801,
+            "training_samples": 214
           },
           {
             "model_key": "arpege",
-            "weight_pct": 10.9,
-            "training_mae": 1.48,
-            "training_bias": -0.596,
-            "training_samples": 213
+            "weight_pct": 10.8,
+            "training_mae": 1.488,
+            "training_bias": -0.579,
+            "training_samples": 214
           },
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 9.1,
-            "training_mae": 1.618,
-            "training_bias": -1.509,
-            "training_samples": 213
+            "training_mae": 1.623,
+            "training_bias": -1.515,
+            "training_samples": 214
           }
         ],
         "candidate_metrics": {
           "samples": 92,
-          "mae": 1.053,
-          "bias": 0.624,
-          "rmse": 1.445
+          "mae": 1.063,
+          "bias": 0.633,
+          "rmse": 1.449
         },
         "baseline_same_cases_metrics": {
           "samples": 92,
-          "mae": 0.997,
-          "bias": 0.032,
-          "rmse": 1.38
+          "mae": 0.995,
+          "bias": 0.049,
+          "rmse": 1.379
         },
-        "mae_improvement_pct": -5.6,
+        "mae_improvement_pct": -6.8,
         "mae_improvement_bootstrap_95pct_ci": [
-          -18.4,
-          6.2
+          -19.8,
+          3.8
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": false
       },
       "5": {
         "available": true,
-        "exact_common_cases": 284,
-        "train_cases": 198,
+        "exact_common_cases": 285,
+        "train_cases": 199,
         "validation_cases": 86,
         "period_start": "2025-10-05",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -286,62 +286,62 @@
         "trained_weights": [
           {
             "model_key": "ecmwf_ifs",
-            "weight_pct": 25.9,
-            "training_mae": 1.26,
-            "training_bias": -0.184,
-            "training_samples": 198
+            "weight_pct": 26.0,
+            "training_mae": 1.255,
+            "training_bias": -0.182,
+            "training_samples": 199
           },
           {
             "model_key": "icon",
-            "weight_pct": 18.5,
-            "training_mae": 1.488,
-            "training_bias": -0.391,
-            "training_samples": 198
+            "weight_pct": 18.6,
+            "training_mae": 1.482,
+            "training_bias": -0.387,
+            "training_samples": 199
           },
           {
             "model_key": "ukmo",
-            "weight_pct": 14.7,
-            "training_mae": 1.669,
-            "training_bias": -0.293,
-            "training_samples": 198
+            "weight_pct": 14.5,
+            "training_mae": 1.683,
+            "training_bias": -0.269,
+            "training_samples": 199
           },
           {
             "model_key": "gem",
-            "weight_pct": 13.8,
-            "training_mae": 1.722,
-            "training_bias": -0.863,
-            "training_samples": 198
+            "weight_pct": 13.9,
+            "training_mae": 1.714,
+            "training_bias": -0.86,
+            "training_samples": 199
           },
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 13.8,
-            "training_mae": 1.727,
-            "training_bias": -1.41,
-            "training_samples": 198
+            "training_mae": 1.723,
+            "training_bias": -1.398,
+            "training_samples": 199
           },
           {
             "model_key": "gfs",
-            "weight_pct": 13.3,
-            "training_mae": 1.759,
-            "training_bias": -0.542,
-            "training_samples": 198
+            "weight_pct": 13.2,
+            "training_mae": 1.761,
+            "training_bias": -0.528,
+            "training_samples": 199
           }
         ],
         "candidate_metrics": {
           "samples": 86,
-          "mae": 1.298,
-          "bias": 0.313,
-          "rmse": 1.719
+          "mae": 1.288,
+          "bias": 0.293,
+          "rmse": 1.71
         },
         "baseline_same_cases_metrics": {
           "samples": 86,
-          "mae": 1.308,
-          "bias": -0.283,
-          "rmse": 1.688
+          "mae": 1.304,
+          "bias": -0.287,
+          "rmse": 1.686
         },
-        "mae_improvement_pct": 0.8,
+        "mae_improvement_pct": 1.2,
         "mae_improvement_bootstrap_95pct_ci": [
-          -9.9,
+          -8.8,
           10.9
         ],
         "review_threshold_improvement_pct": 2.0,
@@ -349,11 +349,11 @@
       },
       "7": {
         "available": true,
-        "exact_common_cases": 340,
-        "train_cases": 237,
+        "exact_common_cases": 341,
+        "train_cases": 238,
         "validation_cases": 103,
         "period_start": "2025-10-07",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -364,48 +364,48 @@
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 29.6,
-            "training_mae": 1.965,
-            "training_bias": -1.333,
-            "training_samples": 237
+            "training_mae": 1.958,
+            "training_bias": -1.329,
+            "training_samples": 238
           },
           {
             "model_key": "gfs",
             "weight_pct": 25.9,
-            "training_mae": 2.099,
-            "training_bias": -0.501,
-            "training_samples": 237
+            "training_mae": 2.091,
+            "training_bias": -0.5,
+            "training_samples": 238
           },
           {
             "model_key": "ecmwf_ifs",
             "weight_pct": 24.1,
-            "training_mae": 2.178,
-            "training_bias": -1.129,
-            "training_samples": 237
+            "training_mae": 2.171,
+            "training_bias": -1.126,
+            "training_samples": 238
           },
           {
             "model_key": "gem",
             "weight_pct": 20.4,
-            "training_mae": 2.366,
-            "training_bias": -0.811,
-            "training_samples": 237
+            "training_mae": 2.357,
+            "training_bias": -0.808,
+            "training_samples": 238
           }
         ],
         "candidate_metrics": {
           "samples": 103,
-          "mae": 2.047,
-          "bias": 1.041,
-          "rmse": 2.797
+          "mae": 2.051,
+          "bias": 1.042,
+          "rmse": 2.798
         },
         "baseline_same_cases_metrics": {
           "samples": 103,
-          "mae": 1.951,
-          "bias": 0.064,
+          "mae": 1.95,
+          "bias": 0.067,
           "rmse": 2.7
         },
-        "mae_improvement_pct": -4.9,
+        "mae_improvement_pct": -5.2,
         "mae_improvement_bootstrap_95pct_ci": [
-          -14.9,
-          4.8
+          -15.3,
+          4.2
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": false
@@ -414,11 +414,11 @@
     "tmin": {
       "1": {
         "available": true,
-        "exact_common_cases": 305,
-        "train_cases": 213,
+        "exact_common_cases": 306,
+        "train_cases": 214,
         "validation_cases": 92,
         "period_start": "2025-10-01",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -432,80 +432,80 @@
           {
             "model_key": "icon",
             "weight_pct": 22.8,
-            "training_mae": 0.984,
+            "training_mae": 0.982,
             "training_bias": 0.641,
-            "training_samples": 213
+            "training_samples": 214
           },
           {
             "model_key": "gfs",
-            "weight_pct": 20.9,
-            "training_mae": 1.027,
-            "training_bias": -0.572,
-            "training_samples": 213
+            "weight_pct": 20.8,
+            "training_mae": 1.028,
+            "training_bias": -0.576,
+            "training_samples": 214
           },
           {
             "model_key": "ecmwf_ifs",
-            "weight_pct": 20.2,
-            "training_mae": 1.044,
-            "training_bias": -0.489,
-            "training_samples": 213
+            "weight_pct": 20.3,
+            "training_mae": 1.04,
+            "training_bias": -0.486,
+            "training_samples": 214
           },
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 15.5,
-            "training_mae": 1.193,
-            "training_bias": -0.476,
-            "training_samples": 213
+            "training_mae": 1.19,
+            "training_bias": -0.471,
+            "training_samples": 214
           },
           {
             "model_key": "arpege",
-            "weight_pct": 11.8,
-            "training_mae": 1.369,
-            "training_bias": -0.086,
-            "training_samples": 213
+            "weight_pct": 11.7,
+            "training_mae": 1.37,
+            "training_bias": -0.078,
+            "training_samples": 214
           },
           {
             "model_key": "ukmo",
             "weight_pct": 5.4,
-            "training_mae": 2.024,
-            "training_bias": -1.625,
-            "training_samples": 213
+            "training_mae": 2.015,
+            "training_bias": -1.618,
+            "training_samples": 214
           },
           {
             "model_key": "gem",
             "weight_pct": 3.5,
-            "training_mae": 2.517,
-            "training_bias": -2.283,
-            "training_samples": 213
+            "training_mae": 2.511,
+            "training_bias": -2.279,
+            "training_samples": 214
           }
         ],
         "candidate_metrics": {
           "samples": 92,
-          "mae": 0.762,
-          "bias": 0.216,
-          "rmse": 0.968
+          "mae": 0.769,
+          "bias": 0.221,
+          "rmse": 0.974
         },
         "baseline_same_cases_metrics": {
           "samples": 92,
-          "mae": 0.883,
-          "bias": -0.493,
-          "rmse": 1.104
+          "mae": 0.89,
+          "bias": -0.486,
+          "rmse": 1.108
         },
-        "mae_improvement_pct": 13.7,
+        "mae_improvement_pct": 13.6,
         "mae_improvement_bootstrap_95pct_ci": [
-          -2.6,
-          28.1
+          -3.8,
+          27.5
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": false
       },
       "2": {
         "available": true,
-        "exact_common_cases": 342,
-        "train_cases": 239,
+        "exact_common_cases": 343,
+        "train_cases": 240,
         "validation_cases": 103,
         "period_start": "2025-10-02",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -518,81 +518,81 @@
         "trained_weights": [
           {
             "model_key": "icon",
-            "weight_pct": 23.8,
-            "training_mae": 1.043,
-            "training_bias": 0.591,
-            "training_samples": 239
+            "weight_pct": 24.0,
+            "training_mae": 1.04,
+            "training_bias": 0.59,
+            "training_samples": 240
           },
           {
             "model_key": "ecmwf_ifs",
             "weight_pct": 20.5,
-            "training_mae": 1.124,
-            "training_bias": -0.573,
-            "training_samples": 239
+            "training_mae": 1.125,
+            "training_bias": -0.565,
+            "training_samples": 240
           },
           {
             "model_key": "gfs",
-            "weight_pct": 18.3,
-            "training_mae": 1.192,
-            "training_bias": -0.712,
-            "training_samples": 239
+            "weight_pct": 18.2,
+            "training_mae": 1.193,
+            "training_bias": -0.715,
+            "training_samples": 240
           },
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 16.7,
             "training_mae": 1.245,
-            "training_bias": -0.592,
-            "training_samples": 239
+            "training_bias": -0.595,
+            "training_samples": 240
           },
           {
             "model_key": "arpege",
-            "weight_pct": 12.1,
-            "training_mae": 1.462,
-            "training_bias": 0.015,
-            "training_samples": 239
+            "weight_pct": 11.9,
+            "training_mae": 1.474,
+            "training_bias": 0.033,
+            "training_samples": 240
           },
           {
             "model_key": "ukmo",
             "weight_pct": 5.2,
-            "training_mae": 2.236,
-            "training_bias": -1.823,
-            "training_samples": 239
+            "training_mae": 2.237,
+            "training_bias": -1.825,
+            "training_samples": 240
           },
           {
             "model_key": "gem",
-            "weight_pct": 3.3,
-            "training_mae": 2.791,
-            "training_bias": -2.59,
-            "training_samples": 239
+            "weight_pct": 3.4,
+            "training_mae": 2.782,
+            "training_bias": -2.582,
+            "training_samples": 240
           }
         ],
         "candidate_metrics": {
           "samples": 103,
-          "mae": 0.837,
-          "bias": 0.438,
-          "rmse": 1.087
+          "mae": 0.84,
+          "bias": 0.437,
+          "rmse": 1.088
         },
         "baseline_same_cases_metrics": {
           "samples": 103,
-          "mae": 0.893,
-          "bias": -0.404,
-          "rmse": 1.116
+          "mae": 0.894,
+          "bias": -0.389,
+          "rmse": 1.117
         },
-        "mae_improvement_pct": 6.3,
+        "mae_improvement_pct": 6.0,
         "mae_improvement_bootstrap_95pct_ci": [
-          -13.5,
-          21.8
+          -11.5,
+          23.1
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": false
       },
       "3": {
         "available": true,
-        "exact_common_cases": 305,
-        "train_cases": 213,
+        "exact_common_cases": 306,
+        "train_cases": 214,
         "validation_cases": 92,
         "period_start": "2025-10-03",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -605,81 +605,81 @@
         "trained_weights": [
           {
             "model_key": "icon",
-            "weight_pct": 22.8,
-            "training_mae": 1.142,
-            "training_bias": 0.549,
-            "training_samples": 213
+            "weight_pct": 22.9,
+            "training_mae": 1.138,
+            "training_bias": 0.545,
+            "training_samples": 214
           },
           {
             "model_key": "ecmwf_ifs",
             "weight_pct": 20.3,
             "training_mae": 1.211,
-            "training_bias": -0.531,
-            "training_samples": 213
+            "training_bias": -0.533,
+            "training_samples": 214
           },
           {
             "model_key": "ecmwf_aifs",
             "weight_pct": 18.6,
-            "training_mae": 1.266,
-            "training_bias": -0.611,
-            "training_samples": 213
+            "training_mae": 1.263,
+            "training_bias": -0.605,
+            "training_samples": 214
           },
           {
             "model_key": "gfs",
-            "weight_pct": 16.8,
-            "training_mae": 1.33,
-            "training_bias": -0.68,
-            "training_samples": 213
+            "weight_pct": 16.7,
+            "training_mae": 1.335,
+            "training_bias": -0.688,
+            "training_samples": 214
           },
           {
             "model_key": "arpege",
             "weight_pct": 10.1,
-            "training_mae": 1.715,
-            "training_bias": -0.1,
-            "training_samples": 213
+            "training_mae": 1.714,
+            "training_bias": -0.093,
+            "training_samples": 214
           },
           {
             "model_key": "ukmo",
-            "weight_pct": 7.5,
-            "training_mae": 1.988,
-            "training_bias": -1.403,
-            "training_samples": 213
+            "weight_pct": 7.6,
+            "training_mae": 1.981,
+            "training_bias": -1.399,
+            "training_samples": 214
           },
           {
             "model_key": "gem",
-            "weight_pct": 3.8,
-            "training_mae": 2.783,
-            "training_bias": -2.45,
-            "training_samples": 213
+            "weight_pct": 3.9,
+            "training_mae": 2.774,
+            "training_bias": -2.443,
+            "training_samples": 214
           }
         ],
         "candidate_metrics": {
           "samples": 92,
-          "mae": 0.805,
-          "bias": 0.291,
-          "rmse": 1.023
+          "mae": 0.816,
+          "bias": 0.303,
+          "rmse": 1.029
         },
         "baseline_same_cases_metrics": {
           "samples": 92,
-          "mae": 0.816,
-          "bias": -0.442,
-          "rmse": 1.075
+          "mae": 0.826,
+          "bias": -0.424,
+          "rmse": 1.083
         },
-        "mae_improvement_pct": 1.3,
+        "mae_improvement_pct": 1.2,
         "mae_improvement_bootstrap_95pct_ci": [
-          -21.1,
-          18.5
+          -20.0,
+          19.6
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": false
       },
       "5": {
         "available": true,
-        "exact_common_cases": 284,
-        "train_cases": 198,
+        "exact_common_cases": 285,
+        "train_cases": 199,
         "validation_cases": 86,
         "period_start": "2025-10-05",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -693,72 +693,72 @@
             "model_key": "ecmwf_aifs",
             "weight_pct": 21.3,
             "training_mae": 1.668,
-            "training_bias": -0.896,
-            "training_samples": 198
+            "training_bias": -0.883,
+            "training_samples": 199
           },
           {
             "model_key": "icon",
-            "weight_pct": 20.9,
-            "training_mae": 1.682,
-            "training_bias": 0.101,
-            "training_samples": 198
+            "weight_pct": 20.8,
+            "training_mae": 1.685,
+            "training_bias": 0.112,
+            "training_samples": 199
           },
           {
             "model_key": "gfs",
             "weight_pct": 20.6,
-            "training_mae": 1.697,
-            "training_bias": -0.95,
-            "training_samples": 198
+            "training_mae": 1.694,
+            "training_bias": -0.94,
+            "training_samples": 199
           },
           {
             "model_key": "ecmwf_ifs",
             "weight_pct": 20.1,
-            "training_mae": 1.716,
-            "training_bias": -0.86,
-            "training_samples": 198
+            "training_mae": 1.717,
+            "training_bias": -0.846,
+            "training_samples": 199
           },
           {
             "model_key": "ukmo",
-            "weight_pct": 10.7,
-            "training_mae": 2.348,
-            "training_bias": -1.627,
-            "training_samples": 198
+            "weight_pct": 10.8,
+            "training_mae": 2.338,
+            "training_bias": -1.62,
+            "training_samples": 199
           },
           {
             "model_key": "gem",
             "weight_pct": 6.4,
-            "training_mae": 3.041,
-            "training_bias": -2.445,
-            "training_samples": 198
+            "training_mae": 3.03,
+            "training_bias": -2.428,
+            "training_samples": 199
           }
         ],
         "candidate_metrics": {
           "samples": 86,
-          "mae": 1.057,
-          "bias": -0.275,
-          "rmse": 1.387
+          "mae": 1.037,
+          "bias": -0.308,
+          "rmse": 1.368
         },
         "baseline_same_cases_metrics": {
           "samples": 86,
-          "mae": 1.634,
-          "bias": -1.425,
-          "rmse": 2.01
+          "mae": 1.627,
+          "bias": -1.451,
+          "rmse": 2.007
         },
-        "mae_improvement_pct": 35.3,
+        "mae_improvement_pct": 36.3,
         "mae_improvement_bootstrap_95pct_ci": [
-          24.7,
-          44.3
+          26.9,
+          45.3
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": true
       },
       "7": {
         "available": true,
-        "exact_common_cases": 340,
-        "train_cases": 237,
+        "exact_common_cases": 341,
+        "train_cases": 238,
         "validation_cases": 103,
         "period_start": "2025-10-07",
-        "period_end": "2026-09-25",
+        "period_end": "2026-09-26",
         "model_keys": [
           "ecmwf_ifs",
           "ecmwf_aifs",
@@ -768,49 +768,49 @@
         "trained_weights": [
           {
             "model_key": "ecmwf_ifs",
-            "weight_pct": 33.3,
-            "training_mae": 1.997,
-            "training_bias": -0.853,
-            "training_samples": 237
+            "weight_pct": 33.1,
+            "training_mae": 2.001,
+            "training_bias": -0.837,
+            "training_samples": 238
           },
           {
             "model_key": "ecmwf_aifs",
-            "weight_pct": 31.4,
-            "training_mae": 2.057,
-            "training_bias": -0.942,
-            "training_samples": 237
+            "weight_pct": 31.6,
+            "training_mae": 2.048,
+            "training_bias": -0.938,
+            "training_samples": 238
           },
           {
             "model_key": "gfs",
             "weight_pct": 24.8,
-            "training_mae": 2.315,
-            "training_bias": -1.439,
-            "training_samples": 237
+            "training_mae": 2.309,
+            "training_bias": -1.437,
+            "training_samples": 238
           },
           {
             "model_key": "gem",
             "weight_pct": 10.5,
-            "training_mae": 3.557,
-            "training_bias": -3.026,
-            "training_samples": 237
+            "training_mae": 3.544,
+            "training_bias": -3.011,
+            "training_samples": 238
           }
         ],
         "candidate_metrics": {
           "samples": 103,
-          "mae": 1.738,
-          "bias": 0.619,
-          "rmse": 2.301
+          "mae": 1.728,
+          "bias": 0.6,
+          "rmse": 2.291
         },
         "baseline_same_cases_metrics": {
           "samples": 103,
-          "mae": 1.91,
-          "bias": -1.007,
+          "mae": 1.909,
+          "bias": -1.011,
           "rmse": 2.435
         },
-        "mae_improvement_pct": 9.0,
+        "mae_improvement_pct": 9.5,
         "mae_improvement_bootstrap_95pct_ci": [
-          -6.7,
-          23.3
+          -5.9,
+          23.0
         ],
         "review_threshold_improvement_pct": 2.0,
         "eligible_for_review": false
