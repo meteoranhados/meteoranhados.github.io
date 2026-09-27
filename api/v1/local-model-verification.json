@@ -1,9 +1,221 @@
 {
-  "version": "4.0.0-alpha4",
-  "generated_utc": "2026-09-27T08:07:06+00:00",
+  "version": "3.0.6",
+  "generated_utc": "2026-09-27T08:25:13+00:00",
   "archive_started_utc": "2026-08-31T06:46:22+00:00",
   "retention_days": 730,
   "method": "arquivo prospetivo exato da saída MRL; uma emissão representativa por versão/alvo/horizonte",
+  "summary": {
+    "records": 145,
+    "verified": 122,
+    "pending": 23,
+    "by_lead": {
+      "1": {
+        "records": 27,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 0.833,
+            "samples": 27,
+            "models": {
+              "best_match": 0.885,
+              "ecmwf": 0.93,
+              "gfs": 0.937
+            }
+          },
+          "tmin": {
+            "mrl_mae": 1.048,
+            "samples": 27,
+            "models": {
+              "best_match": 1.415,
+              "ecmwf": 1.0,
+              "gfs": 0.937
+            }
+          },
+          "tmean": {
+            "mrl_mae": 0.446,
+            "samples": 27,
+            "models": {
+              "best_match": 0.443,
+              "ecmwf": 0.499,
+              "gfs": 0.52
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.062,
+            "samples": 27,
+            "models": {
+              "best_match": 0.078,
+              "ecmwf": 0.063,
+              "gfs": 0.226
+            }
+          }
+        }
+      },
+      "2": {
+        "records": 26,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 1.13,
+            "samples": 26,
+            "models": {
+              "best_match": 1.012,
+              "ecmwf": 0.992,
+              "gfs": 1.012
+            }
+          },
+          "tmin": {
+            "mrl_mae": 1.037,
+            "samples": 26,
+            "models": {
+              "best_match": 1.508,
+              "ecmwf": 1.077,
+              "gfs": 1.008
+            }
+          },
+          "tmean": {
+            "mrl_mae": 0.619,
+            "samples": 26,
+            "models": {
+              "best_match": 0.665,
+              "ecmwf": 0.6,
+              "gfs": 0.612
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.079,
+            "samples": 26,
+            "models": {
+              "best_match": 0.046,
+              "ecmwf": 0.165,
+              "gfs": 0.138
+            }
+          }
+        }
+      },
+      "3": {
+        "records": 25,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 1.102,
+            "samples": 25,
+            "models": {
+              "best_match": 1.044,
+              "ecmwf": 1.004,
+              "gfs": 1.212
+            }
+          },
+          "tmin": {
+            "mrl_mae": 0.917,
+            "samples": 25,
+            "models": {
+              "best_match": 1.552,
+              "ecmwf": 1.008,
+              "gfs": 1.024
+            }
+          },
+          "tmean": {
+            "mrl_mae": 0.56,
+            "samples": 25,
+            "models": {
+              "best_match": 0.752,
+              "ecmwf": 0.731,
+              "gfs": 0.588
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.218,
+            "samples": 25,
+            "models": {
+              "best_match": 0.16,
+              "ecmwf": 0.204,
+              "gfs": 0.224
+            }
+          }
+        }
+      },
+      "5": {
+        "records": 23,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 1.689,
+            "samples": 23,
+            "models": {
+              "best_match": 1.913,
+              "ecmwf": 1.748,
+              "gfs": 0.952
+            }
+          },
+          "tmin": {
+            "mrl_mae": 1.347,
+            "samples": 23,
+            "models": {
+              "best_match": 1.248,
+              "ecmwf": 1.478,
+              "gfs": 1.296
+            }
+          },
+          "tmean": {
+            "mrl_mae": 1.229,
+            "samples": 23,
+            "models": {
+              "best_match": 1.353,
+              "ecmwf": 1.473,
+              "gfs": 0.919
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.296,
+            "samples": 23,
+            "models": {
+              "best_match": 0.211,
+              "ecmwf": 0.313,
+              "gfs": 0.17
+            }
+          }
+        }
+      },
+      "7": {
+        "records": 21,
+        "variables": {
+          "tmax": {
+            "mrl_mae": 2.409,
+            "samples": 21,
+            "models": {
+              "best_match": 2.543,
+              "ecmwf": 2.543,
+              "gfs": 2.367
+            }
+          },
+          "tmin": {
+            "mrl_mae": 1.949,
+            "samples": 21,
+            "models": {
+              "best_match": 2.195,
+              "ecmwf": 1.733,
+              "gfs": 1.89
+            }
+          },
+          "tmean": {
+            "mrl_mae": 1.691,
+            "samples": 21,
+            "models": {
+              "best_match": 1.605,
+              "ecmwf": 2.046,
+              "gfs": 1.843
+            }
+          },
+          "precip": {
+            "mrl_mae": 0.158,
+            "samples": 21,
+            "models": {
+              "best_match": 0.157,
+              "ecmwf": 0.157,
+              "gfs": 0.186
+            }
+          }
+        }
+      }
+    }
+  },
   "records": [
     {
       "model_id": "MRL-20260830-712",
@@ -14072,11 +14284,11 @@
     {
       "model_id": "MRL-20260926-719",
       "trained_through": "2026-09-26",
-      "issued_utc": "2026-09-27T08:07:06+00:00",
-      "issued_utc_ms": 1790496426000,
+      "issued_utc": "2026-09-27T08:25:13+00:00",
+      "issued_utc_ms": 1790497513000,
       "target_date": "2026-09-28",
       "lead_days": 1,
-      "lead_hours_actual": 26.88,
+      "lead_hours_actual": 26.58,
       "scenario_label": "sinal de chuva · céu muito nublado · vento moderado",
       "scenario": {
         "season": "SON",
@@ -14472,11 +14684,11 @@
     {
       "model_id": "MRL-20260926-719",
       "trained_through": "2026-09-26",
-      "issued_utc": "2026-09-27T08:07:06+00:00",
-      "issued_utc_ms": 1790496426000,
+      "issued_utc": "2026-09-27T08:25:13+00:00",
+      "issued_utc_ms": 1790497513000,
       "target_date": "2026-09-29",
       "lead_days": 2,
-      "lead_hours_actual": 50.88,
+      "lead_hours_actual": 50.58,
       "scenario_label": "sinal de chuva · céu muito nublado · vento moderado",
       "scenario": {
         "season": "SON",
@@ -14792,11 +15004,11 @@
     {
       "model_id": "MRL-20260926-719",
       "trained_through": "2026-09-26",
-      "issued_utc": "2026-09-27T08:07:06+00:00",
-      "issued_utc_ms": 1790496426000,
+      "issued_utc": "2026-09-27T08:25:13+00:00",
+      "issued_utc_ms": 1790497513000,
       "target_date": "2026-09-30",
       "lead_days": 3,
-      "lead_hours_actual": 74.88,
+      "lead_hours_actual": 74.58,
       "scenario_label": "sinal de chuva · nebulosidade variável · vento moderado",
       "scenario": {
         "season": "SON",
@@ -15192,11 +15404,11 @@
     {
       "model_id": "MRL-20260926-719",
       "trained_through": "2026-09-26",
-      "issued_utc": "2026-09-27T08:07:06+00:00",
-      "issued_utc_ms": 1790496426000,
+      "issued_utc": "2026-09-27T08:25:13+00:00",
+      "issued_utc_ms": 1790497513000,
       "target_date": "2026-10-02",
       "lead_days": 5,
-      "lead_hours_actual": 122.88,
+      "lead_hours_actual": 122.58,
       "scenario_label": "sinal seco · nebulosidade variável · vento fraco",
       "scenario": {
         "season": "SON",
@@ -15432,11 +15644,11 @@
     {
       "model_id": "MRL-20260926-719",
       "trained_through": "2026-09-26",
-      "issued_utc": "2026-09-27T08:07:06+00:00",
-      "issued_utc_ms": 1790496426000,
+      "issued_utc": "2026-09-27T08:25:13+00:00",
+      "issued_utc_ms": 1790497513000,
       "target_date": "2026-10-04",
       "lead_days": 7,
-      "lead_hours_actual": 170.88,
+      "lead_hours_actual": 170.58,
       "scenario_label": "chuva incerta · céu muito nublado · vento fraco",
       "scenario": {
         "season": "SON",

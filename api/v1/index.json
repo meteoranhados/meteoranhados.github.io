@@ -1,7 +1,7 @@
 {
   "api_version": "v1",
-  "engine_version": "4.0.0-alpha4",
-  "generated_utc": "2026-09-27T08:16:10+00:00",
+  "engine_version": "3.0.6",
+  "generated_utc": "2026-09-27T08:26:15+00:00",
   "station": "Estação Meteorológica de Ranhados · Mêda",
   "format": "JSON UTF-8",
   "endpoints": [
@@ -129,66 +129,6 @@
       "name": "forecast-skill",
       "path": "/api/v1/forecast-skill.json",
       "description": "Desempenho histórico D+1…D+7 por modelo",
-      "available": true
-    },
-    {
-      "name": "forecast-v4",
-      "path": "/api/v1/forecast-v4.json",
-      "description": "Previsão experimental multi-modelo v4 e Consensus Base",
-      "available": true
-    },
-    {
-      "name": "forecast-skill-v4",
-      "path": "/api/v1/forecast-skill-v4.json",
-      "description": "Verificação experimental multi-modelo v4 por horizonte",
-      "available": true
-    },
-    {
-      "name": "consensus-skill-candidate-v4",
-      "path": "/api/v1/consensus-skill-candidate-v4.json",
-      "description": "Candidato estatístico com correção de viés e ponderação por skill",
-      "available": true
-    },
-    {
-      "name": "camera-analysis",
-      "path": "/api/v1/camera-analysis.json",
-      "description": "Análise experimental da imagem da câmara por serviço Vision separado",
-      "available": false
-    },
-    {
-      "name": "sentinel",
-      "path": "/api/v1/sentinel.json",
-      "description": "Sentinel v4: saúde dos sensores e contexto IPMA",
-      "available": true
-    },
-    {
-      "name": "sentinel-history",
-      "path": "/api/v1/sentinel-history.json",
-      "description": "Histórico recente dos sinais do Sentinel",
-      "available": true
-    },
-    {
-      "name": "ai-capabilities",
-      "path": "/api/v1/ai-capabilities.json",
-      "description": "Capacidades locais para base de dados, ML e GPU",
-      "available": true
-    },
-    {
-      "name": "analysis-v4",
-      "path": "/api/v1/analysis-v4.json",
-      "description": "Análise transversal baseada nos dados validados do site",
-      "available": true
-    },
-    {
-      "name": "supervisor-v4",
-      "path": "/api/v1/supervisor-v4.json",
-      "description": "Sugestões auditáveis do supervisor para modelos, dados e infraestrutura",
-      "available": true
-    },
-    {
-      "name": "training-readiness-v4",
-      "path": "/api/v1/training-readiness-v4.json",
-      "description": "Prontidão do dataset para experiências de Consensus ML",
       "available": true
     },
     {
