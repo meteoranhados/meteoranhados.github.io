@@ -2,7 +2,7 @@
   "available": true,
   "version": "4.0.0-alpha4",
   "schema": "forecast-v4-alpha4",
-  "generated_utc": "2026-09-27T01:32:26+00:00",
+  "generated_utc": "2026-09-27T02:02:47+00:00",
   "stale": false,
   "coordinates": {
     "latitude": 40.99643,
@@ -23,7 +23,7 @@
       "longitude": -7.3125,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 0.7387399673461914,
+      "generationtime_ms": 0.8400678634643555,
       "daily": [
         {
           "date": "2026-09-27",
@@ -193,7 +193,7 @@
       "longitude": -7.318115,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 19.298672676086426,
+      "generationtime_ms": 0.23925304412841797,
       "daily": [
         {
           "date": "2026-09-27",
@@ -363,7 +363,7 @@
       "longitude": -7.25,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 9.900212287902832,
+      "generationtime_ms": 0.792384147644043,
       "daily": [
         {
           "date": "2026-09-27",
@@ -533,7 +533,7 @@
       "longitude": -7.3125,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 0.46622753143310547,
+      "generationtime_ms": 0.3026723861694336,
       "daily": [
         {
           "date": "2026-09-27",
@@ -703,7 +703,7 @@
       "longitude": -7.299999,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 0.8833408355712891,
+      "generationtime_ms": 1.2542009353637695,
       "daily": [
         {
           "date": "2026-09-27",
@@ -873,7 +873,7 @@
       "longitude": -7.3125,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 6.096959114074707,
+      "generationtime_ms": 7.066965103149414,
       "daily": [
         {
           "date": "2026-09-27",
@@ -882,9 +882,9 @@
           "temperature_2m_min": 14.7,
           "precipitation_sum": 0.0,
           "precipitation_probability_max": 6,
-          "wind_speed_10m_max": 16.6,
-          "wind_gusts_10m_max": 33.5,
-          "wind_direction_10m_dominant": 297
+          "wind_speed_10m_max": 12.2,
+          "wind_gusts_10m_max": 26.3,
+          "wind_direction_10m_dominant": 300
         },
         {
           "date": "2026-09-28",
@@ -893,9 +893,9 @@
           "temperature_2m_min": 13.2,
           "precipitation_sum": 1.5,
           "precipitation_probability_max": 39,
-          "wind_speed_10m_max": 17.3,
-          "wind_gusts_10m_max": 37.4,
-          "wind_direction_10m_dominant": 216
+          "wind_speed_10m_max": 12.6,
+          "wind_gusts_10m_max": 27.4,
+          "wind_direction_10m_dominant": 226
         },
         {
           "date": "2026-09-29",
@@ -1043,7 +1043,7 @@
       "longitude": -7.3828125,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 0.35643577575683594,
+      "generationtime_ms": 0.4458427429199219,
       "daily": [
         {
           "date": "2026-09-27",
@@ -1213,7 +1213,7 @@
       "longitude": -7.349991,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 21.750569343566895,
+      "generationtime_ms": 13.545393943786621,
       "daily": [
         {
           "date": "2026-09-27",
@@ -1472,9 +1472,9 @@
           "models_used": 5
         },
         "wind_gusts_10m_max": {
-          "median": 32.05,
-          "p25": 27.6,
-          "p75": 34.55,
+          "median": 28.6,
+          "p25": 26.38,
+          "p75": 33.83,
           "min": 16.9,
           "max": 35.3,
           "models_used": 6
@@ -1565,9 +1565,9 @@
           "models_used": 5
         },
         "wind_gusts_10m_max": {
-          "median": 36.9,
-          "p25": 32.05,
-          "p75": 38.0,
+          "median": 33.5,
+          "p25": 28.2,
+          "p75": 37.75,
           "min": 23.4,
           "max": 44.3,
           "models_used": 6
@@ -2576,7 +2576,7 @@
     "available": true,
     "name": "Ranhados Consensus Skill",
     "status": "experimental_not_production",
-    "generated_utc": "2026-09-27T01:32:26+00:00",
+    "generated_utc": "2026-09-27T02:02:47+00:00",
     "method": "Correção do viés histórico por modelo + ponderação inversa ao MAE, por variável e horizonte; peso máximo limitado.",
     "precipitation": "Ainda não ponderada por este método; precipitação terá modelo probabilístico separado.",
     "days": [
@@ -3312,5 +3312,5 @@
     "rain_vote": "Percentagem de modelos com precipitação diária >=1 mm; não é probabilidade calibrada.",
     "next": "O futuro Ranhados Consensus ML terá de superar este baseline em validação fora da amostra."
   },
-  "archive_snapshots": 18
+  "archive_snapshots": 19
 }
