@@ -36,4 +36,5 @@ const fmtAge=s=>s<90?'há menos de 2 min':s<3600?`há ${Math.round(s/60)} min`:`
 const tracked=(event)=>{const base=window.RANHADOS_PUBLIC_CONFIG?.camera_tracking_url||'';if(!base)return 'latest.jpg?t='+Date.now();try{const u=new URL(base,location.href);u.searchParams.set('source','camera');u.searchParams.set('event',event);u.searchParams.set('t',Date.now());return u.toString()}catch(e){return base}};
 async function cameraStatus(){try{const r=await fetch('status.json?t='+Date.now(),{cache:'no-store'});const d=await r.json();f.className='ranhados-camera__freshness is-'+d.state;f.textContent=`Última captura: ${new Date(d.latest_mtime_utc).toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})} · ${fmtAge(d.age_seconds)}${d.state==='stale'?' · imagem atrasada':''}`}catch(e){f.textContent='Hora da última captura indisponível'}}
 cameraStatus();setInterval(()=>{const img=document.getElementById('latest-camera');if(img)img.src=tracked('refresh');cameraStatus()},300000);
-</script></body></html>
+</script><script data-meteo-ranhados-assistant="1" src="/integration/meteo-assistant.js?v=13" defer></script>
+</body></html>
