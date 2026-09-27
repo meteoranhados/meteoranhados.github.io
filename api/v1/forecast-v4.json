@@ -2,8 +2,8 @@
   "available": true,
   "version": "4.0.0-alpha4",
   "schema": "forecast-v4-alpha4",
-  "generated_utc": "2026-09-27T07:36:45+00:00",
-  "stale": false,
+  "generated_utc": "2026-09-27T08:07:06+00:00",
+  "stale": true,
   "coordinates": {
     "latitude": 40.99643,
     "longitude": -7.32928,
@@ -3302,7 +3302,16 @@
       }
     ]
   },
-  "errors": {},
+  "errors": {
+    "best_match": "HTTPError: HTTP Error 503: Service Unavailable",
+    "ecmwf_ifs": "HTTPError: HTTP Error 503: Service Unavailable",
+    "ecmwf_aifs": "HTTPError: HTTP Error 503: Service Unavailable",
+    "icon": "HTTPError: HTTP Error 503: Service Unavailable",
+    "arpege": "HTTPError: HTTP Error 503: Service Unavailable",
+    "ukmo": "HTTPError: HTTP Error 503: Service Unavailable",
+    "gfs": "HTTPError: HTTP Error 503: Service Unavailable",
+    "gem": "HTTPError: HTTP Error 503: Service Unavailable"
+  },
   "methodology": {
     "status": "experimental_parallel",
     "best_match": "Mantido como benchmark externo; não é tratado como verdade nem como previsão principal.",
