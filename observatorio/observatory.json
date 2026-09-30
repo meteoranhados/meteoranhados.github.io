@@ -1,9 +1,9 @@
 {
   "available": true,
   "version": "3.0.6",
-  "generated_utc": "2026-09-29T23:00:51+00:00",
+  "generated_utc": "2026-09-30T23:00:34+00:00",
   "series_start": "2022-01-01",
-  "series_end": "2026-09-29",
+  "series_end": "2026-09-30",
   "reference_period": "1991-2020",
   "daily": [
     {
@@ -32324,6 +32324,25 @@
       "uv_max": 8.0,
       "sunshine_hours": 0.9,
       "et": 2.02
+    },
+    {
+      "date": "2026-09-30",
+      "year": 2026,
+      "month": 9,
+      "tmin": 12.2,
+      "tmean": 16.2,
+      "tmax": 19.8,
+      "rain": 4.5,
+      "hum_mid": 80.5,
+      "press_mid": 1020.3,
+      "press_range": 8.2,
+      "wind_gust": 35.0,
+      "wind_run": 104.4,
+      "wind_bearing": 220.0,
+      "solar_max": 896.0,
+      "uv_max": 8.0,
+      "sunshine_hours": 1.4,
+      "et": 1.45
     }
   ],
   "monthly": [
@@ -33395,20 +33414,20 @@
       "year": 2026,
       "month": 9,
       "month_name": "Setembro",
-      "complete": false,
+      "complete": true,
       "coverage_pct": 100.0,
       "missing_days": 0,
-      "temperature_valid": false,
-      "precipitation_valid": false,
-      "tmean": null,
-      "temp_anomaly": null,
-      "precip_mm": null,
-      "precip_pct_normal": null,
+      "temperature_valid": true,
+      "precipitation_valid": true,
+      "tmean": 21.8,
+      "temp_anomaly": 4.17,
+      "precip_mm": 7.8,
+      "precip_pct_normal": 24.5,
       "hot30": 13,
       "hot35": 1,
       "tropical": 2,
       "frost": 0,
-      "rain_days": 1
+      "rain_days": 2
     }
   ],
   "annual": [
@@ -33492,14 +33511,14 @@
       "temperature_valid": false,
       "precipitation_valid": false,
       "tmean": 15.82,
-      "temp_anomaly": 2.13,
-      "precip_mm": 778.8,
-      "precip_pct_normal": 211.5,
+      "temp_anomaly": 2.11,
+      "precip_mm": 783.3,
+      "precip_pct_normal": 212.2,
       "hot30": 67,
       "hot35": 12,
       "tropical": 8,
       "frost": 5,
-      "rain_days": 62,
+      "rain_days": 63,
       "dry_spell_max": 66
     }
   ],
@@ -33587,10 +33606,10 @@
     {
       "month": 9,
       "month_name": "Setembro",
-      "station_tmean": 17.42,
-      "station_precip": 104.9,
-      "n_temp": 3,
-      "n_precip": 1,
+      "station_tmean": 18.52,
+      "station_precip": 56.35,
+      "n_temp": 4,
+      "n_precip": 2,
       "normal_tmean": 17.63,
       "normal_precip": 31.9
     },
@@ -33633,7 +33652,7 @@
       "y": "hum_mid",
       "x_unit": "°C",
       "y_unit": "%",
-      "r": -0.746
+      "r": -0.745
     },
     {
       "id": "temp_pressure",
@@ -33651,7 +33670,7 @@
       "y": "rain",
       "x_unit": "hPa",
       "y_unit": "mm",
-      "r": -0.432
+      "r": -0.431
     },
     {
       "id": "temp_solar",
@@ -33678,7 +33697,7 @@
       "y": "wind_gust",
       "x_unit": "hPa",
       "y_unit": "km/h",
-      "r": -0.428
+      "r": -0.427
     }
   ],
   "wind_sectors": [
@@ -33734,8 +33753,8 @@
     },
     {
       "direction": "SW",
-      "count": 106,
-      "pct": 6.2
+      "count": 107,
+      "pct": 6.3
     },
     {
       "direction": "WSW",
@@ -33794,8 +33813,8 @@
     },
     {
       "year": 2026,
-      "present": 272,
-      "expected": 272,
+      "present": 273,
+      "expected": 273,
       "coverage_pct": 100.0,
       "missing": 0
     }
@@ -33808,7 +33827,7 @@
     "warning": "A série é curta. Estes declives são apenas descrições da série da estação e não devem ser interpretados como tendência climática."
   },
   "quality": {
-    "valid_days": 1701,
+    "valid_days": 1702,
     "missing_day_count": 32,
     "invalid_row_count": 0,
     "duplicate_count": 0
