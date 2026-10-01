@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-30T23:00:34+00:00",
+  "generated_utc": "2026-10-01T23:01:23+00:00",
   "months": [
     {
       "start": "2022-01-01",
@@ -7108,6 +7108,115 @@
       },
       "precipitation_quality": {
         "valid": true,
+        "rule": "total mensal da estação apenas com 0 dias em falta",
+        "missing_days": 0
+      }
+    },
+    {
+      "start": "2026-10-01",
+      "end": "2026-10-01",
+      "days_expected": 1,
+      "days_available": 1,
+      "coverage_pct": 100.0,
+      "missing_day_count": 0,
+      "missing_days": [],
+      "complete": true,
+      "comparison_eligible": true,
+      "observed": {
+        "tmax_mean_c": 20.2,
+        "tmean_c": 14.7,
+        "tmin_mean_c": 9.7,
+        "precip_mm": 0.0,
+        "tropical_nights": 0,
+        "frost_days": 0,
+        "tmin_le_0": 0,
+        "tmax_ge_25": 0,
+        "tmax_ge_30": 0,
+        "tmax_gt_35": 0,
+        "tmax_ge_40": 0,
+        "rain_days": 0,
+        "rain_gt_10": 0,
+        "rain_gt_20": 0,
+        "rain_gt_30": 0,
+        "heatwave_days": 0,
+        "coldwave_days": 0,
+        "et_mm": 1.98,
+        "sunshine_hours": 4.4,
+        "heating_degree_days": 3.8,
+        "cooling_degree_days": 0.1,
+        "chill_hours_season_end": 0.0
+      },
+      "normal_1991_2020_same_period": {
+        "tmax_mean_c": 17.98,
+        "tmean_c": 12.96,
+        "tmin_mean_c": 7.94,
+        "precip_mm": 2.39,
+        "tropical_nights": 0.0,
+        "cold_hours": 2.91,
+        "frost_days": 0.01,
+        "tmax_gt_35": 0.0,
+        "rain_days": 0.27,
+        "rain_gt_10": 0.08,
+        "rain_gt_20": 0.03,
+        "rain_gt_30": 0.01
+      },
+      "anomaly": {
+        "tmax_c": 2.22,
+        "tmean_c": 1.74,
+        "tmin_c": 1.76,
+        "precip_mm": -2.39,
+        "precip_pct_normal": 0.0
+      },
+      "quadrant_simple": "quente / seco",
+      "extremes": {
+        "tmax_absolute": {
+          "value_c": 20.2,
+          "date": "2026-10-01"
+        },
+        "tmin_absolute": {
+          "value_c": 9.7,
+          "date": "2026-10-01"
+        },
+        "max_daily_precip": {
+          "value_mm": 0.0,
+          "date": "2026-10-01"
+        }
+      },
+      "rolling_precip_max": {
+        "1": {
+          "window_days": 1,
+          "precip_mm": 0.0,
+          "start": "2026-10-01",
+          "end": "2026-10-01"
+        },
+        "3": null,
+        "5": null,
+        "10": null
+      },
+      "dry_spell": {
+        "threshold_mm": 1.0,
+        "definition": "dia seco: precipitação < 1 mm",
+        "current_streak_days": 1,
+        "current_streak_start": "2026-10-01",
+        "max_streak_days": 1,
+        "max_streak_start": "2026-10-01",
+        "max_streak_end": "2026-10-01"
+      },
+      "year": 2026,
+      "month": 10,
+      "month_name": "Outubro",
+      "calendar_period_complete": false,
+      "max_consecutive_missing_days": 0,
+      "temperature_month_valid": false,
+      "precipitation_month_valid": false,
+      "temperature_quality": {
+        "valid": false,
+        "rule": "<=5 dias em falta no total e <=3 consecutivos",
+        "missing_days": 0,
+        "max_consecutive_missing_days": 0
+      },
+      "precipitation_quality": {
+        "valid": false,
         "rule": "total mensal da estação apenas com 0 dias em falta",
         "missing_days": 0
       }

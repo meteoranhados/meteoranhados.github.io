@@ -1,14 +1,14 @@
 {
   "engine_version": "3.0.6",
-  "generated_utc": "2026-10-01T22:52:46+00:00",
+  "generated_utc": "2026-10-01T23:02:39+00:00",
   "station": "Ranhados",
   "reference_period": "1991-2020",
-  "source_last_closed_day": "2026-09-30",
+  "source_last_closed_day": "2026-10-01",
   "live": {
-    "date": "2026-10-01",
-    "tmin": 9.7,
-    "tmax": 20.2,
-    "tmean": 14.7,
+    "date": "2026-10-02",
+    "tmin": 15.4,
+    "tmax": 15.5,
+    "tmean": 15.5,
     "rain": 0.0,
     "provisional": true,
     "source": "Cumulus MX Local API"
@@ -52,8 +52,8 @@
   "current_dry_spell": {
     "threshold_mm": 1.0,
     "definition": "dia seco: precipitação < 1 mm",
-    "current_streak_days": 0,
-    "current_streak_start": null,
+    "current_streak_days": 1,
+    "current_streak_start": "2026-10-01",
     "max_streak_days": 81,
     "max_streak_start": "2023-06-13",
     "max_streak_end": "2023-09-01"
@@ -61,157 +61,144 @@
   "current_year_dry_spell": {
     "threshold_mm": 1.0,
     "definition": "dia seco: precipitação < 1 mm",
-    "current_streak_days": 0,
-    "current_streak_start": null,
+    "current_streak_days": 1,
+    "current_streak_start": "2026-10-01",
     "max_streak_days": 66,
     "max_streak_start": "2026-06-18",
     "max_streak_end": "2026-08-22"
   },
   "current_month": {
-    "start": "2026-09-01",
-    "end": "2026-09-30",
-    "days_expected": 30,
-    "days_available": 30,
+    "start": "2026-10-01",
+    "end": "2026-10-01",
+    "days_expected": 1,
+    "days_available": 1,
     "coverage_pct": 100.0,
     "missing_day_count": 0,
     "missing_days": [],
     "complete": true,
     "comparison_eligible": true,
     "observed": {
-      "tmax_mean_c": 28.86,
-      "tmean_c": 21.8,
-      "tmin_mean_c": 15.46,
-      "precip_mm": 7.8,
-      "tropical_nights": 2,
+      "tmax_mean_c": 20.2,
+      "tmean_c": 14.7,
+      "tmin_mean_c": 9.7,
+      "precip_mm": 0.0,
+      "tropical_nights": 0,
       "frost_days": 0,
       "tmin_le_0": 0,
-      "tmax_ge_25": 23,
-      "tmax_ge_30": 13,
-      "tmax_gt_35": 1,
+      "tmax_ge_25": 0,
+      "tmax_ge_30": 0,
+      "tmax_gt_35": 0,
       "tmax_ge_40": 0,
-      "rain_days": 2,
+      "rain_days": 0,
       "rain_gt_10": 0,
       "rain_gt_20": 0,
       "rain_gt_30": 0,
-      "heatwave_days": 12,
+      "heatwave_days": 0,
       "coldwave_days": 0,
-      "et_mm": 102.52,
-      "sunshine_hours": 202.7,
-      "heating_degree_days": 20.6,
-      "cooling_degree_days": 124.9,
-      "chill_hours_season_end": 1420.9
+      "et_mm": 1.98,
+      "sunshine_hours": 4.4,
+      "heating_degree_days": 3.8,
+      "cooling_degree_days": 0.1,
+      "chill_hours_season_end": 0.0
     },
     "normal_1991_2020_same_period": {
-      "tmax_mean_c": 24.15,
-      "tmean_c": 17.63,
-      "tmin_mean_c": 11.1,
-      "precip_mm": 31.9,
-      "tropical_nights": 0.13,
-      "cold_hours": 11.63,
-      "frost_days": 0.0,
-      "tmax_gt_35": 0.2,
-      "rain_days": 4.07,
-      "rain_gt_10": 1.07,
-      "rain_gt_20": 0.3,
-      "rain_gt_30": 0.1
+      "tmax_mean_c": 17.98,
+      "tmean_c": 12.96,
+      "tmin_mean_c": 7.94,
+      "precip_mm": 2.39,
+      "tropical_nights": 0.0,
+      "cold_hours": 2.91,
+      "frost_days": 0.01,
+      "tmax_gt_35": 0.0,
+      "rain_days": 0.27,
+      "rain_gt_10": 0.08,
+      "rain_gt_20": 0.03,
+      "rain_gt_30": 0.01
     },
     "anomaly": {
-      "tmax_c": 4.71,
-      "tmean_c": 4.17,
-      "tmin_c": 4.36,
-      "precip_mm": -24.1,
-      "precip_pct_normal": 24.5
+      "tmax_c": 2.22,
+      "tmean_c": 1.74,
+      "tmin_c": 1.76,
+      "precip_mm": -2.39,
+      "precip_pct_normal": 0.0
     },
     "quadrant_simple": "quente / seco",
     "extremes": {
       "tmax_absolute": {
-        "value_c": 36.0,
-        "date": "2026-09-03"
+        "value_c": 20.2,
+        "date": "2026-10-01"
       },
       "tmin_absolute": {
-        "value_c": 10.2,
-        "date": "2026-09-10"
+        "value_c": 9.7,
+        "date": "2026-10-01"
       },
       "max_daily_precip": {
-        "value_mm": 4.5,
-        "date": "2026-09-30"
+        "value_mm": 0.0,
+        "date": "2026-10-01"
       }
     },
     "rolling_precip_max": {
       "1": {
         "window_days": 1,
-        "precip_mm": 4.5,
-        "start": "2026-09-30",
-        "end": "2026-09-30"
+        "precip_mm": 0.0,
+        "start": "2026-10-01",
+        "end": "2026-10-01"
       },
-      "3": {
-        "window_days": 3,
-        "precip_mm": 4.5,
-        "start": "2026-09-28",
-        "end": "2026-09-30"
-      },
-      "5": {
-        "window_days": 5,
-        "precip_mm": 4.5,
-        "start": "2026-09-26",
-        "end": "2026-09-30"
-      },
-      "10": {
-        "window_days": 10,
-        "precip_mm": 4.5,
-        "start": "2026-09-21",
-        "end": "2026-09-30"
-      }
+      "3": null,
+      "5": null,
+      "10": null
     },
     "dry_spell": {
       "threshold_mm": 1.0,
       "definition": "dia seco: precipitação < 1 mm",
-      "current_streak_days": 0,
-      "current_streak_start": null,
-      "max_streak_days": 21,
-      "max_streak_start": "2026-09-09",
-      "max_streak_end": "2026-09-29"
+      "current_streak_days": 1,
+      "current_streak_start": "2026-10-01",
+      "max_streak_days": 1,
+      "max_streak_start": "2026-10-01",
+      "max_streak_end": "2026-10-01"
     },
     "year": 2026,
-    "month": 9,
-    "month_name": "Setembro",
-    "calendar_period_complete": true,
+    "month": 10,
+    "month_name": "Outubro",
+    "calendar_period_complete": false,
     "max_consecutive_missing_days": 0,
-    "temperature_month_valid": true,
-    "precipitation_month_valid": true,
+    "temperature_month_valid": false,
+    "precipitation_month_valid": false,
     "temperature_quality": {
-      "valid": true,
+      "valid": false,
       "rule": "<=5 dias em falta no total e <=3 consecutivos",
       "missing_days": 0,
       "max_consecutive_missing_days": 0
     },
     "precipitation_quality": {
-      "valid": true,
+      "valid": false,
       "rule": "total mensal da estação apenas com 0 dias em falta",
       "missing_days": 0
     }
   },
   "current_month_station_reference_prior_years": {
-    "sample_count": 1,
+    "sample_count": 3,
     "years_used": [
-      2023
+      2022,
+      2023,
+      2025
     ],
     "observed_average": {
-      "tmax_mean_c": 24.5,
-      "tmean_c": 17.07,
-      "tmin_mean_c": 11.35,
-      "precip_mm": 104.9,
-      "sunshine_hours": 0.0,
-      "et_mm": 0.0,
-      "heating_degree_days": 0.0,
-      "cooling_degree_days": 0.0
+      "tmax_mean_c": 27.37,
+      "tmean_c": 18.17,
+      "tmin_mean_c": 10.03,
+      "precip_mm": 0.0,
+      "sunshine_hours": 2.63,
+      "et_mm": 0.83,
+      "heating_degree_days": 0.67,
+      "cooling_degree_days": 0.53
     }
   },
   "current_year": {
     "start": "2026-01-01",
-    "end": "2026-09-30",
-    "days_expected": 273,
-    "days_available": 273,
+    "end": "2026-10-01",
+    "days_expected": 274,
+    "days_available": 274,
     "coverage_pct": 100.0,
     "missing_day_count": 0,
     "missing_days": [],
@@ -220,7 +207,7 @@
     "observed": {
       "tmax_mean_c": 21.89,
       "tmean_c": 15.82,
-      "tmin_mean_c": 10.47,
+      "tmin_mean_c": 10.46,
       "precip_mm": 783.3,
       "tropical_nights": 8,
       "frost_days": 5,
@@ -235,34 +222,34 @@
       "rain_gt_30": 5,
       "heatwave_days": 41,
       "coldwave_days": 0,
-      "et_mm": 797.09,
-      "sunshine_hours": 1685.4,
-      "heating_degree_days": 1306.8,
-      "cooling_degree_days": 631.7,
-      "chill_hours_season_end": 1420.9,
+      "et_mm": 799.07,
+      "sunshine_hours": 1689.8,
+      "heating_degree_days": 1310.6,
+      "cooling_degree_days": 631.8,
+      "chill_hours_season_end": 0.0,
       "heatwave_days_pct_annual_normal": 136.7,
       "coldwave_days_pct_annual_normal": 0.0
     },
     "normal_1991_2020_same_period": {
-      "tmax_mean_c": 19.82,
-      "tmean_c": 13.71,
+      "tmax_mean_c": 19.81,
+      "tmean_c": 13.7,
       "tmin_mean_c": 7.6,
-      "precip_mm": 369.2,
+      "precip_mm": 371.59,
       "tropical_nights": 1.8,
-      "cold_hours": 1669.97,
-      "frost_days": 24.16,
+      "cold_hours": 1672.88,
+      "frost_days": 24.17,
       "tmax_gt_35": 3.76,
-      "rain_days": 50.48,
-      "rain_gt_10": 10.98,
-      "rain_gt_20": 3.28,
-      "rain_gt_30": 1.13
+      "rain_days": 50.75,
+      "rain_gt_10": 11.06,
+      "rain_gt_20": 3.31,
+      "rain_gt_30": 1.14
     },
     "anomaly": {
-      "tmax_c": 2.07,
-      "tmean_c": 2.11,
-      "tmin_c": 2.87,
-      "precip_mm": 414.1,
-      "precip_pct_normal": 212.2
+      "tmax_c": 2.08,
+      "tmean_c": 2.12,
+      "tmin_c": 2.86,
+      "precip_mm": 411.71,
+      "precip_pct_normal": 210.8
     },
     "quadrant_simple": "quente / chuvoso",
     "extremes": {
@@ -308,17 +295,17 @@
     "dry_spell": {
       "threshold_mm": 1.0,
       "definition": "dia seco: precipitação < 1 mm",
-      "current_streak_days": 0,
-      "current_streak_start": null,
+      "current_streak_days": 1,
+      "current_streak_start": "2026-10-01",
       "max_streak_days": 66,
       "max_streak_start": "2026-06-18",
       "max_streak_end": "2026-08-22"
     },
     "temperature_normal_observed_dates": {
-      "tmax_mean_c": 19.82,
-      "tmean_c": 13.71,
+      "tmax_mean_c": 19.81,
+      "tmean_c": 13.7,
       "tmin_mean_c": 7.6,
-      "days_matched": 273,
+      "days_matched": 274,
       "method": "normal mensal 1991–2020 ponderada apenas pelas datas observadas"
     },
     "year": 2026,
@@ -353,21 +340,21 @@
       2025
     ],
     "sample_year_count": 4,
-    "calendar_days_expected": 273,
-    "calendar_days_with_reference": 273,
+    "calendar_days_expected": 274,
+    "calendar_days_with_reference": 274,
     "reference_coverage_pct": 100.0,
     "daily_sample_count_min": 2,
     "daily_sample_count_max": 4,
     "daily_sample_count_mean": 3.89,
     "observed_reference": {
-      "tmax_mean_c": 21.46,
-      "tmean_c": 14.61,
-      "tmin_mean_c": 8.5,
+      "tmax_mean_c": 21.48,
+      "tmean_c": 14.63,
+      "tmin_mean_c": 8.51,
       "precip_mm": 475.19,
       "tropical_nights": 4.67,
       "frost_days": 23.67,
-      "tmax_ge_25": 101.25,
-      "tmax_ge_30": 54.5,
+      "tmax_ge_25": 101.92,
+      "tmax_ge_30": 54.83,
       "tmax_gt_35": 13.92,
       "tmax_ge_40": 0.58,
       "rain_days": 51.83,
@@ -377,15 +364,15 @@
     }
   },
   "current_year_difference_vs_station_reference": {
-    "tmax_c": 0.43,
-    "tmean_c": 1.21,
-    "tmin_c": 1.97,
+    "tmax_c": 0.41,
+    "tmean_c": 1.19,
+    "tmin_c": 1.95,
     "precip_mm": 308.11,
     "precip_pct_reference": 164.8,
     "tropical_nights": 3.33,
     "frost_days": -18.67,
-    "tmax_ge_25": 18.75,
-    "tmax_ge_30": 12.5,
+    "tmax_ge_25": 18.08,
+    "tmax_ge_30": 12.17,
     "tmax_gt_35": -1.92,
     "tmax_ge_40": -0.58,
     "rain_days": 11.17,
@@ -394,235 +381,110 @@
     "rain_gt_30": 3.25
   },
   "current_hydrological_year": {
-    "start": "2025-10-01",
-    "end": "2026-09-30",
-    "days_expected": 365,
-    "days_available": 365,
+    "start": "2026-10-01",
+    "end": "2026-10-01",
+    "days_expected": 1,
+    "days_available": 1,
     "coverage_pct": 100.0,
     "missing_day_count": 0,
     "missing_days": [],
     "complete": true,
     "comparison_eligible": true,
     "observed": {
-      "tmax_mean_c": 19.94,
-      "tmean_c": 14.41,
-      "tmin_mean_c": 9.61,
-      "precip_mm": 1257.8,
-      "tropical_nights": 8,
-      "frost_days": 9,
-      "tmin_le_0": 10,
-      "tmax_ge_25": 125,
-      "tmax_ge_30": 67,
-      "tmax_gt_35": 12,
+      "tmax_mean_c": 20.2,
+      "tmean_c": 14.7,
+      "tmin_mean_c": 9.7,
+      "precip_mm": 0.0,
+      "tropical_nights": 0,
+      "frost_days": 0,
+      "tmin_le_0": 0,
+      "tmax_ge_25": 0,
+      "tmax_ge_30": 0,
+      "tmax_gt_35": 0,
       "tmax_ge_40": 0,
-      "rain_days": 96,
-      "rain_gt_10": 47,
-      "rain_gt_20": 18,
-      "rain_gt_30": 9,
-      "heatwave_days": 47,
+      "rain_days": 0,
+      "rain_gt_10": 0,
+      "rain_gt_20": 0,
+      "rain_gt_30": 0,
+      "heatwave_days": 0,
       "coldwave_days": 0,
-      "et_mm": 877.25,
-      "sunshine_hours": 1910.1,
-      "heating_degree_days": 2063.2,
-      "cooling_degree_days": 655.1,
-      "chill_hours_season_end": 1420.9
+      "et_mm": 1.98,
+      "sunshine_hours": 4.4,
+      "heating_degree_days": 3.8,
+      "cooling_degree_days": 0.1,
+      "chill_hours_season_end": 0.0
     },
     "normal_1991_2020_same_period": {
-      "tmax_mean_c": 18.07,
-      "tmean_c": 12.46,
-      "tmin_mean_c": 6.85,
-      "precip_mm": 590.7,
-      "tropical_nights": 1.8,
-      "cold_hours": 2640.47,
-      "frost_days": 35.89,
-      "tmax_gt_35": 3.76,
-      "rain_days": 75.71,
-      "rain_gt_10": 18.48,
-      "rain_gt_20": 5.88,
-      "rain_gt_30": 1.83
+      "tmax_mean_c": 17.98,
+      "tmean_c": 12.96,
+      "tmin_mean_c": 7.94,
+      "precip_mm": 2.39,
+      "tropical_nights": 0.0,
+      "cold_hours": 2.91,
+      "frost_days": 0.01,
+      "tmax_gt_35": 0.0,
+      "rain_days": 0.27,
+      "rain_gt_10": 0.08,
+      "rain_gt_20": 0.03,
+      "rain_gt_30": 0.01
     },
     "anomaly": {
-      "tmax_c": 1.87,
-      "tmean_c": 1.95,
-      "tmin_c": 2.76,
-      "precip_mm": 667.1,
-      "precip_pct_normal": 212.9
+      "tmax_c": 2.22,
+      "tmean_c": 1.74,
+      "tmin_c": 1.76,
+      "precip_mm": -2.39,
+      "precip_pct_normal": 0.0
     },
-    "quadrant_simple": "quente / chuvoso",
+    "quadrant_simple": "quente / seco",
     "extremes": {
       "tmax_absolute": {
-        "value_c": 38.0,
-        "date": "2026-07-06"
+        "value_c": 20.2,
+        "date": "2026-10-01"
       },
       "tmin_absolute": {
-        "value_c": -2.3,
-        "date": "2026-01-05"
+        "value_c": 9.7,
+        "date": "2026-10-01"
       },
       "max_daily_precip": {
-        "value_mm": 63.5,
-        "date": "2025-11-13"
+        "value_mm": 0.0,
+        "date": "2026-10-01"
       }
     },
     "rolling_precip_max": {
       "1": {
         "window_days": 1,
-        "precip_mm": 63.5,
-        "start": "2025-11-13",
-        "end": "2025-11-13"
+        "precip_mm": 0.0,
+        "start": "2026-10-01",
+        "end": "2026-10-01"
       },
-      "3": {
-        "window_days": 3,
-        "precip_mm": 127.5,
-        "start": "2025-11-13",
-        "end": "2025-11-15"
-      },
-      "5": {
-        "window_days": 5,
-        "precip_mm": 163.3,
-        "start": "2025-11-12",
-        "end": "2025-11-16"
-      },
-      "10": {
-        "window_days": 10,
-        "precip_mm": 243.6,
-        "start": "2026-01-27",
-        "end": "2026-02-05"
-      }
+      "3": null,
+      "5": null,
+      "10": null
     },
     "dry_spell": {
       "threshold_mm": 1.0,
       "definition": "dia seco: precipitação < 1 mm",
-      "current_streak_days": 0,
-      "current_streak_start": null,
-      "max_streak_days": 66,
-      "max_streak_start": "2026-06-18",
-      "max_streak_end": "2026-08-22"
+      "current_streak_days": 1,
+      "current_streak_start": "2026-10-01",
+      "max_streak_days": 1,
+      "max_streak_start": "2026-10-01",
+      "max_streak_end": "2026-10-01"
     },
-    "hydrological_year": "2025/26",
-    "start_year": 2025,
-    "full_start": "2025-10-01",
-    "full_end": "2026-09-30",
-    "calendar_period_complete": true,
+    "hydrological_year": "2026/27",
+    "start_year": 2026,
+    "full_start": "2026-10-01",
+    "full_end": "2027-09-30",
+    "calendar_period_complete": false,
     "cumulative_points": [
       {
         "month": 10,
         "month_name": "Out",
-        "year": 2025,
-        "end": "2025-10-31",
-        "observed_cumulative_mm": 80.5,
-        "normal_cumulative_mm": 74.1,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 11,
-        "month_name": "Nov",
-        "year": 2025,
-        "end": "2025-11-30",
-        "observed_cumulative_mm": 328.7,
-        "normal_cumulative_mm": 142.6,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 12,
-        "month_name": "Dez",
-        "year": 2025,
-        "end": "2025-12-31",
-        "observed_cumulative_mm": 474.5,
-        "normal_cumulative_mm": 221.5,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 1,
-        "month_name": "Jan",
         "year": 2026,
-        "end": "2026-01-31",
-        "observed_cumulative_mm": 731.2,
-        "normal_cumulative_mm": 293.3,
+        "end": "2026-10-01",
+        "observed_cumulative_mm": 0.0,
+        "normal_cumulative_mm": 2.39,
         "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 2,
-        "month_name": "Fev",
-        "year": 2026,
-        "end": "2026-02-28",
-        "observed_cumulative_mm": 989.2,
-        "normal_cumulative_mm": 347.3,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 3,
-        "month_name": "Mar",
-        "year": 2026,
-        "end": "2026-03-31",
-        "observed_cumulative_mm": 1026.6,
-        "normal_cumulative_mm": 406.0,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 4,
-        "month_name": "Abr",
-        "year": 2026,
-        "end": "2026-04-30",
-        "observed_cumulative_mm": 1087.4,
-        "normal_cumulative_mm": 468.7,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 5,
-        "month_name": "Mai",
-        "year": 2026,
-        "end": "2026-05-31",
-        "observed_cumulative_mm": 1154.5,
-        "normal_cumulative_mm": 522.7,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 6,
-        "month_name": "Jun",
-        "year": 2026,
-        "end": "2026-06-30",
-        "observed_cumulative_mm": 1206.3,
-        "normal_cumulative_mm": 543.5,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 7,
-        "month_name": "Jul",
-        "year": 2026,
-        "end": "2026-07-31",
-        "observed_cumulative_mm": 1206.3,
-        "normal_cumulative_mm": 550.2,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 8,
-        "month_name": "Ago",
-        "year": 2026,
-        "end": "2026-08-31",
-        "observed_cumulative_mm": 1250.0,
-        "normal_cumulative_mm": 558.8,
-        "coverage_pct": 100.0,
-        "partial_month": false
-      },
-      {
-        "month": 9,
-        "month_name": "Set",
-        "year": 2026,
-        "end": "2026-09-30",
-        "observed_cumulative_mm": 1257.8,
-        "normal_cumulative_mm": 590.7,
-        "coverage_pct": 100.0,
-        "partial_month": false
+        "partial_month": true
       }
     ]
   },
@@ -635,84 +497,71 @@
       "precip_mm": 995.55
     },
     "current_calendar_month": {
-      "month": 9,
-      "month_name": "Setembro",
+      "month": 10,
+      "month_name": "Outubro",
       "station": {
-        "tmax_mean_c": 25.78,
-        "tmean_c": 18.52,
-        "tmin_mean_c": 12.48,
-        "tropical_nights": 0.76,
+        "tmax_mean_c": 20.31,
+        "tmean_c": 15.02,
+        "tmin_mean_c": 10.79,
+        "tropical_nights": 0.0,
         "frost_days": 0.0,
         "tmin_le_0": 0.0,
-        "tmax_ge_25": 15.96,
-        "tmax_ge_30": 5.56,
-        "tmax_gt_35": 0.25,
+        "tmax_ge_25": 6.5,
+        "tmax_ge_30": 0.25,
+        "tmax_gt_35": 0.0,
         "tmax_ge_40": 0.0,
-        "precip_mm": 56.35,
-        "rain_days": 5.5,
-        "rain_gt_10": 3,
-        "rain_gt_20": 0.5,
-        "rain_gt_30": 0
+        "precip_mm": 164.47,
+        "rain_days": 10.67,
+        "rain_gt_10": 5,
+        "rain_gt_20": 3.67,
+        "rain_gt_30": 1
       },
       "temperature_years_used": [
         2022,
         2023,
-        2025,
-        2026
+        2024,
+        2025
       ],
       "temperature_sample_count": 4,
       "precipitation_years_used": [
+        2022,
         2023,
-        2026
+        2025
       ],
-      "precipitation_sample_count": 2,
+      "precipitation_sample_count": 3,
       "years_used": [
         2022,
         2023,
-        2025,
-        2026
+        2024,
+        2025
       ],
       "sample_count": 4,
-      "excluded_temperature_years": [
-        {
-          "year": 2024,
-          "missing_days": 12,
-          "max_consecutive_missing_days": 12
-        }
-      ],
+      "excluded_temperature_years": [],
       "excluded_precipitation_years": [
         {
-          "year": 2022,
-          "missing_days": 1
-        },
-        {
           "year": 2024,
-          "missing_days": 12
-        },
-        {
-          "year": 2025,
-          "missing_days": 1
+          "missing_days": 2
         }
       ],
       "official_normal_1991_2020": {
-        "tmax_mean_c": 24.15,
-        "tmean_c": 17.63,
-        "tmin_mean_c": 11.1,
-        "precip_mm": 31.9,
-        "tropical_nights": 0.13,
-        "frost_days": 0.0,
-        "tmax_gt_35": 0.2,
-        "rain_days": 4.07,
-        "rain_gt_10": 1.07,
-        "rain_gt_20": 0.3,
-        "rain_gt_30": 0.1
+        "tmax_mean_c": 17.98,
+        "tmean_c": 12.96,
+        "tmin_mean_c": 7.94,
+        "precip_mm": 74.1,
+        "tropical_nights": 0.0,
+        "frost_days": 0.33,
+        "tmax_gt_35": 0.0,
+        "rain_days": 8.37,
+        "rain_gt_10": 2.53,
+        "rain_gt_20": 0.83,
+        "rain_gt_30": 0.2
       },
       "difference_station_vs_1991_2020": {
-        "tmax_c": 1.63,
-        "tmean_c": 0.89,
-        "tmin_c": 1.38,
-        "precip_mm": 24.45,
-        "precip_pct_normal": 176.6
+        "tmax_c": 2.33,
+        "tmean_c": 2.06,
+        "tmin_c": 2.85,
+        "precip_mm": 90.37,
+        "precip_pct_normal": 222.0
       }
     }
   },
@@ -733,7 +582,7 @@
     "coldwave_days": 18.0
   },
   "quality": {
-    "valid_days": 1702,
+    "valid_days": 1703,
     "missing_day_count": 32,
     "invalid_row_count": 0,
     "duplicate_count": 0
