@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261005-726",
   "version": "3.0.6",
-  "generated_utc": "2026-10-06T05:33:44+00:00",
+  "generated_utc": "2026-10-06T06:04:01+00:00",
   "trained_through": "2026-10-05",
   "training_samples_by_lead": {
     "1": 726,
@@ -89190,21 +89190,21 @@
         ]
       },
       "tmin": {
-        "value": 11.62,
+        "value": 11.7,
         "interval80": [
-          9.99,
-          13.25
+          10.07,
+          13.33
         ],
         "empirical_mae": 1.02,
-        "model_spread": 0.72,
+        "model_spread": 0.52,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 11.9,
+            "raw": 12.1,
             "bias": 0.559,
-            "corrected": 11.34,
+            "corrected": 11.54,
             "mae_context": 0.926,
             "n": 46,
             "context_bucket": "rain_cloud:trace|mixed"
@@ -89232,21 +89232,21 @@
         ]
       },
       "tmean": {
-        "value": 15.29,
+        "value": 15.34,
         "interval80": [
-          14.32,
-          16.25
+          14.37,
+          16.3
         ],
         "empirical_mae": 0.66,
-        "model_spread": 0.12,
+        "model_spread": 0.04,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 15.38,
+            "raw": 15.48,
             "bias": 0.144,
-            "corrected": 15.24,
+            "corrected": 15.34,
             "mae_context": 0.542,
             "n": 46,
             "context_bucket": "rain_cloud:trace|mixed"
@@ -146333,5 +146333,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-10-06T05:33:44+00:00"
+  "forecast_updated_utc": "2026-10-06T06:04:01+00:00"
 }
