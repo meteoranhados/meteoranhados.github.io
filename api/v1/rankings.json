@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-14T08:08:17+00:00",
+  "generated_utc": "2026-10-14T23:00:46+00:00",
   "method": {
     "temperature_month_rankings": "Meses termicamente válidos: <=5 falhas no total e <=3 consecutivas.",
     "precipitation_month_rankings": "Apenas meses com 0 dias em falta.",
@@ -5586,6 +5586,60 @@
       },
       {
         "type": "heat",
+        "start": "2026-10-10",
+        "end": "2026-10-14",
+        "days": 5,
+        "confirmed_wave": false,
+        "days_needed_for_confirmation": 1,
+        "mean_departure_c": 6.72,
+        "extreme_departure_c": 8.12,
+        "extreme_observed_c": 26.1,
+        "cumulative_margin_beyond_threshold_c": 8.6,
+        "daily": [
+          {
+            "date": "2026-10-10",
+            "observed_c": 23.7,
+            "normal_c": 17.98,
+            "threshold_c": 22.98,
+            "departure_c": 5.72,
+            "margin_beyond_threshold_c": 0.72
+          },
+          {
+            "date": "2026-10-11",
+            "observed_c": 24.8,
+            "normal_c": 17.98,
+            "threshold_c": 22.98,
+            "departure_c": 6.82,
+            "margin_beyond_threshold_c": 1.82
+          },
+          {
+            "date": "2026-10-12",
+            "observed_c": 23.4,
+            "normal_c": 17.98,
+            "threshold_c": 22.98,
+            "departure_c": 5.42,
+            "margin_beyond_threshold_c": 0.42
+          },
+          {
+            "date": "2026-10-13",
+            "observed_c": 25.5,
+            "normal_c": 17.98,
+            "threshold_c": 22.98,
+            "departure_c": 7.52,
+            "margin_beyond_threshold_c": 2.52
+          },
+          {
+            "date": "2026-10-14",
+            "observed_c": 26.1,
+            "normal_c": 17.98,
+            "threshold_c": 22.98,
+            "departure_c": 8.12,
+            "margin_beyond_threshold_c": 3.12
+          }
+        ]
+      },
+      {
+        "type": "heat",
         "start": "2024-11-06",
         "end": "2024-11-10",
         "days": 5,
@@ -6095,52 +6149,6 @@
             "threshold_c": 13.26,
             "departure_c": 5.94,
             "margin_beyond_threshold_c": 0.94
-          }
-        ]
-      },
-      {
-        "type": "heat",
-        "start": "2026-10-10",
-        "end": "2026-10-13",
-        "days": 4,
-        "confirmed_wave": false,
-        "days_needed_for_confirmation": 2,
-        "mean_departure_c": 6.37,
-        "extreme_departure_c": 7.52,
-        "extreme_observed_c": 25.5,
-        "cumulative_margin_beyond_threshold_c": 5.48,
-        "daily": [
-          {
-            "date": "2026-10-10",
-            "observed_c": 23.7,
-            "normal_c": 17.98,
-            "threshold_c": 22.98,
-            "departure_c": 5.72,
-            "margin_beyond_threshold_c": 0.72
-          },
-          {
-            "date": "2026-10-11",
-            "observed_c": 24.8,
-            "normal_c": 17.98,
-            "threshold_c": 22.98,
-            "departure_c": 6.82,
-            "margin_beyond_threshold_c": 1.82
-          },
-          {
-            "date": "2026-10-12",
-            "observed_c": 23.4,
-            "normal_c": 17.98,
-            "threshold_c": 22.98,
-            "departure_c": 5.42,
-            "margin_beyond_threshold_c": 0.42
-          },
-          {
-            "date": "2026-10-13",
-            "observed_c": 25.5,
-            "normal_c": 17.98,
-            "threshold_c": 22.98,
-            "departure_c": 7.52,
-            "margin_beyond_threshold_c": 2.52
           }
         ]
       },

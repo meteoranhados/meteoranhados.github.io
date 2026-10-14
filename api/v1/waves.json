@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-14T08:08:17+00:00",
+  "generated_utc": "2026-10-14T23:00:46+00:00",
   "definition": {
     "heatwave": ">=6 dias consecutivos com Tmax > normal mensal Tmax +5 C",
     "coldwave": ">=6 dias consecutivos com Tmin < normal mensal Tmin -5 C",
@@ -2966,14 +2966,14 @@
     {
       "type": "heat",
       "start": "2026-10-10",
-      "end": "2026-10-13",
-      "days": 4,
+      "end": "2026-10-14",
+      "days": 5,
       "confirmed_wave": false,
-      "days_needed_for_confirmation": 2,
-      "mean_departure_c": 6.37,
-      "extreme_departure_c": 7.52,
-      "extreme_observed_c": 25.5,
-      "cumulative_margin_beyond_threshold_c": 5.48,
+      "days_needed_for_confirmation": 1,
+      "mean_departure_c": 6.72,
+      "extreme_departure_c": 8.12,
+      "extreme_observed_c": 26.1,
+      "cumulative_margin_beyond_threshold_c": 8.6,
       "daily": [
         {
           "date": "2026-10-10",
@@ -3006,6 +3006,14 @@
           "threshold_c": 22.98,
           "departure_c": 7.52,
           "margin_beyond_threshold_c": 2.52
+        },
+        {
+          "date": "2026-10-14",
+          "observed_c": 26.1,
+          "normal_c": 17.98,
+          "threshold_c": 22.98,
+          "departure_c": 8.12,
+          "margin_beyond_threshold_c": 3.12
         }
       ]
     }
