@@ -1,7 +1,7 @@
 {
   "available": true,
-  "generated_utc": "2026-10-18T23:01:23+00:00",
-  "last_success_utc": "2026-10-18T23:01:23+00:00",
+  "generated_utc": "2026-10-18T23:30:55+00:00",
+  "last_success_utc": "2026-10-18T23:30:55+00:00",
   "stale": false,
   "source": "Open-Meteo",
   "coordinates": {
@@ -18,7 +18,7 @@
     "longitude": -7.3345375,
     "elevation": 755.0,
     "timezone": "Europe/Lisbon",
-    "generationtime_ms": 46.85056209564209,
+    "generationtime_ms": 41.06259346008301,
     "hourly": {
       "time": [
         "2026-10-19T00:00",
@@ -10157,7 +10157,7 @@
       "longitude": -7.318115,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 0.6096363067626953,
+      "generationtime_ms": 0.4801750183105469,
       "hourly": {
         "time": [
           "2026-10-19T00:00",
@@ -14735,7 +14735,7 @@
       "longitude": -7.3828125,
       "elevation": 755.0,
       "timezone": "Europe/Lisbon",
-      "generationtime_ms": 1.3589859008789062,
+      "generationtime_ms": 0.7747411727905273,
       "hourly": {
         "time": [
           "2026-10-19T00:00",
@@ -19314,7 +19314,7 @@
     "longitude": -7.25,
     "elevation": 755.0,
     "timezone": "Europe/Lisbon",
-    "generationtime_ms": 4.056453704833984,
+    "generationtime_ms": 3.8777589797973633,
     "hourly": {
       "time": [
         "2026-10-19T00:00",
@@ -21704,25 +21704,25 @@
     "method": "Diferença estação–Best Match no momento atual; correção reduzida linearmente a zero em 8–12 h.",
     "not_applied_to": "precipitação, probabilidade de precipitação, vento e códigos meteorológicos",
     "offsets": {
-      "temperature_2m": -1.0,
-      "relative_humidity_2m": 5.0,
-      "pressure_msl": 0.8
+      "temperature_2m": -0.5,
+      "relative_humidity_2m": 4.0,
+      "pressure_msl": 0.4
     },
     "hourly": {
       "temperature_2m": [
-        8.8,
-        7.88,
-        7.17,
-        6.65,
-        6.13,
-        5.82,
-        5.4,
-        5.08,
-        4.97,
-        6.15,
-        7.53,
+        9.3,
+        8.3,
+        7.54,
+        6.98,
+        6.42,
+        6.07,
+        5.61,
+        5.25,
+        5.09,
+        6.23,
+        7.58,
         8.62,
-        10.0,
+        9.96,
         11.2,
         12.5,
         13.2,
@@ -22048,15 +22048,15 @@
         10.3
       ],
       "relative_humidity_2m": [
-        62.0,
-        63.38,
-        65.75,
-        67.12,
+        61.0,
+        63.0,
+        65.5,
+        67.0,
         68.5,
-        68.88,
-        71.25,
-        74.62,
-        76.0,
+        69.0,
+        71.5,
+        75.0,
+        76.5,
         71.0,
         66.0,
         63.0,
@@ -22386,19 +22386,19 @@
         87.0
       ],
       "pressure_msl": [
-        1019.5,
-        1019.63,
-        1019.87,
-        1019.7,
-        1019.23,
-        1018.57,
-        1018.2,
-        1017.93,
-        1017.87,
-        1018.1,
+        1019.1,
+        1019.3,
+        1019.57,
+        1019.43,
+        1019.0,
+        1018.37,
         1018.03,
+        1017.8,
+        1017.77,
+        1018.03,
+        1018.0,
         1017.57,
-        1016.7,
+        1016.73,
         1015.4,
         1014.1,
         1013.1,
@@ -22728,8 +22728,8 @@
   "evolution": {
     "available": true,
     "collecting": false,
-    "reference_issued_utc": "2026-10-17T22:47:57+00:00",
-    "hours_ago": 24.2,
+    "reference_issued_utc": "2026-10-17T23:30:11+00:00",
+    "hours_ago": 24.0,
     "days": {
       "2026-10-19": {
         "temperature_2m_max": -0.9,
@@ -22838,6 +22838,15 @@
         "wind_gusts_10m_max": -2.1,
         "weather_code_changed": false,
         "previous_weather_code": 3
+      },
+      "2026-10-31": {
+        "temperature_2m_max": -3.0,
+        "temperature_2m_min": -1.9,
+        "precipitation_probability_max": -8.0,
+        "precipitation_sum": -0.6,
+        "wind_gusts_10m_max": -15.8,
+        "weather_code_changed": true,
+        "previous_weather_code": 51
       }
     },
     "message": "Diferenças face à previsão guardada mais próxima de 24 h atrás; não medem erro face ao observado."
