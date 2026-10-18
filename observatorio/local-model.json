@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261017-726",
   "version": "3.0.6",
-  "generated_utc": "2026-10-18T11:38:55+00:00",
+  "generated_utc": "2026-10-18T12:09:14+00:00",
   "trained_through": "2026-10-17",
   "training_samples_by_lead": {
     "1": 726,
@@ -89400,10 +89400,10 @@
         ]
       },
       "tmin": {
-        "value": 3.81,
+        "value": 3.85,
         "interval80": [
-          2.52,
-          5.11
+          2.56,
+          5.15
         ],
         "empirical_mae": 0.89,
         "model_spread": 1.02,
@@ -89412,9 +89412,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 4.6,
+            "raw": 4.8,
             "bias": 1.086,
-            "corrected": 3.51,
+            "corrected": 3.71,
             "mae_context": 1.189,
             "n": 14,
             "context_bucket": "full:SON|dry|clear|calm|normal"
@@ -89442,10 +89442,10 @@
         ]
       },
       "tmean": {
-        "value": 9.19,
+        "value": 9.21,
         "interval80": [
-          8.53,
-          9.86
+          8.54,
+          9.88
         ],
         "empirical_mae": 0.47,
         "model_spread": 0.78,
@@ -89454,9 +89454,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 9.44,
+            "raw": 9.49,
             "bias": 0.195,
-            "corrected": 9.24,
+            "corrected": 9.29,
             "mae_context": 0.446,
             "n": 14,
             "context_bucket": "full:SON|dry|clear|calm|normal"
@@ -146539,5 +146539,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-10-18T11:38:55+00:00"
+  "forecast_updated_utc": "2026-10-18T12:09:14+00:00"
 }
