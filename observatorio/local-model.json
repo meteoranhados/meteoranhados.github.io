@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261020-726",
   "version": "3.0.6",
-  "generated_utc": "2026-10-21T12:08:36+00:00",
+  "generated_utc": "2026-10-21T12:38:56+00:00",
   "trained_through": "2026-10-20",
   "training_samples_by_lead": {
     "1": 726,
@@ -89659,14 +89659,14 @@
       "precip": {
         "probability_pct": 1.0,
         "expected_mm": 0.0,
-        "conditional_mm": 0.03,
+        "conditional_mm": 0.0,
         "conditional_range80_mm": [
           1.0,
           1.8
         ],
         "confidence": "high",
-        "raw_model_mean_mm": 0.03,
-        "raw_model_spread_mm": 0.1,
+        "raw_model_mean_mm": 0.0,
+        "raw_model_spread_mm": 0.0,
         "n_context": 118,
         "context_bucket": "season_rain:SON|dry",
         "models": [
@@ -89678,7 +89678,7 @@
           {
             "model": "ecmwf",
             "label": "ECMWF IFS",
-            "raw": 0.1
+            "raw": 0.0
           },
           {
             "model": "gfs",
@@ -89697,7 +89697,7 @@
         "wind": "breezy",
         "humidity": "normal",
         "pressure": "high",
-        "raw_precip_mean": 0.033,
+        "raw_precip_mean": 0.0,
         "rain_vote": 0.0
       },
       "scenario_label": "sinal seco · céu muito nublado · vento moderado"
@@ -146799,5 +146799,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-10-21T12:08:36+00:00"
+  "forecast_updated_utc": "2026-10-21T12:38:56+00:00"
 }
