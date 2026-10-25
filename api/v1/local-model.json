@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261024-726",
   "version": "3.0.6",
-  "generated_utc": "2026-10-25T16:41:32+00:00",
+  "generated_utc": "2026-10-25T17:11:51+00:00",
   "trained_through": "2026-10-24",
   "training_samples_by_lead": {
     "1": 726,
@@ -89877,21 +89877,21 @@
     },
     "5": {
       "tmax": {
-        "value": 21.73,
+        "value": 21.39,
         "interval80": [
-          19.07,
-          24.39
+          18.73,
+          24.04
         ],
         "empirical_mae": 1.67,
-        "model_spread": 1.8,
+        "model_spread": 1.95,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 21.5,
+            "raw": 20.6,
             "bias": -0.198,
-            "corrected": 21.7,
+            "corrected": 20.8,
             "mae_context": 1.565,
             "n": 24,
             "context_bucket": "full:SON|dry|mixed|calm|normal"
@@ -89961,21 +89961,21 @@
         ]
       },
       "tmean": {
-        "value": 15.17,
+        "value": 14.9,
         "interval80": [
-          13.54,
-          16.8
+          13.27,
+          16.53
         ],
         "empirical_mae": 1.04,
-        "model_spread": 1.27,
+        "model_spread": 0.6,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 15.61,
+            "raw": 14.94,
             "bias": -0.185,
-            "corrected": 15.79,
+            "corrected": 15.12,
             "mae_context": 0.948,
             "n": 24,
             "context_bucket": "full:SON|dry|mixed|calm|normal"
@@ -90050,21 +90050,21 @@
     },
     "7": {
       "tmax": {
-        "value": 17.51,
+        "value": 17.07,
         "interval80": [
-          14.49,
-          20.53
+          14.05,
+          20.08
         ],
         "empirical_mae": 1.89,
-        "model_spread": 5.22,
+        "model_spread": 3.62,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 19.1,
+            "raw": 17.5,
             "bias": -1.242,
-            "corrected": 20.34,
+            "corrected": 18.74,
             "mae_context": 2.09,
             "n": 20,
             "context_bucket": "full:SON|dry|clear|calm|dry"
@@ -90092,10 +90092,10 @@
         ]
       },
       "tmin": {
-        "value": 7.44,
+        "value": 7.41,
         "interval80": [
-          4.1,
-          10.77
+          4.08,
+          10.75
         ],
         "empirical_mae": 1.94,
         "model_spread": 1.07,
@@ -90104,9 +90104,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 8.5,
+            "raw": 8.4,
             "bias": 0.81,
-            "corrected": 7.69,
+            "corrected": 7.59,
             "mae_context": 2.336,
             "n": 20,
             "context_bucket": "full:SON|dry|clear|calm|dry"
@@ -90134,21 +90134,21 @@
         ]
       },
       "tmean": {
-        "value": 11.55,
+        "value": 11.31,
         "interval80": [
-          8.67,
-          14.44
+          8.42,
+          14.19
         ],
         "empirical_mae": 1.66,
-        "model_spread": 2.76,
+        "model_spread": 1.82,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 13.32,
+            "raw": 12.38,
             "bias": 0.442,
-            "corrected": 12.88,
+            "corrected": 11.94,
             "mae_context": 1.884,
             "n": 20,
             "context_bucket": "full:SON|dry|clear|calm|dry"
@@ -146882,5 +146882,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-10-25T16:41:32+00:00"
+  "forecast_updated_utc": "2026-10-25T17:11:51+00:00"
 }
