@@ -1,7 +1,7 @@
 {
   "available": true,
   "version": "3.0.6",
-  "generated_utc": "2026-10-24T23:01:08+00:00",
+  "generated_utc": "2026-10-26T00:02:46+00:00",
   "source": "Open-Meteo Previous Runs API × Cumulus dayfile",
   "period_start": "2024-10-24",
   "period_end": "2026-10-24",
@@ -158731,5 +158731,10 @@
     "cases": "Até 730 dias comparáveis são mantidos individualmente para mostrar a convergência D+7 → D+1 → observado.",
     "caution": "Mudanças de modelos e disponibilidade do arquivo podem alterar a amostra; a análise é operacional, não climatológica."
   },
-  "fetch_errors": {}
+  "fetch_errors": {
+    "best_match": "TimeoutError: The read operation timed out",
+    "ecmwf": "TimeoutError: The read operation timed out",
+    "gfs": "TimeoutError: The read operation timed out"
+  },
+  "stale": true
 }
