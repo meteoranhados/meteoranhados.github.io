@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261024-726",
   "version": "3.0.6",
-  "generated_utc": "2026-10-29T05:34:21+00:00",
+  "generated_utc": "2026-10-29T06:04:41+00:00",
   "trained_through": "2026-10-24",
   "training_samples_by_lead": {
     "1": 726,
@@ -89400,21 +89400,21 @@
         ]
       },
       "tmin": {
-        "value": 11.39,
+        "value": 11.3,
         "interval80": [
-          9.8,
-          12.99
+          9.71,
+          12.9
         ],
         "empirical_mae": 0.98,
-        "model_spread": 1.07,
+        "model_spread": 0.67,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 13.1,
+            "raw": 12.7,
             "bias": 0.988,
-            "corrected": 12.11,
+            "corrected": 11.71,
             "mae_context": 1.198,
             "n": 123,
             "context_bucket": "season_rain:SON|dry"
@@ -89442,21 +89442,21 @@
         ]
       },
       "tmean": {
-        "value": 14.9,
+        "value": 14.89,
         "interval80": [
           14.11,
           15.68
         ],
         "empirical_mae": 0.48,
-        "model_spread": 0.52,
+        "model_spread": 0.51,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 15.35,
+            "raw": 15.34,
             "bias": 0.238,
-            "corrected": 15.11,
+            "corrected": 15.1,
             "mae_context": 0.433,
             "n": 123,
             "context_bucket": "season_rain:SON|dry"
@@ -146882,5 +146882,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-10-29T05:34:21+00:00"
+  "forecast_updated_utc": "2026-10-29T06:04:41+00:00"
 }
