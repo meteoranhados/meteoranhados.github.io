@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261024-726",
   "version": "3.0.6",
-  "generated_utc": "2026-10-29T17:42:29+00:00",
+  "generated_utc": "2026-10-29T18:12:49+00:00",
   "trained_through": "2026-10-24",
   "training_samples_by_lead": {
     "1": 726,
@@ -89358,21 +89358,21 @@
   "current": {
     "1": {
       "tmax": {
-        "value": 18.32,
+        "value": 18.52,
         "interval80": [
-          16.92,
-          19.71
+          17.13,
+          19.92
         ],
         "empirical_mae": 0.9,
-        "model_spread": 1.13,
+        "model_spread": 0.53,
         "confidence": "moderate",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 17.2,
+            "raw": 17.8,
             "bias": -0.42,
-            "corrected": 17.62,
+            "corrected": 18.22,
             "mae_context": 0.886,
             "n": 123,
             "context_bucket": "season_rain:SON|dry"
@@ -89400,10 +89400,10 @@
         ]
       },
       "tmin": {
-        "value": 11.13,
+        "value": 11.18,
         "interval80": [
-          9.53,
-          12.73
+          9.58,
+          12.77
         ],
         "empirical_mae": 0.98,
         "model_spread": 0.9,
@@ -89412,9 +89412,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 12.3,
+            "raw": 12.5,
             "bias": 0.988,
-            "corrected": 11.31,
+            "corrected": 11.51,
             "mae_context": 1.198,
             "n": 123,
             "context_bucket": "season_rain:SON|dry"
@@ -89442,10 +89442,10 @@
         ]
       },
       "tmean": {
-        "value": 14.44,
+        "value": 14.47,
         "interval80": [
-          13.65,
-          15.23
+          13.69,
+          15.26
         ],
         "empirical_mae": 0.48,
         "model_spread": 0.52,
@@ -89454,9 +89454,9 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 14.64,
+            "raw": 14.72,
             "bias": 0.238,
-            "corrected": 14.4,
+            "corrected": 14.48,
             "mae_context": 0.433,
             "n": 123,
             "context_bucket": "season_rain:SON|dry"
@@ -146882,5 +146882,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-10-29T17:42:29+00:00"
+  "forecast_updated_utc": "2026-10-29T18:12:49+00:00"
 }
