@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261024-726",
   "version": "3.0.6",
-  "generated_utc": "2026-10-30T05:34:55+00:00",
+  "generated_utc": "2026-10-30T06:05:15+00:00",
   "trained_through": "2026-10-24",
   "training_samples_by_lead": {
     "1": 726,
@@ -89400,21 +89400,21 @@
         ]
       },
       "tmin": {
-        "value": 8.57,
+        "value": 8.59,
         "interval80": [
-          7.2,
-          9.93
+          7.22,
+          9.95
         ],
         "empirical_mae": 0.9,
-        "model_spread": 1.18,
+        "model_spread": 1.28,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 10.4,
+            "raw": 10.5,
             "bias": 1.086,
-            "corrected": 9.31,
+            "corrected": 9.41,
             "mae_context": 1.189,
             "n": 14,
             "context_bucket": "full:SON|dry|clear|calm|normal"
@@ -89444,19 +89444,19 @@
       "tmean": {
         "value": 13.88,
         "interval80": [
-          13.22,
-          14.55
+          13.21,
+          14.54
         ],
         "empirical_mae": 0.46,
-        "model_spread": 0.75,
+        "model_spread": 0.73,
         "confidence": "low",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 14.52,
+            "raw": 14.5,
             "bias": 0.195,
-            "corrected": 14.32,
+            "corrected": 14.3,
             "mae_context": 0.446,
             "n": 14,
             "context_bucket": "full:SON|dry|clear|calm|normal"
@@ -146882,5 +146882,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-10-30T05:34:55+00:00"
+  "forecast_updated_utc": "2026-10-30T06:05:15+00:00"
 }
