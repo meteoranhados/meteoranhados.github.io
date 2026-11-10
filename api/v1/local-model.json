@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261108-726",
   "version": "3.0.6",
-  "generated_utc": "2026-11-10T19:13:50+00:00",
+  "generated_utc": "2026-11-10T19:44:11+00:00",
   "trained_through": "2026-11-08",
   "training_samples_by_lead": {
     "1": 726,
@@ -64220,15 +64220,15 @@
       },
       "precip": {
         "probability_pct": 44.3,
-        "expected_mm": 62.52,
-        "conditional_mm": 141.2,
+        "expected_mm": 52.3,
+        "conditional_mm": 118.13,
         "conditional_range80_mm": [
-          17.23,
-          229.45
+          14.41,
+          191.97
         ],
-        "confidence": "low",
-        "raw_model_mean_mm": 35.3,
-        "raw_model_spread_mm": 20.1,
+        "confidence": "moderate",
+        "raw_model_mean_mm": 29.53,
+        "raw_model_spread_mm": 4.2,
         "n_context": 181,
         "context_bucket": "season:SON",
         "models": [
@@ -64240,7 +64240,7 @@
           {
             "model": "ecmwf",
             "label": "ECMWF IFS",
-            "raw": 47.3
+            "raw": 30.0
           },
           {
             "model": "gfs",
@@ -64259,7 +64259,7 @@
         "wind": "calm",
         "humidity": "humid",
         "pressure": "low",
-        "raw_precip_mean": 35.3,
+        "raw_precip_mean": 29.533,
         "rain_vote": 1.0
       },
       "scenario_label": "chuva significativa · céu muito nublado · vento fraco"
@@ -64708,13 +64708,13 @@
         "month": 11,
         "rain_signal": "wet",
         "cloud": "overcast",
-        "wind": "windy",
+        "wind": "breezy",
         "humidity": "humid",
         "pressure": "low",
         "raw_precip_mean": 20.327,
         "rain_vote": 1.0
       },
-      "scenario_label": "chuva significativa · céu muito nublado · vento forte"
+      "scenario_label": "chuva significativa · céu muito nublado · vento moderado"
     }
   },
   "state": {
@@ -71842,5 +71842,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-10T19:13:50+00:00"
+  "forecast_updated_utc": "2026-11-10T19:44:11+00:00"
 }
