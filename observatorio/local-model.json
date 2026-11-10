@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261108-726",
   "version": "3.0.6",
-  "generated_utc": "2026-11-10T03:02:41+00:00",
+  "generated_utc": "2026-11-10T03:33:02+00:00",
   "trained_through": "2026-11-08",
   "training_samples_by_lead": {
     "1": 726,
@@ -64220,22 +64220,22 @@
       },
       "precip": {
         "probability_pct": 44.3,
-        "expected_mm": 75.86,
-        "conditional_mm": 171.33,
+        "expected_mm": 85.13,
+        "conditional_mm": 192.27,
         "conditional_range80_mm": [
-          20.9,
-          278.42
+          23.46,
+          312.43
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 42.83,
-        "raw_model_spread_mm": 51.2,
+        "raw_model_mean_mm": 48.07,
+        "raw_model_spread_mm": 35.5,
         "n_context": 181,
         "context_bucket": "season:SON",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 12.1
+            "raw": 27.8
           },
           {
             "model": "ecmwf",
@@ -64259,7 +64259,7 @@
         "wind": "breezy",
         "humidity": "humid",
         "pressure": "low",
-        "raw_precip_mean": 42.833,
+        "raw_precip_mean": 48.067,
         "rain_vote": 1.0
       },
       "scenario_label": "chuva significativa · céu muito nublado · vento moderado"
@@ -64332,23 +64332,23 @@
         ]
       },
       "precip": {
-        "probability_pct": 69.3,
-        "expected_mm": 4.69,
-        "conditional_mm": 6.77,
+        "probability_pct": 57.7,
+        "expected_mm": 2.91,
+        "conditional_mm": 5.04,
         "conditional_range80_mm": [
-          2.45,
-          9.56
+          1.83,
+          7.12
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 3.4,
-        "raw_model_spread_mm": 0.7,
+        "raw_model_mean_mm": 2.53,
+        "raw_model_spread_mm": 3.1,
         "n_context": 25,
         "context_bucket": "season_rain:SON|rain",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 3.3
+            "raw": 0.7
           },
           {
             "model": "ecmwf",
@@ -64372,8 +64372,8 @@
         "wind": "windy",
         "humidity": "humid",
         "pressure": "low",
-        "raw_precip_mean": 3.4,
-        "rain_vote": 1.0
+        "raw_precip_mean": 2.533,
+        "rain_vote": 0.667
       },
       "scenario_label": "sinal de chuva · céu muito nublado · vento forte"
     },
@@ -64445,23 +64445,23 @@
         ]
       },
       "precip": {
-        "probability_pct": 75.6,
-        "expected_mm": 8.08,
-        "conditional_mm": 10.69,
+        "probability_pct": 63.9,
+        "expected_mm": 6.24,
+        "conditional_mm": 9.76,
         "conditional_range80_mm": [
-          5.98,
-          12.69
+          5.46,
+          11.59
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 5.77,
-        "raw_model_spread_mm": 12.4,
+        "raw_model_mean_mm": 5.27,
+        "raw_model_spread_mm": 13.9,
         "n_context": 24,
         "context_bucket": "season_rain:SON|rain",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 1.5
+            "raw": 0.0
           },
           {
             "model": "ecmwf",
@@ -64485,8 +64485,8 @@
         "wind": "windy",
         "humidity": "humid",
         "pressure": "normal",
-        "raw_precip_mean": 5.767,
-        "rain_vote": 1.0
+        "raw_precip_mean": 5.267,
+        "rain_vote": 0.667
       },
       "scenario_label": "sinal de chuva · céu muito nublado · vento forte"
     },
@@ -71842,5 +71842,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-10T03:02:41+00:00"
+  "forecast_updated_utc": "2026-11-10T03:33:02+00:00"
 }
