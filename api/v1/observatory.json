@@ -1,9 +1,9 @@
 {
   "available": true,
   "version": "3.0.6",
-  "generated_utc": "2026-11-11T00:00:39+00:00",
+  "generated_utc": "2026-11-12T00:01:04+00:00",
   "series_start": "2022-01-01",
-  "series_end": "2026-11-10",
+  "series_end": "2026-11-11",
   "reference_period": "1991-2020",
   "daily": [
     {
@@ -33122,6 +33122,25 @@
       "uv_max": 4.0,
       "sunshine_hours": 0.5,
       "et": 0.46
+    },
+    {
+      "date": "2026-11-11",
+      "year": 2026,
+      "month": 11,
+      "tmin": 11.2,
+      "tmean": 11.9,
+      "tmax": 12.8,
+      "rain": 28.7,
+      "hum_mid": 96.5,
+      "press_mid": 1002.65,
+      "press_range": 13.3,
+      "wind_gust": 33.0,
+      "wind_run": 149.8,
+      "wind_bearing": 161.0,
+      "solar_max": 114.0,
+      "uv_max": 1.0,
+      "sunshine_hours": 0.0,
+      "et": 0.21
     }
   ],
   "monthly": [
@@ -34244,7 +34263,7 @@
       "hot35": 0,
       "tropical": 0,
       "frost": 0,
-      "rain_days": 5
+      "rain_days": 6
     }
   ],
   "annual": [
@@ -34327,15 +34346,15 @@
       "missing_days": 0,
       "temperature_valid": false,
       "precipitation_valid": false,
-      "tmean": 15.51,
-      "temp_anomaly": 2.06,
-      "precip_mm": 861.1,
-      "precip_pct_normal": 184.7,
+      "tmean": 15.5,
+      "temp_anomaly": 2.07,
+      "precip_mm": 889.8,
+      "precip_pct_normal": 190.0,
       "hot30": 67,
       "hot35": 12,
       "tropical": 8,
       "frost": 5,
-      "rain_days": 70,
+      "rain_days": 71,
       "dry_spell_max": 66
     }
   ],
@@ -34478,7 +34497,7 @@
       "y": "press_mid",
       "x_unit": "°C",
       "y_unit": "hPa",
-      "r": -0.031
+      "r": -0.03
     },
     {
       "id": "rain_pressure",
@@ -34487,7 +34506,7 @@
       "y": "rain",
       "x_unit": "hPa",
       "y_unit": "mm",
-      "r": -0.434
+      "r": -0.437
     },
     {
       "id": "temp_solar",
@@ -34514,7 +34533,7 @@
       "y": "wind_gust",
       "x_unit": "hPa",
       "y_unit": "km/h",
-      "r": -0.426
+      "r": -0.427
     }
   ],
   "wind_sectors": [
@@ -34555,8 +34574,8 @@
     },
     {
       "direction": "SSE",
-      "count": 47,
-      "pct": 2.7
+      "count": 48,
+      "pct": 2.8
     },
     {
       "direction": "S",
@@ -34630,8 +34649,8 @@
     },
     {
       "year": 2026,
-      "present": 314,
-      "expected": 314,
+      "present": 315,
+      "expected": 315,
       "coverage_pct": 100.0,
       "missing": 0
     }
@@ -34644,7 +34663,7 @@
     "warning": "A série é curta. Estes declives são apenas descrições da série da estação e não devem ser interpretados como tendência climática."
   },
   "quality": {
-    "valid_days": 1743,
+    "valid_days": 1744,
     "missing_day_count": 32,
     "invalid_row_count": 0,
     "duplicate_count": 0
