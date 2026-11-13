@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261108-726",
   "version": "3.0.6",
-  "generated_utc": "2026-11-13T04:04:07+00:00",
+  "generated_utc": "2026-11-13T04:34:28+00:00",
   "trained_through": "2026-11-08",
   "training_samples_by_lead": {
     "1": 726,
@@ -64559,14 +64559,14 @@
       },
       "precip": {
         "probability_pct": 76.3,
-        "expected_mm": 17.2,
-        "conditional_mm": 22.54,
+        "expected_mm": 11.65,
+        "conditional_mm": 15.27,
         "conditional_range80_mm": [
-          7.89,
-          25.74
+          5.35,
+          17.44
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 6.2,
+        "raw_model_mean_mm": 4.2,
         "raw_model_spread_mm": 8.4,
         "n_context": 26,
         "context_bucket": "season_rain:SON|rain",
@@ -64574,7 +64574,7 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 7.8
+            "raw": 1.8
           },
           {
             "model": "ecmwf",
@@ -64594,14 +64594,14 @@
         "season": "SON",
         "month": 11,
         "rain_signal": "rain",
-        "cloud": "mixed",
-        "wind": "windy",
+        "cloud": "overcast",
+        "wind": "breezy",
         "humidity": "humid",
-        "pressure": "low",
-        "raw_precip_mean": 6.2,
+        "pressure": "normal",
+        "raw_precip_mean": 4.2,
         "rain_vote": 1.0
       },
-      "scenario_label": "sinal de chuva · nebulosidade variável · vento forte"
+      "scenario_label": "sinal de chuva · céu muito nublado · vento moderado"
     },
     "7": {
       "tmax": {
@@ -71842,5 +71842,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-13T04:04:07+00:00"
+  "forecast_updated_utc": "2026-11-13T04:34:28+00:00"
 }
