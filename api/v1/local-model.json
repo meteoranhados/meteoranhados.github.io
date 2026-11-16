@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261115-726",
   "version": "3.0.6",
-  "generated_utc": "2026-11-16T10:08:37+00:00",
+  "generated_utc": "2026-11-16T10:38:58+00:00",
   "trained_through": "2026-11-15",
   "training_samples_by_lead": {
     "1": 726,
@@ -64559,22 +64559,22 @@
       },
       "precip": {
         "probability_pct": 48.7,
-        "expected_mm": 58.61,
-        "conditional_mm": 120.4,
+        "expected_mm": 58.9,
+        "conditional_mm": 121.0,
         "conditional_range80_mm": [
-          39.73,
-          285.95
+          39.93,
+          287.38
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 30.1,
-        "raw_model_spread_mm": 52.2,
+        "raw_model_mean_mm": 30.25,
+        "raw_model_spread_mm": 52.65,
         "n_context": 181,
         "context_bucket": "season:SON",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 56.6
+            "raw": 57.05
           },
           {
             "model": "ecmwf",
@@ -64598,7 +64598,7 @@
         "wind": "calm",
         "humidity": "humid",
         "pressure": "normal",
-        "raw_precip_mean": 30.1,
+        "raw_precip_mean": 30.25,
         "rain_vote": 1.0
       },
       "scenario_label": "chuva significativa · céu muito nublado · vento fraco"
@@ -71842,5 +71842,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-16T10:08:37+00:00"
+  "forecast_updated_utc": "2026-11-16T10:38:58+00:00"
 }
