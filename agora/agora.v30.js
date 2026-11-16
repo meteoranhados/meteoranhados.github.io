@@ -291,14 +291,14 @@ function renderMonthContext(){
   const stationRain=ref?.precip_mm?Number(obs.precip_mm)/Number(ref.precip_mm)*100:null;
   $('#month-context-badges').innerHTML=`
     <span class="context-badge ${ds.t.cls}">T média ${Number(anom.tmean_c)>=0?'+':''}${fmt(anom.tmean_c,1)} °C vs normal</span>
-    <span class="context-badge ${ds.r.cls}">Chuva ${fmt(anom.precip_pct_normal,0)}% da normal</span>
+    <span class="context-badge ${ds.r.cls}">Chuva ${fmt(anom.precip_pct_normal,0)}% da normal mensal</span>
     ${stationTemp!=null?`<span class="context-badge ${stationTemp>.5?'warm':stationTemp<-.5?'cold':'neutral'}">${stationTemp>=0?'+':''}${fmt(stationTemp,1)} °C vs estação</span>`:''}
     ${stationRain!=null?`<span class="context-badge ${stationRain>115?'wet':stationRain<85?'dry':'neutral'}">${fmt(stationRain,0)}% vs estação</span>`:''}`;
   const sunMonth=d.SunshineHoursMonth!=null?Number(d.SunshineHoursMonth):obs.sunshine_hours;
   const et=obs.et_mm;
   $('#month-feature-stats').innerHTML=
     monthFeature('temp','Temperatura média',`${fmt(obs.tmean_c,1)} °C`,`${Number(anom.tmean_c)>=0?'+':''}${fmt(anom.tmean_c,1)} °C vs normal${stationTemp!=null?` · ${stationTemp>=0?'+':''}${fmt(stationTemp,1)} °C vs estação`:''}`)+
-    monthFeature('rain','Precipitação',`${fmt(obs.precip_mm,1)} mm`,`${fmt(anom.precip_pct_normal,0)}% da normal${stationRain!=null?` · ${fmt(stationRain,0)}% da estação`:''}`)+
+    monthFeature('rain','Precipitação',`${fmt(obs.precip_mm,1)} mm`,`${fmt(anom.precip_pct_normal,0)}% da normal mensal${stationRain!=null?` · ${fmt(stationRain,0)}% da estação`:''}`)+
     monthFeature('sun','Horas de sol',sunMonth!=null?`${fmt(sunMonth,1)} h`:'—',d.SunshineHoursMonth!=null?'mês até ao momento, Cumulus':'dias fechados')+
     monthFeature('chart','Evapotranspiração',et!=null?`${fmt(et,1)} mm`:'—','soma dos dias fechados do mês');
   const x=obs;
