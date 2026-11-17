@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261116-726",
   "version": "3.0.6",
-  "generated_utc": "2026-11-17T03:33:53+00:00",
+  "generated_utc": "2026-11-17T04:04:15+00:00",
   "trained_through": "2026-11-16",
   "training_samples_by_lead": {
     "1": 726,
@@ -77421,23 +77421,23 @@
         ]
       },
       "precip": {
-        "probability_pct": 66.0,
-        "expected_mm": 11.46,
-        "conditional_mm": 17.37,
+        "probability_pct": 54.3,
+        "expected_mm": 7.83,
+        "conditional_mm": 14.42,
         "conditional_range80_mm": [
-          6.05,
-          29.64
+          5.02,
+          24.61
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 4.4,
-        "raw_model_spread_mm": 6.0,
+        "raw_model_mean_mm": 3.65,
+        "raw_model_spread_mm": 8.24,
         "n_context": 30,
         "context_bucket": "season_rain:SON|rain",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 2.4
+            "raw": 0.16
           },
           {
             "model": "ecmwf",
@@ -77461,8 +77461,8 @@
         "wind": "breezy",
         "humidity": "humid",
         "pressure": "high",
-        "raw_precip_mean": 4.4,
-        "rain_vote": 1.0
+        "raw_precip_mean": 3.653,
+        "rain_vote": 0.667
       },
       "scenario_label": "sinal de chuva · nebulosidade variável · vento moderado"
     }
@@ -88743,5 +88743,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-17T03:33:53+00:00"
+  "forecast_updated_utc": "2026-11-17T04:04:15+00:00"
 }
