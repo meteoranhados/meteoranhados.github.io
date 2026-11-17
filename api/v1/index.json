@@ -1,7 +1,7 @@
 {
   "api_version": "v1",
-  "engine_version": "3.2.0",
-  "generated_utc": "2026-11-17T16:29:51+00:00",
+  "engine_version": "3.3.1",
+  "generated_utc": "2026-11-17T16:41:29+00:00",
   "station": "Estação Meteorológica de Ranhados · Mêda",
   "format": "JSON UTF-8",
   "endpoints": [
@@ -99,6 +99,12 @@
       "name": "waves",
       "path": "/api/v1/waves.json",
       "description": "Ondas de calor/frio e sequências subcríticas",
+      "available": true
+    },
+    {
+      "name": "events",
+      "path": "/api/v1/events.json",
+      "description": "Arquivo documentado de tempestades e observações locais",
       "available": true
     },
     {
