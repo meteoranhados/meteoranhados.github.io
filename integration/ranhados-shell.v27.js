@@ -26,7 +26,23 @@
       const r=await fetch('/api/v1/warnings.json',{cache:'no-store'});if(!r.ok)return;
       const d=await r.json(),now=new Date();
       const rows=(d.warnings||[]).filter(w=>LEVEL[w.level]&&(!dt(w.endTime)||dt(w.endTime)>=now));
-      if(!rows.length){host.className='ranhados-ipma-warning';host.replaceChildren();return}
+      const stormRows=Array.isArray(d.named_storms)?d.named_storms:[];
+      const appendStormContext=()=>{
+        stormRows.forEach(x=>{
+          const note=document.createElement('div');note.className='ranhados-named-storm';
+          const inner=document.createElement('div');inner.className='ranhados-named-storm__inner';
+          const tag=document.createElement('span');tag.className='ranhados-named-storm__tag';tag.textContent='Sistema nomeado';
+          const info=document.createElement('span');info.className='ranhados-named-storm__info';
+          info.textContent=`${x.name} · ${x.status==='active'?'Período documentado':'Previsto nas próximas 48 h'} · ${x.region || 'Portugal continental'}`;
+          const a=document.createElement('a');a.textContent='Fonte oficial';
+          if(typeof x.source_url==='string'&&/^https:\/\/(?:www\.ipma\.pt|www\.aemet\.es|www\.meteofrance\.fr)\//.test(x.source_url)){
+            a.href=x.source_url;a.target='_blank';a.rel='noopener noreferrer';inner.append(tag,info,a);
+          }else inner.append(tag,info);
+          note.append(inner);
+          const small=document.createElement('small');small.textContent='Nota contextual editada pela estação — não é um aviso IPMA para o distrito da Guarda. Consulte os avisos oficiais acima.';note.append(small);host.append(note);
+        });
+      };
+      if(!rows.length){host.className=stormRows.length?'ranhados-ipma-warning has-named-storm':'ranhados-ipma-warning';host.replaceChildren();appendStormContext();return}
       const highest=rows.reduce((a,w)=>LEVEL[w.level]>LEVEL[a.level]?w:a,rows[0]).level;
       rows.sort((a,b)=>LEVEL[b.level]-LEVEL[a.level]||(a.status==='active'?0:1)-(b.status==='active'?0:1)||(a.startTime||'').localeCompare(b.startTime||''));
       const types=uniqueTypes(rows),active=rows.filter(w=>w.status==='active').length,future=rows.length-active;
@@ -43,7 +59,7 @@
       const sum=document.createElement('summary');sum.textContent=rows.length>1?'Ver todos os avisos':'Ver detalhe do aviso';
       const list=document.createElement('div');list.className='ranhados-ipma-warning__list';
       rows.forEach(w=>{const card=document.createElement('div');card.className=`ranhados-ipma-warning__item is-${w.level}`;const head=document.createElement('div');head.className='ranhados-ipma-warning__itemhead';head.append(icon(w.type));const wrap=document.createElement('div');const h=document.createElement('strong');h.textContent=`${LEVEL_NAME[w.level]} · ${w.type}`;const t=document.createElement('span');t.textContent=`${fmt(dt(w.startTime))} → ${fmt(dt(w.endTime))}`;wrap.append(h,t);head.append(wrap);card.append(head);if(w.text){const p=document.createElement('p');p.textContent=w.text;card.append(p)}list.append(card)});
-      const source=document.createElement('small');source.textContent=`Fonte: IPMA, I.P.${d.stale?' · última leitura válida em cache':''}`;list.append(source);details.append(sum,list);host.append(details);
+      const source=document.createElement('small');source.textContent=`Fonte: IPMA, I.P.${d.stale?' · última leitura válida em cache':''}`;list.append(source);details.append(sum,list);host.append(details);appendStormContext();
     }catch(e){console.warn('Avisos IPMA indisponíveis',e)}
   }
   async function runStationStatus(){
@@ -71,14 +87,14 @@
     const foot=document.createElement('footer');foot.className='ranhados-external-footer';
     const inner=document.createElement('div');inner.className='ranhados-external-footer__inner';
     const meta=document.createElement('div');meta.className='ranhados-external-footer__meta';
-    const version=document.createElement('span');version.className='ranhados-external-footer__version';version.textContent='Meteo Ranhados v3.2.0 · 17/11/2026';
+    const version=document.createElement('span');version.className='ranhados-external-footer__version';version.textContent='Meteo Ranhados v3.3.1 · 17/11/2026';
     const label=document.createElement('a');label.className='ranhados-external-footer__label';label.href='/estacao/';label.textContent='A estação noutras plataformas';
     const contact=document.createElement('a');contact.className='ranhados-external-footer__contact';contact.href='/contacto/';contact.textContent='Contacto / sugerir correção';
     meta.append(version,label,contact);
     const nav=document.createElement('nav');nav.className='ranhados-external-footer__links';nav.setAttribute('aria-label','Plataformas meteorológicas externas');
     inner.append(meta,nav);foot.append(inner);(document.querySelector('main')?.parentNode||document.body).append(foot);
     try{
-      const r=await fetch('/site-meta.json',{cache:'no-store'});if(r.ok){const m=await r.json();const d=m.release_date?new Date(m.release_date+'T12:00:00'):null;const ds=d&&!Number.isNaN(d.getTime())?d.toLocaleDateString('pt-PT')  :'23/09/2026';const gd=m.generated_utc?new Date(m.generated_utc):null,gs=gd&&!Number.isNaN(gd.getTime())?gd.toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'';version.textContent=`Meteo Ranhados v${m.version||'3.2.0'} · ${ds}${gs?' · gerado '+gs:''}`}
+      const r=await fetch('/site-meta.json',{cache:'no-store'});if(r.ok){const m=await r.json();const d=m.release_date?new Date(m.release_date+'T12:00:00'):null;const ds=d&&!Number.isNaN(d.getTime())?d.toLocaleDateString('pt-PT')  :'23/09/2026';const gd=m.generated_utc?new Date(m.generated_utc):null,gs=gd&&!Number.isNaN(gd.getTime())?gd.toLocaleString('pt-PT',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'';version.textContent=`Meteo Ranhados v${m.version||'3.3.1'} · ${ds}${gs?' · gerado '+gs:''}`}
     }catch(e){}
     try{
       const r=await fetch('/external-platforms.json',{cache:'no-store'});if(!r.ok)throw new Error(r.status);
@@ -89,7 +105,7 @@
   }
   function setupServiceWorker(){
     if(!('serviceWorker' in navigator))return;
-    navigator.serviceWorker.register('/sw.js?v=3.2.0',{scope:'/'}).then(reg=>{reg.update().catch(()=>{});
+    navigator.serviceWorker.register('/sw.js?v=3.3.1',{scope:'/'}).then(reg=>{reg.update().catch(()=>{});
       const toast=document.getElementById('ranhados-update-toast'),btn=toast?.querySelector('button');
       const notify=()=>{if(reg.waiting&&navigator.serviceWorker.controller&&toast){toast.hidden=false;if(btn)btn.onclick=()=>reg.waiting.postMessage('SKIP_WAITING')}};
       notify();reg.addEventListener('updatefound',()=>{const w=reg.installing;if(w)w.addEventListener('statechange',()=>{if(w.state==='installed')notify()})});

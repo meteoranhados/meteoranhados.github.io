@@ -79,3 +79,13 @@
 /* v3.0.1 — footer resiliente + versão/data/geração/contacto */
 .ranhados-external-footer__meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.ranhados-external-footer__version{font-size:10px;font-weight:800;color:#71838c;white-space:nowrap}.ranhados-external-footer__label{border-left:1px solid #d7e3e7;padding-left:12px}.ranhados-external-footer__empty{font-size:10px;color:#84949c}@media(max-width:760px){.ranhados-external-footer__meta{display:block}.ranhados-external-footer__version{display:block;margin-bottom:7px}.ranhados-external-footer__label{border-left:0;padding-left:0}}
 .ranhados-external-footer__contact{color:#405864;text-decoration:none;font-size:10px;font-weight:850;border-left:1px solid #d7e3e7;padding-left:12px}.ranhados-external-footer__contact:hover{color:#0f6078}@media(max-width:760px){.ranhados-external-footer__contact{display:inline-block;border-left:0;padding-left:0;margin-top:6px}}
+
+/* v3.3.1 — official named system context, intentionally separate from GDA IPMA warning levels. */
+.ranhados-ipma-warning.has-named-storm{display:block;border-top:1px solid #cadcdf}
+.ranhados-named-storm{background:#eaf3f5;color:#17343e;padding:11px max(14px,calc((100vw - 1180px)/2)) 10px;border-top:1px solid #c8dfe3}
+.ranhados-named-storm__inner{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}
+.ranhados-named-storm__tag{font-size:12px;font-weight:800;letter-spacing:.02em;background:#176b71;color:white;border-radius:999px;padding:5px 10px}
+.ranhados-named-storm__info{font-weight:700;line-height:1.45}
+.ranhados-named-storm a{color:#155575;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.ranhados-named-storm small{display:block;font-size:12px;margin-top:5px;color:#395a64;line-height:1.5}
+@media(max-width:650px){.ranhados-named-storm__inner{gap:7px}.ranhados-named-storm{padding:10px 13px}}
