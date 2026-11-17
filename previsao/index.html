@@ -2,7 +2,7 @@
 <html lang="pt-PT">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Previsão meteorológica detalhada para Ranhados, Mêda, com Best Match, ECMWF e GFS.">
-<title>Previsão — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="forecast.v301.css"><meta name="theme-color" content="#17343e">
+<title>Previsão — Estação Meteorológica de Ranhados</title><link rel="stylesheet" href="forecast.v320.css"><meta name="theme-color" content="#17343e">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="/identity/ranhados-mark.svg" type="image/svg+xml">
 <meta name="application-name" content="Meteo Ranhados">
@@ -36,7 +36,15 @@
 <div id="fx-change" class="fx-change"></div>
 </section>
 
-<section id="fx-days" class="fx-days"></section>
+<section class="fx-day-controls" aria-label="Personalizar previsão a 14 dias">
+  <div><p class="eyebrow">Evolução dos próximos dias</p><h2>Previsão a 14 dias</h2><p class="fx-day-controls-note">Selecione um dia para ver a evolução horária. A partir do sexto dia, mostramos três momentos por dia, sem sugerir precisão excessiva.</p></div>
+  <label for="fx-daily-model">Modelo meteorológico
+    <select id="fx-daily-model"><option value="primary">Best Match · recomendado</option><option value="ecmwf">ECMWF IFS</option><option value="gfs">GFS</option></select>
+  </label>
+</section>
+<p id="fx-daily-model-note" class="fx-day-model-note" aria-live="polite"></p>
+<section id="fx-days" class="fx-days" aria-label="Dias da previsão"></section>
+<section id="fx-selected-day" class="fx-panel fx-day-detail" tabindex="-1" aria-label="Detalhe do dia selecionado" hidden></section>
 
 <section class="fx-main">
 <div class="fx-main-head"><div><p class="eyebrow">Próximas 72 horas</p><h2>Meteograma</h2><p id="fx-meteo-desc">Evolução horária da previsão principal.</p></div><div id="fx-tabs" class="fx-tabs"></div></div>
@@ -71,18 +79,23 @@
 
 </div></details>
 
+<section class="fx-panel fx-snow-panel" aria-labelledby="fx-snow-title">
+<div class="fx-panel-head"><div><p class="eyebrow">Altitude · 755 m</p><h2 id="fx-snow-title">Neve e nível dos 0 °C</h2><p class="fx-note">Previsão do modelo para Ranhados. O nível dos 0 °C não é a cota de queda de neve.</p></div></div>
+<div id="fx-snow-summary" class="fx-snow-summary"></div>
+</section>
 <section class="fx-panel">
-<div class="fx-panel-head"><div><p class="eyebrow">Hora a hora</p><h2>Próximas 24 horas</h2></div></div>
+<div class="fx-panel-head"><div><p class="eyebrow">Hora a hora</p><h2>Próximas 24 horas</h2><p class="fx-note">Inclui neve prevista e altitude do nível dos 0 °C. São dados do modelo, não medições na estação.</p></div></div>
 <div id="fx-hourly-table" class="fx-hourly-table"></div>
 </section>
 
 <section class="fx-lab-link"><div><p class="eyebrow">Laboratório da previsão</p><h2>Os modelos têm acertado?</h2><p>A validação histórica, a evolução D+7 → D+1 e o arquivo exato do que este site publicou ficam concentrados no Observatório.</p></div><a href="/observatorio/?view=forecast">Abrir análise da previsão →</a></section>
 
 <section class="fx-method"><details><summary>Fontes e método</summary><div>
+<p><strong>Neve:</strong> snowfall representa neve nova modelada (cm); freezing_level_height é a altitude da isoterma dos 0 °C e não deve ser interpretada como cota da neve. Não são emitidos avisos automáticos a partir deste indicador.</p>
 <p><strong>Best Match:</strong> previsão principal do Open-Meteo para as coordenadas da estação. <strong>ECMWF IFS</strong> e <strong>GFS</strong> são mantidos separados para mostrar diferenças entre modelos.</p>
 <p><strong>Ponte local:</strong> correção simples e transparente de temperatura, humidade e pressão a partir da diferença entre a observação atual da estação e o Best Match. A correção desaparece gradualmente em 8–12 h. Não altera precipitação, vento ou códigos de tempo.</p>
 <p>A concordância entre dois modelos não é sinónimo de certeza. A verificação histórica da estação é a ferramenta adequada para avaliar desempenho real.</p>
 </div></details></section>
 <footer><span>Estação Meteorológica de Ranhados · Mêda</span><span>Previsão: Open-Meteo · Best Match / ECMWF / GFS</span></footer>
-</main><script src="weather-icons.v301.js" defer></script><script src="forecast.v303.js" defer></script><script data-meteo-ranhados-assistant="1" src="/integration/meteo-assistant.js?v=13" defer></script>
+</main><script src="weather-icons.v301.js" defer></script><script src="forecast.v320.js" defer></script><script data-meteo-ranhados-assistant="1" src="/integration/meteo-assistant.js?v=13" defer></script>
 </body></html>
