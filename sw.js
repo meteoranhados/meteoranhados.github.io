@@ -1,4 +1,4 @@
-const VERSION='3.2.0';
+const VERSION='3.3.1';
 const STATIC_CACHE=`meteo-ranhados-static-${VERSION}`;
 const DATA_CACHE=`meteo-ranhados-data-${VERSION}`;
 const STATIC_SHELL=[
