@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261117-726",
   "version": "3.3.1",
-  "generated_utc": "2026-11-19T04:34:45+00:00",
+  "generated_utc": "2026-11-19T05:05:07+00:00",
   "trained_through": "2026-11-17",
   "training_samples_by_lead": {
     "1": 726,
@@ -77279,14 +77279,14 @@
       },
       "precip": {
         "probability_pct": 66.3,
-        "expected_mm": 5.86,
-        "conditional_mm": 8.85,
+        "expected_mm": 4.87,
+        "conditional_mm": 7.35,
         "conditional_range80_mm": [
-          2.37,
-          11.29
+          1.97,
+          9.38
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 2.37,
+        "raw_model_mean_mm": 1.97,
         "raw_model_spread_mm": 2.7,
         "n_context": 35,
         "context_bucket": "season_rain:SON|rain",
@@ -77294,7 +77294,7 @@
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 2.6
+            "raw": 1.4
           },
           {
             "model": "ecmwf",
@@ -77318,7 +77318,7 @@
         "wind": "breezy",
         "humidity": "humid",
         "pressure": "normal",
-        "raw_precip_mean": 2.367,
+        "raw_precip_mean": 1.967,
         "rain_vote": 0.667
       },
       "scenario_label": "sinal de chuva · céu muito nublado · vento moderado"
@@ -77457,14 +77457,14 @@
         "season": "SON",
         "month": 11,
         "rain_signal": "rain",
-        "cloud": "clear",
+        "cloud": "mixed",
         "wind": "breezy",
         "humidity": "normal",
         "pressure": "high",
         "raw_precip_mean": 2.4,
         "rain_vote": 0.333
       },
-      "scenario_label": "sinal de chuva · céu pouco nublado · vento moderado"
+      "scenario_label": "sinal de chuva · nebulosidade variável · vento moderado"
     }
   },
   "state": {
@@ -88743,5 +88743,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-19T04:34:45+00:00"
+  "forecast_updated_utc": "2026-11-19T05:05:07+00:00"
 }
