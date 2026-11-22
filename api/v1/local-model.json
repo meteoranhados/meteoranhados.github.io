@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261121-726",
   "version": "3.3.1",
-  "generated_utc": "2026-11-22T06:35:50+00:00",
+  "generated_utc": "2026-11-22T07:06:13+00:00",
   "trained_through": "2026-11-21",
   "training_samples_by_lead": {
     "1": 726,
@@ -64333,15 +64333,15 @@
       },
       "precip": {
         "probability_pct": 78.8,
-        "expected_mm": 7.06,
-        "conditional_mm": 8.96,
+        "expected_mm": 7.99,
+        "conditional_mm": 10.13,
         "conditional_range80_mm": [
-          4.16,
-          17.67
+          4.71,
+          19.99
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 3.57,
-        "raw_model_spread_mm": 2.5,
+        "raw_model_mean_mm": 4.03,
+        "raw_model_spread_mm": 3.9,
         "n_context": 28,
         "context_bucket": "season_rain:SON|rain",
         "models": [
@@ -64353,7 +64353,7 @@
           {
             "model": "ecmwf",
             "label": "ECMWF IFS",
-            "raw": 4.4
+            "raw": 5.8
           },
           {
             "model": "gfs",
@@ -64372,7 +64372,7 @@
         "wind": "breezy",
         "humidity": "humid",
         "pressure": "normal",
-        "raw_precip_mean": 3.567,
+        "raw_precip_mean": 4.033,
         "rain_vote": 1.0
       },
       "scenario_label": "sinal de chuva · céu muito nublado · vento moderado"
@@ -64445,15 +64445,15 @@
         ]
       },
       "precip": {
-        "probability_pct": 72.5,
-        "expected_mm": 3.62,
-        "conditional_mm": 4.99,
+        "probability_pct": 60.8,
+        "expected_mm": 2.12,
+        "conditional_mm": 3.48,
         "conditional_range80_mm": [
-          1.83,
-          7.82
+          1.28,
+          5.46
         ],
         "confidence": "low",
-        "raw_model_mean_mm": 1.77,
+        "raw_model_mean_mm": 1.23,
         "raw_model_spread_mm": 2.7,
         "n_context": 28,
         "context_bucket": "season_rain:SON|rain",
@@ -64466,7 +64466,7 @@
           {
             "model": "ecmwf",
             "label": "ECMWF IFS",
-            "raw": 2.2
+            "raw": 0.6
           },
           {
             "model": "gfs",
@@ -64485,8 +64485,8 @@
         "wind": "breezy",
         "humidity": "humid",
         "pressure": "high",
-        "raw_precip_mean": 1.767,
-        "rain_vote": 0.667
+        "raw_precip_mean": 1.233,
+        "rain_vote": 0.333
       },
       "scenario_label": "sinal de chuva · céu muito nublado · vento moderado"
     },
@@ -64605,12 +64605,12 @@
     },
     "7": {
       "tmax": {
-        "value": 9.99,
+        "value": 10.37,
         "interval80": [
-          6.79,
-          13.19
+          7.17,
+          13.57
         ],
-        "empirical_mae": 1.94,
+        "empirical_mae": 1.96,
         "model_spread": 0.0,
         "confidence": "moderate",
         "models": [
@@ -64618,21 +64618,21 @@
             "model": "gfs",
             "label": "GFS",
             "raw": 10.6,
-            "bias": 0.613,
-            "corrected": 9.99,
-            "mae_context": 1.943,
-            "n": 128,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": 0.235,
+            "corrected": 10.37,
+            "mae_context": 1.957,
+            "n": 181,
+            "context_bucket": "season:SON"
           }
         ]
       },
       "tmin": {
-        "value": 3.96,
+        "value": 4.17,
         "interval80": [
-          1.26,
-          6.66
+          1.27,
+          7.07
         ],
-        "empirical_mae": 1.83,
+        "empirical_mae": 1.84,
         "model_spread": 0.0,
         "confidence": "moderate",
         "models": [
@@ -64640,21 +64640,21 @@
             "model": "gfs",
             "label": "GFS",
             "raw": 4.2,
-            "bias": 0.242,
-            "corrected": 3.96,
-            "mae_context": 1.834,
-            "n": 128,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": 0.033,
+            "corrected": 4.17,
+            "mae_context": 1.84,
+            "n": 181,
+            "context_bucket": "season:SON"
           }
         ]
       },
       "tmean": {
-        "value": 6.28,
+        "value": 6.47,
         "interval80": [
-          3.95,
-          8.61
+          4.12,
+          8.82
         ],
-        "empirical_mae": 1.52,
+        "empirical_mae": 1.53,
         "model_spread": 0.0,
         "confidence": "high",
         "models": [
@@ -64662,37 +64662,37 @@
             "model": "gfs",
             "label": "GFS",
             "raw": 6.79,
-            "bias": 0.511,
-            "corrected": 6.28,
-            "mae_context": 1.516,
-            "n": 128,
-            "context_bucket": "season_rain:SON|dry"
+            "bias": 0.321,
+            "corrected": 6.47,
+            "mae_context": 1.533,
+            "n": 181,
+            "context_bucket": "season:SON"
           }
         ]
       },
       "precip": {
-        "probability_pct": 5.3,
-        "expected_mm": 0.0,
-        "conditional_mm": 0.0,
+        "probability_pct": 27.9,
+        "expected_mm": 0.78,
+        "conditional_mm": 2.8,
         "conditional_range80_mm": [
-          3.0,
-          6.6
+          1.24,
+          10.43
         ],
         "confidence": "high",
-        "raw_model_mean_mm": 0.0,
-        "raw_model_spread_mm": 0.0,
-        "n_context": 128,
-        "context_bucket": "season_rain:SON|dry",
+        "raw_model_mean_mm": 0.7,
+        "raw_model_spread_mm": 1.8,
+        "n_context": 181,
+        "context_bucket": "season:SON",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 0.0
+            "raw": 0.3
           },
           {
             "model": "ecmwf",
             "label": "ECMWF IFS",
-            "raw": 0.0
+            "raw": 1.8
           },
           {
             "model": "gfs",
@@ -64706,15 +64706,15 @@
       "scenario": {
         "season": "SON",
         "month": 11,
-        "rain_signal": "dry",
-        "cloud": "overcast",
+        "rain_signal": "trace",
+        "cloud": "mixed",
         "wind": "breezy",
         "humidity": "humid",
         "pressure": "normal",
-        "raw_precip_mean": 0.0,
-        "rain_vote": 0.0
+        "raw_precip_mean": 0.7,
+        "rain_vote": 0.333
       },
-      "scenario_label": "sinal seco · céu muito nublado · vento moderado"
+      "scenario_label": "chuva incerta · nebulosidade variável · vento moderado"
     }
   },
   "state": {
@@ -71842,5 +71842,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-22T06:35:50+00:00"
+  "forecast_updated_utc": "2026-11-22T07:06:13+00:00"
 }
