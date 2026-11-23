@@ -4,7 +4,7 @@
   "promoted": false,
   "model_id": "MRL-20261121-726",
   "version": "3.3.1",
-  "generated_utc": "2026-11-23T16:15:14+00:00",
+  "generated_utc": "2026-11-23T16:45:45+00:00",
   "trained_through": "2026-11-21",
   "training_samples_by_lead": {
     "1": 726,
@@ -64559,22 +64559,22 @@
       },
       "precip": {
         "probability_pct": 3.3,
-        "expected_mm": 0.0,
-        "conditional_mm": 0.0,
+        "expected_mm": 0.01,
+        "conditional_mm": 0.21,
         "conditional_range80_mm": [
           2.0,
           8.6
         ],
         "confidence": "high",
-        "raw_model_mean_mm": 0.0,
-        "raw_model_spread_mm": 0.0,
+        "raw_model_mean_mm": 0.05,
+        "raw_model_spread_mm": 0.16,
         "n_context": 124,
         "context_bucket": "season_rain:SON|dry",
         "models": [
           {
             "model": "best_match",
             "label": "Best Match",
-            "raw": 0.0
+            "raw": 0.16
           },
           {
             "model": "ecmwf",
@@ -64598,7 +64598,7 @@
         "wind": "calm",
         "humidity": "humid",
         "pressure": "high",
-        "raw_precip_mean": 0.0,
+        "raw_precip_mean": 0.053,
         "rain_vote": 0.0
       },
       "scenario_label": "sinal seco · céu muito nublado · vento fraco"
@@ -64707,14 +64707,14 @@
         "season": "SON",
         "month": 11,
         "rain_signal": "dry",
-        "cloud": "mixed",
+        "cloud": "overcast",
         "wind": "calm",
         "humidity": "humid",
         "pressure": "high",
         "raw_precip_mean": 0.0,
         "rain_vote": 0.0
       },
-      "scenario_label": "sinal seco · nebulosidade variável · vento fraco"
+      "scenario_label": "sinal seco · céu muito nublado · vento fraco"
     }
   },
   "state": {
@@ -71842,5 +71842,5 @@
     "validation": "holdout cronológico e comparação estritamente pareada: Meteo Ranhados e Best Match são avaliados nos mesmos dias",
     "safety": "permanece no Observatório como experimental; não substitui automaticamente a previsão pública"
   },
-  "forecast_updated_utc": "2026-11-23T16:15:14+00:00"
+  "forecast_updated_utc": "2026-11-23T16:45:45+00:00"
 }
