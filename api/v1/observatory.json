@@ -1,9 +1,9 @@
 {
   "available": true,
   "version": "3.3.1",
-  "generated_utc": "2026-11-22T00:01:22+00:00",
+  "generated_utc": "2026-11-23T00:02:09+00:00",
   "series_start": "2022-01-01",
-  "series_end": "2026-11-21",
+  "series_end": "2026-11-22",
   "reference_period": "1991-2020",
   "daily": [
     {
@@ -33331,6 +33331,25 @@
       "uv_max": 1.0,
       "sunshine_hours": 0.0,
       "et": 0.22
+    },
+    {
+      "date": "2026-11-22",
+      "year": 2026,
+      "month": 11,
+      "tmin": 5.4,
+      "tmean": 8.7,
+      "tmax": 12.5,
+      "rain": 0.3,
+      "hum_mid": 78.5,
+      "press_mid": 1024.2,
+      "press_range": 9.8,
+      "wind_gust": 37.0,
+      "wind_run": 92.1,
+      "wind_bearing": 273.0,
+      "solar_max": 427.0,
+      "uv_max": 4.0,
+      "sunshine_hours": 4.8,
+      "et": 0.74
     }
   ],
   "monthly": [
@@ -34536,10 +34555,10 @@
       "missing_days": 0,
       "temperature_valid": false,
       "precipitation_valid": false,
-      "tmean": 15.38,
+      "tmean": 15.36,
       "temp_anomaly": 2.12,
-      "precip_mm": 1007.6,
-      "precip_pct_normal": 205.1,
+      "precip_mm": 1007.9,
+      "precip_pct_normal": 204.2,
       "hot30": 67,
       "hot35": 12,
       "tropical": 8,
@@ -34687,7 +34706,7 @@
       "y": "press_mid",
       "x_unit": "°C",
       "y_unit": "hPa",
-      "r": -0.029
+      "r": -0.03
     },
     {
       "id": "rain_pressure",
@@ -34705,7 +34724,7 @@
       "y": "solar_max",
       "x_unit": "°C",
       "y_unit": "W/m²",
-      "r": 0.532
+      "r": 0.533
     },
     {
       "id": "temp_sunshine",
@@ -34723,7 +34742,7 @@
       "y": "wind_gust",
       "x_unit": "hPa",
       "y_unit": "km/h",
-      "r": -0.428
+      "r": -0.426
     }
   ],
   "wind_sectors": [
@@ -34789,8 +34808,8 @@
     },
     {
       "direction": "W",
-      "count": 230,
-      "pct": 13.1
+      "count": 231,
+      "pct": 13.2
     },
     {
       "direction": "WNW",
@@ -34839,8 +34858,8 @@
     },
     {
       "year": 2026,
-      "present": 325,
-      "expected": 325,
+      "present": 326,
+      "expected": 326,
       "coverage_pct": 100.0,
       "missing": 0
     }
@@ -34853,7 +34872,7 @@
     "warning": "A série é curta. Estes declives são apenas descrições da série da estação e não devem ser interpretados como tendência climática."
   },
   "quality": {
-    "valid_days": 1754,
+    "valid_days": 1755,
     "missing_day_count": 32,
     "invalid_row_count": 0,
     "duplicate_count": 0
